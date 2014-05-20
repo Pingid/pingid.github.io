@@ -1,0 +1,188 @@
+html, body {
+font-family: 'Lato', sans-serif;
+font-size: 100%;
+ height:100%;
+ width: 100%;
+}
+
+* {
+ padding: 0;
+ margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: grey;
+	transition: color 0.5s ease;
+}
+
+a:hover {
+	color: black;
+}
+
+div.container {
+	margin: 0 auto;
+	height:100%;
+ 	width: 100%;
+}
+
+.row {
+	height:100%;
+}
+
+/*.name {
+	position: relative;
+	padding: -10% -47%;
+	text-align: center;
+	margin-left: 47%;
+	margin-top: -1.5%;
+	height: 100px;
+	background-color: green;
+}*/
+
+.quik {
+	height: 55%;
+}
+
+.design {
+	width: 100%;
+	height: 45%;
+	/*background-color: green;*/
+	/*border: 1px solid black;*/
+	margin-top: 0;
+	position: relative;
+}
+
+.travel {
+	width: 50%;
+	height: 55%;
+
+
+    border-width: 1px 1px 1px 0;
+    border-style: solid;
+    -webkit-border-image: 
+      -webkit-gradient(linear, 0 0, 0 100%, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image: 
+      -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image:
+      -moz-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;    
+    -o-border-image:
+      -o-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
+    border-image:
+      linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+
+	
+	position: relative;
+}
+
+.sport {
+	width: 50%;
+	height: 55%;
+	/*background-color:red;*/
+	/*border: 1px solid black;*/
+	
+	position: relative;
+}
+
+.linetop {
+	border: 0;
+    height: 1px;
+    background: #333;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
+}
+
+/*.line {
+	position: relative;
+    width: 4px;
+    background: black;
+    background: -webkit-gradient(linear, 180 180, 100% 0, from(white), to(white), color-stop(50%, black));
+}*/
+
+.line {
+	display: none;
+	position: absolute;
+	margin-left: 48%;
+	height: 55%;
+	width: 1px;
+	padding: 0;
+	background: black;
+	background: -webkit-gradient(linear, 180 180, 100% 0, from(white), to(white), color-stop(50%, black));
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,0%,0%,0)), color-stop(50%,hsla(0,0%,0%,.4)), color-stop(100%,hsla(0,0%,0%,0)));
+}
+
+@media only screen and (max-width: 35em)  {
+	html, body {
+	font-size: 70%;
+ 
+}
+	.travel {width: 100%;}
+	.sport	{width: 100%;}
+}
+.title {
+	width: 100%;
+	max-height: 5%;
+	/*background-color:orange;*/
+	/*border: 1px solid black;*/
+}
+
+div h2 {
+	text-align: center;
+}
+
+.picture {
+	position: absolute;
+	max-width: 100%;
+	max-height: 100%;
+	background: url(img/line1.svg);
+}
+
+.travel p,.sport p{
+	position: relative; top:50%;
+	text-align: center;
+	/*font-family: sans-serif;
+	font-weight: lighter;*/
+}
+
+p {
+	font-size: 2em;
+}
+
+.design p {
+	position: relative; top:50%; 
+	text-align: center;
+/*	font-family: sans-serif;
+	font-weight: lighter;*/	 
+}
+
+/*.work {
+	width: 24%;
+	height:24%;
+	background-color: yellow;
+	border: 1px solid black;
+	margin: .5% .5% .5% .5%;
+}
+.work1 {
+	width: 24%;
+	height:24%;
+	background-color: brown;
+	border: 1px solid black;
+	margin: .5% .5% .5% .5%;
+}
+
+.work2 {
+	width: 24%;
+	height:24%;
+	background-color: blue;
+	border: 1px solid black;
+	float: right;
+	margin: .5% .5% .5% .5%;
+}
+
+.work3 {
+	width: 24%;
+	height:24%;
+	background-color: pink;
+	border: 1px solid black;
+	float: right;
+	margin: .5% .5% .5% .5%;
+}*/
