@@ -11,6 +11,7 @@ font-size: 100%;
 }
 p {
 	font-size: 2em;
+	fo
 }
 
 a {
@@ -43,11 +44,21 @@ div.container {
 	height: 45%;
 	margin-top: 0;
 	position: relative;
+
+
+	border-width: 1px 1px 1px 0;
+    border-style: solid; 
+   	/*webkit-border-image: 
+      -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
+    -webkit-border-image: 
+      -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;*/
+   
+  
 }
 
 .travel {
 	width: 50%;
-	height: 55%;
+	height: 100%;
 
 
     border-width: 1px 1px 1px 0;
@@ -69,7 +80,7 @@ div.container {
 
 .sport {
 	width: 50%;
-	height: 55%;
+	height: 100%;
 	position: relative;
 }
 
@@ -116,12 +127,13 @@ div h2 {
 }
 
 .travel p,.sport p{
-	position: relative; top:50%;
+	position: relative; top:45%;
 	text-align: center;
+	vertical-align: center;
 }
 
 
 .design p {
-	position: relative; top:50%; 
+	position: relative; top:45%; 
 	text-align: center;
 }
