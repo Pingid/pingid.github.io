@@ -1,37 +1,172 @@
 <!doctype html>
 <html>
 <head>
-	<title>Dead Simple Grid</title>
+	<title>Dan</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Lato:200' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/grid.css">
 	<link rel="stylesheet" href="css/stylesheet.css">
 
 </head>
 <body>
+	<!-- Border -->
+	<div id="left"></div>
+	<div id="right"></div>
+	<div id="top"></div>
+	<div id="bottom"></div>
+
+
 	<div class='container'>
 
-		<a href="#"><div class='row design'>
-			<p>Design</p>
-		</div></a>
-		<!-- <hr class="linetop"> -->
+		<div class='row scroll scroll'>
+			<div id="design" class="scroll-contain">
+				<div class="overlay"><span><h1>design</h1></span></div>
+				<div class="section" id="work1">
+					<div class="row">
+						<div class="col work">
+				            <h2>Web:</h2>
+				        </div>
+			            <div class="col work">
+			            	<div class="img-holder">
+				            	<img src="img/p.jpg">
+				            </div>
+				        </div>
+			        </div>
+		        </div>
+		        <div class="section" id="work2">
+		        	<div class="row">
+						<div class="col work">
+				            <h2>Print:</h2>
+				        </div>
+			            <div class="col work">
+			            	<div class="img-holder">
+				            	<img src="img/p.jpg">
+				            </div>
+				        </div>
+			        </div>
+		        </div>
+		        <div class="section" id="work3">
+		        	<div class="row">
+						<div class="col work">
+				            <h2>Interactive:</h2>
+				        </div>
+			            <div class="col work">
+			            	<div class="img-holder">
+				            	<img src="img/p.jpg">
+				            </div>
+				        </div>
+			        </div>
+		        </div>
 
-		<div class='row quik'>
-
-			<a href="#"><div class='col travel'>
-				<p>Travel</p>
-			</div></a>
-
-			<div class="col line"></div>
-
-			<a href="#"><div class='col sport'>
-				<p>Sport</p>
-			</div></a>
-
-			
+			</div>
 		</div>
+		
+		<div class='row lower'>
+			
+			<div class='col travel'>
+				<div class='row scroll travel-scroll'>
+					<div id="travel" class="scroll-contain">
+						<div class="overlay"><span><h1>travel</h1></span></div>
+						<div class="section" id="travel1">
+							<div class="row">
+								<div class="col work">
+						            <h2>Web:</h2>
+						        </div>
+					            <div class="col work">
+					            	<div class="img-holder">
+						            	<img src="img/p.jpg">
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+				        <div class="section" id="travel2">
+				        	<div class="row">
+								<div class="col work">
+						            <h2>Print:</h2>
+						        </div>
+					            <div class="col work">
+					            	<div class="img-holder">
+						            	<img src="img/p.jpg">
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+				        <div class="section" id="travel3">
+				        	<div class="row">
+								<div class="col work">
+						            <h2>Interactive:</h2>
+						        </div>
+					            <div class="col work">
+					            	<div class="img-holder">
+						            	<img src="img/p.jpg">
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+					</div>
+				</div>
+			</div>
+
+			<div class='col sport'>
+				<div class='row scroll travel-scroll'>
+					<div id="sport" class="scroll-contain">
+						<div class="overlay"><span><h1>sport</h1></span></div>
+						<div class="section" id="travel1">
+							<div class="row">
+								<div class="col work">
+						            <h2>Web:</h2>
+						        </div>
+					            <div class="col work">
+					            	<div class="img-holder">
+						            	<img src="img/p.jpg">
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+				        <div class="section" id="travel2">
+				        	<div class="row">
+								<div class="col work">
+						            <h2>Print:</h2>
+						        </div>
+					            <div class="col work">
+					            	<div class="img-holder">
+						            	<img src="img/p.jpg">
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+				        <div class="section" id="travel3">
+				        	<div class="row">
+								<div class="col work">
+						            <h2>Interactive:</h2>
+						        </div>
+					            <div class="col work">
+					            	<div class="img-holder">
+						            	<img src="img/p.jpg">
+						            </div>
+						        </div>
+					        </div>
+				        </div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>		
+        <script src="jquery.mousewheel.js"></script>
+        <script>
+			$(function(){
+				$(".scroll").mousewheel(function(event, delta) {
+					this.scrollLeft -= (delta * 30);
+					event.preventDefault();
+				});   
+			});
+		</script>
 
 	</div>
 </body>
+</html>

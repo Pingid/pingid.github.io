@@ -1,29 +1,150 @@
+/*GLobal/////////////////////////*/
 html, body {
-font-family: 'Lato', sans-serif;
-font-size: 100%;
- height:100%;
- width: 100%;
+	font-family: 'Lato', sans-serif;
+	font-size: 100%;
+	height:100%;
+	width: 100%;
+	padding: 0em;
+ 	margin: 0;
 }
 
-* {
- padding: 0;
- margin: 0;
+.container {
+	/*padding: 1em;
+	margin: -1em;*/
+	overflow: hidden;
 }
-p {
-	font-size: 2em;
-	fo
+
+.row .row {
+ 	margin: 0 0em; 
 }
+
+.col {
+ padding: 0 0em; 
+}
+
+
+/*Border on page*/
+#top, #bottom, #left, #right {
+	background: #F7F7F7;
+	position: fixed;
+	z-index: 3;
+	}
+
+	#left, #right {
+		top: 0; bottom: 0;
+		width: 1em;
+		}
+		#left { left: 0; }
+		#right { right: 0; }
+		
+	#top, #bottom {
+		left: 0; right: 0;
+		height: 1em;
+		}
+		#top { top: 0; }
+		#bottom { bottom: 0; }
 
 a {
 	text-decoration: none;
-	color: grey;
+	/*color: grey;*/
 	transition: color 0.5s ease;
 }
 
 a:hover {
-	color: black;
+	/*color: black;*/
 }
 
+.overlay {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: .30;
+	background-color: #03436A;
+	transition: all 0.5s ease;
+	z-index: 5;
+}
+
+.overlay:hover {
+	opacity: 0;
+	z-index: 5;
+}
+
+.overlay span {
+	position: fixed;
+	top: 1em;
+	right: 2em;
+}
+/*SECTIONS IN DESIGN///////////////////////////*/
+.section{
+    margin:0px;
+    bottom:0px;
+    width:33.333%;
+    float:left;
+    height:100%;
+    color: #03436A;
+}
+
+.section h2 {
+	text-align: left;
+	font-size: 5em;
+	padding: 1em;
+}
+
+#design {
+	background-color: #3D9AD1;
+}
+
+#design .section:nth-child(even){
+	background-color: #64A8D1;
+}
+
+.work {
+	width: 30%;
+	padding-left: 1em;
+}
+
+.img-holder {
+	/*Just in case you want to add transitions later*/
+	margin: 0 auto;
+	width: 100%;
+	/*height: 80%;
+	padding-top: 10%;
+	padding-bottom: 10%;*/
+}
+
+.work img {
+	width: 100%;
+	display: block;
+}
+
+.scroll {
+	width: 100%;
+	height: 45%;
+	position: relative;
+	overflow-y: scroll;
+}
+
+.scroll::-webkit-scrollbar {
+ display: none;
+}
+
+.scroll p {
+	position: fixed; 
+	text-align: center;
+	margin-left: 28.5em;
+	margin-top: 10%;
+}
+
+.scroll-contain{
+	position: absolute;
+	width: 300%;
+	height: 100%;
+	top:0px;
+    left:0px;
+    bottom:0px;
+    margin:0;
+    padding:0;
+}
 
 div.container {
 	margin: 0 auto;
@@ -31,77 +152,85 @@ div.container {
  	width: 100%;
 }
 
-.row {
-	height:100%;
+/*LOWER/////////////////////////*/
+
+#travel .overlay span {
+	top: 45%;
+	padding-top: 1em;
+	left: 45%;
 }
 
-.quik {
+.lower {
 	height: 55%;
 }
 
-.design {
-	width: 100%;
-	height: 45%;
-	margin-top: 0;
+.test {
+	height: 300px;
+	width: 300px;
+	background-color: blue;
+	margin-top: 25%;
 	position: relative;
-
-
-	border-width: 1px 1px 1px 0;
-    border-style: solid; 
-   	/*webkit-border-image: 
-      -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
-    -webkit-border-image: 
-      -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;*/
-   
-  
 }
+
 
 .travel {
 	width: 50%;
 	height: 100%;
-
-
-    border-width: 1px 1px 1px 0;
-    border-style: solid;
-    -webkit-border-image: 
-      -webkit-gradient(linear, 0 0, 0 100%, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
-    -webkit-border-image: 
-      -webkit-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
-    -moz-border-image:
-      -moz-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;    
-    -o-border-image:
-      -o-linear-gradient(black, rgba(0, 0, 0, 0)) 1 100%;
-    border-image:
-      linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
-
-	
 	position: relative;
+	overflow: auto;
+	overflow-y:hidden;
+}
+
+.travel-scroll {
+	width: 100%;
+	height: 100%;
+}
+
+#travel {
+	background-color: #FF5D40;
+}
+
+#travel .section:nth-child(even){
+	background-color: #FF8973;
+}
+
+#travel h2{
+	font-size: 2em;
+	padding: 1em;
+}
+
+/*SPORT*/
+#sport .overlay span {
+	top: 45%;
+	padding-top: 1em;
+	right: 2em;
+}
+
+#sport {
+	background-color: #FFD140;
+}
+
+#sport .section:nth-child(even){
+	background-color: #FFDD73;
+}
+
+#sport h2{
+	font-size: 2em;
+	padding: 1em;
 }
 
 .sport {
 	width: 50%;
 	height: 100%;
 	position: relative;
+	overflow: auto;
+	overflow-y:hidden;
 }
 
-.linetop {
-	border: 0;
-    height: 1px;
-    background: #333;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(white), color-stop(50%, black));
+.sport::-webkit-scrollbar {
+ display: none;
 }
 
-.line {
-	display: none;
-	position: absolute;
-	margin-left: 48%;
-	height: 55%;
-	width: 1px;
-	padding: 0;
-	background: black;
-	background: -webkit-gradient(linear, 180 180, 100% 0, from(white), to(white), color-stop(50%, black));
-	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%,hsla(0,0%,0%,0)), color-stop(50%,hsla(0,0%,0%,.4)), color-stop(100%,hsla(0,0%,0%,0)));
-}
 
 @media only screen and (max-width: 35em)  {
 	html, body {
@@ -133,7 +262,3 @@ div h2 {
 }
 
 
-.design p {
-	position: relative; top:45%; 
-	text-align: center;
-}
