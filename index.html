@@ -1,172 +1,47 @@
 <!doctype html>
 <html>
 <head>
-	<title>Dan</title>
+	<title>Dead Simple Grid</title>
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<link href='https://fonts.googleapis.com/css?family=Lato:200' rel='stylesheet' type='text/css'>
+
 	<link rel="stylesheet" href="css/grid.css">
+	<!-- <link rel="stylesheet" href="css/screen.css"> -->
 	<link rel="stylesheet" href="css/stylesheet.css">
 
 </head>
 <body>
-	<!-- Border -->
-	<div id="left"></div>
-	<div id="right"></div>
-	<div id="top"></div>
-	<div id="bottom"></div>
 
-
-	<div class='container'>
-
-		<div class='row scroll scroll'>
-			<div id="design" class="scroll-contain">
-				<div class="overlay"><span><h1>design</h1></span></div>
-				<div class="section" id="work1">
-					<div class="row">
-						<div class="col work">
-				            <h2>Web:</h2>
-				        </div>
-			            <div class="col work">
-			            	<div class="img-holder">
-				            	<img src="img/p.jpg">
-				            </div>
-				        </div>
-			        </div>
-		        </div>
-		        <div class="section" id="work2">
-		        	<div class="row">
-						<div class="col work">
-				            <h2>Print:</h2>
-				        </div>
-			            <div class="col work">
-			            	<div class="img-holder">
-				            	<img src="img/p.jpg">
-				            </div>
-				        </div>
-			        </div>
-		        </div>
-		        <div class="section" id="work3">
-		        	<div class="row">
-						<div class="col work">
-				            <h2>Interactive:</h2>
-				        </div>
-			            <div class="col work">
-			            	<div class="img-holder">
-				            	<img src="img/p.jpg">
-				            </div>
-				        </div>
-			        </div>
-		        </div>
-
-			</div>
+	<div class="container top">
+		<div class="row title">
+			<div class="col header"><h2 id="work"><a href="#">Work</a></h2></div>
+			<div class="col header"><h2 id="travel"><a href="#">Travel</a></h2></div>
+			<div class="col header"><h2 id="sport"><a href="#">Sport</a></h2></div>
 		</div>
-		
-		<div class='row lower'>
-			
-			<div class='col travel'>
-				<div class='row scroll travel-scroll'>
-					<div id="travel" class="scroll-contain">
-						<div class="overlay"><span><h1>travel</h1></span></div>
-						<div class="section" id="travel1">
-							<div class="row">
-								<div class="col work">
-						            <h2>Web:</h2>
-						        </div>
-					            <div class="col work">
-					            	<div class="img-holder">
-						            	<img src="img/p.jpg">
-						            </div>
-						        </div>
-					        </div>
-				        </div>
-				        <div class="section" id="travel2">
-				        	<div class="row">
-								<div class="col work">
-						            <h2>Print:</h2>
-						        </div>
-					            <div class="col work">
-					            	<div class="img-holder">
-						            	<img src="img/p.jpg">
-						            </div>
-						        </div>
-					        </div>
-				        </div>
-				        <div class="section" id="travel3">
-				        	<div class="row">
-								<div class="col work">
-						            <h2>Interactive:</h2>
-						        </div>
-					            <div class="col work">
-					            	<div class="img-holder">
-						            	<img src="img/p.jpg">
-						            </div>
-						        </div>
-					        </div>
-				        </div>
-					</div>
-				</div>
-			</div>
-
-			<div class='col sport'>
-				<div class='row scroll travel-scroll'>
-					<div id="sport" class="scroll-contain">
-						<div class="overlay"><span><h1>sport</h1></span></div>
-						<div class="section" id="travel1">
-							<div class="row">
-								<div class="col work">
-						            <h2>Web:</h2>
-						        </div>
-					            <div class="col work">
-					            	<div class="img-holder">
-						            	<img src="img/p.jpg">
-						            </div>
-						        </div>
-					        </div>
-				        </div>
-				        <div class="section" id="travel2">
-				        	<div class="row">
-								<div class="col work">
-						            <h2>Print:</h2>
-						        </div>
-					            <div class="col work">
-					            	<div class="img-holder">
-						            	<img src="img/p.jpg">
-						            </div>
-						        </div>
-					        </div>
-				        </div>
-				        <div class="section" id="travel3">
-				        	<div class="row">
-								<div class="col work">
-						            <h2>Interactive:</h2>
-						        </div>
-					            <div class="col work">
-					            	<div class="img-holder">
-						            	<img src="img/p.jpg">
-						            </div>
-						        </div>
-					        </div>
-				        </div>
-					</div>
-				</div>
-			</div>
-
-		</div>
-
-		<!-- The JavaScript -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>		
-        <script src="jquery.mousewheel.js"></script>
-        <script>
-			$(function(){
-				$(".scroll").mousewheel(function(event, delta) {
-					this.scrollLeft -= (delta * 30);
-					event.preventDefault();
-				});   
-			});
-		</script>
-
 	</div>
+
+	<div class="container bottom sport">
+		<div class="row slider">	
+		</div>
+	</div>
+
+	<div class="container bottom travel">
+		<div class="row slider">	
+		</div>
+	</div>
+
+	<div class="container bottom work">
+		<div class="row slider">	
+		</div>
+	</div>
+
+
+
+
+
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type='text/javascript' src='js/script.js'></script>
 </body>
 </html>
