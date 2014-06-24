@@ -1,14 +1,26 @@
 * {
 	margin: 0;
 	height: 100%;
-	width: 100%;
-
+	width: 100%; 
 }
 
+
 body {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	margin: 0;
 	overflow: hidden;
+	background: #f6f9fa;
+	color: #536d76;
+}
+
+h2,h1 {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+}
+
+p,li {
+	font-family: 'Raleway', Arial, sans-serif;
+	font-weight: 400;
+	font-size: 1em;
 }
 
 .container {
@@ -54,49 +66,59 @@ h2:hover {
 }
 
 
-/*.travel {
-	background-color: green;
-}
-.work {
-	background-color: blue;
-}
-.sport {
-	background-color: orange;
-}*/
+													/*Work Page Divs*/
 
 .containment {
     overflow: hidden;
     }
 
-.scroller {
-    width: 200%;
-    }
+	.scroller {
+	    width: 200%;
+	}
 
-.slidepart {
-    width: 33.33%;
-    height: 100%;
-    padding: 30px 0;
-    float: left;
-    background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-    }
+		.slidepart {
+		    width: 33.33%;
+		    height: 100%;
+		    padding: 30px 0;
+		    float: left;
+		}
+
+
 .pos {
 	z-index: -1;
 }
+
+
+
+.post1,.post2,.post3 {
+	opacity: 0.7;
+	-webkit-transition: opacity 0.35s;
+	transition: opacity 0.35s;
+
+}
+
+.post1:hover,.post2:hover,.post3:hover {
+	opacity: 1;
+
+}
+												     /*Work Page Posts*/
 
 .post1 {
 	background: url(../img/post1.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	box-sizing: border-box;
 	opacity: .7;
+
+
 }
 	.post2 {
 	background: url(../img/post2.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	box-sizing: border-box;
 	opacity: .7;
 	}
 		.post3 {
@@ -104,19 +126,26 @@ h2:hover {
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: center;
+		box-sizing: border-box;
 		opacity: .7;
 		}
+
+
+                                                    /*Travel Page*/
+
 .content {
 	margin-left: 9.6%;
 	width: 70%;
 }
 .date {
+	margin-top: 3%;
 /*	background-color: blue;*/
 	width: 50%;
 	height: 100%;
 }
 
 .post {
+	margin-top: 3%;
 /*	background-color: orange;*/
 	width: 50%;
 	height: 100%;
@@ -134,6 +163,10 @@ h2:hover {
 	margin-top: 5.5%;
 	height: 20px;
 	padding-right: 30%;
+}
+
+.post ul li:hover {
+	opacity: .5;
 }
 
 /*.work {

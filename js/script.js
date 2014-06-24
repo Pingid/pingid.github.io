@@ -45,6 +45,13 @@ $( document ).ready(function() {
 			});
 
 		});
+
+
+// Image Hover Effects CoDropa
+
+[].slice.call( document.querySelectorAll('a[href="#"') ).forEach( function(el) {
+                el.addEventListener( 'click', function(ev) { ev.preventDefault(); } );
+            } );
 	
 
 /*! Copyright (c) 2013 Brandon Aaron (http://brandon.aaron.sh)
