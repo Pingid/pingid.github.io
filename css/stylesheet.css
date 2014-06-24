@@ -13,6 +13,7 @@ body {
 
 .container {
 	margin: auto;
+	background-color: white;
 }
 
 .top {
@@ -53,7 +54,7 @@ h2:hover {
 }
 
 
-.travel {
+/*.travel {
 	background-color: green;
 }
 .work {
@@ -61,24 +62,80 @@ h2:hover {
 }
 .sport {
 	background-color: orange;
-}
+}*/
 
 .containment {
     overflow: hidden;
     }
 
 .scroller {
-    width: 300%;
+    width: 200%;
     }
 
 .slidepart {
-    width: 20%;
+    width: 33.33%;
     height: 100%;
     padding: 30px 0;
-    border: 1px solid #000;
     float: left;
+    background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
     }
 .pos {
 	z-index: -1;
 }
 
+.post1 {
+	background: url(../img/post1.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: .7;
+}
+	.post2 {
+	background: url(../img/post2.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: .7;
+	}
+		.post3 {
+		background: url(../img/post3.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		opacity: .7;
+		}
+.content {
+	margin-left: 9.6%;
+	width: 70%;
+}
+.date {
+/*	background-color: blue;*/
+	width: 50%;
+	height: 100%;
+}
+
+.post {
+/*	background-color: orange;*/
+	width: 50%;
+	height: 100%;
+}
+
+.date ul li {
+	list-style-type: none;
+	margin-top: 5.5%;
+	height: 20px;
+	margin-left: 70%;
+}
+
+.post ul li {
+	list-style-type: none;
+	margin-top: 5.5%;
+	height: 20px;
+	padding-right: 30%;
+}
+
+/*.work {
+	z-index: -1;
+}*/
