@@ -1,174 +1,201 @@
 * {
 	margin: 0;
 	height: 100%;
-	width: 100%; 
+	font-family: sans-serif;
 }
 
-
-body {
-	margin: 0;
-	overflow: hidden;
-	background: #f6f9fa;
-	color: #536d76;
+li,p {
+	font-family: "Open Sans" sans-serif; 
 }
 
-h2,h1 {
-	font-family: "Open Sans", sans-serif;
+h1,h2,h3,h4 {
+	font-family: "Roboto" sans-serif;
+	font-weight: 100;
+}
+h1 {
+	font-size: 1em
+}
+
+h2 {
+
+}
+
+h3 {
+	font-size: .7em;
 	font-weight: 400;
 }
-
-p,li {
-	font-family: 'Raleway', Arial, sans-serif;
-	font-weight: 400;
-	font-size: 1em;
+h4 {
+	font-size: .6em;
 }
-
-.container {
-	margin: auto;
-	background-color: white;
-}
-
-.top {
-	height: 7%;
+							/*NAV BAR*/
+.nav {
 	position: fixed;
+	height: 5%;
+	width: 200px;
+	padding-top: 28px;
+	left: 49%;
+	margin-left: -100px;
+	
 }
 
-.bottom	 {
-	margin: 1%;
-	margin-top: 4%;
-	position: fixed;
-	height: 87%;
-	width: 98%
+.nav-button {
+	position: relative;
+	width: 33.33%;
+
+	transition: opacity .15s ease-in-out;
+   -moz-transition: opacity .15s ease-in-out;
+   -webkit-transition: opacity .15s ease-in-out;
 }
 
-.title {
-	width: 40%;
-	margin: auto;
-
+/*#work,#travel,#projects {
+	border:1px solid black;
 }
-
-a {
-	text-decoration: none;
-	color: black;
-}
-
-h2:hover {
-	color: #BDBDBD;
+*/
+#work h1 {
+	margin-left: -10px;
 	cursor: pointer;
 }
 
-.header {
-	width: 33.33%;
-	padding-top: 3%;
-	text-align: center;
-	text-decoration: none;
-	vertical-align: center;
+#travel h1 {
+	margin-left: -12px;
+	cursor: pointer;
+}
+
+#projects h1 {
+	margin-left: -18px;
+	cursor: pointer;
 }
 
 
-													/*Work Page Divs*/
+#work:hover,#travel:hover,#projects:hover {
+	opacity: .4;
+}
 
+
+							/*CONTENT*/			
 .containment {
-    overflow: hidden;
-    }
-
-	.scroller {
-	    width: 200%;
-	}
-
-		.slidepart {
-		    width: 33.33%;
-		    height: 100%;
-		    padding: 30px 0;
-		    float: left;
-		}
+	position: fixed;
+	height: 50%;
+	width: 100%;
+	margin-top: 84px;
+	
 
 
-.pos {
-	z-index: -1;
+
+/*	background-color: red;
+	opacity: .3;*/
 }
-
-
-
-.post1,.post2,.post3 {
-	opacity: 0.7;
-	-webkit-transition: opacity 0.35s;
-	transition: opacity 0.35s;
-
-}
-
-.post1:hover,.post2:hover,.post3:hover {
-	opacity: 1;
-
-}
-												     /*Work Page Posts*/
-
-.post1 {
-	background: url(../img/post1.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	box-sizing: border-box;
-	opacity: .7;
-
-
-}
-	.post2 {
-	background: url(../img/post2.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	box-sizing: border-box;
-	opacity: .7;
-	}
-		.post3 {
-		background: url(../img/post3.jpg);
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center;
-		box-sizing: border-box;
-		opacity: .7;
-		}
-
-
-                                                    /*Travel Page*/
 
 .content {
-	margin-left: 9.6%;
-	width: 70%;
+	position: fixed;
+	width: 86%;
+	height: 50%;
+	margin-left: 6.6%; 
+
+
+	
 }
-.date {
-	margin-top: 3%;
-/*	background-color: blue;*/
-	width: 50%;
-	height: 100%;
-}
+
+
+							/*WORK PAGE*/
 
 .post {
-	margin-top: 3%;
-/*	background-color: orange;*/
-	width: 50%;
-	height: 100%;
+	position: relative;
+	float: left;
+	width: 20%;
+	margin-left: 9.8%;
 }
 
-.date ul li {
-	list-style-type: none;
-	margin-top: 5.5%;
-	height: 20px;
-	margin-left: 70%;
+
+.p1 {
+	background-image: url(../img/post1.jpg);
 }
 
-.post ul li {
-	list-style-type: none;
-	margin-top: 5.5%;
-	height: 20px;
-	padding-right: 30%;
+.p2 {
+	background-image: url(../img/post2.jpg);
 }
 
-.post ul li:hover {
-	opacity: .5;
+.p3 {
+	background-image: url(../img/post3.jpg);
 }
 
-/*.work {
-	z-index: -1;
-}*/
+
+.p1,.p2,.p3 {
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	opacity: .7;
+	cursor: pointer;
+
+	transition: opacity .15s ease-in-out;
+   -moz-transition: opacity .15s ease-in-out;
+   -webkit-transition: opacity .15s ease-in-out;
+}
+
+.p1:hover {
+	opacity: 1;
+	cursor: pointer;
+}
+
+
+							/*ABOUT*/
+.information {
+	position: fixed;
+	width: 100%;
+	height: 20%;
+	left: 0px;
+	bottom: 3%;
+	/*background-color: black;
+	opacity: .5;*/
+}
+	.info{
+		width: 33.33%;
+		height: 100%;
+		float: left;
+		/*
+		background-color: blue;
+		opacity: .8;
+		*/
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  /* some CSS here */
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+  /* some CSS here */
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+  /* some CSS here */
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  /* some CSS here */
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+  /* some CSS here */
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
+  /* some CSS here */
+}
