@@ -172,9 +172,7 @@ a {
 
 		}
 
-.travel {
-	z-index: 2;
-}
+
 
 							/*ABOUT*/
 .information {
@@ -192,11 +190,8 @@ a {
 		width: 33.33%;
 		height: 100%;
 		float: left;
-
-		/*
-		background-color: blue;
-		opacity: .8;
-		*/
+		padding-top: 10px;
+		
 	}
 		.information h3 {
 			text-align: center;
@@ -205,20 +200,21 @@ a {
 		}
 
 		.information h4 {
-			font-size: 1em;
+			font-size: .5em;
 			font-weight: bold;
 		}
 
+
 		img {
-			padding-top: 5px;
 			margin: auto;
-			margin-left:25%;
+			margin-left: -40%;
 			background-size: cover;
 			background-repeat: no-repeat;
 			background-position: center;
 		}
-
-
+		p {
+			font-size: .3em;
+		}
 
 
 .pos {
@@ -229,7 +225,7 @@ a {
 
 /* #### Mobile Phones Portrait #### */
 @media screen and (max-device-width: 480px) and (orientation: portrait){
-	.blog ul li {
+	.blog ul li, p {
 		font-size: .4em;
 	}
 	h4 {
@@ -242,14 +238,14 @@ a {
 
 /* #### Mobile Phones Landscape #### */
 @media screen and (max-device-width: 640px) and (orientation: landscape){
-	.blog ul li {
+	.blog ul li,p {
 		font-size: .45em;
 	}
 }
 
 /* #### Mobile Phones Portrait or Landscape #### */
 @media screen and (max-device-width: 640px){
-	.blog ul li {
+	.blog ul li,p {
 		font-size: .4em;
 	}
 }
@@ -261,7 +257,7 @@ a {
 
 /* #### Tablets Portrait or Landscape #### */
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
-	.blog ul li {
+	.blog ul li,p {
 		font-size: .7em;
 	}
 }
