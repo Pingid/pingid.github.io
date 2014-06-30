@@ -5,7 +5,8 @@
 }
 
 li,p {
-	font-family: "Open Sans" sans-serif; 
+	font-family: "Open Sans" sans-serif;
+	font-size: 1em; 
 }
 
 h1,h2,h3,h4 {
@@ -26,6 +27,13 @@ h3 {
 }
 h4 {
 	font-size: .6em;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+
+
 }
 							/*NAV BAR*/
 .nav {
@@ -78,24 +86,18 @@ h4 {
 	height: 50%;
 	width: 100%;
 	margin-top: 84px;
-	
-
-
-
-/*	background-color: red;
-	opacity: .3;*/
+	background-color: white;	
 }
 
 .content {
 	position: fixed;
 	width: 86%;
 	height: 50%;
-	margin-left: 6.6%; 
-
-
-	
+	margin-left: 6.6%; 	
 }
-
+.work,.travel,.projects {
+	background-color: white;
+}
 
 							/*WORK PAGE*/
 
@@ -132,57 +134,124 @@ h4 {
    -webkit-transition: opacity .15s ease-in-out;
 }
 
-.p1:hover {
+.p1:hover,.p2:hover,.p3:hover {
 	opacity: 1;
 	cursor: pointer;
 }
+							/*TRAVEL PAGE*/
+.blog-contain {
+	height: 100%;
+	width: 100%;
+}	
+	
 
+.blog {
+	position: relative;
+	width: 80%;
+	height: 100%;
+	margin: 0 auto;
+	text-align: center;
+	padding-right: 30px;
+	
+}
+	.blog ul {
+		margin: 0 auto;
+		display: inline-block;
+		text-align: left;
+
+	}
+
+		.blog ul li {
+			height: 4em;
+			color: black;
+			text-decoration: none;
+			list-style-type: none;
+			margin-left:0 auto;
+			font-size: .4em;
+
+
+		}
+
+.travel {
+	z-index: 2;
+}
 
 							/*ABOUT*/
 .information {
 	position: fixed;
+	background-color: white;
 	width: 100%;
-	height: 20%;
+	height: auto;
+	max-height: 30%;
 	left: 0px;
 	bottom: 3%;
-	/*background-color: black;
-	opacity: .5;*/
+	
+	
 }
 	.info{
 		width: 33.33%;
 		height: 100%;
 		float: left;
+
 		/*
 		background-color: blue;
 		opacity: .8;
 		*/
 	}
+		.information h3 {
+			text-align: center;
+			font-size: 2em;
+			margin-top: -37px;
+		}
+
+		.information h4 {
+			font-size: 1em;
+			font-weight: bold;
+		}
+
+		img {
+			padding-top: 5px;
+			margin: auto;
+			margin-left:25%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
 
 
 
 
-
-
-
-
-
-
+.pos {
+	z-index: -1;
+}
 
 
 
 /* #### Mobile Phones Portrait #### */
 @media screen and (max-device-width: 480px) and (orientation: portrait){
-  /* some CSS here */
+	.blog ul li {
+		font-size: .4em;
+	}
+	h4 {
+		font-size: 1em;
+	}
+	.me {
+		float: right;
+	}
 }
 
 /* #### Mobile Phones Landscape #### */
 @media screen and (max-device-width: 640px) and (orientation: landscape){
-  /* some CSS here */
+	.blog ul li {
+		font-size: .45em;
+	}
 }
 
 /* #### Mobile Phones Portrait or Landscape #### */
 @media screen and (max-device-width: 640px){
-  /* some CSS here */
+	.blog ul li {
+		font-size: .4em;
+	}
 }
 
 /* #### iPhone 4+ Portrait or Landscape #### */
@@ -192,10 +261,23 @@ h4 {
 
 /* #### Tablets Portrait or Landscape #### */
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px){
-  /* some CSS here */
+	.blog ul li {
+		font-size: .7em;
+	}
 }
 
 /* #### Desktops #### */
 @media screen and (min-width: 1024px){
-  /* some CSS here */
+	.blog {
+		padding-top: 30px;
+	}
+
+	.blog ul li {
+		font-size: .9em;
+	}
+
+	h1 {
+		font-size: 1em;
+	}
+
 }
