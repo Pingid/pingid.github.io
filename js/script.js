@@ -25,11 +25,7 @@ $(document).ready(function(){
 	})
 })
 
-$(document).ready(function() {
-  $('.work').scrollToFixed();
-});
+// $(document).ready(function() {
+//   $('.contain').scrollToFixed();
+// });
 
-$(document).ready(function() {
-  $('.nav').scrollToFixed();
-  $('.foot').scrollToFixed( { bottom: 0, limit: $('.foot').offset().top } );
-});

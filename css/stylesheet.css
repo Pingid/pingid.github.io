@@ -2,14 +2,22 @@
   font-family: "Ubuntu Mono";
   -webkit-font-smoothing: antialiased;
   -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+  overflow-x:hidden; }
 
-body {
+section,body {
   height: 100%;
+  width: 100%;
 }
 
 h1 {
   color: black; }
+.top {
+  position: fixed;
+  height: 160px;
+  width: 100%;
+  background-color:white;
+}
 
 .name {
 }
@@ -37,49 +45,77 @@ h1 {
 .nav-button:hover {
   text-decoration: underline;
 }
-                                          /*WORK*/
-section {
+                                          
+.contain {
   position: fixed;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  height: 55%;
+  width: 90%;
+  height:98%;
+  margin-left: 5%;
+  margin-right: 5%;
+  background-color: white;
+  z-index: -1;
   }
 
-   .work img {
-      display: block;
-      margin: auto;
-      margin-top: 4px;
-      width: 35%;
-      border: 1px solid black;
-      opacity: .5;
-      cursor: pointer;
-      z-index: -2;
-    }
-img:hover {
-  opacity: 1;
-}
-                                          /*TRAVEL*/
-.travel {
-  background-color: white;
-  z-index: 2;
-}
 
+                                          /*WORK*/
+.work {
+  margin-top: 160px;
+  width: 100%;
+  height:95%;
+
+  overflow: hidden;
+}
+.content {
+  
+  width: 100%;
+  height: 25%;
+  margin-bottom: 30px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  cursor: pointer;
+  
+}
+.post1 {
+  background-image: url(../img/post1.jpg);
+  border:2px solid black;
+}
+.post2 {
+  background-image: url(../img/post2.jpg);
+  border:2px solid black;
+}
+.post3 {
+  background-image: url(../img/post3.jpg);
+  border:2px solid black;
+}
+   
+                                          /*TRAVEL*/
+
+
+.bottom {
+  position: fixed;
+  bottom: 0px;
+  background-color: white;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+}
 
 footer h1 { 
-  position: fixed;
-  bottom: -9px;
+  position: absolute;
+  margin-top: 2px;
   width: 100%;
   text-align: center;
   background: white;
   color: #222222;
   font-size: 16px;
+  z-index: 2;
+  line-height: 25px; 
   border-bottom: 1px solid black; 
-  border-top: 1px solid black; 
-  line-height: 25px; }
+  border-top: 1px solid black;}
+
 
   footer h1 a {
     color: #222222; }
 
-.pos {
-  z-index: -1;
-}
