@@ -49,11 +49,12 @@ h1 {
 .contain {
   position: fixed;
   width: 90%;
-  height:98%;
+  height:100%;
   margin-left: 5%;
   margin-right: 5%;
   background-color: white;
   z-index: -1;
+ 
   }
 
 
@@ -61,14 +62,14 @@ h1 {
 .work {
   margin-top: 160px;
   width: 100%;
-  height:95%;
+  height:100%;
 
-  overflow: hidden;
+
 }
 .content {
   
   width: 100%;
-  height: 25%;
+  height: 28%;
   margin-bottom: 30px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -79,15 +80,15 @@ h1 {
 }
 .post1 {
   background-image: url(../img/post1.jpg);
-  border:2px solid black;
+  border:1px solid black;
 }
 .post2 {
   background-image: url(../img/post2.jpg);
-  border:2px solid black;
+  border:1px solid black;
 }
 .post3 {
   background-image: url(../img/post3.jpg);
-  border:2px solid black;
+  border:1px solid black;
 }
    
                                           /*TRAVEL*/
