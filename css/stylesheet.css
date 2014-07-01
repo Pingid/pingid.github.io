@@ -3,7 +3,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  height100%;
+
+body {
+  height: 100%;
+}
 
 h1 {
   color: black; }
@@ -34,36 +37,49 @@ h1 {
 .nav-button:hover {
   text-decoration: underline;
 }
+                                          /*WORK*/
+section {
+  position: fixed;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  height: 55%;
+  }
 
-.work {
-  }
-  .post-container {
-    margin-top: 25px;
-    height: 100%;
-  }
-    img {
+   .work img {
       display: block;
       margin: auto;
       margin-top: 4px;
-      width: 70%;
+      width: 45%;
       border: 1px solid black;
       opacity: .5;
       cursor: pointer;
+      z-index: -2;
     }
 img:hover {
   opacity: 1;
 }
+                                          /*TRAVEL*/
+.travel {
+  background-color: white;
+  z-index: 2;
+}
+
 
 footer h1 { 
-  margin-top: 25px;
+  position: fixed;
+  bottom: -9px;
+  width: 100%;
   text-align: center;
-  padding-left: 20px;
   background: white;
   color: #222222;
   font-size: 16px;
   border-bottom: 1px solid black; 
   border-top: 1px solid black; 
-  line-height: 20px;}
+  line-height: 25px; }
 
   footer h1 a {
     color: #222222; }
+
+.pos {
+  z-index: -1;
+}
