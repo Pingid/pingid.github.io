@@ -1,276 +1,56 @@
 * {
-	margin: 0;
-	height: 100%;
-	font-family: sans-serif;
-}
+  font-family: "Ubuntu Mono";
+  -webkit-font-smoothing: antialiased;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+  height100%;
 
-li,p {
-	font-family: "Open Sans" sans-serif;
-	font-size: 1em; 
-}
-
-h1,h2,h3,h4 {
-	font-family: "Roboto" sans-serif;
-	font-weight: 100;
-}
 h1 {
-	font-size: 1em
-}
+	color: black; }
 
-h2 {
-
+.name {
 }
+	.name h1 {
+		text-align: center;
+		border-top: 1px solid black;
+		border-bottom:  1px solid black;
+		font-size: 20px; }
 
-h3 {
-	font-size: .7em;
-	font-weight: 400;
-}
-h4 {
-	font-size: .6em;
-}
-
-a {
-	text-decoration: none;
-	color: black;
-
-
-}
-							/*NAV BAR*/
-.nav {
-	position: fixed;
-	height: 5%;
-	width: 200px;
-	padding-top: 28px;
-	left: 49%;
-	margin-left: -100px;
-	
-}
 
 .nav-button {
-	position: relative;
-	width: 33.33%;
+  font-weight: normal;
+  text-align: center;
+  width: 90%;
+  background: #222222;
+  color: #fff;
+  font-size: 18px;
+  height: 30px;
+  line-height: 28px;
+  margin: auto;
+  margin-top: 0px;
+  margin-bottom: 5px; }
 
-	transition: opacity .15s ease-in-out;
-   -moz-transition: opacity .15s ease-in-out;
-   -webkit-transition: opacity .15s ease-in-out;
-}
-
-/*#work,#travel,#projects {
-	border:1px solid black;
-}
-*/
-#work h1 {
-	margin-left: -10px;
-	cursor: pointer;
-}
-
-#travel h1 {
-	margin-left: -12px;
-	cursor: pointer;
-}
-
-#projects h1 {
-	margin-left: -18px;
-	cursor: pointer;
-}
-
-
-#work:hover,#travel:hover,#projects:hover {
-	opacity: .4;
-}
-
-
-							/*CONTENT*/			
-.containment {
-	position: fixed;
-	height: 50%;
-	width: 100%;
-	margin-top: 84px;
-	background-color: white;	
-}
-
-.content {
-	position: fixed;
-	width: 86%;
-	height: 50%;
-	margin-left: 6.6%; 	
-}
-.work,.travel,.projects {
-	background-color: white;
-}
-
-							/*WORK PAGE*/
-
-.post {
-	position: relative;
-	float: left;
-	width: 20%;
-	margin-left: 9.8%;
-}
-
-
-.p1 {
-	background-image: url(../img/post1.jpg);
-}
-
-.p2 {
-	background-image: url(../img/post2.jpg);
-}
-
-.p3 {
-	background-image: url(../img/post3.jpg);
-}
-
-
-.p1,.p2,.p3 {
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	opacity: .7;
-	cursor: pointer;
-
-	transition: opacity .15s ease-in-out;
-   -moz-transition: opacity .15s ease-in-out;
-   -webkit-transition: opacity .15s ease-in-out;
-}
-
-.p1:hover,.p2:hover,.p3:hover {
-	opacity: 1;
-	cursor: pointer;
-}
-							/*TRAVEL PAGE*/
-.blog-contain {
-	height: 100%;
-	width: 100%;
-}	
-	
-
-.blog {
-	position: relative;
-	width: 80%;
-	height: 100%;
-	margin: 0 auto;
-	text-align: center;
-	padding-right: 30px;
-	
-}
-	.blog ul {
-		margin: 0 auto;
-		display: inline-block;
-		text-align: left;
+.work {
+	}
+	.post-container {
 
 	}
-
-		.blog ul li {
-			height: 4em;
-			color: black;
-			text-decoration: none;
-			list-style-type: none;
-			margin-left:0 auto;
-			font-size: .4em;
-
-
-		}
-
-
-
-							/*ABOUT*/
-.information {
-	position: fixed;
-	background-color: white;
-	width: 100%;
-	height: auto;
-	max-height: 30%;
-	left: 0px;
-	bottom: 3%;
-	
-	
-}
-	.info{
-		width: 33.33%;
-		height: 100%;
-		float: left;
-		padding-top: 10px;
-		
-	}
-		.information h3 {
-			text-align: center;
-			font-size: 2em;
-			margin-top: -37px;
-		}
-
-		.information h4 {
-			font-size: .5em;
-			font-weight: bold;
-		}
-
-
 		img {
+			display: block;
 			margin: auto;
-			margin-left: -40%;
-			background-size: cover;
-			background-repeat: no-repeat;
-			background-position: center;
-		}
-		p {
-			font-size: .3em;
+			margin-bottom: 5px;
+			height: 130px;
+			border: 1px solid black;
 		}
 
 
-.pos {
-	z-index: -1;
-}
+footer h1 {	
+  text-align: center;
+  padding-left: 20px;
+  background: #e9e9e9;
+  color: #222222;
+  font-size: 16px; }
 
 
-
-/* #### Mobile Phones Portrait #### */
-@media screen and (max-device-width: 480px) and (orientation: portrait){
-	.blog ul li, p {
-		font-size: .4em;
-	}
-	h4 {
-		font-size: 1em;
-	}
-}
-
-/* #### Mobile Phones Landscape #### */
-@media screen and (max-device-width: 640px) and (orientation: landscape){
-	.blog ul li,p {
-		font-size: .45em;
-	}
-}
-
-/* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px){
-	.blog ul li,p {
-		font-size: .4em;
-	}
-}
-
-/* #### iPhone 4+ Portrait or Landscape #### */
-@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
-  /* some CSS here */
-}
-
-/* #### Tablets Portrait or Landscape #### */
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
-	.blog ul li,p {
-		font-size: .7em;
-	}
-}
-
-/* #### Desktops #### */
-@media screen and (min-width: 1024px){
-	.blog {
-		padding-top: 30px;
-	}
-
-	.blog ul li {
-		font-size: .9em;
-	}
-
-	h1 {
-		font-size: 1em;
-	}
-
-}
+  footer h1 a {
+    color: #222222; }
