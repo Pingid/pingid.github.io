@@ -126,6 +126,10 @@ footer h1 {
   .work {
     max-height: 65%;
   }
+
+  footer h1 {
+    font-size: 9px;
+  }
 }
 
 /* #### Mobile Phones Landscape #### */
