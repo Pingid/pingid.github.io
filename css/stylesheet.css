@@ -8,6 +8,7 @@
 section,body {
   height: 100%;
   width: 100%;
+  margin: 0 auto;
 }
 
 h1 {
@@ -51,7 +52,7 @@ h1 {
 }
                                           
 .contain {
-  position: fixed;
+  position: absolute;
   width: 90%;
   height:100%;
   margin-left: 5%;
@@ -112,7 +113,7 @@ footer h1 {
   margin-top: 0px;
   width: 100%;
   text-align: center;
-  color: #222222;
+  color: black;
   font-size: 16px;
   z-index: 2;
   line-height: 25px; 
@@ -121,5 +122,5 @@ footer h1 {
 
 
   footer h1 a {
-    color: #222222; }
+    color: black; }
 
