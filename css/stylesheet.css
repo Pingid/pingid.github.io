@@ -1,28 +1,65 @@
-* {
-  font-family: "Ubuntu Mono";
-  -webkit-font-smoothing: antialiased;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; 
-  overflow-x:hidden; }
-
-section,body {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
+/* Reset  */
+* { 
+    margin: 0;
+    padding: 0;
+    font-family: "Ubuntu Mono";
+    overflow:hidden;
 }
 
-h1 {
-  color: black; }
-.top {
-  position: fixed;
-  height: 160px;
-  width: 100%;
-  background-color:white;
+
+/* Sticky footer */
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+#page {
+    height: 100%;
+    height: auto !important;
+    min-height: 100%;
+}
+#sticky-footer-wrap {
+    overflow: auto;
+    padding-bottom: 20px;
+}
+.site-main {
+    position: fixed;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+}
+.site-footer {
+    position: relative;
+    height: 22px;
+    margin-top: -22px;
+    clear: both;
+
 }
 
+footer h1 { 
+  position: absolute;
+
+  margin-top: 3px;
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 15px;
+  line-height: 20px; }
+
+
+  footer h1 a {
+    color: black; }
+
+
+/* Header  */
+.site-header {
+    height: 160px;
+}
 .name {
+    padding-top: 5px;
 }
-  .name h1 {
+.name h1 {
     margin-left: auto;
     margin-right: auto;
     max-width: 120px;
@@ -30,7 +67,6 @@ h1 {
     border-top: 1px solid black;
     border-bottom:  1px solid black;
     font-size: 20px; }
-
 
 .nav-button {
   font-weight: normal;
@@ -43,115 +79,91 @@ h1 {
   height: 30px;
   line-height: 28px;
   margin: auto;
-  margin-top: 0px;
+  margin-top: 10px;
   margin-bottom: 5px; 
   cursor: pointer;}
 
 .nav-button:hover {
-  text-decoration: underline;
-}
-                                          
-.contain {
-  position: absolute;
-  width: 90%;
-  height:100%;
-  margin-left: 5%;
-  margin-right: 5%;
-  z-index: -1;
-  overflow: hidden;
-  }
+  text-decoration: underline;}
 
-
-                                          /*WORK*/
-.work {
-  margin-top: 160px;
-  width: 100%;
-  height:80%;
-  overflow: hidden;
+/* 3 columns */
+#primary {
+    float: left;
+    width: 30%;
+    margin-top: 1px;
+    margin-left: 2.5%;
+    background-image: url(../img/post1.jpg);
+    background-size: cover;
+    outline: 1px solid black;
 }
-.content {
-  
-  width: 30%;
-  height: 100%;
-  margin-left: 2.7%; 
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  overflow: hidden;
-  cursor: pointer;
-  
+#secondary {
+    float: left;
+    width: 30%;
+    margin-top: 1px;
+    margin-left: 2.5%;
+    background-image: url(../img/post2.jpg);
+    background-size: cover;
+    outline: 1px solid black;
 }
-.post1 {
-  background-image: url(../img/post1.jpg);
-  border:1px solid black;
-
-}
-.post2 {
-  background-image: url(../img/post2.jpg);
-  border:1px solid black;
-}
-.post3 {
-  background-image: url(../img/post3.jpg);
-  border:1px solid black;
-}
-   
-                                          /*TRAVEL*/
-
-
-.bottom {
-  position: fixed;
-  bottom: -15px;
-  width: 100%;
-  height: 40px;
-  overflow: hidden;
- 
+#tertiary{
+    float: left;
+    width: 30%;
+    margin-top: 1px;
+    margin-left: 2.5%;
+    background-image: url(../img/post3.jpg);
+    background-size: cover;
+    outline: 1px solid black;
 }
 
-footer h1 { 
-  position: absolute;
-  margin-top: -4px;
-  width: 100%;
-  text-align: center;
-  color: black;
-  font-size: 15px;
-  z-index: 2;
-  line-height: 25px; }
-
-
-  footer h1 a {
-    color: black; }
-
-/* #### Mobile Phones Portrait #### */
-@media screen and (max-device-width: 480px) and (orientation: portrait){
-  .work {
-    max-height: 65%;
-  }
-
-  footer h1 {
-    font-size: 9px;
-    margin-top: 0px;
-  }
+#primary:hover,#secondary:hover,#tertiary:hover {
+    opacity: .9;
+    cursor: pointer;
+}
+.pom {
+    z-index: -2;
 }
 
-/* #### Mobile Phones Landscape #### */
-@media screen and (max-device-width: 640px) and (orientation: landscape){
-  .work {
-    max-height: 42%;
-  }
+.travel-blog {
+    margin: auto;
+    margin-top: 30px;
+    background-color:white; 
+    color:#000000;
+    width:700px; 
 }
 
-/* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px){
+thead {
+    font-weight: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+td {
+    padding-bottom: 30px;
+}
+th {
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+.plink {
+
+    padding-left: 10%;
 }
 
-/* #### iPhone 4+ Portrait or Landscape #### */
-@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
-  /* some CSS here */
+.position {
+    z-index: -1;
 }
-
-/* #### Tablets Portrait or Landscape #### */
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+/* Colours */
+/*.site-header {
+    background: #C5E0DC;
 }
-
-/* #### Desktops #### */
-@media screen and (min-width: 1024px){
+#primary {
+    background-color: #F1D4AF;
+}
+#secondary {
+    background-color: #ECE5CE;
+}
+#tertiary{
+    background-color: #E08E79;
+}
+.site-footer {
+    background: #774F38;
+}*/
