@@ -35,7 +35,7 @@ h1 {
 .nav-button {
   font-weight: normal;
   text-align: center;
-  width: 80%;
+  width: 90%;
   max-width: 500px;
   background: #222222;
   color: #fff;
@@ -67,7 +67,7 @@ h1 {
 .work {
   margin-top: 160px;
   width: 100%;
-  height:65%;
+  height:80%;
   overflow: hidden;
 }
 .content {
@@ -124,3 +124,32 @@ footer h1 {
   footer h1 a {
     color: black; }
 
+/* #### Mobile Phones Portrait #### */
+@media screen and (max-device-width: 480px) and (orientation: portrait){
+  .work {
+    max-height: 65%;
+  }
+}
+
+/* #### Mobile Phones Landscape #### */
+@media screen and (max-device-width: 640px) and (orientation: landscape){
+  .work {
+    max-height: 42%;
+  }
+}
+
+/* #### Mobile Phones Portrait or Landscape #### */
+@media screen and (max-device-width: 640px){
+}
+
+/* #### iPhone 4+ Portrait or Landscape #### */
+@media screen and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2){
+  /* some CSS here */
+}
+
+/* #### Tablets Portrait or Landscape #### */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
+}
+
+/* #### Desktops #### */
+@media screen and (min-width: 1024px){
