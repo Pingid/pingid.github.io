@@ -3,6 +3,7 @@ body{
     font-size: 14px;
     color: #2f2f2f;
     background-color: #f9f7f1;
+    
 }
 header{
     font-family: 'Playfair Display', serif;
@@ -227,6 +228,38 @@ p{
     display: block;
     margin: 0 auto;
 }
+
+.site-footer {
+    padding-left: 50%;
+    margin-left: -90px;
+}
+    .site-footer h1 {
+        font-family: 'Droid Serif', serif;
+        font-size: 14px;
+        color: black;
+    }
+           .site-footer a {
+            color: black;
+           } 
+
+#skill-chart {
+    background-image: url(../img/chart.png);
+    padding-bottom: 123% !important;
+}
+#about-face {
+    background-image: url(../img/face.png);  
+}
+.png {
+    
+    padding-bottom: 100%;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+
+
+
 /*________________________________________________________________________________________________________________________________*/
 /*MEDIAQUERIES*/
 @media only all and (max-width: 1300px) {
