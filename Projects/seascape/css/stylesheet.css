@@ -5,6 +5,7 @@
 body {
 	overflow-x: hidden;
 	background: #c9dbe9;
+	background-image: ;
 }
 
 .wave {
@@ -191,9 +192,9 @@ body {
 }
 
 @-webkit-keyframes moveboatup {
-	0%   {bottom: 5em; /*-webkit-transform: rotate(-3deg);*/}
-  	50%  {bottom: 10em; /*-webkit-transform: rotate(3deg);*/}		 
-  	100% {bottom: 5em; /*-webkit-transform: rotate(-3deg);*/}
+	0%   {bottom: 5em; -webkit-transform: rotate(-3deg);}
+  	50%  {bottom: 10em; -webkit-transform: rotate(3deg);}		 
+  	100% {bottom: 5em; -webkit-transform: rotate(-3deg);}
 }
 	@-moz-keyframes moveboatup {
 		0%   {bottom: 5em; /*-webkit-transform: rotate(-3deg);*/}
@@ -213,4 +214,22 @@ body {
 @-moz-keyframes moveboat {
 }
 @-0-keyframes moveboat {
+}
+
+.dolphin {
+	position: fixed;
+	bottom: -5em;
+	height: 40em;
+	width: 20em;
+	-webkit-transform-origin: bottom;
+	-webkit-animation: movedolphin 5s cubic-bezier(0.33, 0, 0.66, 0.33) infinite;
+  
+}
+ 
+@-webkit-keyframes movedolphin {
+	0%   {-webkit-transform: rotate(-180deg);}
+	49%  {left: 30%;}
+  	50%  {-webkit-transform: rotate();}		 
+  	90%	 {left: 50%;}
+  	100% {-webkit-transform: rotate(180deg);left: 40%;}
 }
