@@ -1,0 +1,103 @@
+* {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans"
+	
+}
+h1 {
+	text-align: center;
+	width: auto;
+	height: auto;
+	font-family: 'Open Sans' sans-serif;
+	font-weight: 700;
+	color: white;
+	padding: .2em;
+}
+.container {
+	height: 100%;
+}
+.left {
+	width:5%;
+	height: 100%;
+	background-color: #525252;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+	.left-1 {
+		width:90%;
+	}
+.middle {
+	width: 90%;
+	background: #F0F0F0;	
+	height: 100%;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+		.middle-1 {
+			width: 5%;
+		}
+
+
+.right {
+	width: 5%;
+	height: 100%;
+	background-color: #22516b;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+
+    background: url(../img/noise.gif);
+}
+	.right-1 {
+		width: 90%;
+		
+	}
+.home-title-contain {
+	margin: 0 auto;
+}
+
+.home-title{
+	color: #525252;
+	position: fixed;
+	left:50%;
+
+	-webkit-animation: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;	
+}
+.home-title-pos-right {
+	background-color: #F0F0F0;
+	left:81.5%;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+.home-title-pos-left {	
+	background-color: #F0F0F0;
+	left: 10%;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+
+.photography-title-contain h1 {
+	background-color: #525252;
+	position: fixed;
+	left:5%;
+	top: 10%;
+}
+.video-title-contain h1 {
+	background-color: #22516b;	
+	position: fixed;
+	right:5%;
+	top: 10%;
+	background-image: url(../img/noise.gif);
+}
+
+.about-type {
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 6em;
+}
+.about-type h1 {
+	text-align: left;
+}
+

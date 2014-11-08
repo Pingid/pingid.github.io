@@ -1,0 +1,118 @@
+$font-h1:    'Open Sans' sans-serif;
+$colour-middle: #F0F0F0;
+$colour-left: #585858;
+$colour-right: #929292;
+
+
+
+
+
+
+* {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans"
+	
+}
+h1 {
+	text-align: center;
+	width: auto;
+	height: auto;
+	font-family: $font-h1;
+	font-weight: 700;
+	color: white;
+	padding: .2em;
+}
+.container {
+	height: 100%;
+}
+.left {
+	width:5%;
+	height: 100%;
+	background-color: $colour-left;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+	.left-1 {
+		width:90%;
+	}
+.middle {
+	width: 90%;
+	background: $colour-middle;	
+	height: 100%;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+		.middle-1 {
+			width: 5%;
+		}
+
+
+.right {
+	width: 5%;
+	height: 100%;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+
+    background-color: $colour-right;
+    background-image: url(../img/noise.gif);
+}
+	.right-1 {
+		width: 90%;
+		
+	}
+.home-title-contain {
+	margin: 0 auto;
+}
+
+.home-title{
+	color: #525252;
+	position: fixed;
+	left:45%;
+
+	-webkit-animation: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;	
+}
+.home-title-pos-right {
+	background-color: $colour-middle;
+	border-bottom-left-radius:.5em;
+	left: 76.5%;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+.home-title-pos-left {	
+	background-color: $colour-middle;
+	border-bottom-right-radius:.5em;
+	left: 10%;
+	border-bottom-right-radius:.3em;
+	-webkit-transition: all .5s; /* For Safari 3.1 to 6.0 */
+    transition: all .5s;
+}
+
+.photography-title-contain h1 {
+	background-color: $colour-left;
+	border-bottom-right-radius:.3em;
+	position: fixed;
+	left:5%;
+	top: 10%;
+}
+.video-title-contain h1 {
+	background-color: $colour-right;
+	position: fixed;
+	border-bottom-left-radius:.5em;
+	right:5%;
+	top: 10%;
+	background-image: url(../img/noise.gif);
+}
+
+.about-type {
+	width: 60%;
+	margin: 0 auto;
+	padding-top: 6em;
+}
+.about-type h1 {
+	text-align: left;
+}
+
