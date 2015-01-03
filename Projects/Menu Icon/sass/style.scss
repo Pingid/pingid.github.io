@@ -1,0 +1,105 @@
+$navicon-width : 4em;
+$navicon-thickness: $navicon-width/8;
+$animation-time: .3S;
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300); 
+* {
+  font-family: "Open Sans";
+  font-weight:700;
+}
+@mixin line {
+  display: inline-block;
+  width: $navicon-width;
+  height: $navicon-thickness;
+  background-color: #2c3e50;
+  background-repeat: no-repeat;
+
+  user-select: none;
+  border-radius: $navicon-width/14; 
+  transition: $animation-time;
+}
+
+.navicon-button {
+  display: inline-block;
+  padding: $navicon-width/2 $navicon-width/8;
+  transition: $animation-time;
+  cursor: pointer;
+  user-select: none;
+  background: white;
+  float: left;
+  
+  &:hover {
+    opacity: 1;
+    
+    .navicon {  }
+    .navicon:after {}
+    .navicon:before { }
+  }
+}
+
+.navicon {
+  @include line;
+  position: relative;
+    
+  &:before, &:after {
+    @include line;
+    position: absolute;
+    content: '';
+  }
+  &:before { top: -($navicon-width/4); background-color: #2c3e50; }
+  &:after { top: -($navicon-width/2); background-color: #2c3e50; }
+}
+
+
+.open.navicon-button {
+  
+  .navicon {
+  	// width: $navicon-width*2;
+  	height: $navicon-width/13;
+    width: $navicon-width*.9;
+
+  }
+  .navicon:before {
+  	right: $navicon-width+$navicon-width/3.4;
+  	height: $navicon-width/13;
+    width: $navicon-width*.7;
+  	top: 0;	
+  }
+  .navicon:after {
+  	right: ($navicon-width*2)+$navicon-width/3.43;
+  	height: $navicon-width/13;
+    width: $navicon-width*1.2;
+  	top: 0;
+   }
+}
+
+
+
+
+
+.nav-titles {
+	margin-left:-($navicon-width*1);
+	position:absolute;
+	opacity:0;
+	
+	transition: .3s;
+}
+.nav-titles a {
+  font-size: $navicon-width/4.739;
+	position:relative;
+	padding-left: $navicon-width*.245;
+	top: $navicon-width/4;
+	text-decoration:none;
+	color:black;
+}
+.nav-titles a:nth-child(2) {padding-left: $navicon-width*.39;}
+.nav-titles a:nth-child(3) {padding-left: $navicon-width*.43;}
+
+.navicon-container {
+	margin-left: 50%;
+}
+.shown {
+  margin-left:-($navicon-width*2.5);
+	display:block;
+	opacity:1;
+}
