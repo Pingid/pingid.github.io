@@ -1,0 +1,294 @@
+.color-red {
+  color: #D95C53; }
+
+.color-yellow {
+  color: #FAD46A; }
+
+.color-blue {
+  color: #25B2D9; }
+
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  font-size: 1.6rem; }
+
+a {
+  color: #25B2D9;
+  text-decoration: none; }
+
+a:hover {
+  color: #25B2D9; }
+
+html, body {
+  font-size: 100%;
+  font-family: helvetica;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  line-height: 120%;
+  background-color: #F5F5F5; }
+
+section {
+  display: block;
+  position: relative;
+  padding-top: 8rem;
+  background-color: #F5F5F5;
+  width: 100%; }
+
+.title-blue {
+  font-weight: bold;
+  color: #595959;
+  font-size: 1.6rem;
+  padding: 0 1rem;
+  padding-bottom: 3.0rem; }
+  .title-blue div {
+    margin-top: .8rem;
+    width: 4rem;
+    height: .4rem;
+    background-color: #25B2D9; }
+
+.title-red {
+  font-weight: bold;
+  color: #595959;
+  font-size: 1.6rem;
+  padding: 0 1rem;
+  padding-bottom: 3.0rem; }
+  .title-red div {
+    margin-top: .8rem;
+    width: 4rem;
+    height: .4rem;
+    background-color: #D95C53; }
+
+.title-yellow {
+  font-weight: bold;
+  color: #595959;
+  font-size: 1.6rem;
+  padding: 0 1rem;
+  padding-bottom: 3.0rem; }
+  .title-yellow div {
+    margin-top: .8rem;
+    width: 4rem;
+    height: .4rem;
+    background-color: #FAD46A; }
+
+.color-red {
+  color: #D95C53; }
+
+.color-yellow {
+  color: #FAD46A; }
+
+.color-blue {
+  color: #25B2D9; }
+
+.changing-workplace {
+  background: url(../img/work/changing-workplace/changing-workplace.jpg) no-repeat center center;
+  /*Add fixed to the end to stop image scrolling as well*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.woolen-workshop {
+  background: url(../img/work/woolen-workshop/woolen-workshop.jpg) no-repeat center center;
+  /*Add fixed to the end to stop image scrolling as well*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.woollen-workshop-shot-1 {
+  background: url(../img/work/woolen-workshop/woolen-workshop.jpg) no-repeat center center;
+  /*Add fixed to the end to stop image scrolling as well*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.woollen-workshop-shot-2 {
+  background: url(../img/work/woolen-workshop/woolen-workshop.jpg) no-repeat center center;
+  /*Add fixed to the end to stop image scrolling as well*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+header {
+  width: 100%; }
+  header .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3rem;
+    width: 100%;
+    padding-left: 2rem;
+    padding-top: 2rem;
+    background-color: #FAD46A;
+    z-index: 2; }
+    header .nav ul {
+      display: inline; }
+      header .nav ul li {
+        float: left;
+        width: 30%;
+        text-align: center;
+        list-style-type: none;
+        font-size: .9rem;
+        font-weight: bold;
+        color: #F5F5F5;
+        cursor: pointer;
+        transition: .2s; }
+        header .nav ul li:hover {
+          -webkit-transform: scale(1.1); }
+        @media (min-width: 50em) {
+          header .nav ul li {
+            width: 5rem;
+            margin: 0 auto; } }
+  header .banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 22rem;
+    width: 100%;
+    background-color: #FAD46A;
+    z-index: -1;
+    overflow: auto; }
+    header .banner .brand {
+      color: #D95C53;
+      font-weight: bold;
+      font-size: 3.2rem;
+      text-align: center;
+      width: 10rem;
+      margin: 0 auto;
+      margin-top: 12rem; }
+
+.main {
+  margin-top: 22rem;
+  background-color: #F5F5F5; }
+  .main .wrapper {
+    width: 100%; }
+    @media (min-width: 50em) {
+      .main .wrapper {
+        width: 35rem;
+        margin: 0 auto; } }
+    @media (min-width: 64em) {
+      .main .wrapper {
+        width: 50rem;
+        margin: 0 auto; } }
+    .main .wrapper .intro .intro-text {
+      color: #909090;
+      font-weight: normal;
+      line-height: 140%;
+      font-size: 1.4rem;
+      width: 100%; }
+      .main .wrapper .intro .intro-text div {
+        width: 28rem;
+        margin: 0 auto;
+        text-align: center; }
+      .main .wrapper .intro .intro-text .tagline {
+        margin-bottom: 1rem; }
+      .main .wrapper .intro .intro-text .more {
+        margin-top: 2rem;
+        font-size: .8rem;
+        line-height: 160%; }
+        .main .wrapper .intro .intro-text .more .more-trigger {
+          cursor: pointer;
+          color: #25B2D9;
+          font-size: .9rem; }
+        .main .wrapper .intro .intro-text .more .more-text {
+          overflow: hidden;
+          height: 0;
+          transition: ease 1s;
+          opacity: 0; }
+        .main .wrapper .intro .intro-text .more .more-text-open {
+          opacity: 1;
+          height: 8rem; }
+        .main .wrapper .intro .intro-text .more .container {
+          height: 12rem; }
+    .main .wrapper .work {
+      position: relative; }
+      .main .wrapper .work .project-container {
+        width: 100%; }
+        @media (min-width: 50em) {
+          .main .wrapper .work .project-container {
+            width: 100%;
+            margin: 0 auto; } }
+        @media (min-width: 64em) {
+          .main .wrapper .work .project-container {
+            width: 100%;
+            margin: 0 auto; } }
+        .main .wrapper .work .project-container .row {
+          height: 20rem;
+          width: 100%; }
+        .main .wrapper .work .project-container .project {
+          width: 50%;
+          height: 100%;
+          float: left;
+          transition: .1s; }
+        .main .wrapper .work .project-container .project-selected {
+          opacity: .3; }
+        .main .wrapper .work .project-container .one .project:nth-child(1) {
+          background-color: #D95C53; }
+        .main .wrapper .work .project-container .one .project:nth-child(2) {
+          background-color: #FAD46A; }
+        .main .wrapper .work .project-container .two .project:nth-child(1) {
+          background-color: #FAD46A; }
+        .main .wrapper .work .project-container .two .project:nth-child(2) {
+          background-color: #25B2D9; }
+        .main .wrapper .work .project-container .row:nth-child(2) {
+          opacity: .3; }
+        .main .wrapper .work .project-container .content-contain {
+          width: 100%;
+          background-color: #F5F5F5;
+          height: 0;
+          opacity: 0;
+          transition: .6s ease; }
+          .main .wrapper .work .project-container .content-contain .swiper-container {
+            height: 32rem; }
+            .main .wrapper .work .project-container .content-contain .swiper-container .swiper-wrapper .swiper-slide {
+              position: relative; }
+              .main .wrapper .work .project-container .content-contain .swiper-container .swiper-wrapper .swiper-slide .project-logo {
+                padding-top: 6rem;
+                display: block;
+                width: 8rem;
+                margin: 0 auto; }
+              .main .wrapper .work .project-container .content-contain .swiper-container .swiper-wrapper .swiper-slide .project-description {
+                margin-top: 3rem;
+                padding: 0 3rem;
+                color: #909090;
+                font-size: 0.8rem;
+                text-align: center; }
+        .main .wrapper .work .project-container .content-open {
+          height: 30rem;
+          opacity: 1; }
+    .main .wrapper .team person {
+      display: inline-block;
+      padding: 0 2.5rem;
+      margin-top: 1rem; }
+      .main .wrapper .team person .avatar {
+        float: left;
+        width: 15%;
+        border-radius: 50%;
+        overflow: hidden; }
+      .main .wrapper .team person .info {
+        float: left;
+        width: 75%;
+        padding-left: 10%;
+        color: #909090; }
+        .main .wrapper .team person .info span:first-child {
+          color: #595959;
+          font-size: 1.2rem;
+          font-weight: bold;
+          padding-bottom: 2rem; }
+        .main .wrapper .team person .info p {
+          font-size: .8rem; }
+    .main .wrapper .contact .email {
+      color: #909090;
+      font-weight: .8rem;
+      padding: 0 2rem; }
+    .main .wrapper footer {
+      padding-top: 10rem;
+      padding-bottom: 3rem;
+      text-align: center;
+      font-size: .7rem;
+      color: #909090; }

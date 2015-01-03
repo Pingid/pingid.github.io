@@ -1,0 +1,92 @@
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  font-size: 1.6rem; }
+
+a {
+  color: #25B2D9; }
+
+a:hover {
+  color: #25B2D9; }
+
+html, body {
+  font-size: 100%;
+  font-family: helvetica;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0; }
+
+section {
+  padding: 6rem 0;
+  background-color: #F5F5F5;
+  width: 100%; }
+
+title {
+  font-weight: bold; }
+
+header {
+  position: relative;
+  width: 100%; }
+  header .nav {
+    position: fixed;
+    height: 3rem;
+    width: 100%;
+    padding-left: 3rem;
+    padding-top: 2rem; }
+    header .nav ul {
+      display: inline; }
+      header .nav ul li {
+        float: left;
+        width: 5rem;
+        text-align: center;
+        list-style-type: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #F5F5F5; }
+  header .banner {
+    height: 28rem;
+    width: 100%;
+    background-color: #FAD46A;
+    overflow: auto; }
+    header .banner .brand {
+      color: #D95C53;
+      font-weight: bold;
+      font-size: 4rem;
+      text-align: center;
+      width: 10rem;
+      margin: 0 auto;
+      margin-top: 14rem; }
+
+.intro .intro-text {
+  color: #909090;
+  font-weight: normal;
+  font-size: 1rem;
+  width: 100%; }
+  .intro .intro-text div {
+    width: 28rem;
+    margin: 0 auto;
+    text-align: center; }
+    .intro .intro-text div .more {
+      margin-top: 2rem; }
+
+h1 {
+  font-size: 2rem; }
+
+h2 {
+  font-size: 1.6rem; }
+
+a {
+  color: #25B2D9; }
+
+a:hover {
+  color: #25B2D9; }
+
+html, body {
+  font-size: 100%;
+  font-family: helvetica;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0; }

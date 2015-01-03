@@ -1,0 +1,243 @@
+//Sass for citri site
+
+//Imports
+@import "general.scss";
+@import "variables.scss";
+@import "breakpoints.scss";
+@import "projects.scss";
+
+header {
+	width: 100%;
+	.nav {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 3rem;
+		width: 100%;
+		padding-left: 2rem;
+		padding-top: 2rem;
+		background-color: $yellow;
+		z-index: 2;
+		ul {
+			display: inline;
+			li {
+				float: left;
+				width: 30%;
+				text-align: center;
+				list-style-type: none;
+				font-size: .9rem;
+				font-weight: bold;
+				color: $white;
+				cursor: pointer;
+				transition: .2s;
+				&:hover {
+					-webkit-transform: scale(1.1);
+				}
+				@include breakpoint(tablet) {
+					width: 5rem;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+	.banner {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: $banner-height;
+		width: 100%;
+		background-color: $yellow;
+		z-index: -1;
+		overflow: auto; //Needed for margins in child elements to work as expected
+		.brand {
+			color: $red;
+			font-weight: bold;
+			font-size: 3.2rem;
+			text-align: center;
+			width: 10rem;
+			margin: 0 auto;
+			margin-top: 12rem;
+		}
+	}
+}
+.main {
+	margin-top: $banner-height;
+	background-color: $white;
+	.wrapper {
+		width: 100%;
+		@include breakpoint(tablet) {
+			width: 35rem;
+			margin: 0 auto;
+		}
+		@include breakpoint(laptop) {
+			width: 50rem;
+			margin: 0 auto;
+		}
+
+		.intro {
+			.intro-text {
+				color: $grey-light;
+				font-weight: normal;
+				line-height: 140%;
+				font-size: 1.4rem;
+				width: 100%;
+				div {
+					width: 28rem;
+					margin: 0 auto;
+					text-align: center;
+				}
+				.tagline {
+					margin-bottom: 1rem;
+				}
+				.more {
+					margin-top: 2rem;
+					font-size: .8rem;
+					line-height: 160%;
+					.more-trigger {
+						cursor: pointer;
+						color: $blue;
+						font-size: .9rem;
+					}
+					.more-text {
+						overflow: hidden;
+						height: 0;
+						transition: ease 1s;
+						opacity: 0;
+					}
+					.more-text-open {
+						opacity: 1;
+						height: 8rem;
+					}
+					.container {
+						height: 12rem;
+					}
+				}
+			}
+		}
+
+		.work {
+			position: relative;
+
+			.project-container {
+				width: 100%;
+				@include breakpoint(tablet) {
+					width: 100%;
+					margin: 0 auto;
+				}
+				@include breakpoint(laptop) {
+					width: 100%;
+					margin: 0 auto;
+				}
+
+				.row {
+					height: 20rem;
+					width: 100%;
+				}
+				.project {
+					width: 50%;
+					height:100%;
+					float: left;
+					transition: .1s;
+
+				}
+
+				.project-selected {
+					opacity: .3;
+				}
+
+				.one .project:nth-child(1) {background-color: $red;}
+				.one .project:nth-child(2) {background-color: $yellow;}
+				.two .project:nth-child(1) {background-color: $yellow;}
+				.two .project:nth-child(2) {background-color: $blue;}
+
+				.row:nth-child(2) {opacity: .3;}
+
+				.content-contain {
+					width:100%;
+					background-color: $white;
+					height: 0;
+					opacity: 0;
+					transition: .6s ease;
+					.swiper-container {
+						height: 32rem;
+						.swiper-wrapper {
+							.swiper-slide {
+								position: relative;
+								.project-logo {
+									padding-top: 6rem;
+									display: block;
+									width: 8rem;
+									margin: 0 auto;
+								}
+								.project-description {
+									margin-top: 3rem;
+									padding: 0 3rem;
+									color: $grey-light;
+									font-size: 0.8rem;
+									text-align: center;
+								}
+							}
+						}
+					}
+				}
+
+				.content-open{
+					height: 30rem;
+					opacity: 1;
+				}
+			}
+		}	
+
+		.team {
+			person {
+				display: inline-block;
+				padding: 0 2.5rem;
+				margin-top: 1rem;
+				.avatar {
+					float: left;
+					width: 15%;
+					border-radius: 50%;
+					overflow: hidden;
+				}
+				.info {
+					float: left;
+					width: 75%;
+					padding-left: 10%;
+					color: $grey-light;
+					span:first-child {
+						color: $grey-dark;
+						font-size: 1.2rem;
+						font-weight: bold;
+						padding-bottom: 2rem;
+					}
+					p {
+						font-size: .8rem;
+					}
+				}
+			}
+		}
+
+		.contact {
+			.email {
+				color: $grey-light;
+				font-weight: .8rem;
+				padding: 0 2rem;
+			}
+		}
+
+		footer {
+			padding-top: 10rem;
+			padding-bottom: 3rem;
+			text-align: center;
+			font-size: .7rem;
+			color: $grey-light;
+		}
+	}
+}
+
+	
+
+
+
+
+
