@@ -1,7 +1,0 @@
-.tree {
-  background: url(../img/tree.jpg) no-repeat center center;
-  /*Add fixed to the end to stop image scrolling as well*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }

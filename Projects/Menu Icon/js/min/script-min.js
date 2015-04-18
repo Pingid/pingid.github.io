@@ -1,1 +1,0 @@
-$(".navicon-container").click(function(){$(".navicon-button").toggleClass("open"),$(".navicon-button").hasClass("open")?$(".nav-titles").addClass("shown"):$(".nav-titles").removeClass("shown")});

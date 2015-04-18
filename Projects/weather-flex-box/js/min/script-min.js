@@ -1,1 +1,0 @@
-function hoverActive(){$("li").hover(function(){var s="#"+$(this).attr("id");$(s).hasClass("open")?($(s).siblings().removeClass("closed"),$(s).removeClass("open")):($(s).siblings().removeClass("open").addClass("closed"),$(s).removeClass("closed").addClass("open"))})}hoverActive();
