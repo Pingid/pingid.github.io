@@ -9,13 +9,8 @@ html, body {
   overflow-y: hidden; }
 
 .page-wrapper {
-  width: 400%;
+  width: 300rem;
   height: 100%; }
-  .page-wrapper .scroller .image-wrapper {
-    display: inline-block;
-    height: 90vh; }
-    .page-wrapper .scroller .image-wrapper img {
-      height: 100%; }
   .page-wrapper .scroller .about {
     display: inline-block;
     float: left;
@@ -28,21 +23,36 @@ html, body {
       line-height: 90vh;
       font-size: 1.3rem;
       color: white; }
+  .page-wrapper .scroller .image-wrapper {
+    display: inline-block;
+    float: left;
+    height: 90vh; }
+    .page-wrapper .scroller .image-wrapper img {
+      height: 100%; }
+  .page-wrapper .scroller .projects {
+    display: inline;
+    float: left;
+    height: 90vh; }
+    .page-wrapper .scroller .projects .title .circle {
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      margin: 0 1rem;
+      background-color: #232323; }
+    .page-wrapper .scroller .projects .title h1 {
+      position: relative;
+      display: inline-block;
+      margin: 0 2rem;
+      bottom: .3rem;
+      line-height: 90vh; }
   .page-wrapper .line {
-    position: relative;
-    /* left: 2rem; */
+    float: left;
     bottom: 3px;
     width: 100%;
     height: 6vh;
     background-color: #232323;
     border-radius: 3px; }
-    .page-wrapper .line h1 {
-      color: white;
-      font-weight: lighter;
-      font-size: 1.8rem;
-      line-height: 2.1rem; }
-    .page-wrapper .line #title {
-      margin-left: 11rem; }
 
 .centerY {
   display: table-cell !important;

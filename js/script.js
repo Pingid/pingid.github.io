@@ -12,8 +12,9 @@ var Scroller = React.createClass({
   render: function(){
     return (
       <div className="scroller">
-        <Picture />
         <About />
+        <Picture />
+        <Projects />
       </div>
     )
   }
@@ -22,7 +23,7 @@ var Line = React.createClass({
   render: function(){
     return (
       <div className="line">
-        
+
       </div>
     )
   }
@@ -48,7 +49,27 @@ var About = React.createClass({
       </div>
     )
   }
-})
+});
+var Projects = React.createClass({
+  render: function(){
+    return (
+      <div className="projects">
+        <div className="title">
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <h1>PROJECTS</h1>
+        </div>
+      </div>
+    )
+  }
+});
 
 React.render(<Page />, document.getElementById('main'));
 // <p>
