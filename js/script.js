@@ -44,7 +44,7 @@ var About = React.createClass({
         <p>
           London based Designer and developer Dan is best known for his intuitive clean Design.
           Dan retains a firm belief in Design that fulfiles a function
-          never comprimising the User experience with indulging in unnecisery asthetics.
+          never comprimising the user experience with indulging in unnecisery asthetics.
         </p>
       </div>
     )
@@ -53,7 +53,7 @@ var About = React.createClass({
 var Projects = React.createClass({
   render: function(){
     return (
-      <div className="projects">
+      <div className="projects-wrapper">
         <div className="title">
           <div className="circle"></div>
           <div className="circle"></div>
@@ -64,7 +64,39 @@ var Projects = React.createClass({
           <div className="circle"></div>
           <div className="circle"></div>
           <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
           <h1>PROJECTS</h1>
+        </div>
+        <div className='projects'>
+          <div className='column'>
+            <div className="upper-box">
+              <h1><a href="www.citri.io">citr*</a></h1>
+            </div>
+            <div className="lower-box">
+              <div className="pr-about">
+                <p>
+                  Fusce dapibus, tellus ac cursus commodo,
+                  tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                  Sed posuere consectetur est at lobortis.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className='column'>
+            <h1><a href="www.cali-lew.com">Cali Photography</a></h1>
+            <div className="pr-about">
+              <p>
+                Fusce dapibus, tellus ac cursus commodo,
+                tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+                Sed posuere consectetur est at lobortis.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     )

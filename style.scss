@@ -1,5 +1,6 @@
 $black: #232323;
 $white: #fdfdfd;
+$yellow: #FAD46A;
 *{
 	font-family: helvetica;
 	margin: 0;
@@ -12,10 +13,11 @@ html, body {
 }
 
 .page-wrapper {
-	width: 300rem;
+	width: 400rem;
 	height: 100%;
 	.scroller {
 		.about {
+			position: relative;
 			display: inline-block;
 			float: left;
 			height: 88vh;
@@ -23,6 +25,19 @@ html, body {
 			/* margin-left: 30vw; */
 			background: $black;
 			padding: 0 2rem;
+			border-radius: 500rem;
+			z-index: 2;
+			&:after {
+				content: '';
+				position: relative;
+				display: block;
+				left: -2rem;
+				top: -90vh;
+				height: 88vh;
+				width: 20rem;
+				background-color: $black;
+				z-index: -1;
+			}
 			p {
 				line-height: 90vh;
 				font-size: 1.3rem;
@@ -30,18 +45,27 @@ html, body {
 			}
 		}
 		.image-wrapper{
+			position: relative;
 			display:inline-block;
 			float: left;
 			height: 90vh;
+			z-index: 2;
 			img{
 				height: 100%;
+				z-index: 2;
 			}
 		}
-		.projects {
+		.projects-wrapper {
+			position: relative;
 			display:inline;
 			float: left;
+			left: -37.5rem;
+
 			height: 90vh;
 			.title {
+				position: relative;
+				display: inline-block;
+				float: left;
 				.circle {
 					display: inline-block;
 					width: 2rem;
@@ -50,12 +74,76 @@ html, body {
 					margin: 0 1rem;
 					background-color: $black;
 				}
+				.circle:nth-child(even){
+					border-radius: 5px;
+				}
 				h1 {
 					position: relative;
 					display: inline-block;
 					margin: 0 2rem;
 					bottom: .3rem;
 					line-height: 90vh;
+				}
+			}
+			.projects {
+				display: inline-block;
+				float: left;
+
+				.column{
+					display: inline-block;
+					float: left;
+					height: 88vh;
+					width: 88vh;
+					margin-top: 1vh;
+					background-color: $black;
+					color: white;
+					a {
+						width: 100%;
+						text-decoration: none;
+						&:link{color: black}
+						&:visited{color: white}
+						&:active{color: white}
+					}
+					&:nth-child(1){
+						background-color: $yellow;
+						.upper-box{
+							height: 44vh;
+							h1{
+								line-height: 44vh;
+								a {
+									color: #D95C53;
+								}
+							}
+						}
+						.lower-box{
+							width: 100%;
+							height: 44vh;
+							background-color: #F5F5F5;
+							.pr-about {
+								padding-top: 2rem;
+								p{
+									color: #909090;
+								}
+							}
+						}
+					}
+					&:nth-child(2){
+						margin-left: 1vh;
+					}
+					p{
+						line-height: 2rem;
+					}
+					h1{
+						position: relative;
+						text-align: center;
+					}
+					.pr-about{
+						position: relative;
+						max-width: 90%;
+						width: 30rem;
+						margin: 0 auto;
+						text-align: center;
+					}
 				}
 			}
 		}
