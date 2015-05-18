@@ -42,9 +42,9 @@ var About = React.createClass({
     return (
       <div className="about">
         <p>
-          London based Designer and developer Dan is best known for his intuitive clean Design.
-          Dan retains a firm belief in Design that fulfiles a function
-          never comprimising the user experience with indulging in unnecisery asthetics.
+          London based designer and developer Dan is best known for his intuitive and clean design.
+          Dan retains a firm belief in design that fulfils a function,
+          never comprimising the user experience by indulging in unnecessary aesthetics.
         </p>
       </div>
     )
