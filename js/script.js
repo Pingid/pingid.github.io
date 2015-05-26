@@ -78,10 +78,10 @@ var Experiments = React.createClass({
     return(
       <div className="experiments" style={this.props.active}>
         <div className="experiment">
-          <iframe src="../Canvas-Physics/index.html" frameborder="0" scrolling="no"></iframe>
+          <iframe src="experiment/Canvas-Physics/index.html" frameborder="0" scrolling="no"></iframe>
         </div>
         <div className="experiment">
-          <iframe src="../3D-JS/index.html" frameborder="0" scrolling="no"></iframe>
+          <iframe src="experiment/3D-JS.html" frameborder="0" scrolling="no"></iframe>
         </div>
       </div>
     )
