@@ -32,28 +32,38 @@ var Content = React.createClass({
   getInitialState: function(){
     return {
       navList: ['PROJECTS','EXPER..','ABOUT'],
-      active: [{display: 'block'},{height: '0', opacity: "0"},{display: 'none'}]
+      gallery: 1
     }
   },
   handleClickProj: function(){
     this.setState({
       navList: ['PROJECTS','EXPER..','ABOUT'],
-      active: [{display: 'block'},{height: '0', opacity: "0"},{display: 'none'}]
+      gallery: 1
     })
   },
   handleClickExper: function(){
     this.setState({
       navList: ['PROJE..','EXPERIMENTS','ABOUT'],
-      active: [{display: 'none'},{height: 'auto', opacity: "1"},{display: 'none'}]
+      gallery: 2
     })
   },
   handleClickAbout: function(){
     this.setState({
       navList: ['PROJE..','EXPER..','ABOUT'],
-      active: [{display: 'none'},{height: '0', opacity: "0"},{display: 'block'}]
+      gallery: 3
     })
   },
   render: function(){
+    var state = this.state.gallery
+    var gallery = function(){
+      if(state == 1){
+        return <Projects />
+      }else if(state == 2){
+        return <Experiments />
+      }else if(state === 3){
+        return <About />
+      }
+    }
     return (
       <section className="content">
         <div className="nav">
@@ -64,21 +74,27 @@ var Content = React.createClass({
           </ul>
         </div>
         <div className="gallery">
-          <Projects active={this.state.active[0]}/>
-          <Experiments active={this.state.active[1]} />
-          <div className="about" style={this.state.active[2]}>3</div>
+          {gallery()}
         </div>
       </section>
     )
   }
 });
-
+var About = React.createClass({
+  render: function(){
+    return (
+      <div>
+        About
+      </div>
+    )
+  }
+})
 var Experiments = React.createClass({
   render: function(){
     return(
-      <div className="experiments" style={this.props.active}>
+      <div className="experiments">
         <div className="experiment">
-          <iframe src="experiments/Canvas-Physics/index.html" frameborder="0" scrolling="no"></iframe>
+          <iframe src="experiments/canvas-physics.html" frameborder="0" scrolling="no"></iframe>
         </div>
         <div className="experiment">
           <iframe src="experiments/3D-JS.html" frameborder="0" scrolling="no"></iframe>
@@ -87,11 +103,10 @@ var Experiments = React.createClass({
     )
   }
 })
-
 var Projects = React.createClass({
   render: function() {
     return (
-      <div className="projects" style={this.props.active}>
+      <div className="projects">
         <ProjCitri />
         <ProjCali />
       </div>
@@ -114,7 +129,7 @@ var ProjCitri = React.createClass({
   },
   render: function(){
     var state = this.state.click;
-    var aboutText = "Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
+    var aboutText = "Nullam  risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
     var styles = {
       back: {background: "#dfdfdf"},
       title: {
@@ -228,14 +243,12 @@ var Project = React.createClass({
   }
 })
 
-var About = React.createClass
-
 var Footer = React.createClass({
   render: function(){
     return (
       <div className="footer">
         <div className="line">
-          <a>dm.beaven@gmail.com</a>
+          <a href="mailto:dm.beaven@gmail.com?Subject=hello" target="_top">dm.beaven@gmail.com</a>
         </div>
       </div>
     )
