@@ -35,7 +35,6 @@ section {
     .page-wrapper .front .text p {
       font-weight: 800;
       font-family: "Paytone One", helvetica, sans-serif;
-      font-size: 3.8rem;
       line-height: 5.2rem; }
 .page-wrapper .content {
   width: 80%;
@@ -68,7 +67,7 @@ section {
       .page-wrapper .content .gallery .projects .project {
         width: 100%;
         height: 30rem;
-        margin-top: 3rem;
+        margin-top: 4rem;
         margin-bottom: 5rem;
         cursor: pointer;
         text-align: center; }
@@ -102,14 +101,56 @@ section {
       .page-wrapper .content .gallery .experiments .experiment {
         width: 100%;
         height: 30rem;
-        margin-top: 3rem;
-        margin-bottom: 5rem; }
+        margin-top: 4rem;
+        margin-bottom: 5rem;
+        cursor: pointer; }
         .page-wrapper .content .gallery .experiments .experiment iframe {
           outline: none;
           border: 0rem solid black;
           overflow: hidden; }
           .page-wrapper .content .gallery .experiments .experiment iframe[seamless] {
             display: block; }
+        .page-wrapper .content .gallery .experiments .experiment .cover {
+          position: relative;
+          top: -30.2rem;
+          margin-right: auto;
+          margin-left: auto;
+          background: black;
+          opacity: 1; }
+          .page-wrapper .content .gallery .experiments .experiment .cover .text-wrapper {
+            height: auto;
+            color: white;
+            text-align: center;
+            width: 40rem;
+            margin: 0 auto;
+            padding-top: 13rem; }
+            .page-wrapper .content .gallery .experiments .experiment .cover .text-wrapper p {
+              font-family: "Raleway", helvetica, sans-serif; }
+            .page-wrapper .content .gallery .experiments .experiment .cover .text-wrapper h1 {
+              font-family: "Paytone One", helvetica, sans-serif; }
+    .page-wrapper .content .gallery .about {
+      width: 80%;
+      margin-left: 10%;
+      height: auto; }
+      .page-wrapper .content .gallery .about .text {
+        width: auto;
+        height: auto;
+        margin: 5rem 0rem;
+        margin-top: 4rem; }
+        .page-wrapper .content .gallery .about .text p {
+          font-family: "Raleway", helvetica, sans-serif;
+          font-weight: 200;
+          font-size: 1.1rem; }
+          .page-wrapper .content .gallery .about .text p .large {
+            float: left;
+            line-height: .18rem;
+            padding: 1rem .6rem 1.5rem 0rem;
+            font-family: "Paytone One", helvetica, sans-serif;
+            font-weight: bold;
+            font-size: 3rem; }
+          .page-wrapper .content .gallery .about .text p .dynamic {
+            /* background: green; */
+            font-weight: bold; }
 .page-wrapper .footer {
   margin: 6rem 0;
   height: 1rem;
@@ -129,8 +170,19 @@ section {
       padding: 0 1rem;
       font-family: "Raleway", helvetica, sans-serif;
       font-weight: 500;
-      font-size: 1rem; }
+      font-size: 1rem;
+      color: black; }
 
-/* <div style="display:table-cell;vertical-align:middle;width:100%;height:100%;">
-  <div style="margin-left:auto;margin-right:auto;">Text Content</div>
-</div> */
+.example-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in; }
+
+.example-enter.example-enter-active {
+  opacity: 1; }
+
+.example-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in; }
+
+.example-leave.example-leave-active {
+  opacity: 0.01; }

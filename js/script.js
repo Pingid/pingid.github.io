@@ -1,3 +1,9 @@
+$(window).resize(function(){
+  React.render(<Page />, document.getElementById('main'));
+})
+
+var ReactTransitionGroup = React.addons.CSSTransitionGroup;
+
 var Page = React.createClass({
   render: function(){
     return (
@@ -12,14 +18,14 @@ var Page = React.createClass({
 
 var Front = React.createClass({
   render: function(){
+    var styleText = {fontSize: (window.innerHeight/190)+"rem"}
     return (
       <section className="front">
         <div className="padding">
           <div className="line-top">
-
           </div>
         </div>
-        <div className="text">
+        <div className="text" style={styleText}>
           <p>Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others.</p>
         </div>
         <div className="padding"><div className="line-bottom"></div></div>
@@ -81,23 +87,87 @@ var Content = React.createClass({
   }
 });
 var About = React.createClass({
+  getInitialState: function(){
+    return {
+      sports: ["surfing", "kitesurfing", "skating", "BMXing", "downhill", "wakeboarding", "windsurfing", "slackline"],
+      reading: ["physics", "maths", "design", "coffee", "detectives"],
+      activities: ["hand lettering", "sketching"],
+      sportNum: 0,
+      readNum: 0,
+      activNum: 0
+    }
+  },
+  componentDidMount: function(){
+    this.timer = setInterval(this.tick, 6000);
+  },
+  componentWillUnmount: function(){
+    clearInterval(this.timer);
+  },
+  tick: function(){
+    this.setState({
+      sportNum: Math.round(Math.random()*7),
+      readNum: Math.round(Math.random()*4),
+      activNum: Math.round(Math.random()*1)
+    })
+  },
   render: function(){
+    var sport = this.state.sports[this.state.sportNum];
+    var reading = this.state.reading[this.state.readNum];
+    var activity = this.state.activities[this.state.activNum];
+    console.log([this.state.sportNum,this.state.readNum,this.state.activNum]);
+
     return (
-      <div>
-        About
+      <div className="about">
+        <div className="text">
+          <p><span className="large">Who</span>I grew up in a small town in south east England. I harbour a great passion for action sports especially <span className="dynamic">{sport}</span>. I have an ever growing number of interests which currently includes reading about <span className="dynamic">{reading}</span>, <span className="dynamic">{activity}</span> and seeing the world.</p>
+        </div>
+        <div className="text">
+          <p><span className="large">Where</span>I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbouren Australia where I am now working on my barista skills.</p>
+        </div>
+        <div className="text">
+          <p><span className="large">how</span>Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen.</p>
+        </div>
       </div>
     )
   }
 })
 var Experiments = React.createClass({
+  getInitialState: function(){
+    return {
+      exp1: {display: "block", backgroundColor: "#232323"},
+      exp2: {display: "block", backgroundColor: "#232323"}
+    }
+  },
+  handleClickExp1: function(){
+    this.setState({
+      exp1: {display: "none"}
+    })
+  },
+  handleClickExp2: function(){
+    this.setState({
+      exp2: {display: "none"}
+    })
+  },
   render: function(){
     return(
       <div className="experiments">
         <div className="experiment">
-          <iframe src="experiments/Canvas-Physics.html" frameborder="0" scrolling="no"></iframe>
+          <iframe src="experiments/canvas-physics.html" frameborder="0" scrolling="no"></iframe>
+          <div className="cover" style={this.state.exp1} onClick={this.handleClickExp1}>
+            <div className="text-wrapper">
+              <p>A basic physics engine built with javascript and using html canvas to render</p>
+              <h1>Click and drag here!</h1>
+            </div>
+          </div>
         </div>
         <div className="experiment">
           <iframe src="experiments/3D-JS.html" frameborder="0" scrolling="no"></iframe>
+          <div className="cover" style={this.state.exp2} onClick={this.handleClickExp2}>
+            <div className="text-wrapper">
+              <p>A basic 3D rendering engine built in javascript and using html canvas to render</p>
+              <h1>Click and drag here!</h1>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -237,7 +307,9 @@ var Project = React.createClass({
   render: function() {
     return (
       <div className="project">
-        {this.props.slide}
+        <ReactTransitionGroup transitionName="example" onClick={this.handle}>
+          {this.props.slide}
+        </ReactTransitionGroup>
       </div>
     )
   }
@@ -254,5 +326,6 @@ var Footer = React.createClass({
     )
   }
 })
+
 
 React.render(<Page />, document.getElementById('main'));
