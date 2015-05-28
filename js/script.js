@@ -224,7 +224,7 @@ var ProjCitri = React.createClass({
           <div style={styles.back}>
             <h1 style={styles.title}>Citri*</h1>
             <p style={styles.text}>{aboutText}</p>
-            <a style={styles.adress} href="www.citri.io">citri.io</a>
+            <a style={styles.adress} href="http://www.citri.io">citri.io</a>
           </div>
         )
       } else {
@@ -283,7 +283,7 @@ var ProjCali = React.createClass({
           <div style={styles.back}>
             <h1 style={styles.title}>Photography</h1>
             <p style={styles.text}>{aboutText}</p>
-            <a style={styles.adress} href="www.cali-lew.com">cali-lew.com</a>
+            <a style={styles.adress} href="http://www.cali-lew.com">cali-lew.com</a>
           </div>
         )
       } else {
