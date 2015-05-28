@@ -152,7 +152,7 @@ var Experiments = React.createClass({
     return(
       <div className="experiments">
         <div className="experiment">
-          <iframe src="experiments/canvas-physics.html" frameborder="0" scrolling="no"></iframe>
+          <iframe src="experiments/Canvas-Physics.html" frameborder="0" scrolling="no"></iframe>
           <div className="cover" style={this.state.exp1} onClick={this.handleClickExp1}>
             <div className="text-wrapper">
               <p>A basic physics engine built with javascript and using html canvas to render</p>
