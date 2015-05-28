@@ -191,12 +191,12 @@ var ProjCitri = React.createClass({
       click: false
     }
   },
-  handleClick: function(){
-    var click = !this.state.click;
-    this.setState({
-      click: click
-    })
-  },
+  // handleClick: function(){
+  //   var click = !this.state.click;
+  //   this.setState({
+  //     click: click
+  //   })
+  // },
   render: function(){
     var state = this.state.click;
     var aboutText = "Nullam  risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
@@ -236,9 +236,12 @@ var ProjCitri = React.createClass({
       }
     }
     return (
+      <a href="http://www.citri.io" style={{textDecoration: "none"}}>
+
       <div className="proj-citri" onClick={this.handleClick}>
         <Project slide={slide()}/>
       </div>
+    </a>
     )
   }
 })
@@ -251,10 +254,10 @@ var ProjCali = React.createClass({
     }
   },
   handleClick: function(){
-    var click = !this.state.click;
-    this.setState({
-      click: click
-    })
+    // var click = !this.state.click;
+    // this.setState({
+    //   click: click
+    // })
   },
   render: function(){
     var state = this.state.click;
@@ -295,9 +298,11 @@ var ProjCali = React.createClass({
       }
     }
     return (
-      <div className="proj-cali" onClick={this.handleClick}>
-        <Project slide={slide()}/>
-      </div>
+      <a href="http://www.cali-lew.com" style={{textDecoration: "none"}}>
+        <div className="proj-cali" onClick={this.handleClick}>
+          <Project slide={slide()}/>
+        </div>
+      </a>
     )
   }
 })
