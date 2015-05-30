@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   width: inherit;
+  transition: .3s;
   height: inherit; }
 
 body, html {
@@ -10,32 +11,90 @@ body, html {
 
 section {
   width: 100%;
+  height: auto;
   height: 100%; }
 
 .page-wrapper .front {
-  width: 80%;
-  height: 100%;
-  margin-left: 10%; }
-  .page-wrapper .front div {
-    width: 100%; }
-  .page-wrapper .front .padding {
-    height: 20%; }
-    .page-wrapper .front .padding .line-top {
+  width: 60%;
+  margin-left: 20%; }
+  @media screen and (max-width: 1600px) {
+    .page-wrapper .front {
+      width: 70%;
+      margin-left: 15%; } }
+  @media screen and (max-width: 1096px) {
+    .page-wrapper .front {
+      width: 80%;
+      margin-left: 10%; } }
+  @media screen and (max-width: 500px) {
+    .page-wrapper .front {
       width: 100%;
-      height: 80%;
-      border-bottom: 4px solid black; }
-    .page-wrapper .front .padding .line-bottom {
-      height: 100%;
-      margin-top: 1%;
-      border-top: 4px solid black; }
+      margin-left: 0%; } }
   .page-wrapper .front .text {
-    height: 60%;
-    margin: 0 auto;
-    width: 50rem; }
+    width: 100%;
+    height: 400px;
+    position: relative; }
+    @media screen and (max-width: 1096px) {
+      .page-wrapper .front .text {
+        height: 360px; } }
+    @media screen and (max-width: 870px) {
+      .page-wrapper .front .text {
+        height: 300px; } }
+    @media screen and (max-width: 500px) {
+      .page-wrapper .front .text {
+        height: auto; } }
+    .page-wrapper .front .text:before {
+      position: absolute;
+      content: '';
+      background: black;
+      width: 100%;
+      height: .3rem;
+      top: -1rem;
+      border-radius: 5px; }
+      @media screen and (max-width: 500px) {
+        .page-wrapper .front .text:before {
+          display: none; } }
+    .page-wrapper .front .text:after {
+      position: absolute;
+      content: '';
+      background: black;
+      width: 100%;
+      height: .3rem;
+      top: 26rem;
+      border-radius: 5px; }
+      @media screen and (max-width: 1096px) {
+        .page-wrapper .front .text:after {
+          top: 24rem; } }
+      @media screen and (max-width: 870px) {
+        .page-wrapper .front .text:after {
+          top: 19.6rem; } }
+      @media screen and (max-width: 500px) {
+        .page-wrapper .front .text:after {
+          display: none; } }
     .page-wrapper .front .text p {
-      font-weight: 800;
       font-family: "Paytone One", helvetica, sans-serif;
-      line-height: 5.2rem; }
+      font-size: 3.6rem;
+      line-height: 5rem;
+      width: 772px;
+      /* background:blue; */
+      margin: 0 auto; }
+      @media screen and (max-width: 1096px) {
+        .page-wrapper .front .text p {
+          font-size: 3rem;
+          line-height: 4.5rem;
+          width: 610px;
+          /* background:green; */ } }
+      @media screen and (max-width: 870px) {
+        .page-wrapper .front .text p {
+          font-size: 2rem;
+          line-height: 3.8rem;
+          width: 407px;
+          /* background:green; */ } }
+      @media screen and (max-width: 500px) {
+        .page-wrapper .front .text p {
+          font-size: 2rem;
+          line-height: 3.8rem;
+          width: 90%;
+          margin-left: 5%; } }
 .page-wrapper .content {
   width: 80%;
   height: auto;
@@ -152,7 +211,7 @@ section {
             /* background: green; */
             font-weight: bold; }
 .page-wrapper .footer {
-  margin: 6rem 0;
+  margin: 2rem 0rem 1rem 0rem;
   height: 1rem;
   width: 80%;
   margin-left: 10%; }
@@ -172,17 +231,3 @@ section {
       font-weight: 500;
       font-size: 1rem;
       color: black; }
-
-.example-enter {
-  opacity: 0.01;
-  transition: opacity .5s ease-in; }
-
-.example-enter.example-enter-active {
-  opacity: 1; }
-
-.example-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in; }
-
-.example-leave.example-leave-active {
-  opacity: 0.01; }

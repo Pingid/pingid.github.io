@@ -18,17 +18,13 @@ var Page = React.createClass({
 
 var Front = React.createClass({
   render: function(){
-    var styleText = {fontSize: (window.innerHeight/190)+"rem"}
+    var height = $(".text").height() || 400;
+    var style = {top: (window.innerHeight/2)-height/2}
     return (
       <section className="front">
-        <div className="padding">
-          <div className="line-top">
-          </div>
-        </div>
-        <div className="text" style={styleText}>
+        <div className="text" style={style}>
           <p>Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others.</p>
         </div>
-        <div className="padding"><div className="line-bottom"></div></div>
       </section>
     )
   }
