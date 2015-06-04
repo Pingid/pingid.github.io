@@ -1,21 +1,58 @@
-$(window).resize(function(){
-  React.render(<Page />, document.getElementById('main'));
-})
-
-var ReactTransitionGroup = React.addons.CSSTransitionGroup;
+var DanPortfolioSite = {
+  front: {
+    frontText: "Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others."
+  },
+  content: {
+    projects: [
+      {
+        title: "citri",
+        header: "Citri*",
+        url: "http://www.citri.io"
+      },
+      {
+        title: "cali",
+        header: "Photography",
+        url: "http://www.cali-lew.com"
+      }
+    ],
+    experiments: [
+      {
+        title: "physicsJS",
+        header: "Canvas experiment",
+        instructions: "Click and drag to interact",
+        about: "A basic physics engine built with javascript and using html canvas to render",
+        url: "experiments/physicsJS.html"
+      },
+      {
+        title: "3dJS",
+        header: "Canvas experiment",
+        instructions: "Click and drag to interact",
+        about: "A basic 3D rendering engine built in javascript and using html canvas to render",
+        url: "experiments/3dJS.html"
+        }
+    ],
+    about: [
+      {word: "who", text: {first: "I grew up in a small town in south east England. I harbour a great passion for action sports especially ", middle: ". I have an ever growing number of interests which currently includes reading about ", last: " and seeing the world."}},
+      {word: "where", text: "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbouren Australia where I am now working on my barista skills."},
+      {word: "how", text: "Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen."}
+    ]
+  },
+  footer: {
+    email: "dm.beaven@gmail.com"
+  }
+}
 
 var Page = React.createClass({
   render: function(){
     return (
       <div className="page-wrapper">
-        <Front />
-        <Content />
-        <Footer />
+        <Front content={this.props.site.front}/>
+        <Content content={this.props.site.content}/>
+        <Footer content={this.props.site.footer}/>
       </div>
     )
   }
 })
-
 var Front = React.createClass({
   render: function(){
     var height = $(".text").height() || 400;
@@ -23,7 +60,7 @@ var Front = React.createClass({
     return (
       <section className="front">
         <div className="text" style={style}>
-          <p>Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others.</p>
+          <p>{this.props.content.frontText}</p>
         </div>
       </section>
     )
@@ -33,39 +70,33 @@ var Front = React.createClass({
 var Content = React.createClass({
   getInitialState: function(){
     return {
-      navList: ['PROJECTS','EXPER..','ABOUT'],
-      gallery: 1
+      navList: ["Projects", "Exper", "About"],
+      name: 'projects',
+      content: this.props.content.projects
     }
   },
   handleClickProj: function(){
     this.setState({
-      navList: ['PROJECTS','EXPER..','ABOUT'],
-      gallery: 1
+      navList: ["Projects", "Exper", "About"],
+      name: 'projects',
+      content: this.props.content.projects
     })
   },
   handleClickExper: function(){
     this.setState({
-      navList: ['PROJE..','EXPERIMENTS','ABOUT'],
-      gallery: 2
+      navList: ["Proje", "Experiments", "About"],
+      name: 'experiments',
+      content: this.props.content.experiments
     })
   },
   handleClickAbout: function(){
     this.setState({
-      navList: ['PROJE..','EXPER..','ABOUT'],
-      gallery: 3
+      navList: ["Proje", "Exper", "About"],
+      name: 'about',
+      content: this.props.content.about
     })
   },
   render: function(){
-    var state = this.state.gallery
-    var gallery = function(){
-      if(state == 1){
-        return <Projects />
-      }else if(state == 2){
-        return <Experiments />
-      }else if(state === 3){
-        return <About />
-      }
-    }
     return (
       <section className="content">
         <div className="nav">
@@ -75,13 +106,72 @@ var Content = React.createClass({
             <li onClick={this.handleClickAbout}>{this.state.navList[2]}</li>
           </ul>
         </div>
-        <div className="gallery">
-          {gallery()}
-        </div>
+        <Gallery name={this.state.name} content={this.state.content}/>
       </section>
     )
   }
 });
+var Gallery = React.createClass({
+  render: function() {
+    var name = this.props.name;
+    if (name == "experiments") {
+      var display = this.props.content.map(function(item) {
+        return <Experiment item={item}/>
+      })
+    } else if (name === "about"){
+      var display = this.props.content.map(function(item) {
+        return (
+          <About item={item}/>
+
+        )
+      })
+    } else {
+      var display = this.props.content.map(function(item) {
+        return <Project item={item}/>
+      })
+    }
+    return (
+      <div className="gallery">
+        {display}
+      </div>
+    )
+  }
+})
+
+var Project = React.createClass({
+  render: function(){
+    var item = this.props.item;
+    var boxClass = "box "+item.title;
+    return (
+      <a href={item.url} ><div className={boxClass}><h1>{item.header}</h1></div></a>
+    )
+  }
+})
+
+var Experiment = React.createClass({
+  getInitialState: function(){
+    return {coverStyle: {display: "block"}}
+  },
+  handleCoverClick: function(){
+    this.setState({coverStyle: {display: "none"}})
+  },
+  render: function() {
+    var item = this.props.item;
+    var boxClass = "box "+item.title;
+    return (
+        <div className={boxClass}>
+          <iframe src={item.url} frameborder="0" scrolling="no"></iframe>
+          <div style={this.state.coverStyle} className="cover" onClick={this.handleCoverClick}>
+            <div className="text">
+              <p>{item.about}</p>
+              <h2>{item.instructions}</h2>
+            </div>
+          </div>
+        </div>
+    )
+  }
+})
+
 var About = React.createClass({
   getInitialState: function(){
     return {
@@ -107,210 +197,28 @@ var About = React.createClass({
     })
   },
   render: function(){
+    var item = this.props.item;
     var sport = this.state.sports[this.state.sportNum];
     var reading = this.state.reading[this.state.readNum];
     var activity = this.state.activities[this.state.activNum];
-    console.log([this.state.sportNum,this.state.readNum,this.state.activNum]);
-
+    var display = function() {
+      if(item.word == "who"){
+        return (
+          <div className="text">
+            <p><span className="large">{item.word}</span>{item.text.first}<span className="dynamic">{sport}</span>{item.text.middle}<span className="dynamic">{reading}</span>, <span className="dynamic">{activity}</span>{item.text.last}</p>
+          </div>
+        )
+      }else {
+        return (
+          <div className="text">
+            <p><span className="large">{item.word}</span>{item.text}</p>
+          </div>
+        )
+      }
+    }
     return (
       <div className="about">
-        <div className="text">
-          <p><span className="large">Who</span>I grew up in a small town in south east England. I harbour a great passion for action sports especially <span className="dynamic">{sport}</span>. I have an ever growing number of interests which currently includes reading about <span className="dynamic">{reading}</span>, <span className="dynamic">{activity}</span> and seeing the world.</p>
-        </div>
-        <div className="text">
-          <p><span className="large">Where</span>I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbouren Australia where I am now working on my barista skills.</p>
-        </div>
-        <div className="text">
-          <p><span className="large">how</span>Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen.</p>
-        </div>
-      </div>
-    )
-  }
-})
-var Experiments = React.createClass({
-  getInitialState: function(){
-    return {
-      exp1: {display: "block", backgroundColor: "#232323"},
-      exp2: {display: "block", backgroundColor: "#232323"}
-    }
-  },
-  handleClickExp1: function(){
-    this.setState({
-      exp1: {display: "none"}
-    })
-  },
-  handleClickExp2: function(){
-    this.setState({
-      exp2: {display: "none"}
-    })
-  },
-  render: function(){
-    return(
-      <div className="experiments">
-        <div className="experiment">
-          <iframe src="experiments/Canvas-Physics.html" frameborder="0" scrolling="no"></iframe>
-          <div className="cover" style={this.state.exp1} onClick={this.handleClickExp1}>
-            <div className="text-wrapper">
-              <p>A basic physics engine built with javascript and using html canvas to render</p>
-              <h1>Click and drag here!</h1>
-            </div>
-          </div>
-        </div>
-        <div className="experiment">
-          <iframe src="experiments/3D-JS.html" frameborder="0" scrolling="no"></iframe>
-          <div className="cover" style={this.state.exp2} onClick={this.handleClickExp2}>
-            <div className="text-wrapper">
-              <p>A basic 3D rendering engine built in javascript and using html canvas to render</p>
-              <h1>Click and drag here!</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-})
-var Projects = React.createClass({
-  render: function() {
-    return (
-      <div className="projects">
-        <ProjCitri />
-        <ProjCali />
-      </div>
-    )
-  }
-})
-
-// ------------------------------------------------------------------------
-var ProjCitri = React.createClass({
-  getInitialState: function(){
-    return {
-      click: false
-    }
-  },
-  // handleClick: function(){
-  //   var click = !this.state.click;
-  //   this.setState({
-  //     click: click
-  //   })
-  // },
-  render: function(){
-    var state = this.state.click;
-    var aboutText = "Nullam  risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
-    var styles = {
-      back: {background: "#dfdfdf"},
-      title: {
-        height: "12rem",
-        color: "#D95C53",
-        lineHeight: "30rem"
-      },
-      text: {
-        width: "70%",
-        paddingLeft: "15%",
-        lineHeight: "2rem"
-      },
-      adress: {
-      }
-    }
-    if(state) {
-      styles.title.lineHeight = "15rem"
-    }
-    var slide = function(){
-      if(state){
-        return (
-          <div style={styles.back}>
-            <h1 style={styles.title}>Citri*</h1>
-            <p style={styles.text}>{aboutText}</p>
-            <a style={styles.adress} href="http://www.citri.io">citri.io</a>
-          </div>
-        )
-      } else {
-        return (
-          <div style={styles.back}>
-            <h1 style={styles.title}>Citri*</h1>
-          </div>
-        )
-      }
-    }
-    return (
-      <a href="http://www.citri.io" style={{textDecoration: "none"}}>
-
-      <div className="proj-citri" onClick={this.handleClick}>
-        <Project slide={slide()}/>
-      </div>
-    </a>
-    )
-  }
-})
-
-// ---------------------------------------------------------------------------------
-var ProjCali = React.createClass({
-  getInitialState: function(){
-    return {
-      click: false
-    }
-  },
-  handleClick: function(){
-    // var click = !this.state.click;
-    // this.setState({
-    //   click: click
-    // })
-  },
-  render: function(){
-    var state = this.state.click;
-    var aboutText = "Nullam quis risus eget urna mollis ornare vel eu leo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id dolor id nibh ultricies vehicula ut id elit. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum."
-    var styles = {
-      back: {background: "#232323"},
-      title: {
-        height: "12rem",
-        color: "#fdfdfd",
-        lineHeight: "30rem"
-      },
-      text: {
-        width: "70%",
-        paddingLeft: "15%",
-        lineHeight: "2rem"
-      },
-      adress: {
-      }
-    }
-    if(state) {
-      styles.title.lineHeight = "15rem"
-    }
-    var slide = function(){
-      if(state){
-        return (
-          <div style={styles.back}>
-            <h1 style={styles.title}>Photography</h1>
-            <p style={styles.text}>{aboutText}</p>
-            <a style={styles.adress} href="http://www.cali-lew.com">cali-lew.com</a>
-          </div>
-        )
-      } else {
-        return (
-          <div style={styles.back}>
-            <h1 style={styles.title}>Photography</h1>
-          </div>
-        )
-      }
-    }
-    return (
-      <a href="http://www.cali-lew.com" style={{textDecoration: "none"}}>
-        <div className="proj-cali" onClick={this.handleClick}>
-          <Project slide={slide()}/>
-        </div>
-      </a>
-    )
-  }
-})
-
-// ---------------------------------------------------------------------------------
-var Project = React.createClass({
-  render: function() {
-    return (
-      <div className="project">
-        <ReactTransitionGroup transitionName="example" onClick={this.handle}>
-          {this.props.slide}
-        </ReactTransitionGroup>
+        {display()}
       </div>
     )
   }
@@ -318,15 +226,21 @@ var Project = React.createClass({
 
 var Footer = React.createClass({
   render: function(){
+    var mail = "mailto:"+this.props.content.email+"?Subject=hello";
     return (
       <div className="footer">
         <div className="line">
-          <a href="mailto:dm.beaven@gmail.com?Subject=hello" target="_top">dm.beaven@gmail.com</a>
+          <a href={mail} target="_top">{this.props.content.email}</a>
         </div>
       </div>
     )
   }
 })
 
+for (var g = 0; g < 2; g++){
+  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+}
 
-React.render(<Page />, document.getElementById('main'));
+$(window).resize(function(){
+  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+})
