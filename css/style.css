@@ -193,7 +193,7 @@ body, html {
       width: inherit;
       height: inherit;
       top: -35rem;
-      background: black;
+      background: #232323;
       color: white; }
       @media (max-width: 1096px) {
         .gallery .box .cover {
@@ -221,9 +221,10 @@ body, html {
         .gallery .box .cover .text h2 {
           font-weight: 800; }
   .gallery .citri {
-    background: yellow; }
+    background: #FAD46A;
+    color: #D95C53; }
   .gallery .cali {
-    background: black;
+    background: #232323;
     color: white; }
   .gallery .about {
     width: 80%;

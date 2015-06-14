@@ -71,7 +71,7 @@
       width: inherit;
       height: inherit;
       top: -35rem;
-      background: black;
+      background: #232323;
       color: white;
       @include breakpointFront(break-2) { top: -30rem; }
       @include breakpointFront(break-3) { top: -25rem }
@@ -90,8 +90,8 @@
       }
     }
   }
-  .citri {background: yellow;}
-  .cali {background: black; color: white}
+  .citri {background: #FAD46A; color: #D95C53;}
+  .cali {background: #232323; color: white}
   .about {
     width: 80%;
     margin-left: 10%;
