@@ -1,6 +1,6 @@
 var DanPortfolioSite = {
   front: {
-    frontText: "Hi, I am Dan, I create websites. I am passionate about great design and relish the chance to collaborate with others."
+    frontText: "Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others."
   },
   content: {
     projects: [
