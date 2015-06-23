@@ -1,6 +1,6 @@
 var DanPortfolioSite = {
   front: {
-    frontText: "Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others."
+    frontText: "Hi, I am Dan, I create websites. I am passionate about great design and relish the chance to collaborate with others."
   },
   content: {
     projects: [
@@ -33,7 +33,7 @@ var DanPortfolioSite = {
     ],
     about: [
       {word: "who", text: {first: "I grew up in a small town in south east England. I harbour a great passion for action sports especially ", middle: ". I have an ever growing number of interests which currently includes reading about ", last: " and seeing the world."}},
-      {word: "where", text: "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbouren Australia where I am now working on my barista skills."},
+      {word: "where", text: "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbourne Australia where I am now working on my barista skills."},
       {word: "how", text: "Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen."}
     ]
   },
