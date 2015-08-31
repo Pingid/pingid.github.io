@@ -1,0 +1,124 @@
+.content {
+  width: 100%;
+  height: auto;
+}
+.nav {
+  width: 100%;
+  height: auto;
+  display: inline-block;
+  ul{
+    width: 40rem;
+    height: auto;
+    margin: 0 auto;
+    list-style-type: none;
+
+    @include breakpointFront(break-2) { width: 35rem; }
+    @include breakpointFront(break-3) { width: 96%; margin-left: 2% }
+    @include breakpointFront(break-4) { width: 100%; margin-left: 0% }
+    li{
+      width: 33.33%;
+      height: auto;
+      float: left;
+      text-align: center;
+      font-family: $fontSS2;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}
+
+.gallery {
+  width: 65rem;
+  height: 35rem;
+  height: auto;
+  margin: 0 auto;
+
+  @include breakpointFront(break-2) { width: 50rem; }
+  @include breakpointFront(break-3) { width: 96%; margin-left: 2% }
+  @include breakpointFront(break-4) { width: 100%; margin-left: 0%; }
+  a {text-decoration: none; color: none; &:active{color: inherit} &:visited{color: inherit;}}
+  .box {
+    width: 100%;
+    height: 35rem;
+    margin: 4rem 0;
+    text-align: center;
+
+    @include breakpointFront(break-2) { height: 30rem; }
+    @include breakpointFront(break-3) { height: 25rem }
+    @include breakpointFront(break-4) { height: 20rem }
+    h1 {
+      font-family: $fontSS2;
+      font-weight: 800;
+      line-height: 35rem;
+      @include breakpointFront(break-2) { line-height: 30rem; }
+      @include breakpointFront(break-3) { line-height: 25rem }
+      @include breakpointFront(break-4) { line-height: 20rem }
+    }
+    iframe {
+      width: inherit;
+      height: inherit;
+      margin: 0;
+      outline: none;
+      border: 0rem solid black;
+      overflow: hidden;
+      &[seamless] {
+        display: block;
+      }
+    }
+    .cover {
+      position: relative;
+      width: inherit;
+      height: inherit;
+      top: -35rem;
+      background: #232323;
+      color: white;
+      @include breakpointFront(break-2) { top: -30rem; }
+      @include breakpointFront(break-3) { top: -25rem }
+      @include breakpointFront(break-4) { top: -20rem }
+      .text {
+        line-height: 2rem;
+        padding: 2rem;
+        padding-top: 15rem;
+        font-family: $fontSS2;
+        @include breakpointFront(break-2) { padding-top: 13rem; }
+        @include breakpointFront(break-3) { padding-top: 10.5rem }
+        @include breakpointFront(break-4) { padding-top: 5rem; }
+        h2{
+          font-weight: 800;
+        }
+      }
+    }
+  }
+  .citri {background: #FAD46A; color: #D95C53;}
+  .cali {background: #232323; color: white}
+  .about {
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+    .text {
+      width: auto;
+      height: auto;
+      margin: 5rem 0rem;
+      margin-top: 4rem;
+      p{
+        font-family: $fontSS2;
+        font-weight: 200;
+        font-size: 1.1rem;
+        .large {
+          float: left;
+          line-height: .18rem;
+          padding: 1rem .6rem 1.5rem 0rem;
+          font-family: $fontSS;
+          font-weight: bold;
+          font-size: 3rem;
+        }
+        .dynamic {
+          /* background: green; */
+          width: 10rem;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

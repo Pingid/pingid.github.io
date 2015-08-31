@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* transition: .3s; */ }
+
+body, html {
+  width: 100%;
+  height: 100%; }
+
+#main {
+  width: 100%;
+  height: 100%; }
+  #main .page-wrapper {
+    width: 100%;
+    height: 100%; }
+
+.front {
+  width: 60%;
+  height: 100%;
+  margin-left: 20%; }
+  @media (max-width: 1600px) {
+    .front {
+      width: 70%;
+      margin-left: 15%; } }
+  @media (max-width: 1096px) {
+    .front {
+      width: 80%;
+      margin-left: 10%; } }
+  @media (max-width: 500px) {
+    .front {
+      width: 100%;
+      margin-left: 0%; } }
+  .front .text {
+    width: 100%;
+    height: 400px;
+    position: relative; }
+    @media (max-width: 1096px) {
+      .front .text {
+        height: 360px; } }
+    @media (max-width: 870px) {
+      .front .text {
+        height: 300px; } }
+    @media (max-width: 500px) {
+      .front .text {
+        height: auto; } }
+    .front .text:before {
+      position: absolute;
+      content: '';
+      background: black;
+      width: 100%;
+      height: .3rem;
+      top: -1rem;
+      border-radius: 5px; }
+      @media (max-width: 500px) {
+        .front .text:before {
+          display: none; } }
+    .front .text:after {
+      position: absolute;
+      content: '';
+      background: black;
+      width: 100%;
+      height: .3rem;
+      top: 26rem;
+      border-radius: 5px; }
+      @media (max-width: 1096px) {
+        .front .text:after {
+          top: 24rem; } }
+      @media (max-width: 870px) {
+        .front .text:after {
+          top: 19.6rem; } }
+      @media (max-width: 500px) {
+        .front .text:after {
+          display: none; } }
+    .front .text p {
+      font-family: "Paytone One", helvetica, sans-serif;
+      font-size: 3.6rem;
+      line-height: 5rem;
+      width: 772px;
+      /* background:blue; */
+      margin: 0 auto; }
+      @media (max-width: 1096px) {
+        .front .text p {
+          font-size: 3rem;
+          line-height: 4.5rem;
+          width: 610px; } }
+      @media (max-width: 870px) {
+        .front .text p {
+          font-size: 2rem;
+          line-height: 3.8rem;
+          width: 407px; } }
+      @media (max-width: 500px) {
+        .front .text p {
+          font-size: 1.8rem;
+          line-height: 3.6rem;
+          width: 90%;
+          margin-left: 5%; } }
+
+.content {
+  width: 100%;
+  height: auto; }
+
+.nav {
+  width: 100%;
+  height: auto;
+  display: inline-block; }
+  .nav ul {
+    width: 40rem;
+    height: auto;
+    margin: 0 auto;
+    list-style-type: none; }
+    @media (max-width: 1096px) {
+      .nav ul {
+        width: 35rem; } }
+    @media (max-width: 870px) {
+      .nav ul {
+        width: 96%;
+        margin-left: 2%; } }
+    @media (max-width: 500px) {
+      .nav ul {
+        width: 100%;
+        margin-left: 0%; } }
+    .nav ul li {
+      width: 33.33%;
+      height: auto;
+      float: left;
+      text-align: center;
+      font-family: "Raleway", helvetica, sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer; }
+
+.gallery {
+  width: 65rem;
+  height: 35rem;
+  height: auto;
+  margin: 0 auto; }
+  @media (max-width: 1096px) {
+    .gallery {
+      width: 50rem; } }
+  @media (max-width: 870px) {
+    .gallery {
+      width: 96%;
+      margin-left: 2%; } }
+  @media (max-width: 500px) {
+    .gallery {
+      width: 100%;
+      margin-left: 0%; } }
+  .gallery a {
+    text-decoration: none;
+    color: none; }
+    .gallery a:active {
+      color: inherit; }
+    .gallery a:visited {
+      color: inherit; }
+  .gallery .box {
+    width: 100%;
+    height: 35rem;
+    margin: 4rem 0;
+    text-align: center; }
+    @media (max-width: 1096px) {
+      .gallery .box {
+        height: 30rem; } }
+    @media (max-width: 870px) {
+      .gallery .box {
+        height: 25rem; } }
+    @media (max-width: 500px) {
+      .gallery .box {
+        height: 20rem; } }
+    .gallery .box h1 {
+      font-family: "Raleway", helvetica, sans-serif;
+      font-weight: 800;
+      line-height: 35rem; }
+      @media (max-width: 1096px) {
+        .gallery .box h1 {
+          line-height: 30rem; } }
+      @media (max-width: 870px) {
+        .gallery .box h1 {
+          line-height: 25rem; } }
+      @media (max-width: 500px) {
+        .gallery .box h1 {
+          line-height: 20rem; } }
+    .gallery .box iframe {
+      width: inherit;
+      height: inherit;
+      margin: 0;
+      outline: none;
+      border: 0rem solid black;
+      overflow: hidden; }
+      .gallery .box iframe[seamless] {
+        display: block; }
+    .gallery .box .cover {
+      position: relative;
+      width: inherit;
+      height: inherit;
+      top: -35rem;
+      background: #232323;
+      color: white; }
+      @media (max-width: 1096px) {
+        .gallery .box .cover {
+          top: -30rem; } }
+      @media (max-width: 870px) {
+        .gallery .box .cover {
+          top: -25rem; } }
+      @media (max-width: 500px) {
+        .gallery .box .cover {
+          top: -20rem; } }
+      .gallery .box .cover .text {
+        line-height: 2rem;
+        padding: 2rem;
+        padding-top: 15rem;
+        font-family: "Raleway", helvetica, sans-serif; }
+        @media (max-width: 1096px) {
+          .gallery .box .cover .text {
+            padding-top: 13rem; } }
+        @media (max-width: 870px) {
+          .gallery .box .cover .text {
+            padding-top: 10.5rem; } }
+        @media (max-width: 500px) {
+          .gallery .box .cover .text {
+            padding-top: 5rem; } }
+        .gallery .box .cover .text h2 {
+          font-weight: 800; }
+  .gallery .citri {
+    background: #FAD46A;
+    color: #D95C53; }
+  .gallery .cali {
+    background: #232323;
+    color: white; }
+  .gallery .about {
+    width: 80%;
+    margin-left: 10%;
+    height: auto; }
+    .gallery .about .text {
+      width: auto;
+      height: auto;
+      margin: 5rem 0rem;
+      margin-top: 4rem; }
+      .gallery .about .text p {
+        font-family: "Raleway", helvetica, sans-serif;
+        font-weight: 200;
+        font-size: 1.1rem; }
+        .gallery .about .text p .large {
+          float: left;
+          line-height: .18rem;
+          padding: 1rem .6rem 1.5rem 0rem;
+          font-family: "Paytone One", helvetica, sans-serif;
+          font-weight: bold;
+          font-size: 3rem; }
+        .gallery .about .text p .dynamic {
+          /* background: green; */
+          width: 10rem;
+          font-weight: bold; }
+
+.footer {
+  margin: 2rem 0rem 1rem 0rem;
+  height: 1rem;
+  width: 80%;
+  margin-left: 10%; }
+  .footer .line {
+    width: 100%;
+    height: 3px;
+    background: black;
+    text-align: center; }
+    .footer .line a {
+      position: relative;
+      width: auto;
+      height: 1rem;
+      top: -.5rem;
+      background: white;
+      padding: 0 1rem;
+      font-family: "Raleway", helvetica, sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      color: black; }

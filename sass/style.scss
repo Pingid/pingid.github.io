@@ -28,6 +28,7 @@ html, body {
 .nav-wrapper {
   position: fixed;
   width: 100%;
+  z-index: 2;
   h1 {
     margin: 0;
     position: relative;
@@ -65,7 +66,7 @@ html, body {
   height: 80%;
   width: 80%;
   left: 10%;
-  z-index: 2;
+  z-index: 1;
   background-color: white;
 }
 .content-wrapper {
@@ -92,7 +93,7 @@ html, body {
     .image {
       width: 50%;
       float: left;
-      @include breakpointFront(break-1) { width: 60%; margin-left: 20%;}
+      @include breakpointFront(break-2) { width: 70%; margin-left: 15%;}
       img{
         width: 100%;
       }

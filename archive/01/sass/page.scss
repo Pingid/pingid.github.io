@@ -1,0 +1,23 @@
+@import "variables";
+@import "mixins";
+* {
+  margin: 0;
+  padding: 0;
+  /* transition: .3s; */
+}
+body, html{
+  width: 100%;
+  height: 100%;
+}
+
+#main{
+  width: 100%;
+  height: 100%;
+  .page-wrapper{
+    width: 100%;
+    height: 100%;
+  }
+}
+@import "front";
+@import "content";
+@import "footer";

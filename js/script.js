@@ -65,17 +65,18 @@ var Page = React.createClass({
   },
   handleFade: function() {
     this.fadeTimer = setInterval(this.fade, 0.20)
-    if(this.state.navClicks > 1){this.setState({fadeStyles: {opacity: 1, display: "block"}})}
+    this.setState({fadeStyles: {opacity: 1, display: "block"}})
   },
   fade: function() {
-    if(this.state.navClicks <= 1){ clearInterval(this.fadeTimer)}
-    else if (this.state.fadeStyles.opacity <= 0.1) {
+    if (this.state.fadeStyles.opacity <= 0.1) {
       clearInterval(this.fadeTimer)
       this.setState({fadeStyles: {opacity: 0, display: "none"}})
     }
+    else if(this.state.navClicks <= 1){
+      this.setState({fadeStyles: {opacity: this.state.fadeStyles.opacity - 0.012, display: "block"}})
+    }
     else {
       this.setState({fadeStyles: {opacity: this.state.fadeStyles.opacity - 0.1, display: "block"}})
-      console.log(this.state.fadeStyles.opacity)
     }
   },
   handleNav1: function(){
