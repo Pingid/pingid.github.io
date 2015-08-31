@@ -1,6 +1,8 @@
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+
 var DanPortfolioSite = {
   front: {
-    frontText: "Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others."
+    frontText: "Hello I am Dan, feel free to check out some of the Projects I have been involved with and the Doodles I make in my free time."
   },
   content: {
     projects: [
@@ -42,205 +44,185 @@ var DanPortfolioSite = {
   }
 }
 
+
+function stringReduce(string) {
+    var split = string.split("");
+    delete split[Math.floor(Math.random()*string.length)]
+    return split.join("")
+}
+
 var Page = React.createClass({
+  getInitialState: function() {
+    return {
+      showing: "", 
+      navClicks: 0,
+      containerStyle: {display: "none"}, 
+      fadeStyles: {opacity: 0, display: "none"}
+    }
+  },
+  handleTransform: function() {
+    this.setState({containerStyle: {display: "block"}})
+  },
+  handleFade: function() {
+    this.fadeTimer = setInterval(this.fade, 0.20)
+    if(this.state.navClicks > 1){this.setState({fadeStyles: {opacity: 1, display: "block"}})}
+  },
+  fade: function() {
+    if(this.state.navClicks <= 1){ clearInterval(this.fadeTimer)}
+    else if (this.state.fadeStyles.opacity <= 0.1) {
+      clearInterval(this.fadeTimer)
+      this.setState({fadeStyles: {opacity: 0, display: "none"}})
+    }
+    else {
+      this.setState({fadeStyles: {opacity: this.state.fadeStyles.opacity - 0.1, display: "block"}})
+      console.log(this.state.fadeStyles.opacity)
+    }
+  },
+  handleNav1: function(){
+    this.handleFade();
+    this.setState({showing: <About />, navClicks: this.state.navClicks + 1});
+  },
+  handleNav2: function(){
+    this.handleFade();
+    this.setState({showing: <Projects />, navClicks: this.state.navClicks + 1});
+  },
+  handleNav3: function(){
+    this.handleFade();
+    this.setState({showing: <Doodles />, navClicks: this.state.navClicks + 1});
+  },
   render: function(){
+    var showing = this.state.showing;
+    var fadeStyle = this.state.fadeStyles;
     return (
       <div className="page-wrapper">
-        <Front content={this.props.site.front}/>
-        <Content content={this.props.site.content}/>
-        <Footer content={this.props.site.footer}/>
+        <Nav nav1={this.handleNav1} nav2={this.handleNav2} nav3={this.handleNav3} transform={this.handleTransform}/>
+        <div className="fade-cover" style={fadeStyle}></div>
+        <div className="content-wrapper" style={this.state.containerStyle}>
+         {showing}
+       </div>
       </div>
     )
   }
 })
-var Front = React.createClass({
-  render: function(){
-    var height = $(".text").height() || 400;
-    var style = {top: (window.innerHeight/2)-height/2}
-    return (
-      <section className="front">
-        <div className="text" style={style}>
-          <p>{this.props.content.frontText}</p>
-        </div>
-      </section>
-    )
-  }
-})
 
-var Content = React.createClass({
+var Nav = React.createClass({
   getInitialState: function(){
     return {
-      navList: ["Projects", "Exper", "About"],
-      name: 'projects',
-      content: this.props.content.projects
+      navPos: 50,
+      lineWidth: 0,
+      text: {
+        part1: "Hello I am ",
+        part2: " , feel free to check out some of the ",
+        part3: " I have been involved with and the ",
+        part4: " I make in my free time."
+      },
+      nav1Style: {},
+      nav2Style: {},
+      nav3Style: {}
     }
   },
-  handleClickProj: function(){
-    this.setState({
-      navList: ["Projects", "Exper", "About"],
-      name: 'projects',
-      content: this.props.content.projects
-    })
+  handleNav1Click: function(){
+    this.setState({nav1Style: {background: "white", color: "black"},nav2Style: {},nav3Style: {}})
+    if(this.state.navPos > 40){this.handleNavClick()}
+    this.props.nav1();
   },
-  handleClickExper: function(){
-    this.setState({
-      navList: ["Proje", "Experiments", "About"],
-      name: 'experiments',
-      content: this.props.content.experiments
-    })
+  handleNav2Click: function(){
+    this.setState({nav1Style: {},nav2Style: {background: "white", color: "black"},nav3Style: {}})
+    if(this.state.navPos > 40){this.handleNavClick()}
+    this.props.nav2();
   },
-  handleClickAbout: function(){
-    this.setState({
-      navList: ["Proje", "Exper", "About"],
-      name: 'about',
-      content: this.props.content.about
-    })
+  handleNav3Click: function(){
+    this.setState({nav1Style: {},nav2Style: {},nav3Style: {background: "white", color: "black"}})
+    if(this.state.navPos > 40){this.handleNavClick()}
+    this.props.nav3();
   },
-  render: function(){
-    return (
-      <section className="content">
-        <div className="nav">
-          <ul>
-            <li onClick={this.handleClickProj}>{this.state.navList[0]}</li>
-            <li onClick={this.handleClickExper}>{this.state.navList[1]}</li>
-            <li onClick={this.handleClickAbout}>{this.state.navList[2]}</li>
-          </ul>
-        </div>
-        <Gallery name={this.state.name} content={this.state.content}/>
-      </section>
-    )
-  }
-});
-var Gallery = React.createClass({
-  render: function() {
-    var name = this.props.name;
-    if (name == "experiments") {
-      var display = this.props.content.map(function(item) {
-        return <Experiment item={item}/>
-      })
-    } else if (name === "about"){
-      var display = this.props.content.map(function(item) {
-        return (
-          <About item={item}/>
-
-        )
-      })
+  handleNavClick: function(){
+    this.handleNav();
+    this.handleLine();
+    this.handleText();
+  },
+  handleNav: function(){this.moveNavTimer = setInterval(this.moveNav, 0.01)},
+  moveNav: function(){
+    if(this.state.navPos <= 5){
+      this.props.transform();
+      clearInterval(this.moveNavTimer);
     } else {
-      var display = this.props.content.map(function(item) {
-        return <Project item={item}/>
+      this.setState({navPos: this.state.navPos -1})
+    }
+  },
+  handleLine: function(){this.lineMoveTimer = setInterval(this.moveLine, 0.01)},
+  moveLine: function(){
+    console.log("g")
+    if(this.state.lineWidth >= 1000){
+      clearInterval(this.lineMoveTimer);
+    }else {
+      this.setState({lineWidth: this.state.lineWidth + 20})
+    }
+  },
+  handleText: function(){this.textReduceTimer = setInterval(this.textReduce, 0.01)},
+  textReduce: function(){
+    if(this.state.text.part2.length <= 0){
+      clearInterval(this.textReduceTimer);
+      this.setState({ text: { part1: "", part2: " ", part3: " ", part4: ""}})
+    } else {
+      this.setState({
+        text: {
+          part1: stringReduce(this.state.text.part1),
+          part2: stringReduce(this.state.text.part2),
+          part3: stringReduce(this.state.text.part3),
+          part4: stringReduce(this.state.text.part4)
+        }
       })
     }
-    return (
-      <div className="gallery">
-        {display}
-      </div>
-    )
-  }
-})
-
-var Project = React.createClass({
-  render: function(){
-    var item = this.props.item;
-    var boxClass = "box "+item.title;
-    return (
-      <a href={item.url} ><div className={boxClass}><h1>{item.header}</h1></div></a>
-    )
-  }
-})
-
-var Experiment = React.createClass({
-  getInitialState: function(){
-    return {coverStyle: {display: "block"}}
-  },
-  handleCoverClick: function(){
-    this.setState({coverStyle: {display: "none"}})
   },
   render: function() {
-    var item = this.props.item;
-    var boxClass = "box "+item.title;
+    var wrapperStyle = {top: this.state.navPos + "%"}
+    var lineStyle = {width: this.state.lineWidth + "px"}
     return (
-        <div className={boxClass}>
-          <iframe src={item.url} frameborder="0" scrolling="no"></iframe>
-          <div style={this.state.coverStyle} className="cover" onClick={this.handleCoverClick}>
-            <div className="text">
-              <p>{item.about}</p>
-              <h2>{item.instructions}</h2>
-            </div>
-          </div>
+      <div>
+        <div className="nav-wrapper" style={wrapperStyle}>
+          <h1>
+            {this.state.text.part1}
+            <span className="nav" onClick={this.handleNav1Click} style={this.state.nav1Style}>Dan</span>
+            {this.state.text.part2}
+            <span className="nav" onClick={this.handleNav2Click} style={this.state.nav2Style}>Projects</span>
+            {this.state.text.part3}
+            <span className="nav" onClick={this.handleNav3Click} style={this.state.nav3Style}>Doodles</span>
+            {this.state.text.part4}
+          </h1>
+          <div className="line" style={lineStyle}></div>
         </div>
+      </div>
     )
   }
 })
 
 var About = React.createClass({
-  getInitialState: function(){
-    return {
-      sports: ["surfing", "kitesurfing", "skating", "BMXing", "downhill", "wakeboarding", "windsurfing", "slackline"],
-      reading: ["physics", "maths", "design", "coffee", "detectives"],
-      activities: ["hand lettering", "sketching"],
-      sportNum: 0,
-      readNum: 0,
-      activNum: 0
-    }
-  },
-  componentDidMount: function(){
-    this.timer = setInterval(this.tick, 6000);
-  },
-  componentWillUnmount: function(){
-    clearInterval(this.timer);
-  },
-  tick: function(){
-    this.setState({
-      sportNum: Math.round(Math.random()*7),
-      readNum: Math.round(Math.random()*4),
-      activNum: Math.round(Math.random()*1)
-    })
-  },
   render: function(){
-    var item = this.props.item;
-    var sport = this.state.sports[this.state.sportNum];
-    var reading = this.state.reading[this.state.readNum];
-    var activity = this.state.activities[this.state.activNum];
-    var display = function() {
-      if(item.word == "who"){
-        return (
-          <div className="text">
-            <p><span className="large">{item.word}</span>{item.text.first}<span className="dynamic">{sport}</span>{item.text.middle}<span className="dynamic">{reading}</span>, <span className="dynamic">{activity}</span>{item.text.last}</p>
-          </div>
-        )
-      }else {
-        return (
-          <div className="text">
-            <p><span className="large">{item.word}</span>{item.text}</p>
-          </div>
-        )
-      }
-    }
     return (
       <div className="about">
-        {display()}
+        <div className="image"><img src="img/meC.png"/></div>
+        <div className="text"><p>Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p></div>
       </div>
     )
   }
 })
-
-var Footer = React.createClass({
+var Projects = React.createClass({
   render: function(){
-    var mail = "mailto:"+this.props.content.email+"?Subject=hello";
     return (
-      <div className="footer">
-        <div className="line">
-          <a href={mail} target="_top">{this.props.content.email}</a>
-        </div>
+      <div>
+        <div>hi</div>
       </div>
     )
   }
 })
-
-for (var g = 0; g < 2; g++){
-  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
-}
-
-$(window).resize(function(){
-  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+var Doodles = React.createClass({
+  render: function(){
+    return (
+      <div>
+        <div>ahoy</div>
+      </div>
+    )
+  }
 })
+React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));

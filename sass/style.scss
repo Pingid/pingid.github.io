@@ -1,0 +1,108 @@
+@mixin breakpointFront($point) {
+  @if $point == break-1 {
+    @media (max-width: 1600px) { @content ; }
+  } @else if $point == break-2 {
+    @media (max-width: 1096px) { @content ; }
+  } @else if $point == break-3 {
+    @media (max-width: 870px) { @content ; }
+  } @else if $point == break-4 {
+    @media (max-width: 500px) { @content ; }
+  }
+}
+// @include breakpointFront(break-1) { width: 70%; margin-left: 15%; }
+
+
+
+* {
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.page-wrapper, #main {
+ width: 100%;
+ height: 100%;
+}
+
+.nav-wrapper {
+  position: fixed;
+  width: 100%;
+  h1 {
+    margin: 0;
+    position: relative;
+    text-align: center;
+    font-family: "Open sans" helvetica;
+    font-weight: bold;
+    font-size: 1rem;
+    /* top: -1.5rem; */
+    div {
+      display: inline-block;
+      width: 0 auto;
+      /* display: none; */
+    }
+  }
+  .nav {
+    color: white;
+    padding: .05rem;
+    border-radius: 2px;
+    background: black;
+    &:hover {cursor: pointer}
+  }
+  .line{
+    position: relative;
+    background: black;
+    margin: 0 auto;
+    height: .1rem;
+    max-width: 80%;
+    top: .3rem;
+  }
+}
+
+.fade-cover {
+  position: absolute;
+  top: 5rem;
+  height: 80%;
+  width: 80%;
+  left: 10%;
+  z-index: 2;
+  background-color: white;
+}
+.content-wrapper {
+  position: absolute;
+  top: 5rem;
+  height: 80%;
+  width: 80%;
+  left: 10%;
+  .about {
+    width: 100%;
+    height: 100%;
+    .text {
+      width: 30%;
+      margin: 0 10%;
+      padding-top: 20%;
+      float: left;
+      @include breakpointFront(break-2) { width: 70%; margin-left: 15%; padding: 0;}
+      @include breakpointFront(break-3) { width: 90%; margin-left: 5%; padding: 0;}
+      p {
+        font-family: "Open sans";
+        font-size: 0.8rem;
+      }
+    }
+    .image {
+      width: 50%;
+      float: left;
+      @include breakpointFront(break-1) { width: 60%; margin-left: 20%;}
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+
+}
+
+
+
+
+
