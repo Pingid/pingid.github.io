@@ -11,10 +11,14 @@
 }
 // @include breakpointFront(break-1) { width: 70%; margin-left: 15%; }
 
+@font-face { font-family: 'Walsheim-bold'; src: url("../type/GT-Walsheim-Pro-Trial-Bold.otf") format("opentype");}
+@font-face { font-family: 'Walsheim-Regular'; src: url("../type/GT-Walsheim-Pro-Trial-Regular.otf") format("opentype");}
+@font-face { font-family: 'Walsheim-light'; src: url("../type/GT-Walsheim-Pro-Trial-Light.otf") format("opentype");}
+@font-face { font-family: 'Sectra-Bold'; src: url("../type/GT-Sectra-Fine-Trial-Book.otf") format("opentype");}
 
+$nav-text: "Walsheim-Regular";
+$main-text: "Walsheim-Light";
 
-* {
-}
 
 html, body {
   margin: 0;
@@ -31,30 +35,27 @@ html, body {
   z-index: 2;
   h1 {
     margin: 0;
+    color: gray;
     position: relative;
     text-align: center;
-    font-family: "Open sans" helvetica;
-    font-weight: bold;
+    font-family: $nav-text helvetica;
     font-size: 1rem;
-    /* top: -1.5rem; */
     div {
       display: inline-block;
       width: 0 auto;
-      /* display: none; */
     }
   }
   .nav {
-    color: white;
-    padding: .05rem;
+    padding: 1rem;
     border-radius: 2px;
-    background: black;
-    &:hover {cursor: pointer}
+    &:hover {cursor: pointer; color: black;}
+    transition: color 250ms ease;
   }
   .line{
     position: relative;
     background: black;
     margin: 0 auto;
-    height: .1rem;
+    height: 1px;
     max-width: 80%;
     top: .3rem;
   }
@@ -86,8 +87,8 @@ html, body {
       @include breakpointFront(break-2) { width: 70%; margin-left: 15%; padding: 0;}
       @include breakpointFront(break-3) { width: 90%; margin-left: 5%; padding: 0;}
       p {
-        font-family: "Open sans";
-        font-size: 0.8rem;
+        font-family: $main-text;
+        font-size: 1rem;
       }
     }
     .image {

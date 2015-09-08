@@ -117,23 +117,23 @@ var Nav = React.createClass({
         part3: " I have been involved with and the ",
         part4: " I make in my free time."
       },
-      nav1Style: {},
-      nav2Style: {},
-      nav3Style: {}
+      nav1Style: {color: "black", padding: "0rem"},
+      nav2Style: {color: "black", padding: "0rem"},
+      nav3Style: {color: "black", padding: "0rem"}
     }
   },
   handleNav1Click: function(){
-    this.setState({nav1Style: {background: "white", color: "black"},nav2Style: {},nav3Style: {}})
+    this.setState({nav1Style: {color: "black"},nav2Style: {},nav3Style: {}})
     if(this.state.navPos > 40){this.handleNavClick()}
     this.props.nav1();
   },
   handleNav2Click: function(){
-    this.setState({nav1Style: {},nav2Style: {background: "white", color: "black"},nav3Style: {}})
+    this.setState({nav1Style: {},nav2Style: {color: "black"},nav3Style: {}})
     if(this.state.navPos > 40){this.handleNavClick()}
     this.props.nav2();
   },
   handleNav3Click: function(){
-    this.setState({nav1Style: {},nav2Style: {},nav3Style: {background: "white", color: "black"}})
+    this.setState({nav1Style: {},nav2Style: {},nav3Style: {color: "black"}})
     if(this.state.navPos > 40){this.handleNavClick()}
     this.props.nav3();
   },

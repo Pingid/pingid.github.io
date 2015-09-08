@@ -1,3 +1,15 @@
+@font-face {
+  font-family: 'Walsheim-bold';
+  src: url("../type/GT-Walsheim-Pro-Trial-Bold.otf") format("opentype"); }
+@font-face {
+  font-family: 'Walsheim-Regular';
+  src: url("../type/GT-Walsheim-Pro-Trial-Regular.otf") format("opentype"); }
+@font-face {
+  font-family: 'Walsheim-light';
+  src: url("../type/GT-Walsheim-Pro-Trial-Light.otf") format("opentype"); }
+@font-face {
+  font-family: 'Sectra-Bold';
+  src: url("../type/GT-Sectra-Fine-Trial-Book.otf") format("opentype"); }
 html, body {
   margin: 0;
   padding: 0; }
@@ -12,28 +24,26 @@ html, body {
   z-index: 2; }
   .nav-wrapper h1 {
     margin: 0;
+    color: gray;
     position: relative;
     text-align: center;
-    font-family: "Open sans" helvetica;
-    font-weight: bold;
-    font-size: 1rem;
-    /* top: -1.5rem; */ }
+    font-family: "Walsheim-Regular" helvetica;
+    font-size: 1rem; }
     .nav-wrapper h1 div {
       display: inline-block;
-      width: 0 auto;
-      /* display: none; */ }
+      width: 0 auto; }
   .nav-wrapper .nav {
-    color: white;
-    padding: .05rem;
+    padding: 1rem;
     border-radius: 2px;
-    background: black; }
+    transition: color 250ms ease; }
     .nav-wrapper .nav:hover {
-      cursor: pointer; }
+      cursor: pointer;
+      color: black; }
   .nav-wrapper .line {
     position: relative;
     background: black;
     margin: 0 auto;
-    height: .1rem;
+    height: 1px;
     max-width: 80%;
     top: .3rem; }
 
@@ -71,8 +81,8 @@ html, body {
           margin-left: 5%;
           padding: 0; } }
       .content-wrapper .about .text p {
-        font-family: "Open sans";
-        font-size: 0.8rem; }
+        font-family: "Walsheim-Light";
+        font-size: 1rem; }
     .content-wrapper .about .image {
       width: 50%;
       float: left; }
