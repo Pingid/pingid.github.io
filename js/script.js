@@ -1,50 +1,5 @@
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-var DanPortfolioSite = {
-  front: {
-    frontText: "Hello I am Dan, feel free to check out some of the Projects I have been involved with and the Doodles I make in my free time."
-  },
-  content: {
-    projects: [
-      {
-        title: "citri",
-        header: "Citri*",
-        url: "http://www.citri.io"
-      },
-      {
-        title: "cali",
-        header: "Photography",
-        url: "http://www.cali-lew.com"
-      }
-    ],
-    experiments: [
-      {
-        title: "physicsJS",
-        header: "Canvas experiment",
-        instructions: "Click and drag to interact",
-        about: "A basic physics engine built with javascript and using html canvas to render",
-        url: "experiments/physicsJS.html"
-      },
-      {
-        title: "3dJS",
-        header: "Canvas experiment",
-        instructions: "Click and drag to interact",
-        about: "A basic 3D rendering engine built in javascript and using html canvas to render",
-        url: "experiments/3dJS.html"
-        }
-    ],
-    about: [
-      {word: "who", text: {first: "I grew up in a small town in south east England. I harbour a great passion for action sports especially ", middle: ". I have an ever growing number of interests which currently includes reading about ", last: " and seeing the world."}},
-      {word: "where", text: "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbourne Australia where I am now working on my barista skills."},
-      {word: "how", text: "Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen."}
-    ]
-  },
-  footer: {
-    email: "dm.beaven@gmail.com"
-  }
-}
-
-
 function stringReduce(string) {
     var split = string.split("");
     delete split[Math.floor(Math.random()*string.length)]
@@ -144,7 +99,7 @@ var Nav = React.createClass({
   },
   handleNav: function(){this.moveNavTimer = setInterval(this.moveNav, 0.01)},
   moveNav: function(){
-    if(this.state.navPos <= 5){
+    if(this.state.navPos <= 2){
       this.props.transform();
       clearInterval(this.moveNavTimer);
     } else {
@@ -177,7 +132,7 @@ var Nav = React.createClass({
     }
   },
   render: function() {
-    var wrapperStyle = {top: this.state.navPos + "%"}
+    var wrapperStyle = this.state.navPos > 3 ? {top: this.state.navPos + "%"} : {paddingTop: this.state.navPos + "rem"}
     var lineStyle = {width: this.state.lineWidth + "px"}
     return (
       <div>
@@ -211,8 +166,17 @@ var About = React.createClass({
 var Projects = React.createClass({
   render: function(){
     return (
-      <div>
-        <div>hi</div>
+      <div className="projects">
+        <Project />
+        <Project />
+      </div>
+    )
+  }
+})
+var Project = React.createClass({
+  render: function() {
+    return (
+      <div className="project">
       </div>
     )
   }
@@ -220,10 +184,72 @@ var Projects = React.createClass({
 var Doodles = React.createClass({
   render: function(){
     return (
-      <div>
-        <div>ahoy</div>
+      <div className="doodles">
+        <div className="container">
+          <Doodle style={ {width: "13rem", height: "8rem"} } />
+          <Doodle style={ {width: "15rem", height: "7rem"} }/>
+          <Doodle style={ {width: "16rem", height: "10rem"} }/>
+          <Doodle style={ {width: "10rem", height: "13rem"} }/>
+          <Doodle style={ {width: "9rem", height: "14rem"} }/>
+          <Doodle style={ {width: "10rem", height: "10rem"} }/>
+        </div>
       </div>
     )
   }
 })
+var Doodle = React.createClass({
+  render: function() {
+    return (
+      <div className="doodle" style={this.props.style}>
+
+      </div>
+    )
+  }
+})
+
 React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+
+var DanPortfolioSite = {
+  front: {
+    frontText: "Hello I am Dan, feel free to check out some of the Projects I have been involved with and the Doodles I make in my free time."
+  },
+  content: {
+    projects: [
+      {
+        title: "citri",
+        header: "Citri*",
+        url: "http://www.citri.io"
+      },
+      {
+        title: "cali",
+        header: "Photography",
+        url: "http://www.cali-lew.com"
+      }
+    ],
+    experiments: [
+      {
+        title: "physicsJS",
+        header: "Canvas experiment",
+        instructions: "Click and drag to interact",
+        about: "A basic physics engine built with javascript and using html canvas to render",
+        url: "experiments/physicsJS.html"
+      },
+      {
+        title: "3dJS",
+        header: "Canvas experiment",
+        instructions: "Click and drag to interact",
+        about: "A basic 3D rendering engine built in javascript and using html canvas to render",
+        url: "experiments/3dJS.html"
+        }
+    ],
+    about: [
+      {word: "who", text: {first: "I grew up in a small town in south east England. I harbour a great passion for action sports especially ", middle: ". I have an ever growing number of interests which currently includes reading about ", last: " and seeing the world."}},
+      {word: "where", text: "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbourne Australia where I am now working on my barista skills."},
+      {word: "how", text: "Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen."}
+    ]
+  },
+  footer: {
+    email: "dm.beaven@gmail.com"
+  }
+}
+
