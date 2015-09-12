@@ -157,7 +157,7 @@ var About = React.createClass({
   render: function(){
     return (
       <div className="about">
-        <div className="image"><img src="img/meC.png"/></div>
+        <div className="image"><img src="img/me.jpg"/></div>
         <div className="text"><p>Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p></div>
       </div>
     )
