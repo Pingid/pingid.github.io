@@ -71,12 +71,16 @@ html, body {
       left: 2.5%; } }
   .content-wrapper .about {
     width: 100%;
-    height: 100%; }
+    height: 100%;
+    overflow: hidden; }
+    @media (max-width: 1096px) {
+      .content-wrapper .about {
+        overflow: auto; } }
     .content-wrapper .about .text {
-      width: 30%;
-      margin: 0 10%;
-      padding-top: 20%;
-      float: left; }
+      width: 50%;
+      padding-top: 10%;
+      float: left;
+      overflow: auto; }
       @media (max-width: 1096px) {
         .content-wrapper .about .text {
           width: 70%;
@@ -130,7 +134,7 @@ html, body {
       .content-wrapper .doodles .container .doodle {
         width: 15rem;
         background: gray;
-        margin: 1rem;
+        margin: .5rem;
         height: 15rem; }
   .content-wrapper .projects {
     width: 60%;

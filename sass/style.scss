@@ -85,11 +85,15 @@ html, body {
   .about {
     width: 100%;
     height: 100%;
+    overflow: hidden;
+
+    @include breakpointFront(break-2) { overflow: auto; }
     .text {
-      width: 30%;
-      margin: 0 10%;
-      padding-top: 20%;
+      width: 50%;
+      padding-top: 10%;
       float: left;
+      overflow: auto;
+
       @include breakpointFront(break-2) { width: 70%; margin-left: 15%; padding: 0;}
       @include breakpointFront(break-3) { width: 90%; margin-left: 5%; padding: 0;}
       p {
@@ -131,7 +135,7 @@ html, body {
       .doodle {
         width: 15rem;
         background: gray;
-        margin: 1rem;
+        margin: .5rem;
         height: 15rem;
       }
     }

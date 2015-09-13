@@ -108,7 +108,6 @@ var Nav = React.createClass({
   },
   handleLine: function(){this.lineMoveTimer = setInterval(this.moveLine, 0.01)},
   moveLine: function(){
-    console.log("g")
     if(this.state.lineWidth >= 1000){
       clearInterval(this.lineMoveTimer);
     }else {
@@ -153,12 +152,19 @@ var Nav = React.createClass({
   }
 })
 
+
 var About = React.createClass({
   render: function(){
     return (
       <div className="about">
         <div className="image"><img src="img/me.jpg"/></div>
-        <div className="text"><p>Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p></div>
+        <div className="text">
+          <p>
+            I grew up in a small town in south east England where I quickly learned that the internet was a wonderful window into the outside world. I studied fine art then design at school and it was a small step to channel those skills into the digital relm.<br /><br />
+            It has always been of utmost importance to understand the tools that I use which has lead me for the past two years into software and front-end development. In this time I have developed a solid grasp of javascript and some of the libraries and frameworks.<br /><br />
+            When it comes to design I place great value in form following function and try to live by Steve Job’s statement “Never let a passion for the perfect take precedence over pragmatism”. Steve Job’s  also said, “For you to sleep well at night, the aesthetic, the quality, has to be carried all the way through”, this lead me deeper into code where I quickly discovered the value of well thought out, quality code.
+          </p>
+        </div>
       </div>
     )
   }
@@ -183,15 +189,16 @@ var Project = React.createClass({
 })
 var Doodles = React.createClass({
   render: function(){
+    // var feed = this.props.instaPics.map(function(item){return <img src={item} />})
     return (
       <div className="doodles">
         <div className="container">
-          <Doodle style={ {width: "13rem", height: "8rem"} } />
-          <Doodle style={ {width: "15rem", height: "7rem"} }/>
-          <Doodle style={ {width: "16rem", height: "10rem"} }/>
-          <Doodle style={ {width: "10rem", height: "13rem"} }/>
-          <Doodle style={ {width: "9rem", height: "14rem"} }/>
-          <Doodle style={ {width: "10rem", height: "10rem"} }/>
+          <Doodle style={ {width: "18rem", height: "13rem"} } />
+          <Doodle style={ {width: "19rem", height: "11rem"} } />
+          <Doodle style={ {width: "17rem", height: "10rem"} } />
+          <Doodle style={ {width: "15rem", height: "13rem"} } />
+          <Doodle style={ {width: "09rem", height: "19rem"} } />
+          <Doodle style={ {width: "10rem", height: "15rem"} } />
         </div>
       </div>
     )
@@ -207,7 +214,42 @@ var Doodle = React.createClass({
   }
 })
 
-React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+
+React.render(<Page site={DanPortfolioSite} />, document.getElementById('main'));
+
+function fetchGramFeed(searchParam){
+  var searchURL = "https://api.instagram.com/v1/users/176071342/media/recent?client_id=a532629f7cd74f488b93b35690f71424"
+  var result = null
+  $.ajax({
+        method: "GET",
+        url: searchURL,
+        dataType: "jsonp",
+        jsonp: "callback",
+        jsonpCallback: "jsonpcallback",
+        success: function(data) {
+          result = data.data.map(function(item){return item.images.standard_resolution.url})
+          React.render(<Page site={DanPortfolioSite}  />, document.getElementById('main'));    
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          console.log("failed")
+        }
+    });
+    return result
+}
+// fetchGramFeed()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var DanPortfolioSite = {
   front: {
