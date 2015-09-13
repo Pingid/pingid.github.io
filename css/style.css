@@ -10,6 +10,9 @@
 @font-face {
   font-family: 'Sectra-Bold';
   src: url("../type/GT-Sectra-Fine-Trial-Book.otf") format("opentype"); }
+#preload-01 {
+  background: url(../img/me.jpg) no-repeat -9999px -9999px; }
+
 html, body {
   margin: 0;
   padding: 0; }
