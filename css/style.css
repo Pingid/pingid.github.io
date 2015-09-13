@@ -78,20 +78,23 @@ html, body {
         overflow: auto; } }
     .content-wrapper .about .text {
       width: 50%;
-      padding-top: 10%;
+      margin-top: 15%;
       float: left;
-      overflow: auto; }
+      overflow: auto;
+      max-height: 70%; }
       @media (max-width: 1096px) {
         .content-wrapper .about .text {
           width: 70%;
           margin-left: 15%;
-          padding: 0; } }
+          padding: 0;
+          max-height: 10000%; } }
       @media (max-width: 870px) {
         .content-wrapper .about .text {
           width: 90%;
           margin-left: 5%;
           padding: 0; } }
       .content-wrapper .about .text p {
+        padding: 0 2rem;
         font-family: "Walsheim-Light";
         font-size: 1rem; }
     .content-wrapper .about .image {

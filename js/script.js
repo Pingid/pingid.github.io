@@ -64,7 +64,7 @@ var Page = React.createClass({
 var Nav = React.createClass({
   getInitialState: function(){
     return {
-      navPos: 50,
+      navPos: 40,
       lineWidth: 0,
       text: {
         part1: "Hello I am ",
@@ -79,17 +79,17 @@ var Nav = React.createClass({
   },
   handleNav1Click: function(){
     this.setState({nav1Style: {color: "black"},nav2Style: {},nav3Style: {}})
-    if(this.state.navPos > 40){this.handleNavClick()}
+    if(this.state.navPos > 10){this.handleNavClick()}
     this.props.nav1();
   },
   handleNav2Click: function(){
     this.setState({nav1Style: {},nav2Style: {color: "black"},nav3Style: {}})
-    if(this.state.navPos > 40){this.handleNavClick()}
+    if(this.state.navPos > 10){this.handleNavClick()}
     this.props.nav2();
   },
   handleNav3Click: function(){
     this.setState({nav1Style: {},nav2Style: {},nav3Style: {color: "black"}})
-    if(this.state.navPos > 40){this.handleNavClick()}
+    if(this.state.navPos > 10){this.handleNavClick()}
     this.props.nav3();
   },
   handleNavClick: function(){
@@ -160,9 +160,11 @@ var About = React.createClass({
         <div className="image"><img src="img/me.jpg"/></div>
         <div className="text">
           <p>
-            I grew up in a small town in south east England where I quickly learned that the internet was a wonderful window into the outside world. I studied fine art then design at school and it was a small step to channel those skills into the digital relm.<br /><br />
-            It has always been of utmost importance to understand the tools that I use which has lead me for the past two years into software and front-end development. In this time I have developed a solid grasp of javascript and some of the libraries and frameworks.<br /><br />
-            When it comes to design I place great value in form following function and try to live by Steve Job’s statement “Never let a passion for the perfect take precedence over pragmatism”. Steve Job’s  also said, “For you to sleep well at night, the aesthetic, the quality, has to be carried all the way through”, this lead me deeper into code where I quickly discovered the value of well thought out, quality code.
+            I grew up in a small town in south east England where I quickly learned that the internet was a wonderful window into the outside world. I studied fine art then design at school and it was a small step to channel those skills into the digital realm.
+            <br /><br />
+            It has always been of utmost importance to understand the tools that I use which has lead me for the past two years into software and front-end development. In this time I have developed a solid grasp of javascript and some of the libraries and frameworks. 
+            <br /><br />
+            When it comes to design I place great value in form following function and try to live by Steve Job’s statement “Never let a passion for the perfect take precedence over pragmatism”. 
           </p>
         </div>
       </div>

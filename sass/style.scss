@@ -90,13 +90,15 @@ html, body {
     @include breakpointFront(break-2) { overflow: auto; }
     .text {
       width: 50%;
-      padding-top: 10%;
+      margin-top: 15%;
       float: left;
       overflow: auto;
+      max-height: 70%;
 
-      @include breakpointFront(break-2) { width: 70%; margin-left: 15%; padding: 0;}
+      @include breakpointFront(break-2) { width: 70%; margin-left: 15%; padding: 0; max-height: 10000%}
       @include breakpointFront(break-3) { width: 90%; margin-left: 5%; padding: 0;}
       p {
+        padding: 0 2rem;
         font-family: $main-text;
         font-size: 1rem;
       }
