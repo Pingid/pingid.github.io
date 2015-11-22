@@ -1,46 +1,11 @@
-var DanPortfolioSite = {
-  front: {
-    frontText: "Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others."
-  },
-  content: {
-    projects: [
-      {
-        title: "citri",
-        header: "Citri*",
-        url: "http://www.citri.io"
-      },
-      {
-        title: "cali",
-        header: "Photography",
-        url: "http://www.cali-lew.com"
-      }
-    ],
-    experiments: [
-      {
-        title: "physicsJS",
-        header: "Canvas experiment",
-        instructions: "Click and drag to interact",
-        about: "A basic physics engine built with javascript and using html canvas to render",
-        url: "experiments/physicsJS.html"
-      },
-      {
-        title: "3dJS",
-        header: "Canvas experiment",
-        instructions: "Click and drag to interact",
-        about: "A basic 3D rendering engine built in javascript and using html canvas to render",
-        url: "experiments/3dJS.html"
-        }
-    ],
-    about: [
-      {word: "who", text: {first: "I grew up in a small town in south east England. I harbour a great passion for action sports especially ", middle: ". I have an ever growing number of interests which currently includes reading about ", last: " and seeing the world."}},
-      {word: "where", text: "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds I traveled to Melbourne Australia where I am now working on my barista skills."},
-      {word: "how", text: "Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email but you can also find me on Facebook, github and codepen."}
-    ]
-  },
-  footer: {
-    email: "dm.beaven@gmail.com"
-  }
-}
+var DanPortfolioSite = {}
+$.ajax({
+  url: "http://www.socketboard.io/endpoints/5651ad134460d60300796dcb/Page",
+  dataType: 'json'
+}).done(function(data) {
+  DanPortfolioSite = data;
+  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+});
 
 var Page = React.createClass({
   render: function(){
@@ -257,9 +222,9 @@ var Footer = React.createClass({
   }
 })
 
-for (var g = 0; g < 2; g++){
-  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
-}
+// for (var g = 0; g < 2; g++){
+//   React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+// }
 
 $(window).resize(function(){
   React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
