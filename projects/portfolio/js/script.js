@@ -5,6 +5,7 @@ $.ajax({
 }).done(function(data) {
   DanPortfolioSite = data;
   React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+  windowResize();
 });
 
 var Page = React.createClass({
@@ -225,7 +226,8 @@ var Footer = React.createClass({
 // for (var g = 0; g < 2; g++){
 //   React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
 // }
-
-$(window).resize(function(){
-  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
-})
+function windowResize(){
+  return $(window).resize(function(){
+    React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+  });
+}
