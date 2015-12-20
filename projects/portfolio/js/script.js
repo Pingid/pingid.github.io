@@ -1,12 +1,85 @@
-var DanPortfolioSite = {}
-$.ajax({
-  url: "http://www.socketboard.io/endpoints/5651ad134460d60300796dcb/Page",
-  dataType: 'json'
-}).done(function(data) {
-  DanPortfolioSite = data;
-  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
-  windowResize();
-});
+// var DanPortfolioSite = {}
+// $.ajax({
+//   url: "http://www.socketboard.io/endpoints/5651ad134460d60300796dcb/Page",
+//   dataType: 'json'
+// }).done(function(data) {
+//   DanPortfolioSite = data;
+//   React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+//   windowResize();
+// });
+var DanPortfolioSite = {
+  "footer": {
+    "email": "dm.beaven@gmail.com"
+  },
+  "content": {
+    "about": [
+      {
+        "text": {
+          "last": " and seeing the world.",
+          "middle": ". I have an ever growing number of interests which currently includes reading about ",
+          "first": "I grew up in a small town in south-east England. I harbour a great passion for action sports especially "
+        },
+        "word": "who"
+      },
+      {
+        "text": "I am traveling around the world. So far I have spent two months in the Philippines traveling the islands and getting to know the people. After running low on funds, I traveled to Melbourne Australia where I am now working on my barista skills.",
+        "word": "where"
+      },
+      {
+        "text": "Please don’t hesitate to get in contact whether it is a request, comment or simply to chat. Best would be to send me an email, but you can also find me on Facebook, Github and code open.",
+        "word": "how"
+      }
+    ],
+    "experiments": [
+      {
+        "url": "experiments/physicsJS.html",
+        "about": "A basic physics engine built with javascript and using html canvas to render",
+        "instructions": "Click and drag to interact",
+        "header": "Canvas experiment",
+        "title": "physicsJS"
+      },
+      {
+        "url": "http://s.codepen.io/pingid/debug/RPrLPw",
+        "about": "A basic 3D rendering engine built in javascript and using html canvas to render",
+        "instructions": "Click and drag to interact",
+        "header": "Canvas experiment",
+        "title": "3dJS"
+      }
+    ],
+    "projects": [
+      {
+        "url": "http://www.citri.io",
+        "header": "Citri*",
+        "title": "citri",
+        "styles": {
+          "background": "#FAD46A",
+          "color": "#D95C53"
+        }
+      },
+      {
+        "url": "http://www.cali-lew.com",
+        "header": "Photography",
+        "title": "cali",
+        "styles": {
+          "background": "#232323",
+          "color": "white"
+        }
+      },
+      {
+        "url": "http://www.raph.getforge.io",
+        "header": "Portfolio",
+        "title": "Raph",
+        "styles": {
+          "background": "#EDEEEB",
+          "color": "blue"
+        }
+      },
+    ]
+  },
+  "front": {
+    "frontText": "Hi, I am Dan, I create websites I am passionate about great design and relish the chance to collaborate with others."
+  }
+}
 
 var Page = React.createClass({
   render: function(){
@@ -129,7 +202,7 @@ var Project = React.createClass({
     var item = this.props.item;
     var boxClass = "box "+item.title;
     return (
-      <a href={item.url} ><div className={boxClass}><h1>{item.header}</h1></div></a>
+      <a href={item.url} ><div style={item.styles} className="box"><h1>{item.header}</h1></div></a>
     )
   }
 })
@@ -223,9 +296,9 @@ var Footer = React.createClass({
   }
 })
 
-// for (var g = 0; g < 2; g++){
-//   React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
-// }
+for (var g = 0; g < 2; g++){
+  React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
+}
 function windowResize(){
   return $(window).resize(function(){
     React.render(<Page site={DanPortfolioSite}/>, document.getElementById('main'));
