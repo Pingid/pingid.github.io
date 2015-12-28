@@ -64,7 +64,7 @@
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _App = __webpack_require__(248);
+	var _App = __webpack_require__(241);
 
 	var _App2 = _interopRequireDefault(_App);
 
@@ -25871,12 +25871,13 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.REMOVE_FROM_LIST = exports.ADD_TO_LIST = exports.EDIT_LIST = exports.SET_FILTER = exports.GET_LIST_DATA = undefined;
+	exports.ITEM_SELECT = exports.REMOVE_FROM_LIST = exports.ADD_TO_LIST = exports.EDIT_LIST = exports.SET_FILTER = exports.GET_LIST_DATA = undefined;
 	exports.getListData = getListData;
 	exports.setFilter = setFilter;
 	exports.editList = editList;
 	exports.addToList = addToList;
 	exports.removeFromList = removeFromList;
+	exports.itemSelect = itemSelect;
 
 	var _api = __webpack_require__(231);
 
@@ -25885,6 +25886,7 @@
 	var EDIT_LIST = exports.EDIT_LIST = 'EDIT_LIST';
 	var ADD_TO_LIST = exports.ADD_TO_LIST = 'ADD_TO_LIST';
 	var REMOVE_FROM_LIST = exports.REMOVE_FROM_LIST = 'REMOVE_FROM_LIST';
+	var ITEM_SELECT = exports.ITEM_SELECT = 'ITEM_SELECT';
 
 	function listData(newData) {
 	  return {
@@ -25915,16 +25917,23 @@
 	  };
 	}
 
-	function addToList(parentID, newValue, hasChild) {
+	function addToList(parentID, newData) {
 	  return {
 	    type: ADD_TO_LIST,
-	    data: { parentID: parentID, newValue: newValue, hasChild: hasChild }
+	    data: { parentID: parentID, newValue: newData }
 	  };
 	}
 
 	function removeFromList(id) {
 	  return {
 	    type: REMOVE_FROM_LIST,
+	    id: id
+	  };
+	}
+
+	function itemSelect(id) {
+	  return {
+	    type: ITEM_SELECT,
 	    id: id
 	  };
 	}
@@ -26042,18 +26051,19 @@
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reducer = __webpack_require__(236);
+	var _index = __webpack_require__(256);
 
-	var _reducer2 = _interopRequireDefault(_reducer);
+	var _index2 = _interopRequireDefault(_index);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var loggerMiddleware = (0, _reduxLogger2.default)();
+	// import treeReducer from '../reducers/tree';
 
 	var createStoreWithMiddleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, loggerMiddleware)(_redux.createStore);
 
 	function configureStore(initialState) {
-	  return createStoreWithMiddleware(_reducer2.default, initialState);
+	  return createStoreWithMiddleware(_index2.default, initialState);
 	}
 
 /***/ },
@@ -26199,7 +26209,8 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 236 */
+/* 236 */,
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26207,86 +26218,132 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.FindById = exports.Remove = exports.Replace = exports.Disassemble = exports.Assemble = undefined;
 
-	exports.default = function () {
-	  var _Object, _Object2, _Object3, _Object4, _Object5;
+	var _Schema = __webpack_require__(238);
 
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-	  var action = arguments[1];
-
-	  switch (action.type) {
-
-	    case _actions.GET_LIST_DATA:
-	      return (_Object = Object).assign.apply(_Object, _toConsumableArray(state).concat([{}, {
-	        list: (0, _schema.assemble)(action.list),
-	        filter: state.filter,
-	        divider: state.divider
-	      }]));
-
-	    case _actions.SET_FILTER:
-	      return (_Object2 = Object).assign.apply(_Object2, _toConsumableArray(state).concat([{}, {
-	        filter: action.filter.toLowerCase().split(state.divider),
-	        divider: state.divider,
-	        list: state.list
-	      }]));
-
-	    case _actions.ADD_TO_LIST:
-	      var newList = function newList() {
-	        var newObject = (0, _schema.assemble)([{ text: action.data.newValue }])[0];
-	        if (action.data.hasChild) {
-	          return (0, _schema.addToArray)(state.list, action.data.parentID, newObject);
-	        }
-	        var id = _lodash2.default.uniqueId();
-	        var child = { child: { _id: id, array: [] } };
-	        var withChild = (0, _schema.addToObject)(state.list, action.data.parentID, child);
-	        return (0, _schema.addToArray)(withChild, id, newObject);
-	      };
-
-	      return (_Object3 = Object).assign.apply(_Object3, _toConsumableArray(state).concat([{}, {
-	        list: newList(),
-	        filter: state.filter,
-	        divider: state.divider
-	      }]));
-
-	    case _actions.REMOVE_FROM_LIST:
-	      return (_Object4 = Object).assign.apply(_Object4, _toConsumableArray(state).concat([{}, {
-	        list: (0, _schema.removeData)(state.list, action.id),
-	        filter: state.filter,
-	        divider: state.divider
-	      }]));
-
-	    case _actions.EDIT_LIST:
-	      return (_Object5 = Object).assign.apply(_Object5, _toConsumableArray(state).concat([{}, {
-	        list: (0, _schema.replaceData)(state.list, action.data.id, action.data.newData),
-	        filter: state.filter,
-	        divider: state.divider
-	      }]));
-
-	    default:
-	      return state;
-	  }
-	};
-
-	var _lodash = __webpack_require__(237);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var _actions = __webpack_require__(230);
-
-	var _schema = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	var initialState = {
-	  list: [],
-	  filter: [''],
-	  divider: '-'
+	exports.Assemble = _Schema.Assemble;
+	exports.Disassemble = _Schema.Disassemble;
+	exports.Replace = _Schema.Replace;
+	exports.Remove = _Schema.Remove;
+	exports.FindById = _Schema.FindById;
+	exports.default = {
+	  assemble: _Schema.Assemble,
+	  disassemble: _Schema.Disassemble,
+	  replace: _Schema.Replace,
+	  remove: _Schema.Remove,
+	  findById: _Schema.FindById,
+	  find: _Schema.Find
 	};
 
 /***/ },
-/* 237 */
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Assemble = Assemble;
+	exports.Disassemble = Disassemble;
+	exports.Remove = Remove;
+	exports.FindById = FindById;
+	exports.Find = Find;
+
+	var _lodash = __webpack_require__(239);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	// Utils --------------------------------------------------
+	function iterate(object, objectCallback, arrayCallback) {
+	  if (_lodash2.default.isArray(object)) {
+	    if (typeof arrayCallback !== 'undefined') {
+	      return arrayCallback(object);
+	    }
+	    return _lodash2.default.map(object, function (item) {
+	      return objectCallback(item);
+	    });
+	  } else if (_lodash2.default.isPlainObject(object)) {
+	    return _lodash2.default.mapValues(object, function (value) {
+	      return objectCallback(value);
+	    });
+	  }
+	  return object;
+	}
+
+	function returnObject(item, id, callback) {
+	  if (_lodash2.default.isPlainObject(item) || _lodash2.default.isArray(item)) {
+	    return { _id: id, data: callback(item) };
+	  }
+	  return { _id: id, data: item };
+	}
+
+	// Assemble --------------------------------------------------
+	function Assemble(json) {
+	  return iterate(json, function (value) {
+	    return returnObject(value, _lodash2.default.uniqueId(), Assemble);
+	  });
+	}
+
+	// Disassemble --------------------------------------------------
+	function Disassemble(schema) {
+	  return iterate(schema, function (value) {
+	    return Disassemble(value.data);
+	  });
+	}
+
+	// Remove --------------------------------------------------
+	function Remove(schema, id) {
+	  return iterate(schema, function (value) {
+	    return Remove(value, id);
+	  }, function (array) {
+	    return array.filter(function (item) {
+	      return item._id !== id;
+	    }).map(function (object) {
+	      return Remove(object, id);
+	    });
+	  });
+	}
+
+	// FindById --------------------------------------------------
+	function FindById(schema, id, callback) {
+	  if (id === '0') {
+	    return Assemble(callback(Disassemble(schema)));
+	  }
+	  return iterate(schema, function (value) {
+	    return FindById(value, id, callback);
+	  }, function (item) {
+	    return item.map(function (object) {
+	      if (object._id === id) {
+	        return { _id: id, data: Assemble(callback(Disassemble(object.data))) };
+	      }
+	      return FindById(object, id, callback);
+	    });
+	  });
+	}
+
+	// Find --------------------------------------------------
+	function Find(schema, shape, callback) {
+	  return iterate(schema, function (value) {
+	    if (_lodash2.default.isEqual(Disassemble(value), shape)) {
+	      return Assemble(callback(Disassemble(value)));
+	    }
+	    return Find(value, shape, callback);
+	  }, function (array) {
+	    return array.map(function (item) {
+	      if (_lodash2.default.isEqual(Disassemble(item), shape)) {
+	        return Assemble(callback(Disassemble(item)));
+	      }
+	      return Find(item, shape, callback);
+	    });
+	  });
+	}
+
+/***/ },
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -38641,10 +38698,10 @@
 	  }
 	}.call(this));
 
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(238)(module), (function() { return this; }())))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(240)(module), (function() { return this; }())))
 
 /***/ },
-/* 238 */
+/* 240 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -38660,369 +38717,7 @@
 
 
 /***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.removeData = exports.addToObject = exports.addToArray = exports.replaceData = exports.disassemble = exports.assemble = undefined;
-
-	var _Schema = __webpack_require__(240);
-
-	var _Schema2 = _interopRequireDefault(_Schema);
-
-	var _Assemble = __webpack_require__(241);
-
-	var _Assemble2 = _interopRequireDefault(_Assemble);
-
-	var _Disassemble = __webpack_require__(243);
-
-	var _Disassemble2 = _interopRequireDefault(_Disassemble);
-
-	var _Replace = __webpack_require__(244);
-
-	var _Replace2 = _interopRequireDefault(_Replace);
-
-	var _AddToArray = __webpack_require__(245);
-
-	var _AddToArray2 = _interopRequireDefault(_AddToArray);
-
-	var _AddToObject = __webpack_require__(246);
-
-	var _AddToObject2 = _interopRequireDefault(_AddToObject);
-
-	var _Remove = __webpack_require__(247);
-
-	var _Remove2 = _interopRequireDefault(_Remove);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _Schema2.default;
-	exports.assemble = _Assemble2.default;
-	exports.disassemble = _Disassemble2.default;
-	exports.replaceData = _Replace2.default;
-	exports.addToArray = _AddToArray2.default;
-	exports.addToObject = _AddToObject2.default;
-	exports.removeData = _Remove2.default;
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _Assemble = __webpack_require__(241);
-
-	var _Assemble2 = _interopRequireDefault(_Assemble);
-
-	var _Disassemble = __webpack_require__(243);
-
-	var _Disassemble2 = _interopRequireDefault(_Disassemble);
-
-	var _Replace = __webpack_require__(244);
-
-	var _Replace2 = _interopRequireDefault(_Replace);
-
-	var _AddToArray = __webpack_require__(245);
-
-	var _AddToArray2 = _interopRequireDefault(_AddToArray);
-
-	var _AddToObject = __webpack_require__(246);
-
-	var _AddToObject2 = _interopRequireDefault(_AddToObject);
-
-	var _Remove = __webpack_require__(247);
-
-	var _Remove2 = _interopRequireDefault(_Remove);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var Functions = {
-	  create: function create(values) {
-	    var instance = Object.create(this);
-	    Object.keys(values).forEach(function (key) {
-	      instance[key] = values[key];
-	    });
-	    return instance;
-	  }
-	};
-
-	var Schema = Functions.create({
-	  extend: function extend(values) {
-	    var instance = Object.create(this);
-	    Object.keys(values).forEach(function (key) {
-	      instance[key] = values[key];
-	    });
-	    return instance;
-	  },
-	  make: function make(list) {
-	    var instance = Object.create(this);
-	    instance.list = (0, _Assemble2.default)(list);
-	    return instance;
-	  },
-	  disassemble: function disassemble() {
-	    return (0, _Disassemble2.default)(this.list);
-	  },
-	  replaceData: function replaceData(id, newData) {
-	    return (0, _Replace2.default)(this.list, id, newData);
-	  },
-	  addToArray: function addToArray(parentID, newVal) {
-	    return (0, _AddToArray2.default)(this.list, parentID, newVal);
-	  },
-	  addToObject: function addToObject(parentID, newObject) {
-	    return (0, _AddToObject2.default)(this.list, parentID, newObject);
-	  },
-	  removeData: function removeData(id) {
-	    return (0, _Remove2.default)(this.list, id);
-	  }
-	});
-
-	exports.default = Schema;
-
-/***/ },
 /* 241 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = Assemble;
-
-	var _lodash = __webpack_require__(237);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var _utils = __webpack_require__(242);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function Assemble(json) {
-	  if (_lodash2.default.isArray(json)) {
-	    return _lodash2.default.map(json, function (item) {
-	      return (0, _utils.returnObject)(item, _lodash2.default.uniqueId(), Assemble);
-	    });
-	  } else if (_lodash2.default.isPlainObject(json)) {
-	    return _lodash2.default.mapValues(json, function (value) {
-	      return (0, _utils.returnObject)(value, _lodash2.default.uniqueId(), Assemble);
-	    });
-	  }
-	  return { _id: _lodash2.default.uniqueId(), else: json };
-	}
-
-/***/ },
-/* 242 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.returnObject = returnObject;
-	function returnObject(item, id, callback) {
-	  if (_.isPlainObject(item)) {
-	    return { _id: id, object: callback(item) };
-	  } else if (_.isArray(item)) {
-	    return { _id: id, array: callback(item) };
-	  } else if (_.isNumber(item)) {
-	    return { _id: id, number: item };
-	  }
-	  return { _id: id, string: item };
-	}
-
-/***/ },
-/* 243 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = Disassemble;
-
-	var _lodash = __webpack_require__(237);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function Disassemble(schema) {
-	  if (_lodash2.default.isArray(schema)) {
-	    return _lodash2.default.map(schema, function (item) {
-	      return Disassemble(item);
-	    });
-	  } else if (_lodash2.default.isPlainObject(schema)) {
-	    if (schema._id) {
-	      return Disassemble(_lodash2.default.values(schema)[1]);
-	    }
-	    return _lodash2.default.mapValues(schema, function (value) {
-	      return Disassemble(value);
-	    });
-	  } else if (_lodash2.default.isString(schema) || _lodash2.default.isNumber(schema)) {
-	    return schema;
-	  }
-	  return schema;
-	}
-
-/***/ },
-/* 244 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = Replace;
-
-	var _lodash = __webpack_require__(237);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	var _utils = __webpack_require__(242);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function Replace(schema, id, newData) {
-	  if (_lodash2.default.isArray(schema)) {
-	    return _lodash2.default.map(schema, function (item) {
-	      return Replace(item, id, newData);
-	    });
-	  } else if (_lodash2.default.isPlainObject(schema)) {
-	    if (schema._id === id) {
-	      return (0, _utils.returnObject)(newData, _lodash2.default.uniqueId(), Replace);
-	    }
-	    return _lodash2.default.mapValues(schema, function (value) {
-	      return Replace(value, id, newData);
-	    });
-	  } else if (_lodash2.default.isString(schema) || _lodash2.default.isNumber(schema)) {
-	    return schema;
-	  }
-	  return schema;
-	}
-
-/***/ },
-/* 245 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = AddToArray;
-
-	var _lodash = __webpack_require__(237);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function AddToArray(schema, id, newData) {
-	  if (id === '0') {
-	    return [].concat([newData], schema);
-	  }
-	  if (_lodash2.default.isArray(schema)) {
-	    return _lodash2.default.map(schema, function (item) {
-	      return AddToArray(item, id, newData);
-	    });
-	  } else if (_lodash2.default.isPlainObject(schema)) {
-	    if (schema._id === id) {
-	      if (schema.array) {
-	        return Object.assign(schema, {}, {
-	          array: [].concat([newData], schema.array)
-	        });
-	      }
-	      return schema;
-	    }
-	    return _lodash2.default.mapValues(schema, function (value) {
-	      return AddToArray(value, id, newData);
-	    });
-	  } else if (_lodash2.default.isString(schema) || _lodash2.default.isNumber(schema)) {
-	    return schema;
-	  }
-	  return schema;
-	}
-
-/***/ },
-/* 246 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = AddToObject;
-
-	var _lodash = __webpack_require__(237);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function AddToObject(schema, id, newData) {
-	  if (_lodash2.default.isArray(schema)) {
-	    return _lodash2.default.map(schema, function (item) {
-	      return AddToObject(item, id, newData);
-	    });
-	  } else if (_lodash2.default.isPlainObject(schema)) {
-	    if (schema._id === id) {
-	      return Object.assign(schema, {}, {
-	        object: Object.assign(schema.object, newData)
-	      });
-	    }
-	    return _lodash2.default.mapValues(schema, function (value) {
-	      return AddToObject(value, id, newData);
-	    });
-	  } else if (_lodash2.default.isString(schema) || _lodash2.default.isNumber(schema)) {
-	    return schema;
-	  }
-	  return schema;
-	}
-
-/***/ },
-/* 247 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = Remove;
-	function Remove(schema, id) {
-	  if (_.isArray(schema)) {
-	    return _.map(_.filter(schema, function (item) {
-	      return item._id !== id;
-	    }), function (item) {
-	      return Remove(item, id);
-	    });
-	  } else if (_.isPlainObject(schema)) {
-	    if (schema._id === id) {
-	      return schema;
-	    }
-	    return _.mapValues(schema, function (value) {
-	      return Remove(value, id);
-	    });
-	  } else if (_.isString(schema) || _.isNumber(schema)) {
-	    return schema;
-	  }
-	  return schema;
-	}
-
-/***/ },
-/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39041,25 +38736,17 @@
 
 	var _actions = __webpack_require__(230);
 
-	var _list = __webpack_require__(249);
+	var _list = __webpack_require__(242);
 
-	var _Navbar = __webpack_require__(250);
+	var _Navbar = __webpack_require__(243);
 
 	var _Navbar2 = _interopRequireDefault(_Navbar);
 
-	var _SearchSelect = __webpack_require__(251);
-
-	var _SearchSelect2 = _interopRequireDefault(_SearchSelect);
-
-	var _List = __webpack_require__(252);
+	var _List = __webpack_require__(244);
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _BackButton = __webpack_require__(255);
-
-	var _BackButton2 = _interopRequireDefault(_BackButton);
-
-	__webpack_require__(256);
+	__webpack_require__(247);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39085,6 +38772,8 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var _props = this.props;
 	      var dispatch = _props.dispatch;
 	      var filter = _props.filter;
@@ -39093,35 +38782,32 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { onDoubleClick: function onDoubleClick() {
+	            return _this2.forceUpdate();
+	          } },
+	        _react2.default.createElement(_Navbar2.default, {
+	          text: 'login',
+	          onFilterChange: function onFilterChange(value) {
+	            return dispatch((0, _actions.setFilter)(value));
+	          },
+	          onBack: function onBack(value) {
+	            return dispatch((0, _actions.setFilter)(value));
+	          },
+	          filters: filter.join(divider),
+	          onAdd: function onAdd(parentID, newValue) {
+	            return dispatch((0, _actions.addToList)(parentID, newValue));
+	          }
+	        }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'row search-container' },
-	            _react2.default.createElement(_SearchSelect2.default, {
-	              onFilterChange: function onFilterChange(value) {
-	                return dispatch((0, _actions.setFilter)(value));
-	              },
-	              filters: filter.join(divider)
-	            })
-	          ),
-	          _react2.default.createElement(
-	            'div',
 	            { className: 'row list-container' },
-	            _react2.default.createElement(_BackButton2.default, {
-	              onBack: function onBack(value) {
-	                return dispatch((0, _actions.setFilter)(value));
-	              },
-	              filter: filter,
-	              onAdd: function onAdd(parentID, newValue, hasChild) {
-	                return dispatch((0, _actions.addToList)(parentID, newValue, hasChild));
-	              } }),
 	            _react2.default.createElement(_List2.default, {
 	              list: (0, _list.filterList)(list, filter),
-	              onAdd: function onAdd(parentID, newValue, hasChild) {
-	                return dispatch((0, _actions.addToList)(parentID, newValue, hasChild));
+	              onAdd: function onAdd(parentID, newValue) {
+	                return dispatch((0, _actions.addToList)(parentID, newValue));
 	              },
 	              onDelete: function onDelete(id) {
 	                return dispatch((0, _actions.removeFromList)(id));
@@ -39131,6 +38817,9 @@
 	              },
 	              onFilterChange: function onFilterChange(value) {
 	                return dispatch((0, _actions.setFilter)((0, _list.getTree)(list, value, divider)));
+	              },
+	              itemSelect: function itemSelect(id) {
+	                return dispatch((0, _actions.itemSelect)(id));
 	              }
 	            })
 	          )
@@ -39150,13 +38839,13 @@
 	};
 
 	function mapStateToProps(state) {
-	  return state;
+	  return state.tree;
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(App);
 
 /***/ },
-/* 249 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39167,7 +38856,7 @@
 	exports.filterList = filterList;
 	exports.getTree = getTree;
 
-	var _lodash = __webpack_require__(237);
+	var _lodash = __webpack_require__(239);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -39176,11 +38865,11 @@
 	function filterList(list, filters) {
 	  if (filters[0].length > 0) {
 	    return _lodash2.default.flattenDeep(_lodash2.default.map(list, function (item) {
-	      var findTitle = item.object.text.string;
+	      var findTitle = item.data.text.data;
 	      var title = findTitle.toLowerCase().split('').slice(0, _lodash2.default.first(filters).length).join('');
-	      if (title === _lodash2.default.first(filters) && filters.length > 1) {
-	        return filterList(item.object.child.array, _lodash2.default.rest(filters));
-	      } else if (title === _lodash2.default.first(filters)) {
+	      if (title === _lodash2.default.first(filters).toLowerCase() && filters.length > 1) {
+	        return filterList(item.data.child.data, _lodash2.default.rest(filters));
+	      } else if (title === _lodash2.default.first(filters).toLowerCase()) {
 	        return item;
 	      }
 	      return [];
@@ -39192,10 +38881,10 @@
 	function getTree(list, id, divider) {
 	  function recurseList(childList, path) {
 	    return _lodash2.default.flattenDeep(_lodash2.default.map(childList, function (item) {
-	      if (item.object.text._id === id) {
-	        return path.concat([item.object.text.string]);
-	      } else if (item.object.child) {
-	        return recurseList(item.object.child.array, path.concat([item.object.text.string]));
+	      if (item.data.text._id === id) {
+	        return path.concat([item.data.text.data]);
+	      } else if (item.data.child) {
+	        return recurseList(item.data.child.data, path.concat([item.data.text.data]));
 	      }
 	      return [];
 	    }));
@@ -39204,10 +38893,10 @@
 	}
 
 /***/ },
-/* 250 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -39218,6 +38907,14 @@
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _Search = __webpack_require__(253);
+
+	var _Search2 = _interopRequireDefault(_Search);
+
+	var _Navigation = __webpack_require__(254);
+
+	var _Navigation2 = _interopRequireDefault(_Navigation);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39237,16 +38934,29 @@
 	  }
 
 	  _createClass(Navbar, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      var _props = this.props;
+	      var _onFilterChange = _props.onFilterChange;
+	      var _onBack = _props.onBack;
+	      var filters = _props.filters;
+	      var _onAdd = _props.onAdd;
+
 	      return _react2.default.createElement(
-	        "div",
-	        { className: "nav row" },
-	        _react2.default.createElement(
-	          "a",
-	          null,
-	          this.props.text
-	        )
+	        'div',
+	        { className: 'nav row' },
+	        _react2.default.createElement(_Navigation2.default, null),
+	        _react2.default.createElement(_Search2.default, {
+	          onFilterChange: function onFilterChange(value) {
+	            return _onFilterChange(value);
+	          },
+	          onBack: function onBack(value) {
+	            return _onBack(value);
+	          },
+	          filters: filters,
+	          onAdd: function onAdd(parentID, newValue) {
+	            return _onAdd(parentID, newValue);
+	          } })
 	      );
 	    }
 	  }]);
@@ -39257,82 +38967,15 @@
 	exports.default = Navbar;
 
 	Navbar.propTypes = {
-	  text: _react.PropTypes.string.isRequired
-	};
-
-/***/ },
-/* 251 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	// import Select from 'react-select';
-
-	var SearchSelect = (function (_Component) {
-	  _inherits(SearchSelect, _Component);
-
-	  function SearchSelect() {
-	    _classCallCheck(this, SearchSelect);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SearchSelect).apply(this, arguments));
-	  }
-
-	  _createClass(SearchSelect, [{
-	    key: "render",
-	    value: function render() {
-	      var _this2 = this;
-
-	      return _react2.default.createElement(
-	        "div",
-	        { className: "search-container" },
-	        _react2.default.createElement("input", {
-	          autoFocus: true,
-	          type: "text",
-	          className: "search",
-	          onChange: function onChange(e) {
-	            return _this2._onChange(e.target.value);
-	          },
-	          value: this.props.filters
-	        })
-	      );
-	    }
-	  }, {
-	    key: "_onChange",
-	    value: function _onChange(value) {
-	      this.props.onFilterChange(value);
-	    }
-	  }]);
-
-	  return SearchSelect;
-	})(_react.Component);
-
-	exports.default = SearchSelect;
-
-	SearchSelect.propTypes = {
-	  onFilterChange: _react.PropTypes.func,
+	  text: _react.PropTypes.string.isRequired,
+	  onFilterChange: _react.PropTypes.func.isRequired,
+	  onBack: _react.PropTypes.func.isRequired,
+	  onAdd: _react.PropTypes.func.isRequired,
 	  filters: _react.PropTypes.string
 	};
 
 /***/ },
-/* 252 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39347,11 +38990,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(237);
+	var _lodash = __webpack_require__(239);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _ListItem = __webpack_require__(253);
+	var _ListItem = __webpack_require__(245);
 
 	var _ListItem2 = _interopRequireDefault(_ListItem);
 
@@ -39373,12 +39016,18 @@
 
 	    _this._BuildList = _this._BuildList.bind(_this);
 	    _this.state = {
-	      editing: false
+	      editing: false,
+	      active: 1
 	    };
 	    return _this;
 	  }
 
 	  _createClass(List, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+	      this.setState({ editing: false, active: null });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var renderedList = this._BuildList(this.props.list);
@@ -39394,26 +39043,32 @@
 	      var _this2 = this;
 
 	      var _props = this.props;
-	      var onAdd = _props.onAdd;
+	      var _onAdd = _props.onAdd;
 	      var _onDelete = _props.onDelete;
 	      var _onEdit = _props.onEdit;
 	      var onFilterChange = _props.onFilterChange;
 
 	      return array.map(function (item) {
-	        var textObject = item.object.text;
-	        var add = function add(value) {
-	          if (item.object.child) {
-	            return onAdd(item.object.child._id, value, true);
+	        var textObject = item.data.text;
+	        var style = function style() {
+	          if (item._id === _this2.state.active || !_this2.state.editing) {
+	            return { opacity: '1' };
 	          }
-	          return onAdd(item._id, value, false);
+	          return { opacity: '.7' };
+	        };
+	        var editing = function editing() {
+	          if (item._id === _this2.state.active) {
+	            return true;
+	          }
+	          return false;
 	        };
 	        var Editable = _react2.default.createElement(_ListItem2.default, {
-	          text: textObject.string,
+	          text: textObject.data,
 	          onAdd: function onAdd(value) {
-	            return add(value);
+	            return _onAdd(item._id, value);
 	          },
 	          onEdit: function onEdit(value) {
-	            return _onEdit(textObject._id, value);
+	            return _onEdit(item._id, value);
 	          },
 	          onDelete: function onDelete() {
 	            return _onDelete(item._id);
@@ -39421,12 +39076,14 @@
 	          onFilter: function onFilter() {
 	            return onFilterChange(textObject._id);
 	          },
-	          editing: _this2.state.editing,
-	          toggleEdit: function toggleEdit(bool) {
-	            return _this2.setState({ editing: bool });
-	          }
+	          toggleActive: function toggleActive(id) {
+	            var bool = arguments.length <= 1 || arguments[1] === undefined ? true : arguments[1];
+	            return _this2.setState({ editing: bool, active: item._id });
+	          },
+	          editing: editing(),
+	          style: style()
 	        });
-	        if (item.object.child) {
+	        if (item.data.child) {
 	          return _react2.default.createElement(
 	            'li',
 	            { key: _lodash2.default.uniqueId() },
@@ -39434,7 +39091,7 @@
 	            _react2.default.createElement(
 	              'ul',
 	              null,
-	              _this2._BuildList(item.object.child.array)
+	              _this2._BuildList(item.data.child.data)
 	            )
 	          );
 	        }
@@ -39461,7 +39118,7 @@
 	};
 
 /***/ },
-/* 253 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39476,7 +39133,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ContentEditable = __webpack_require__(254);
+	var _ContentEditable = __webpack_require__(246);
 
 	var _ContentEditable2 = _interopRequireDefault(_ContentEditable);
 
@@ -39497,16 +39154,20 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(EditableWrapper).call(this, props));
 
 	    _this.state = {
-	      html: _this.props.text,
-	      editing: _this.props.editing,
+	      addValue: '',
+	      editValue: _this.props.text,
 	      hovering: false,
-	      adding: false,
-	      value: ''
+	      adding: false
 	    };
 	    return _this;
 	  }
 
 	  _createClass(EditableWrapper, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+	      this.setState({ hovering: false, adding: false });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var _this2 = this;
@@ -39514,148 +39175,132 @@
 	      var _props = this.props;
 	      var onFilter = _props.onFilter;
 	      var onDelete = _props.onDelete;
-	      var toggleEdit = _props.toggleEdit;
+	      var style = _props.style;
 
-	      if (this.state.editing) {
+	      var exButton = _react2.default.createElement(
+	        'span',
+	        { className: 'ex', onClick: function onClick() {
+	            return onDelete();
+	          } },
+	        _react2.default.createElement('img', { src: './icons/ex.png' })
+	      );
+	      var arrowButton = function arrowButton(classes) {
+	        return _react2.default.createElement(
+	          'span',
+	          { className: classes, onClick: function onClick() {
+	              return onFilter();
+	            } },
+	          _react2.default.createElement('img', { src: './icons/arrow.png' })
+	        );
+	      };
+	      var plusButton = function plusButton(classes) {
+	        return _react2.default.createElement(
+	          'span',
+	          { className: classes, onClick: function onClick() {
+	              return _this2.setState({ adding: true });
+	            } },
+	          _react2.default.createElement('img', { src: './icons/plus.png' })
+	        );
+	      };
+	      var addInput = _react2.default.createElement('input', {
+	        autoFocus: true,
+	        className: 'input',
+	        placeholder: 'Enter Name...',
+	        value: this.state.addValue,
+	        onBlur: function onBlur() {
+	          return _this2.setState({ adding: false });
+	        },
+	        onChange: function onChange(e) {
+	          return _this2.setState({ addValue: e.target.value });
+	        },
+	        onKeyDown: function onKeyDown(e) {
+	          return _this2._handleKeyPress(e);
+	        } });
+	      var contentEdit = _react2.default.createElement(_ContentEditable2.default, {
+	        html: this.state.editValue,
+	        disabled: false,
+	        onChange: function onChange(e) {
+	          return _this2.setState({ editValue: e.target.value });
+	        },
+	        onEnterKey: function onEnterKey() {
+	          return _this2._handleSave();
+	        },
+	        onBlur: function onBlur(e) {
+	          return _this2._handleBlur(e);
+	        }
+	      });
+	      if (this.props.editing) {
 	        return _react2.default.createElement(
 	          'div',
 	          null,
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'ex', onClick: function onClick() {
-	                return onDelete();
-	              } },
-	            'X'
-	          ),
-	          _react2.default.createElement(_ContentEditable2.default, {
-	            html: this.state.html,
-	            disabled: false,
-	            onChange: function onChange(e) {
-	              return _this2.setState({ html: e.target.value });
-	            },
-	            onEnterKey: function onEnterKey() {
-	              return _this2._handleSave();
-	            },
-	            onBlur: function onBlur(e) {
-	              return _this2._handleBlur(e);
-	            }
-	          }),
+	          exButton,
+	          contentEdit,
 	          _react2.default.createElement('br', null)
 	        );
 	      } else if (this.state.adding) {
 	        return _react2.default.createElement(
 	          'div',
 	          null,
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'arrow visible', onClick: function onClick() {
-	                return onFilter();
-	              } },
-	            '→'
-	          ),
-	          this.state.html,
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'plus visible', onClick: function onClick() {
-	                return _this2.setState({ adding: true });
-	              } },
-	            '+'
-	          ),
+	          arrowButton('arrow visible'),
+	          this.state.editValue,
+	          plusButton('plus visible'),
 	          _react2.default.createElement('br', null),
-	          _react2.default.createElement('input', {
-	            autoFocus: true,
-	            className: 'input',
-	            placeholder: 'Enter Name...',
-	            value: this.state.value,
-	            onBlur: function onBlur() {
-	              return _this2.setState({ adding: false });
-	            },
-	            onChange: function onChange(e) {
-	              return _this2.setState({ value: e.target.value });
-	            },
-	            onKeyDown: function onKeyDown(e) {
-	              return _this2._handleKeyPress(e);
-	            } })
+	          addInput
 	        );
 	      } else if (this.state.hovering) {
 	        return _react2.default.createElement(
 	          'div',
-	          {
+	          { style: style,
 	            onMouseLeave: function onMouseLeave() {
 	              return _this2.setState({ hovering: false });
 	            } },
+	          arrowButton('arrow visible'),
 	          _react2.default.createElement(
 	            'span',
-	            { className: 'arrow visible', onClick: function onClick() {
-	                return onFilter();
+	            { onClick: function onClick() {
+	                return _this2.props.toggleActive();
 	              } },
-	            '→'
+	            this.state.editValue
 	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'list-text', onClick: function onClick() {
-	                return _this2.setState({ editing: true });
-	              } },
-	            this.state.html
-	          ),
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'plus visible', onClick: function onClick() {
-	                return _this2.setState({ adding: true });
-	              } },
-	            '+'
-	          )
+	          plusButton('plus visible')
 	        );
 	      }
 	      return _react2.default.createElement(
 	        'div',
 	        {
+	          style: style,
 	          onMouseOver: function onMouseOver() {
 	            return _this2.setState({ hovering: true });
 	          },
 	          onMouseEnter: function onMouseEnter() {
 	            return _this2.setState({ hovering: true });
 	          } },
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'arrow', onClick: function onClick() {
-	              return onFilter();
-	            } },
-	          '→'
-	        ),
-	        this.state.html,
-	        _react2.default.createElement(
-	          'span',
-	          { className: 'plus' },
-	          '+'
-	        )
+	        arrowButton('arrow'),
+	        this.state.editValue,
+	        plusButton('plus')
 	      );
 	    }
 	  }, {
 	    key: '_handleKeyPress',
 	    value: function _handleKeyPress(e) {
-	      if (e.which === 13) {
-	        if (this.state.value.length > 0) {
-	          this.props.onAdd(this.state.value);
-	        } else {
-	          this.setState({ adding: false });
-	        }
-	      } else if (e.which === 27) {
-	        this.setState({ adding: false, value: '' });
+	      if (e.which === 13 || e.which === 27) {
+	        this.props.onAdd({ text: this.state.addValue });
+	        this.setState({ adding: false });
 	      }
 	    }
 	  }, {
 	    key: '_handleBlur',
 	    value: function _handleBlur(e) {
-	      if (!e.target.value === this.state.html) {
-	        this.setState({ editing: false });
+	      if (e.target.value !== this.state.editValue) {
+	        this._handleSave();
 	      }
+	      this.setState({ editing: false });
 	    }
 	  }, {
 	    key: '_handleSave',
 	    value: function _handleSave() {
 	      this.setState({ editing: false });
-	      this.props.onEdit(this.state.html);
+	      this.props.onEdit(this.state.editValue);
 	    }
 	  }]);
 
@@ -39669,13 +39314,14 @@
 	  onEdit: _react.PropTypes.func.isRequired,
 	  onDelete: _react.PropTypes.func.isRequired,
 	  editing: _react.PropTypes.bool,
-	  toggleEdit: _react.PropTypes.func.isRequired,
 	  onFilter: _react.PropTypes.func.isRequired,
-	  onAdd: _react.PropTypes.func.isRequired
+	  onAdd: _react.PropTypes.func.isRequired,
+	  style: _react.PropTypes.object.isRequired,
+	  toggleActive: _react.PropTypes.func.isRequired
 	};
 
 /***/ },
-/* 254 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39802,140 +39448,16 @@
 	};
 
 /***/ },
-/* 255 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _typeof(obj) { return obj && typeof Symbol !== "undefined" && obj.constructor === Symbol ? "symbol" : typeof obj; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var BackButton = (function (_Component) {
-	  _inherits(BackButton, _Component);
-
-	  function BackButton() {
-	    _classCallCheck(this, BackButton);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BackButton).call(this));
-
-	    _this.state = {
-	      adding: false,
-	      value: ''
-	    };
-	    return _this;
-	  }
-
-	  _createClass(BackButton, [{
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
-
-	      var _props = this.props;
-	      var filter = _props.filter;
-	      var onBack = _props.onBack;
-
-	      var backButton = function backButton() {
-	        if (filter.join('').length > 0) {
-	          var _ret = (function () {
-	            var newFilter = function newFilter() {
-	              if (filter.length > 1) {
-	                return _.initial(filter).join('-');
-	              }
-	              return '';
-	            };
-	            return {
-	              v: _react2.default.createElement(
-	                'div',
-	                { className: 'top-button', onClick: function onClick() {
-	                    return onBack(newFilter());
-	                  } },
-	                '←'
-	              )
-	            };
-	          })();
-
-	          if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
-	        } else if (_this2.state.adding) {
-	          return _react2.default.createElement(
-	            'div',
-	            { className: 'top-button' },
-	            _react2.default.createElement('input', {
-	              autoFocus: true,
-	              className: 'input',
-	              value: _this2.state.value,
-	              onChange: function onChange(e) {
-	                return _this2.setState({ value: e.target.value });
-	              },
-	              onKeyDown: function onKeyDown(e) {
-	                return _this2._onEnter(e);
-	              } })
-	          );
-	        }
-	        return _react2.default.createElement(
-	          'div',
-	          { className: 'top-button', onClick: function onClick() {
-	              return _this2.setState({ adding: true });
-	            } },
-	          '+'
-	        );
-	      };
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        backButton()
-	      );
-	    }
-	  }, {
-	    key: '_onEnter',
-	    value: function _onEnter(e) {
-	      if (e.which === 13) {
-	        this.setState({ adding: false });
-	        this.props.onAdd('0', this.state.value, true);
-	      } else if (e.which === 27) {
-	        this.setState({ adding: false, value: '' });
-	      }
-	    }
-	  }]);
-
-	  return BackButton;
-	})(_react.Component);
-
-	exports.default = BackButton;
-
-	BackButton.propTypes = {
-	  onBack: _react.PropTypes.func.isRequired,
-	  onAdd: _react.PropTypes.func.isRequired,
-	  filter: _react.PropTypes.array
-	};
-
-/***/ },
-/* 256 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(257);
+	var content = __webpack_require__(248);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(259)(content, {});
+	var update = __webpack_require__(251)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -39952,22 +39474,23 @@
 	}
 
 /***/ },
-/* 257 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(258)();
+	exports = module.exports = __webpack_require__(249)();
 	// imports
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);", ""]);
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Crimson+Text:400,600,700);", ""]);
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);", ""]);
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n/*! normalize.css v3.0.2 | MIT License | git.io/normalize */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS text size adjust after orientation change, without disabling\n *    user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability when focused and also mouse hovered in all browsers.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome\n *    (include `-moz` to future-proof).\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  /* 2 */\n  box-sizing: content-box; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/*\n* Skeleton V2.0.4\n* Copyright 2014, Dave Gamache\n* www.getskeleton.com\n* Free to use under the MIT license.\n* http://www.opensource.org/licenses/mit-license.php\n* 12/29/2014\n*/\n/* Table of contents\n––––––––––––––––––––––––––––––––––––––––––––––––––\n- Grid\n- Base Styles\n- Typography\n- Links\n- Buttons\n- Forms\n- Lists\n- Code\n- Tables\n- Spacing\n- Utilities\n- Clearing\n- Media Queries\n*/\n/* Grid\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n.container {\n  position: relative;\n  width: 100%;\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 0 20px;\n  box-sizing: border-box; }\n\n.column,\n.columns {\n  width: 100%;\n  float: left;\n  box-sizing: border-box; }\n\n/* For devices larger than 400px */\n@media (min-width: 400px) {\n  .container {\n    width: 85%;\n    padding: 0; } }\n\n/* For devices larger than 550px */\n@media (min-width: 550px) {\n  .container {\n    width: 80%; }\n  .column,\n  .columns {\n    margin-left: 4%; }\n  .column:first-child,\n  .columns:first-child {\n    margin-left: 0; }\n  .one.column,\n  .one.columns {\n    width: 4.66666666667%; }\n  .two.columns {\n    width: 13.3333333333%; }\n  .three.columns {\n    width: 22%; }\n  .four.columns {\n    width: 30.6666666667%; }\n  .five.columns {\n    width: 39.3333333333%; }\n  .six.columns {\n    width: 48%; }\n  .seven.columns {\n    width: 56.6666666667%; }\n  .eight.columns {\n    width: 65.3333333333%; }\n  .nine.columns {\n    width: 74.0%; }\n  .ten.columns {\n    width: 82.6666666667%; }\n  .eleven.columns {\n    width: 91.3333333333%; }\n  .twelve.columns {\n    width: 100%;\n    margin-left: 0; }\n  .one-third.column {\n    width: 30.6666666667%; }\n  .two-thirds.column {\n    width: 65.3333333333%; }\n  .one-half.column {\n    width: 48%; }\n  /* Offsets */\n  .offset-by-one.column,\n  .offset-by-one.columns {\n    margin-left: 8.66666666667%; }\n  .offset-by-two.column,\n  .offset-by-two.columns {\n    margin-left: 17.3333333333%; }\n  .offset-by-three.column,\n  .offset-by-three.columns {\n    margin-left: 26%; }\n  .offset-by-four.column,\n  .offset-by-four.columns {\n    margin-left: 34.6666666667%; }\n  .offset-by-five.column,\n  .offset-by-five.columns {\n    margin-left: 43.3333333333%; }\n  .offset-by-six.column,\n  .offset-by-six.columns {\n    margin-left: 52%; }\n  .offset-by-seven.column,\n  .offset-by-seven.columns {\n    margin-left: 60.6666666667%; }\n  .offset-by-eight.column,\n  .offset-by-eight.columns {\n    margin-left: 69.3333333333%; }\n  .offset-by-nine.column,\n  .offset-by-nine.columns {\n    margin-left: 78.0%; }\n  .offset-by-ten.column,\n  .offset-by-ten.columns {\n    margin-left: 86.6666666667%; }\n  .offset-by-eleven.column,\n  .offset-by-eleven.columns {\n    margin-left: 95.3333333333%; }\n  .offset-by-one-third.column,\n  .offset-by-one-third.columns {\n    margin-left: 34.6666666667%; }\n  .offset-by-two-thirds.column,\n  .offset-by-two-thirds.columns {\n    margin-left: 69.3333333333%; }\n  .offset-by-one-half.column,\n  .offset-by-one-half.columns {\n    margin-left: 52%; } }\n\n/* Base Styles\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n/* NOTE\nhtml is set to 62.5% so that all the REM measurements throughout Skeleton\nare based on 10px sizing. So basically 1.5rem = 15px :) */\nhtml {\n  font-size: 62.5%; }\n\nbody {\n  font-size: 1.5em;\n  /* currently ems cause chrome bug misinterpreting rems on body element */\n  line-height: 1.6;\n  font-weight: 400;\n  font-family: \"Raleway\", \"HelveticaNeue\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  color: #222; }\n\n/* Typography\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nh1, h2, h3, h4, h5, h6 {\n  margin-top: 0;\n  margin-bottom: 2rem;\n  font-weight: 300; }\n\nh1 {\n  font-size: 4.0rem;\n  line-height: 1.2;\n  letter-spacing: -.1rem; }\n\nh2 {\n  font-size: 3.6rem;\n  line-height: 1.25;\n  letter-spacing: -.1rem; }\n\nh3 {\n  font-size: 3.0rem;\n  line-height: 1.3;\n  letter-spacing: -.1rem; }\n\nh4 {\n  font-size: 2.4rem;\n  line-height: 1.35;\n  letter-spacing: -.08rem; }\n\nh5 {\n  font-size: 1.8rem;\n  line-height: 1.5;\n  letter-spacing: -.05rem; }\n\nh6 {\n  font-size: 1.5rem;\n  line-height: 1.6;\n  letter-spacing: 0; }\n\n/* Larger than phablet */\n@media (min-width: 550px) {\n  h1 {\n    font-size: 5.0rem; }\n  h2 {\n    font-size: 4.2rem; }\n  h3 {\n    font-size: 3.6rem; }\n  h4 {\n    font-size: 3.0rem; }\n  h5 {\n    font-size: 2.4rem; }\n  h6 {\n    font-size: 1.5rem; } }\n\np {\n  margin-top: 0; }\n\n/* Links\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\na {\n  color: #1EAEDB; }\n\na:hover {\n  color: #0FA0CE; }\n\n/* Buttons\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n.button,\nbutton,\ninput[type=\"submit\"],\ninput[type=\"reset\"],\ninput[type=\"button\"] {\n  display: inline-block;\n  height: 38px;\n  padding: 0 30px;\n  color: #555;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 600;\n  line-height: 38px;\n  letter-spacing: .1rem;\n  text-transform: uppercase;\n  text-decoration: none;\n  white-space: nowrap;\n  background-color: transparent;\n  border-radius: 4px;\n  border: 1px solid #bbb;\n  cursor: pointer;\n  box-sizing: border-box; }\n\n.button:hover,\nbutton:hover,\ninput[type=\"submit\"]:hover,\ninput[type=\"reset\"]:hover,\ninput[type=\"button\"]:hover,\n.button:focus,\nbutton:focus,\ninput[type=\"submit\"]:focus,\ninput[type=\"reset\"]:focus,\ninput[type=\"button\"]:focus {\n  color: #333;\n  border-color: #888;\n  outline: 0; }\n\n.button.button-primary,\nbutton.button-primary,\ninput[type=\"submit\"].button-primary,\ninput[type=\"reset\"].button-primary,\ninput[type=\"button\"].button-primary {\n  color: #FFF;\n  background-color: #33C3F0;\n  border-color: #33C3F0; }\n\n.button.button-primary:hover,\nbutton.button-primary:hover,\ninput[type=\"submit\"].button-primary:hover,\ninput[type=\"reset\"].button-primary:hover,\ninput[type=\"button\"].button-primary:hover,\n.button.button-primary:focus,\nbutton.button-primary:focus,\ninput[type=\"submit\"].button-primary:focus,\ninput[type=\"reset\"].button-primary:focus,\ninput[type=\"button\"].button-primary:focus {\n  color: #FFF;\n  background-color: #1EAEDB;\n  border-color: #1EAEDB; }\n\n/* Forms\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\ninput[type=\"email\"],\ninput[type=\"number\"],\ninput[type=\"search\"],\ninput[type=\"text\"],\ninput[type=\"tel\"],\ninput[type=\"url\"],\ninput[type=\"password\"],\ntextarea,\nselect {\n  height: 38px;\n  padding: 6px 10px;\n  /* The 6px vertically centers text on FF, ignored by Webkit */\n  background-color: #fff;\n  border: 1px solid #D1D1D1;\n  border-radius: 4px;\n  box-shadow: none;\n  box-sizing: border-box; }\n\n/* Removes awkward default styles on some inputs for iOS */\ninput[type=\"email\"],\ninput[type=\"number\"],\ninput[type=\"search\"],\ninput[type=\"text\"],\ninput[type=\"tel\"],\ninput[type=\"url\"],\ninput[type=\"password\"],\ntextarea {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none; }\n\ntextarea {\n  min-height: 65px;\n  padding-top: 6px;\n  padding-bottom: 6px; }\n\ninput[type=\"email\"]:focus,\ninput[type=\"number\"]:focus,\ninput[type=\"search\"]:focus,\ninput[type=\"text\"]:focus,\ninput[type=\"tel\"]:focus,\ninput[type=\"url\"]:focus,\ninput[type=\"password\"]:focus,\ntextarea:focus,\nselect:focus {\n  border: 1px solid #33C3F0;\n  outline: 0; }\n\nlabel,\nlegend {\n  display: block;\n  margin-bottom: .5rem;\n  font-weight: 600; }\n\nfieldset {\n  padding: 0;\n  border-width: 0; }\n\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  display: inline; }\n\nlabel > .label-body {\n  display: inline-block;\n  margin-left: .5rem;\n  font-weight: normal; }\n\n/* Lists\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nul {\n  list-style: circle inside; }\n\nol {\n  list-style: decimal inside; }\n\nol, ul {\n  padding-left: 0;\n  margin-top: 0; }\n\nul ul,\nul ol,\nol ol,\nol ul {\n  margin: 1.5rem 0 1.5rem 3rem;\n  font-size: 90%; }\n\nli {\n  margin-bottom: 1rem; }\n\n/* Code\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\ncode {\n  padding: .2rem .5rem;\n  margin: 0 .2rem;\n  font-size: 90%;\n  white-space: nowrap;\n  background: #F1F1F1;\n  border: 1px solid #E1E1E1;\n  border-radius: 4px; }\n\npre > code {\n  display: block;\n  padding: 1rem 1.5rem;\n  white-space: pre; }\n\n/* Tables\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nth,\ntd {\n  padding: 12px 15px;\n  text-align: left;\n  border-bottom: 1px solid #E1E1E1; }\n\nth:first-child,\ntd:first-child {\n  padding-left: 0; }\n\nth:last-child,\ntd:last-child {\n  padding-right: 0; }\n\n/* Spacing\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nbutton,\n.button {\n  margin-bottom: 1rem; }\n\ninput,\ntextarea,\nselect,\nfieldset {\n  margin-bottom: 1.5rem; }\n\npre,\nblockquote,\ndl,\nfigure,\ntable,\np,\nul,\nol,\nform {\n  margin-bottom: 2.5rem; }\n\n/* Utilities\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n.u-full-width {\n  width: 100%;\n  box-sizing: border-box; }\n\n.u-max-full-width {\n  max-width: 100%;\n  box-sizing: border-box; }\n\n.u-pull-right {\n  float: right; }\n\n.u-pull-left {\n  float: left; }\n\n/* Misc\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nhr {\n  margin-top: 3rem;\n  margin-bottom: 3.5rem;\n  border-width: 0;\n  border-top: 1px solid #E1E1E1; }\n\n/* Clearing\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n/* Self Clearing Goodness */\n.container:after,\n.row:after,\n.u-cf {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n/* Media Queries\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n/*\nNote: The best way to structure the use of media queries is to create the queries\nnear the relevant code. For example, if you wanted to change the styles for buttons\non small devices, paste the mobile query code up in the buttons section and style it\nthere.\n*/\n/* Larger than mobile */\n/* Larger than phablet (also point when grid becomes active) */\n/* Larger than tablet */\n/* Larger than desktop */\n/* Larger than Desktop HD */\n/** Ultra Light */\n@font-face {\n  font-family: \"San Francisco\";\n  font-weight: 100;\n  src: url(\"https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-ultralight-webfont.woff\"); }\n\n/** Thin */\n@font-face {\n  font-family: \"San Francisco\";\n  font-weight: 200;\n  src: url(\"https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-thin-webfont.woff\"); }\n\n/** Regular */\n@font-face {\n  font-family: \"San Francisco\";\n  font-weight: 400;\n  src: url(\"https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff\"); }\n\n/** Medium */\n@font-face {\n  font-family: \"San Francisco\";\n  font-weight: 500;\n  src: url(\"https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-medium-webfont.woff\"); }\n\n/** Semi Bold */\n@font-face {\n  font-family: \"San Francisco\";\n  font-weight: 600;\n  src: url(\"https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff\"); }\n\n/** Bold */\n@font-face {\n  font-family: \"San Francisco\";\n  font-weight: 700;\n  src: url(\"https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-bold-webfont.woff\"); }\n\n.nav {\n  padding: 2rem;\n  text-align: right;\n  padding-right: 4rem; }\n  .nav a {\n    font-family: \"San Francisco\", helvetica, sans-serif;\n    font-weight: 500;\n    font-size: 2rem; }\n\n.search-container {\n  width: 25rem;\n  margin: 0 auto; }\n  .search-container .search {\n    width: 100%;\n    margin: 0 auto;\n    border-radius: 1000px !important;\n    padding: 2rem; }\n\n.list-container {\n  width: 60rem;\n  margin: 6rem auto;\n  font-size: 2rem; }\n  .list-container .arrow {\n    opacity: 0;\n    cursor: pointer;\n    padding-right: 1rem; }\n  .list-container .plus {\n    opacity: 0;\n    cursor: pointer;\n    padding-left: 1rem; }\n  .list-container .ex {\n    color: red;\n    opacity: .7;\n    padding: 0 1rem;\n    float: left; }\n  .list-container #editable {\n    float: left; }\n  .list-container button {\n    font-size: 2rem; }\n  .list-container ul li {\n    cursor: pointer;\n    list-style-type: none;\n    padding-left: 3rem;\n    font-weight: 600; }\n    .list-container ul li ul li {\n      padding-bottom: 0rem;\n      color: blue;\n      font-weight: 500; }\n      .list-container ul li ul li ul li {\n        padding-bottom: 0rem;\n        color: black;\n        font-weight: 400; }\n        .list-container ul li ul li ul li ul li {\n          padding-bottom: 0rem;\n          color: blue;\n          font-weight: 300; }\n          .list-container ul li ul li ul li ul li ul li {\n            padding-bottom: 0rem;\n            color: black;\n            font-weight: 300; }\n\nbody {\n  font-family: \"San Francisco\", helvetica, sans-serif;\n  font-weight: normal;\n  margin: 0;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\ninput {\n  margin-bottom: 0 !important; }\n\n.visible {\n  opacity: 1 !important;\n  color: grey;\n  transition: .3s; }\n\n.top-button {\n  font-size: 4rem;\n  opacity: .5;\n  cursor: pointer; }\n\n.top-button:hover {\n  opacity: .9;\n  transition: .2s; }\n\ndiv[contenteditable=true] {\n  background: transparent;\n  /* transparent bg */\n  resize: none;\n  /* disable resizing */\n  outline: none;\n  border: none; }\n\n.input {\n  position: relative;\n  background: transparent;\n  border: none;\n  color: grey;\n  margin-left: 8.6rem;\n  outline: none;\n  padding: 8px 0;\n  bottom: -1rem; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n/*! normalize.css v3.0.2 | MIT License | git.io/normalize */\n/**\n * 1. Set default font family to sans-serif.\n * 2. Prevent iOS text size adjust after orientation change, without disabling\n *    user zoom.\n */\nhtml {\n  font-family: sans-serif;\n  /* 1 */\n  -ms-text-size-adjust: 100%;\n  /* 2 */\n  -webkit-text-size-adjust: 100%;\n  /* 2 */ }\n\n/**\n * Remove default margin.\n */\nbody {\n  margin: 0; }\n\n/* HTML5 display definitions\n   ========================================================================== */\n/**\n * Correct `block` display not defined for any HTML5 element in IE 8/9.\n * Correct `block` display not defined for `details` or `summary` in IE 10/11\n * and Firefox.\n * Correct `block` display not defined for `main` in IE 11.\n */\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block; }\n\n/**\n * 1. Correct `inline-block` display not defined in IE 8/9.\n * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.\n */\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  /* 1 */\n  vertical-align: baseline;\n  /* 2 */ }\n\n/**\n * Prevent modern browsers from displaying `audio` without controls.\n * Remove excess height in iOS 5 devices.\n */\naudio:not([controls]) {\n  display: none;\n  height: 0; }\n\n/**\n * Address `[hidden]` styling not present in IE 8/9/10.\n * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.\n */\n[hidden],\ntemplate {\n  display: none; }\n\n/* Links\n   ========================================================================== */\n/**\n * Remove the gray background color from active links in IE 10.\n */\na {\n  background-color: transparent; }\n\n/**\n * Improve readability when focused and also mouse hovered in all browsers.\n */\na:active,\na:hover {\n  outline: 0; }\n\n/* Text-level semantics\n   ========================================================================== */\n/**\n * Address styling not present in IE 8/9/10/11, Safari, and Chrome.\n */\nabbr[title] {\n  border-bottom: 1px dotted; }\n\n/**\n * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.\n */\nb,\nstrong {\n  font-weight: bold; }\n\n/**\n * Address styling not present in Safari and Chrome.\n */\ndfn {\n  font-style: italic; }\n\n/**\n * Address variable `h1` font-size and margin within `section` and `article`\n * contexts in Firefox 4+, Safari, and Chrome.\n */\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0; }\n\n/**\n * Address styling not present in IE 8/9.\n */\nmark {\n  background: #ff0;\n  color: #000; }\n\n/**\n * Address inconsistent and variable font size in all browsers.\n */\nsmall {\n  font-size: 80%; }\n\n/**\n * Prevent `sub` and `sup` affecting `line-height` in all browsers.\n */\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline; }\n\nsup {\n  top: -0.5em; }\n\nsub {\n  bottom: -0.25em; }\n\n/* Embedded content\n   ========================================================================== */\n/**\n * Remove border when inside `a` element in IE 8/9/10.\n */\nimg {\n  border: 0; }\n\n/**\n * Correct overflow not hidden in IE 9/10/11.\n */\nsvg:not(:root) {\n  overflow: hidden; }\n\n/* Grouping content\n   ========================================================================== */\n/**\n * Address margin not present in IE 8/9 and Safari.\n */\nfigure {\n  margin: 1em 40px; }\n\n/**\n * Address differences between Firefox and other browsers.\n */\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0; }\n\n/**\n * Contain overflow in all browsers.\n */\npre {\n  overflow: auto; }\n\n/**\n * Address odd `em`-unit font size rendering in all browsers.\n */\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em; }\n\n/* Forms\n   ========================================================================== */\n/**\n * Known limitation: by default, Chrome and Safari on OS X allow very limited\n * styling of `select`, unless a `border` property is set.\n */\n/**\n * 1. Correct color not being inherited.\n *    Known issue: affects color of disabled elements.\n * 2. Correct font properties not being inherited.\n * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.\n */\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  /* 1 */\n  font: inherit;\n  /* 2 */\n  margin: 0;\n  /* 3 */ }\n\n/**\n * Address `overflow` set to `hidden` in IE 8/9/10/11.\n */\nbutton {\n  overflow: visible; }\n\n/**\n * Address inconsistent `text-transform` inheritance for `button` and `select`.\n * All other form control elements do not inherit `text-transform` values.\n * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.\n * Correct `select` style inheritance in Firefox.\n */\nbutton,\nselect {\n  text-transform: none; }\n\n/**\n * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`\n *    and `video` controls.\n * 2. Correct inability to style clickable `input` types in iOS.\n * 3. Improve usability and consistency of cursor style between image-type\n *    `input` and others.\n */\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  /* 2 */\n  cursor: pointer;\n  /* 3 */ }\n\n/**\n * Re-set default cursor for disabled elements.\n */\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default; }\n\n/**\n * Remove inner padding and border in Firefox 4+.\n */\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0; }\n\n/**\n * Address Firefox 4+ setting `line-height` on `input` using `!important` in\n * the UA stylesheet.\n */\ninput {\n  line-height: normal; }\n\n/**\n * It's recommended that you don't attempt to style these elements.\n * Firefox's implementation doesn't respect box-sizing, padding, or width.\n *\n * 1. Address box sizing set to `content-box` in IE 8/9/10.\n * 2. Remove excess padding in IE 8/9/10.\n */\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Fix the cursor style for Chrome's increment/decrement buttons. For certain\n * `font-size` values of the `input`, it causes the cursor style of the\n * decrement button to change from `default` to `text`.\n */\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto; }\n\n/**\n * 1. Address `appearance` set to `searchfield` in Safari and Chrome.\n * 2. Address `box-sizing` set to `border-box` in Safari and Chrome\n *    (include `-moz` to future-proof).\n */\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  /* 1 */\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  /* 2 */\n  box-sizing: content-box; }\n\n/**\n * Remove inner padding and search cancel button in Safari and Chrome on OS X.\n * Safari (but not Chrome) clips the cancel button when the search input has\n * padding (and `textfield` appearance).\n */\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none; }\n\n/**\n * Define consistent border, margin, and padding.\n */\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em; }\n\n/**\n * 1. Correct `color` not being inherited in IE 8/9/10/11.\n * 2. Remove padding so people aren't caught out if they zero out fieldsets.\n */\nlegend {\n  border: 0;\n  /* 1 */\n  padding: 0;\n  /* 2 */ }\n\n/**\n * Remove default vertical scrollbar in IE 8/9/10/11.\n */\ntextarea {\n  overflow: auto; }\n\n/**\n * Don't inherit the `font-weight` (applied by a rule above).\n * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.\n */\noptgroup {\n  font-weight: bold; }\n\n/* Tables\n   ========================================================================== */\n/**\n * Remove most spacing between table cells.\n */\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\ntd,\nth {\n  padding: 0; }\n\n/*\n* Skeleton V2.0.4\n* Copyright 2014, Dave Gamache\n* www.getskeleton.com\n* Free to use under the MIT license.\n* http://www.opensource.org/licenses/mit-license.php\n* 12/29/2014\n*/\n/* Table of contents\n––––––––––––––––––––––––––––––––––––––––––––––––––\n- Grid\n- Base Styles\n- Typography\n- Links\n- Buttons\n- Forms\n- Lists\n- Code\n- Tables\n- Spacing\n- Utilities\n- Clearing\n- Media Queries\n*/\n/* Grid\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n.container {\n  position: relative;\n  width: 100%;\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 0 20px;\n  box-sizing: border-box; }\n\n.column,\n.columns {\n  width: 100%;\n  float: left;\n  box-sizing: border-box; }\n\n/* For devices larger than 400px */\n@media (min-width: 400px) {\n  .container {\n    width: 85%;\n    padding: 0; } }\n\n/* For devices larger than 550px */\n@media (min-width: 550px) {\n  .container {\n    width: 80%; }\n  .column,\n  .columns {\n    margin-left: 4%; }\n  .column:first-child,\n  .columns:first-child {\n    margin-left: 0; }\n  .one.column,\n  .one.columns {\n    width: 4.66666666667%; }\n  .two.columns {\n    width: 13.3333333333%; }\n  .three.columns {\n    width: 22%; }\n  .four.columns {\n    width: 30.6666666667%; }\n  .five.columns {\n    width: 39.3333333333%; }\n  .six.columns {\n    width: 48%; }\n  .seven.columns {\n    width: 56.6666666667%; }\n  .eight.columns {\n    width: 65.3333333333%; }\n  .nine.columns {\n    width: 74.0%; }\n  .ten.columns {\n    width: 82.6666666667%; }\n  .eleven.columns {\n    width: 91.3333333333%; }\n  .twelve.columns {\n    width: 100%;\n    margin-left: 0; }\n  .one-third.column {\n    width: 30.6666666667%; }\n  .two-thirds.column {\n    width: 65.3333333333%; }\n  .one-half.column {\n    width: 48%; }\n  /* Offsets */\n  .offset-by-one.column,\n  .offset-by-one.columns {\n    margin-left: 8.66666666667%; }\n  .offset-by-two.column,\n  .offset-by-two.columns {\n    margin-left: 17.3333333333%; }\n  .offset-by-three.column,\n  .offset-by-three.columns {\n    margin-left: 26%; }\n  .offset-by-four.column,\n  .offset-by-four.columns {\n    margin-left: 34.6666666667%; }\n  .offset-by-five.column,\n  .offset-by-five.columns {\n    margin-left: 43.3333333333%; }\n  .offset-by-six.column,\n  .offset-by-six.columns {\n    margin-left: 52%; }\n  .offset-by-seven.column,\n  .offset-by-seven.columns {\n    margin-left: 60.6666666667%; }\n  .offset-by-eight.column,\n  .offset-by-eight.columns {\n    margin-left: 69.3333333333%; }\n  .offset-by-nine.column,\n  .offset-by-nine.columns {\n    margin-left: 78.0%; }\n  .offset-by-ten.column,\n  .offset-by-ten.columns {\n    margin-left: 86.6666666667%; }\n  .offset-by-eleven.column,\n  .offset-by-eleven.columns {\n    margin-left: 95.3333333333%; }\n  .offset-by-one-third.column,\n  .offset-by-one-third.columns {\n    margin-left: 34.6666666667%; }\n  .offset-by-two-thirds.column,\n  .offset-by-two-thirds.columns {\n    margin-left: 69.3333333333%; }\n  .offset-by-one-half.column,\n  .offset-by-one-half.columns {\n    margin-left: 52%; } }\n\n/* Base Styles\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n/* NOTE\nhtml is set to 62.5% so that all the REM measurements throughout Skeleton\nare based on 10px sizing. So basically 1.5rem = 15px :) */\nhtml {\n  font-size: 62.5%; }\n\nbody {\n  font-size: 1.5em;\n  /* currently ems cause chrome bug misinterpreting rems on body element */\n  line-height: 1.6;\n  font-weight: 400;\n  font-family: \"Raleway\", \"HelveticaNeue\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  color: #222; }\n\n/* Typography\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nh1, h2, h3, h4, h5, h6 {\n  margin-top: 0;\n  margin-bottom: 2rem;\n  font-weight: 300; }\n\nh1 {\n  font-size: 4.0rem;\n  line-height: 1.2;\n  letter-spacing: -.1rem; }\n\nh2 {\n  font-size: 3.6rem;\n  line-height: 1.25;\n  letter-spacing: -.1rem; }\n\nh3 {\n  font-size: 3.0rem;\n  line-height: 1.3;\n  letter-spacing: -.1rem; }\n\nh4 {\n  font-size: 2.4rem;\n  line-height: 1.35;\n  letter-spacing: -.08rem; }\n\nh5 {\n  font-size: 1.8rem;\n  line-height: 1.5;\n  letter-spacing: -.05rem; }\n\nh6 {\n  font-size: 1.5rem;\n  line-height: 1.6;\n  letter-spacing: 0; }\n\n/* Larger than phablet */\n@media (min-width: 550px) {\n  h1 {\n    font-size: 5.0rem; }\n  h2 {\n    font-size: 4.2rem; }\n  h3 {\n    font-size: 3.6rem; }\n  h4 {\n    font-size: 3.0rem; }\n  h5 {\n    font-size: 2.4rem; }\n  h6 {\n    font-size: 1.5rem; } }\n\np {\n  margin-top: 0; }\n\n/* Links\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\na {\n  color: #1EAEDB; }\n\na:hover {\n  color: #0FA0CE; }\n\n/* Buttons\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n.button,\nbutton,\ninput[type=\"submit\"],\ninput[type=\"reset\"],\ninput[type=\"button\"] {\n  display: inline-block;\n  height: 38px;\n  padding: 0 30px;\n  color: #555;\n  text-align: center;\n  font-size: 11px;\n  font-weight: 600;\n  line-height: 38px;\n  letter-spacing: .1rem;\n  text-transform: uppercase;\n  text-decoration: none;\n  white-space: nowrap;\n  background-color: transparent;\n  border-radius: 4px;\n  border: 1px solid #bbb;\n  cursor: pointer;\n  box-sizing: border-box; }\n\n.button:hover,\nbutton:hover,\ninput[type=\"submit\"]:hover,\ninput[type=\"reset\"]:hover,\ninput[type=\"button\"]:hover,\n.button:focus,\nbutton:focus,\ninput[type=\"submit\"]:focus,\ninput[type=\"reset\"]:focus,\ninput[type=\"button\"]:focus {\n  color: #333;\n  border-color: #888;\n  outline: 0; }\n\n.button.button-primary,\nbutton.button-primary,\ninput[type=\"submit\"].button-primary,\ninput[type=\"reset\"].button-primary,\ninput[type=\"button\"].button-primary {\n  color: #FFF;\n  background-color: #33C3F0;\n  border-color: #33C3F0; }\n\n.button.button-primary:hover,\nbutton.button-primary:hover,\ninput[type=\"submit\"].button-primary:hover,\ninput[type=\"reset\"].button-primary:hover,\ninput[type=\"button\"].button-primary:hover,\n.button.button-primary:focus,\nbutton.button-primary:focus,\ninput[type=\"submit\"].button-primary:focus,\ninput[type=\"reset\"].button-primary:focus,\ninput[type=\"button\"].button-primary:focus {\n  color: #FFF;\n  background-color: #1EAEDB;\n  border-color: #1EAEDB; }\n\n/* Forms\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\ninput[type=\"email\"],\ninput[type=\"number\"],\ninput[type=\"search\"],\ninput[type=\"text\"],\ninput[type=\"tel\"],\ninput[type=\"url\"],\ninput[type=\"password\"],\ntextarea,\nselect {\n  height: 38px;\n  padding: 6px 10px;\n  /* The 6px vertically centers text on FF, ignored by Webkit */\n  background-color: #fff;\n  border: 1px solid #D1D1D1;\n  border-radius: 4px;\n  box-shadow: none;\n  box-sizing: border-box; }\n\n/* Removes awkward default styles on some inputs for iOS */\ninput[type=\"email\"],\ninput[type=\"number\"],\ninput[type=\"search\"],\ninput[type=\"text\"],\ninput[type=\"tel\"],\ninput[type=\"url\"],\ninput[type=\"password\"],\ntextarea {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none; }\n\ntextarea {\n  min-height: 65px;\n  padding-top: 6px;\n  padding-bottom: 6px; }\n\ninput[type=\"email\"]:focus,\ninput[type=\"number\"]:focus,\ninput[type=\"search\"]:focus,\ninput[type=\"text\"]:focus,\ninput[type=\"tel\"]:focus,\ninput[type=\"url\"]:focus,\ninput[type=\"password\"]:focus,\ntextarea:focus,\nselect:focus {\n  border: 1px solid #33C3F0;\n  outline: 0; }\n\nlabel,\nlegend {\n  display: block;\n  margin-bottom: .5rem;\n  font-weight: 600; }\n\nfieldset {\n  padding: 0;\n  border-width: 0; }\n\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  display: inline; }\n\nlabel > .label-body {\n  display: inline-block;\n  margin-left: .5rem;\n  font-weight: normal; }\n\n/* Lists\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nul {\n  list-style: circle inside; }\n\nol {\n  list-style: decimal inside; }\n\nol, ul {\n  padding-left: 0;\n  margin-top: 0; }\n\nul ul,\nul ol,\nol ol,\nol ul {\n  margin: 1.5rem 0 1.5rem 3rem;\n  font-size: 90%; }\n\nli {\n  margin-bottom: 1rem; }\n\n/* Code\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\ncode {\n  padding: .2rem .5rem;\n  margin: 0 .2rem;\n  font-size: 90%;\n  white-space: nowrap;\n  background: #F1F1F1;\n  border: 1px solid #E1E1E1;\n  border-radius: 4px; }\n\npre > code {\n  display: block;\n  padding: 1rem 1.5rem;\n  white-space: pre; }\n\n/* Tables\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nth,\ntd {\n  padding: 12px 15px;\n  text-align: left;\n  border-bottom: 1px solid #E1E1E1; }\n\nth:first-child,\ntd:first-child {\n  padding-left: 0; }\n\nth:last-child,\ntd:last-child {\n  padding-right: 0; }\n\n/* Spacing\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nbutton,\n.button {\n  margin-bottom: 1rem; }\n\ninput,\ntextarea,\nselect,\nfieldset {\n  margin-bottom: 1.5rem; }\n\npre,\nblockquote,\ndl,\nfigure,\ntable,\np,\nul,\nol,\nform {\n  margin-bottom: 2.5rem; }\n\n/* Utilities\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n.u-full-width {\n  width: 100%;\n  box-sizing: border-box; }\n\n.u-max-full-width {\n  max-width: 100%;\n  box-sizing: border-box; }\n\n.u-pull-right {\n  float: right; }\n\n.u-pull-left {\n  float: left; }\n\n/* Misc\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\nhr {\n  margin-top: 3rem;\n  margin-bottom: 3.5rem;\n  border-width: 0;\n  border-top: 1px solid #E1E1E1; }\n\n/* Clearing\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n/* Self Clearing Goodness */\n.container:after,\n.row:after,\n.u-cf {\n  content: \"\";\n  display: table;\n  clear: both; }\n\n/* Media Queries\n–––––––––––––––––––––––––––––––––––––––––––––––––– */\n/*\nNote: The best way to structure the use of media queries is to create the queries\nnear the relevant code. For example, if you wanted to change the styles for buttons\non small devices, paste the mobile query code up in the buttons section and style it\nthere.\n*/\n/* Larger than mobile */\n/* Larger than phablet (also point when grid becomes active) */\n/* Larger than tablet */\n/* Larger than desktop */\n/* Larger than Desktop HD */\n.nav {\n  position: fixed;\n  bottom: 0;\n  left: 0;\n  width: 80rem;\n  margin-left: 50%;\n  left: -40rem;\n  height: 10rem;\n  text-align: right;\n  background-color: white;\n  border-top: 2px solid blue; }\n  .nav a {\n    padding: 8rem;\n    line-height: 5rem;\n    font-family: \"San Francisco\", helvetica, sans-serif;\n    font-weight: 500;\n    font-size: 2rem; }\n  .nav .navigation {\n    color: black;\n    font-size: 13px;\n    width: 14rem;\n    margin-left: 50%;\n    left: -8rem;\n    margin-top: .5rem;\n    position: fixed; }\n    .nav .navigation div:nth-child(2) {\n      float: left;\n      margin: 0 1rem; }\n    .nav .navigation div {\n      float: left;\n      opacity: .5; }\n      .nav .navigation div:hover {\n        opacity: 1;\n        transition: .3s;\n        cursor: pointer; }\n  .nav .search {\n    width: 41rem;\n    margin: 2.4rem auto; }\n    .nav .search input {\n      float: left;\n      width: 20rem;\n      border-radius: 1000px;\n      background: transparent;\n      padding: 2rem;\n      color: black;\n      border: .1rem solid black;\n      outline: none;\n      border: 1px solid black;\n      outline: none; }\n      .nav .search input:active {\n        border: 1px solid blue;\n        outline: none; }\n      .nav .search input:focus {\n        border: 1px solid blue;\n        outline: none; }\n    .nav .search .circle {\n      float: left;\n      width: 4rem;\n      height: 4rem;\n      border-radius: 100%;\n      background: transparent;\n      border: .1rem solid black;\n      opacity: 0;\n      font-size: 3rem;\n      line-height: 4rem;\n      text-align: center;\n      margin-left: 4.2rem; }\n      .nav .search .circle:hover {\n        border: 1px solid black;\n        cursor: pointer; }\n    .nav .search .arrow {\n      padding: 0;\n      margin-left: 0;\n      margin-right: 4.2rem; }\n\n.search-container {\n  width: 25rem;\n  margin: 0 auto; }\n  .search-container .search {\n    width: 100%;\n    margin: 0 auto;\n    border-radius: 1000px !important;\n    padding: 2rem; }\n\n.list-container {\n  width: 60rem;\n  margin: 6rem auto;\n  margin-bottom: 12rem;\n  font-size: 2rem; }\n  .list-container #editable {\n    float: left; }\n  .list-container .arrow {\n    opacity: 0;\n    cursor: pointer;\n    padding-right: 1rem; }\n    .list-container .arrow img {\n      height: 1.2rem; }\n  .list-container .plus {\n    opacity: 0;\n    cursor: pointer;\n    padding-left: 1rem; }\n    .list-container .plus img {\n      width: 1.2rem; }\n  .list-container .ex {\n    opacity: .7;\n    float: left;\n    padding-right: 1rem; }\n    .list-container .ex img {\n      width: 1.2rem; }\n  .list-container div[contenteditable=true] {\n    background: transparent;\n    /* transparent bg */\n    resize: none;\n    /* disable resizing */\n    outline: none;\n    border: none; }\n  .list-container .input {\n    left: 5.7rem;\n    font-size: 2.4rem;\n    font-weight: 600; }\n  .list-container ul .input {\n    padding: 8px 0;\n    bottom: -1rem;\n    left: 8.6rem;\n    font-size: inherit;\n    font-weight: inherit; }\n  .list-container ul li {\n    cursor: pointer;\n    list-style-type: none;\n    padding-left: 3rem;\n    font-weight: 600; }\n    .list-container ul li ul li {\n      padding-bottom: 0rem;\n      color: blue;\n      font-weight: 500; }\n      .list-container ul li ul li ul li {\n        padding-bottom: 0rem;\n        color: black;\n        font-weight: 400; }\n        .list-container ul li ul li ul li ul li {\n          padding-bottom: 0rem;\n          color: blue;\n          font-weight: 300; }\n          .list-container ul li ul li ul li ul li ul li {\n            padding-bottom: 0rem;\n            color: black;\n            font-weight: 300; }\n\nbody {\n  font-family: 'Inconsolata';\n  font-weight: 400;\n  font-weight: normal;\n  margin: 0;\n  -webkit-background-size: cover;\n  -moz-background-size: cover;\n  -o-background-size: cover;\n  background-size: cover;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale; }\n\ninput {\n  border: none; }\n  input .input {\n    position: relative;\n    background: transparent;\n    border: none;\n    outline: none;\n    color: grey; }\n\ntextarea {\n  position: relative;\n  background: transparent;\n  border: none;\n  outline: none;\n  color: grey; }\n  textarea:focus {\n    border: none;\n    outline: none;\n    color: grey; }\n\n.visible {\n  opacity: 1 !important;\n  transition: .5s; }\n\n.top-button:hover {\n  opacity: .9;\n  transition: .2s; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 258 */
+/* 249 */
 /***/ function(module, exports) {
 
 	/*
@@ -40023,7 +39546,8 @@
 
 
 /***/ },
-/* 259 */
+/* 250 */,
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -40275,6 +39799,370 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 252 */,
+/* 253 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BackButton = (function (_Component) {
+	  _inherits(BackButton, _Component);
+
+	  function BackButton() {
+	    _classCallCheck(this, BackButton);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BackButton).call(this));
+
+	    _this.state = {
+	      adding: false,
+	      value: ''
+	    };
+	    return _this;
+	  }
+
+	  _createClass(BackButton, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps() {
+	      this.setState({ value: this.props.filters });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      var _props = this.props;
+	      var filters = _props.filters;
+	      var onFilterChange = _props.onFilterChange;
+
+	      var visibleClass = function visibleClass(num) {
+	        if (num > 0) {
+	          return 'visible';
+	        }return '';
+	      };
+	      console.log(visibleClass(filters.length));
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'search' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'circle arrow ' + visibleClass(filters.length), onClick: function onClick() {
+	              return _this2._handleBack();
+	            } },
+	          '←'
+	        ),
+	        _react2.default.createElement('input', {
+	          type: 'text',
+	          value: filters,
+	          placeholder: 'Add something',
+	          onChange: function onChange(e) {
+	            return onFilterChange(e.target.value);
+	          },
+	          onKeyDown: function onKeyDown(e) {
+	            return _this2._handleKeyDown(e);
+	          },
+	          className: 'input' }),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'circle add ' + visibleClass(filters.length), onClick: function onClick() {
+	              return _this2._handleAdd();
+	            } },
+	          '+'
+	        )
+	      );
+	    }
+	  }, {
+	    key: '_handleKeyDown',
+	    value: function _handleKeyDown() {
+	      var e = arguments.length <= 0 || arguments[0] === undefined ? { which: 13 } : arguments[0];
+
+	      if (e.which === 13) {
+	        this._handleAdd();
+	      }
+	    }
+	  }, {
+	    key: '_handleAdd',
+	    value: function _handleAdd() {
+	      var titles = this.props.filters.split('-');
+	      var buildJSON = function buildJSON(list) {
+	        if (list.length === 1) {
+	          return {
+	            text: list[0]
+	          };
+	        }
+	        return {
+	          text: list[0],
+	          child: [buildJSON(list.slice(1, list.length))]
+	        };
+	      };
+	      this.props.onAdd('0', buildJSON(titles));
+	      this.props.onFilterChange('');
+	    }
+	  }, {
+	    key: '_handleBack',
+	    value: function _handleBack() {
+	      var filters = this.props.filters.split('-');
+	      var newfilter = filters.slice(0, filters.length - 1).join('-');
+	      this.props.onFilterChange(newfilter);
+	    }
+	  }]);
+
+	  return BackButton;
+	})(_react.Component);
+
+	exports.default = BackButton;
+
+	BackButton.propTypes = {
+	  onFilterChange: _react.PropTypes.func.isRequired,
+	  onBack: _react.PropTypes.func.isRequired,
+	  onAdd: _react.PropTypes.func.isRequired,
+	  filters: _react.PropTypes.string
+	};
+
+/***/ },
+/* 254 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Navbar = (function (_Component) {
+	  _inherits(Navbar, _Component);
+
+	  function Navbar() {
+	    _classCallCheck(this, Navbar);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Navbar).apply(this, arguments));
+	  }
+
+	  _createClass(Navbar, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: "navigation" },
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          "tree"
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          "json"
+	        ),
+	        _react2.default.createElement(
+	          "div",
+	          null,
+	          "markdown"
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Navbar;
+	})(_react.Component);
+
+	exports.default = Navbar;
+
+/***/ },
+/* 255 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	exports.default = function () {
+	  var _Object, _Object2, _Object3, _Object4, _Object5, _Object6;
+
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+
+	    case _actions.GET_LIST_DATA:
+	      return (_Object = Object).assign.apply(_Object, _toConsumableArray(state).concat([{}, {
+	        list: (0, _schema.Assemble)(action.list),
+	        filter: state.filter,
+	        divider: state.divider,
+	        editing: null
+	      }]));
+
+	    case _actions.SET_FILTER:
+	      return (_Object2 = Object).assign.apply(_Object2, _toConsumableArray(state).concat([{}, {
+	        filter: action.filter.split(state.divider),
+	        divider: state.divider,
+	        list: state.list,
+	        editing: state.editing
+	      }]));
+
+	    case _actions.ADD_TO_LIST:
+	      var newJson = action.data.newValue;
+	      var add = (0, _schema.FindById)([].concat(state.list), action.data.parentID, function (x) {
+	        if (action.data.parentID === '0') {
+	          return [].concat([newJson], x);
+	        }
+	        if (x.child) {
+	          x.child = [].concat([newJson], x.child);
+	        } else {
+	          x.child = [newJson];
+	        }
+	        return x;
+	      });
+	      if (newJson.text.replace(/\s/g, '').length < 1) {
+	        return state;
+	      }
+	      return (_Object3 = Object).assign.apply(_Object3, _toConsumableArray(state).concat([{}, {
+	        list: add,
+	        filter: state.filter,
+	        divider: state.divider,
+	        editing: null
+	      }]));
+
+	    case _actions.REMOVE_FROM_LIST:
+	      return (_Object4 = Object).assign.apply(_Object4, _toConsumableArray(state).concat([{}, {
+	        list: (0, _schema.Remove)(state.list, action.id),
+	        filter: state.filter,
+	        divider: state.divider,
+	        editing: null
+	      }]));
+
+	    case _actions.EDIT_LIST:
+	      var edited = (0, _schema.FindById)([].concat(state.list), action.data.id, function (object) {
+	        object.text = action.data.newData;
+	        return object;
+	      });
+	      return (_Object5 = Object).assign.apply(_Object5, _toConsumableArray(state).concat([{}, {
+	        list: edited,
+	        filter: state.filter,
+	        divider: state.divider,
+	        editing: null
+	      }]));
+
+	    case _actions.ITEM_SELECT:
+	      return (_Object6 = Object).assign.apply(_Object6, _toConsumableArray(state).concat([{}, {
+	        list: state.list,
+	        filter: state.filter,
+	        divider: state.divider,
+	        editing: action.id
+	      }]));
+
+	    default:
+	      return state;
+	  }
+	};
+
+	var _actions = __webpack_require__(230);
+
+	var _schema = __webpack_require__(237);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var initialState = {
+	  list: [],
+	  filter: [''],
+	  divider: '-',
+	  editing: null
+	};
+
+/***/ },
+/* 256 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(166);
+
+	var _tree = __webpack_require__(255);
+
+	var _tree2 = _interopRequireDefault(_tree);
+
+	var _json = __webpack_require__(257);
+
+	var _json2 = _interopRequireDefault(_json);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = (0, _redux.combineReducers)({
+	  json: _json2.default,
+	  tree: _tree2.default
+	});
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = json;
+
+	var _actions = __webpack_require__(230);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function json() {
+	  var _Object;
+
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? { list: [] } : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+
+	    case _actions.GET_LIST_DATA:
+	      return (_Object = Object).assign.apply(_Object, _toConsumableArray(state).concat([{}, {
+	        list: action.list
+	      }]));
+
+	    default:
+	      return state;
+	  }
+	}
 
 /***/ }
 /******/ ]);
