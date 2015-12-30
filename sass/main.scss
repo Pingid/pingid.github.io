@@ -15,8 +15,8 @@
   }
 }
 
-$nav-text: 'Poppins', helvetica, helvetica, sans-serif;
-$main-text:'Playfair Display', helvetica;
+$nav-text: 'Inconsolata', helvetica, helvetica, sans-serif;
+$main-text:'Inconsolata', helvetica;
 
 #preload-01 { background: url(../img/me.jpg) no-repeat -9999px -9999px; }
 
@@ -43,6 +43,7 @@ html, body {
     text-align: center;
     font-family: $nav-text;
     font-size: 1rem;
+    font-weight: 700;
   }
 }
 
@@ -82,6 +83,7 @@ html, body {
         padding: 0 2rem;
         font-family: $main-text;
         font-size: 1.2rem;
+        color: blue;
         font-weight: 700;
       }
     }
