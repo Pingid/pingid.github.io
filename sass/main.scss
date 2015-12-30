@@ -1,0 +1,145 @@
+
+@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);
+@import url(https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700);
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic,400italic,900,900italic);
+
+@mixin breakpointFront($point) {
+  @if $point == break-1 {
+    @media (max-width: 1600px) { @content ; }
+  } @else if $point == break-2 {
+    @media (max-width: 1096px) { @content ; }
+  } @else if $point == break-3 {
+    @media (max-width: 870px) { @content ; }
+  } @else if $point == break-4 {
+    @media (max-width: 500px) { @content ; }
+  }
+}
+
+$nav-text: 'Poppins', helvetica, helvetica, sans-serif;
+$main-text:'Playfair Display', helvetica;
+
+#preload-01 { background: url(../img/me.jpg) no-repeat -9999px -9999px; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+.page-wrapper, #main {
+ width: 100%;
+ height: 100%;
+}
+
+.nav-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  padding-top: 2rem;
+  height: 3rem;
+
+  h1 {
+    margin: 0;
+    color: gray;
+    position: relative;
+    text-align: center;
+    font-family: $nav-text;
+    font-size: 1rem;
+  }
+}
+
+.fade-cover {
+  position: absolute;
+  top: 5rem;
+  height: 80%;
+  width: 80%;
+  left: 10%;
+  z-index: 1;
+  background-color: white;
+}
+.content-wrapper {
+  position: absolute;
+  top: 5rem;
+  height: 85%;
+  width: 80%;
+  left: 10%;
+
+  @include breakpointFront(break-4) { width: 95%; left: 2.5%;}
+  .about {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    @include breakpointFront(break-2) { overflow: auto; }
+    .text {
+      width: 50%;
+      margin-top: 15%;
+      float: left;
+      overflow: auto;
+      max-height: 70%;
+
+      @include breakpointFront(break-2) { width: 70%; margin-left: 15%; padding: 0; max-height: 10000%}
+      @include breakpointFront(break-3) { width: 90%; margin-left: 5%; padding: 0;}
+      p {
+        padding: 0 2rem;
+        font-family: $main-text;
+        font-size: 1.2rem;
+        font-weight: 700;
+      }
+    }
+    .image {
+      width: 50%;
+      float: left;
+      @include breakpointFront(break-2) { width: 70%; margin-left: 15%;}
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+  .doodles {
+    width: 60%;
+    margin-left: 20%;
+    height: 100%;
+
+    @include breakpointFront(break-2) { width: 80%; margin-left: 10%;}
+    @include breakpointFront(break-3) { width: 90%; margin-left: 5%;}
+    @include breakpointFront(break-4) { width: 100%; margin-left: 0%;}
+    .container {
+      width: 100%;
+
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      //space-around, space-between, center
+      // align-content: flex-start;
+      // align-items: flex-start;
+      @include breakpointFront(break-2) { }
+      @include breakpointFront(break-3) { justify-content: space-around; }
+      @include breakpointFront(break-4) { justify-content: flex-start; }
+      .doodle {
+        width: 15rem;
+        background: gray;
+        margin: .5rem;
+        height: 15rem;
+      }
+    }
+  }
+  .projects {
+    width: 60%;
+    margin-left: 20%;
+    height: 100%;
+
+    @include breakpointFront(break-2) { width: 80%; margin-left: 10%;}
+    @include breakpointFront(break-3) { width: 90%; margin-left: 5%;}
+    @include breakpointFront(break-4) { width: 100%; margin-left: 0%;}
+    .project {
+      width: 100%;
+
+      height: 40rem;
+      margin: 1rem 0;
+      background: gray;
+    }
+  }
+
+
+}
