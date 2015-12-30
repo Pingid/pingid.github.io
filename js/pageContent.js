@@ -10,6 +10,16 @@ export default {
   content: {
     projects: [
       {
+        header: "Lister",
+        url: "http://www.danbeaven.co.uk/projects/todo-planner",
+        backgroundColor: 'blue'
+      },
+      {
+        header: "Portfolio",
+        url: "http://www.raph.getforge.io",
+        backgroundColor: 'rgba(0, 0, 255, 0.54)'
+      },
+      {
         header: "Citri*",
         url: "http://www.citri.io",
         backgroundColor: '#FAD46A'
@@ -18,16 +28,6 @@ export default {
         header: "Photography",
         url: "http://www.cali-lew.com",
         backgroundColor: '#232323'
-      },
-      {
-        header: "Portfolio",
-        url: "http://www.raph.getforge.io",
-        backgroundColor: 'rgba(0, 0, 255, 0.54)'
-      },
-      {
-        header: "Lister",
-        url: "http://www.danbeaven.co.uk/projects/todo-planner",
-        backgroundColor: 'blue'
       }
     ],
     experiments: [
