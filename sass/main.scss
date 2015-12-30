@@ -16,7 +16,8 @@
 }
 
 $nav-text: 'Inconsolata', helvetica, helvetica, sans-serif;
-$main-text:'Inconsolata', helvetica;
+$main-text: 'Inconsolata', helvetica;
+$project-text: 'Inconsolata', helvetica, helvetica, sans-serif;
 
 #preload-01 { background: url(../img/me.jpg) no-repeat -9999px -9999px; }
 
@@ -127,21 +128,39 @@ html, body {
     }
   }
   .projects {
-    width: 60%;
-    margin-left: 20%;
+    width: 70%;
+    margin-left: 15%;
     height: 100%;
 
-    @include breakpointFront(break-2) { width: 80%; margin-left: 10%;}
-    @include breakpointFront(break-3) { width: 90%; margin-left: 5%;}
+    @include breakpointFront(break-2) { width: 75%; margin-left: 13.5%;}
+    @include breakpointFront(break-2) { width: 85%; margin-left: 8.5%;}
+    @include breakpointFront(break-3) { width: 95%; margin-left: 2.5%;}
     @include breakpointFront(break-4) { width: 100%; margin-left: 0%;}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
     .project {
       width: 100%;
-
       height: 40rem;
-      margin: 1rem 0;
+      margin: 2rem 0;
       background: gray;
+      cursor: pointer;
+      &:hover {
+        color: white
+      }
+      transition: .2s;
+      @include breakpointFront(break-1) { height: 30rem;}
+      @include breakpointFront(break-2) { height: 30rem;}
+      @include breakpointFront(break-3) { height: 20rem;}
+      @include breakpointFront(break-4) { height: 10rem;}
+      h2 {
+        position: relative;
+        top: 50%;
+        line-height: -3rem;
+        text-align: center;
+        font-family: $project-text;
+      }
     }
   }
-
-
 }

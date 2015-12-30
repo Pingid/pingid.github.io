@@ -10,24 +10,24 @@ export default {
   content: {
     projects: [
       {
-        title: "citri",
         header: "Citri*",
-        url: "http://www.citri.io"
+        url: "http://www.citri.io",
+        backgroundColor: '#FAD46A'
       },
       {
-        title: "cali",
         header: "Photography",
-        url: "http://www.cali-lew.com"
+        url: "http://www.cali-lew.com",
+        backgroundColor: '#232323'
       },
       {
-        title: "Raph portfolio",
         header: "Portfolio",
-        url: "raph.getforge.io"
+        url: "http://www.raph.getforge.io",
+        backgroundColor: 'rgba(0, 0, 255, 0.54)'
       },
       {
-        title: "Lister",
         header: "Lister",
-        url: "projects/todo-planner"
+        url: "http://www.danbeaven.co.uk/projects/todo-planner",
+        backgroundColor: 'blue'
       }
     ],
     experiments: [

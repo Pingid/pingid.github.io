@@ -69,7 +69,7 @@ export default class Page extends Component {
         if(navActive === 'home') {
           return <Home />
         } else if (navActive === 'projects') {
-          return <Projects />
+          return <Projects projects={this.props.content.content.projects}/>
         } else if (navActive === 'doodles') {
           return <Doodles />
         }

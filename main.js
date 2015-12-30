@@ -76,11 +76,11 @@
 
 	var _Projects2 = _interopRequireDefault(_Projects);
 
-	var _Doodles = __webpack_require__(180);
+	var _Doodles = __webpack_require__(179);
 
 	var _Doodles2 = _interopRequireDefault(_Doodles);
 
-	__webpack_require__(182);
+	__webpack_require__(181);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -166,7 +166,7 @@
 	          if (navActive === 'home') {
 	            return _react2.default.createElement(_Home2.default, null);
 	          } else if (navActive === 'projects') {
-	            return _react2.default.createElement(_Projects2.default, null);
+	            return _react2.default.createElement(_Projects2.default, { projects: _this2.props.content.content.projects });
 	          } else if (navActive === 'doodles') {
 	            return _react2.default.createElement(_Doodles2.default, null);
 	          }
@@ -21055,21 +21055,21 @@
 	  },
 	  content: {
 	    projects: [{
-	      title: "citri",
 	      header: "Citri*",
-	      url: "http://www.citri.io"
+	      url: "http://www.citri.io",
+	      backgroundColor: '#FAD46A'
 	    }, {
-	      title: "cali",
 	      header: "Photography",
-	      url: "http://www.cali-lew.com"
+	      url: "http://www.cali-lew.com",
+	      backgroundColor: '#232323'
 	    }, {
-	      title: "Raph portfolio",
 	      header: "Portfolio",
-	      url: "raph.getforge.io"
+	      url: "http://www.raph.getforge.io",
+	      backgroundColor: 'rgba(0, 0, 255, 0.54)'
 	    }, {
-	      title: "Lister",
 	      header: "Lister",
-	      url: "projects/todo-planner"
+	      url: "http://www.danbeaven.co.uk/projects/todo-planner",
+	      backgroundColor: 'blue'
 	    }],
 	    experiments: [{
 	      title: "physicsJS",
@@ -21292,7 +21292,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Project = __webpack_require__(179);
+	var _Project = __webpack_require__(186);
 
 	var _Project2 = _interopRequireDefault(_Project);
 
@@ -21316,11 +21316,17 @@
 	  _createClass(Projects, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
+	      var projects = function projects() {
+	        return _this2.props.projects.map(function (project, index) {
+	          return _react2.default.createElement(_Project2.default, { key: index, content: project });
+	        });
+	      };
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'projects' },
-	        _react2.default.createElement(_Project2.default, null),
-	        _react2.default.createElement(_Project2.default, null)
+	        projects()
 	      );
 	    }
 	  }]);
@@ -21332,51 +21338,6 @@
 
 /***/ },
 /* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Project = (function (_Component) {
-	  _inherits(Project, _Component);
-
-	  function Project() {
-	    _classCallCheck(this, Project);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Project).apply(this, arguments));
-	  }
-
-	  _createClass(Project, [{
-	    key: "render",
-	    value: function render() {
-	      return _react2.default.createElement("div", { className: "project" });
-	    }
-	  }]);
-
-	  return Project;
-	})(_react.Component);
-
-	exports.default = Project;
-
-/***/ },
-/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21391,7 +21352,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Doodle = __webpack_require__(181);
+	var _Doodle = __webpack_require__(180);
 
 	var _Doodle2 = _interopRequireDefault(_Doodle);
 
@@ -21438,7 +21399,7 @@
 	exports.default = Doodles;
 
 /***/ },
-/* 181 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -21483,16 +21444,16 @@
 	exports.default = Doodle;
 
 /***/ },
-/* 182 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(183);
+	var content = __webpack_require__(182);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(186)(content, {});
+	var update = __webpack_require__(185)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -21509,23 +21470,23 @@
 	}
 
 /***/ },
-/* 183 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(184)();
+	exports = module.exports = __webpack_require__(183)();
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Inconsolata:400,700);", ""]);
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700);", ""]);
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,700italic,400italic,900,900italic);", ""]);
 
 	// module
-	exports.push([module.id, "#preload-01 {\n  background: url(" + __webpack_require__(185) + ") no-repeat -9999px -9999px; }\n\nhtml, body {\n  margin: 0;\n  padding: 0; }\n\n.page-wrapper, #main {\n  width: 100%;\n  height: 100%; }\n\n.nav-wrapper {\n  position: fixed;\n  width: 100%;\n  z-index: 2;\n  padding-top: 2rem;\n  height: 3rem; }\n  .nav-wrapper h1 {\n    margin: 0;\n    color: gray;\n    position: relative;\n    text-align: center;\n    font-family: \"Inconsolata\", helvetica, helvetica, sans-serif;\n    font-size: 1rem;\n    font-weight: 700; }\n\n.fade-cover {\n  position: absolute;\n  top: 5rem;\n  height: 80%;\n  width: 80%;\n  left: 10%;\n  z-index: 1;\n  background-color: white; }\n\n.content-wrapper {\n  position: absolute;\n  top: 5rem;\n  height: 85%;\n  width: 80%;\n  left: 10%; }\n  @media (max-width: 500px) {\n    .content-wrapper {\n      width: 95%;\n      left: 2.5%; } }\n  .content-wrapper .about {\n    width: 100%;\n    height: 100%;\n    overflow: hidden; }\n    @media (max-width: 1096px) {\n      .content-wrapper .about {\n        overflow: auto; } }\n    .content-wrapper .about .text {\n      width: 50%;\n      margin-top: 15%;\n      float: left;\n      overflow: auto;\n      max-height: 70%; }\n      @media (max-width: 1096px) {\n        .content-wrapper .about .text {\n          width: 70%;\n          margin-left: 15%;\n          padding: 0;\n          max-height: 10000%; } }\n      @media (max-width: 870px) {\n        .content-wrapper .about .text {\n          width: 90%;\n          margin-left: 5%;\n          padding: 0; } }\n      .content-wrapper .about .text p {\n        padding: 0 2rem;\n        font-family: \"Inconsolata\", helvetica;\n        font-size: 1.2rem;\n        color: blue;\n        font-weight: 700; }\n    .content-wrapper .about .image {\n      width: 50%;\n      float: left; }\n      @media (max-width: 1096px) {\n        .content-wrapper .about .image {\n          width: 70%;\n          margin-left: 15%; } }\n      .content-wrapper .about .image img {\n        width: 100%; }\n  .content-wrapper .doodles {\n    width: 60%;\n    margin-left: 20%;\n    height: 100%; }\n    @media (max-width: 1096px) {\n      .content-wrapper .doodles {\n        width: 80%;\n        margin-left: 10%; } }\n    @media (max-width: 870px) {\n      .content-wrapper .doodles {\n        width: 90%;\n        margin-left: 5%; } }\n    @media (max-width: 500px) {\n      .content-wrapper .doodles {\n        width: 100%;\n        margin-left: 0%; } }\n    .content-wrapper .doodles .container {\n      width: 100%;\n      display: flex;\n      flex-direction: row;\n      flex-wrap: wrap;\n      justify-content: center; }\n      @media (max-width: 870px) {\n        .content-wrapper .doodles .container {\n          justify-content: space-around; } }\n      @media (max-width: 500px) {\n        .content-wrapper .doodles .container {\n          justify-content: flex-start; } }\n      .content-wrapper .doodles .container .doodle {\n        width: 15rem;\n        background: gray;\n        margin: .5rem;\n        height: 15rem; }\n  .content-wrapper .projects {\n    width: 60%;\n    margin-left: 20%;\n    height: 100%; }\n    @media (max-width: 1096px) {\n      .content-wrapper .projects {\n        width: 80%;\n        margin-left: 10%; } }\n    @media (max-width: 870px) {\n      .content-wrapper .projects {\n        width: 90%;\n        margin-left: 5%; } }\n    @media (max-width: 500px) {\n      .content-wrapper .projects {\n        width: 100%;\n        margin-left: 0%; } }\n    .content-wrapper .projects .project {\n      width: 100%;\n      height: 40rem;\n      margin: 1rem 0;\n      background: gray; }\n", ""]);
+	exports.push([module.id, "#preload-01 {\n  background: url(" + __webpack_require__(184) + ") no-repeat -9999px -9999px; }\n\nhtml, body {\n  margin: 0;\n  padding: 0; }\n\n.page-wrapper, #main {\n  width: 100%;\n  height: 100%; }\n\n.nav-wrapper {\n  position: fixed;\n  width: 100%;\n  z-index: 2;\n  padding-top: 2rem;\n  height: 3rem; }\n  .nav-wrapper h1 {\n    margin: 0;\n    color: gray;\n    position: relative;\n    text-align: center;\n    font-family: \"Inconsolata\", helvetica, helvetica, sans-serif;\n    font-size: 1rem;\n    font-weight: 700; }\n\n.fade-cover {\n  position: absolute;\n  top: 5rem;\n  height: 80%;\n  width: 80%;\n  left: 10%;\n  z-index: 1;\n  background-color: white; }\n\n.content-wrapper {\n  position: absolute;\n  top: 5rem;\n  height: 85%;\n  width: 80%;\n  left: 10%; }\n  @media (max-width: 500px) {\n    .content-wrapper {\n      width: 95%;\n      left: 2.5%; } }\n  .content-wrapper .about {\n    width: 100%;\n    height: 100%;\n    overflow: hidden; }\n    @media (max-width: 1096px) {\n      .content-wrapper .about {\n        overflow: auto; } }\n    .content-wrapper .about .text {\n      width: 50%;\n      margin-top: 15%;\n      float: left;\n      overflow: auto;\n      max-height: 70%; }\n      @media (max-width: 1096px) {\n        .content-wrapper .about .text {\n          width: 70%;\n          margin-left: 15%;\n          padding: 0;\n          max-height: 10000%; } }\n      @media (max-width: 870px) {\n        .content-wrapper .about .text {\n          width: 90%;\n          margin-left: 5%;\n          padding: 0; } }\n      .content-wrapper .about .text p {\n        padding: 0 2rem;\n        font-family: \"Inconsolata\", helvetica;\n        font-size: 1.2rem;\n        color: blue;\n        font-weight: 700; }\n    .content-wrapper .about .image {\n      width: 50%;\n      float: left; }\n      @media (max-width: 1096px) {\n        .content-wrapper .about .image {\n          width: 70%;\n          margin-left: 15%; } }\n      .content-wrapper .about .image img {\n        width: 100%; }\n  .content-wrapper .doodles {\n    width: 60%;\n    margin-left: 20%;\n    height: 100%; }\n    @media (max-width: 1096px) {\n      .content-wrapper .doodles {\n        width: 80%;\n        margin-left: 10%; } }\n    @media (max-width: 870px) {\n      .content-wrapper .doodles {\n        width: 90%;\n        margin-left: 5%; } }\n    @media (max-width: 500px) {\n      .content-wrapper .doodles {\n        width: 100%;\n        margin-left: 0%; } }\n    .content-wrapper .doodles .container {\n      width: 100%;\n      display: flex;\n      flex-direction: row;\n      flex-wrap: wrap;\n      justify-content: center; }\n      @media (max-width: 870px) {\n        .content-wrapper .doodles .container {\n          justify-content: space-around; } }\n      @media (max-width: 500px) {\n        .content-wrapper .doodles .container {\n          justify-content: flex-start; } }\n      .content-wrapper .doodles .container .doodle {\n        width: 15rem;\n        background: gray;\n        margin: .5rem;\n        height: 15rem; }\n  .content-wrapper .projects {\n    width: 70%;\n    margin-left: 15%;\n    height: 100%; }\n    @media (max-width: 1096px) {\n      .content-wrapper .projects {\n        width: 75%;\n        margin-left: 13.5%; } }\n    @media (max-width: 1096px) {\n      .content-wrapper .projects {\n        width: 85%;\n        margin-left: 8.5%; } }\n    @media (max-width: 870px) {\n      .content-wrapper .projects {\n        width: 95%;\n        margin-left: 2.5%; } }\n    @media (max-width: 500px) {\n      .content-wrapper .projects {\n        width: 100%;\n        margin-left: 0%; } }\n    .content-wrapper .projects a {\n      color: inherit;\n      text-decoration: none; }\n    .content-wrapper .projects .project {\n      width: 100%;\n      height: 40rem;\n      margin: 2rem 0;\n      background: gray;\n      cursor: pointer;\n      transition: .2s; }\n      .content-wrapper .projects .project:hover {\n        color: white; }\n      @media (max-width: 1600px) {\n        .content-wrapper .projects .project {\n          height: 30rem; } }\n      @media (max-width: 1096px) {\n        .content-wrapper .projects .project {\n          height: 30rem; } }\n      @media (max-width: 870px) {\n        .content-wrapper .projects .project {\n          height: 20rem; } }\n      @media (max-width: 500px) {\n        .content-wrapper .projects .project {\n          height: 10rem; } }\n      .content-wrapper .projects .project h2 {\n        position: relative;\n        top: 50%;\n        line-height: -3rem;\n        text-align: center;\n        font-family: \"Inconsolata\", helvetica, helvetica, sans-serif; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 184 */
+/* 183 */
 /***/ function(module, exports) {
 
 	/*
@@ -21581,13 +21542,13 @@
 
 
 /***/ },
-/* 185 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "e262a21be5de911b75cfc55a7dc3f269.jpg";
 
 /***/ },
-/* 186 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -21839,6 +21800,63 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Project = (function (_Component) {
+	  _inherits(Project, _Component);
+
+	  function Project() {
+	    _classCallCheck(this, Project);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Project).apply(this, arguments));
+	  }
+
+	  _createClass(Project, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "a",
+	        { href: this.props.content.url },
+	        _react2.default.createElement(
+	          "div",
+	          { style: { backgroundColor: this.props.content.backgroundColor }, className: "project" },
+	          _react2.default.createElement(
+	            "h2",
+	            null,
+	            this.props.content.header
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Project;
+	})(_react.Component);
+
+	exports.default = Project;
 
 /***/ }
 /******/ ]);
