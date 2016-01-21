@@ -100,7 +100,7 @@
 			{ history: history },
 			_react2.default.createElement(
 				_reactRouter.Route,
-				{ path: '/', component: _App2.default },
+				{ path: '/projects/todo-planner', component: _App2.default },
 				_react2.default.createElement(_reactRouter.IndexRoute, { component: _TreeView2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: 'json', component: _JsonView2.default }),
 				_react2.default.createElement(_reactRouter.Route, { path: 'markdown', component: _MarkdownView2.default })
