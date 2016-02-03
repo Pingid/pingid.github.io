@@ -58,9 +58,13 @@
 	
 	var _reactDom = __webpack_require__(158);
 	
-	var _Images = __webpack_require__(165);
+	var _utils = __webpack_require__(163);
 	
-	__webpack_require__(159);
+	var _Images = __webpack_require__(159);
+	
+	var _Images2 = _interopRequireDefault(_Images);
+	
+	__webpack_require__(164);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -112,9 +116,7 @@
 	  return _react2.default.createElement(
 	    'div',
 	    { className: 'gallery-wrapper' },
-	    _react2.default.createElement(_Images.FashionImages, null),
-	    _react2.default.createElement(_Images.PortraitImages, null),
-	    _react2.default.createElement(_Images.TravelImages, null)
+	    _react2.default.createElement(_Images2.default, { srcArray: (0, _utils.values)((0, _utils.imageLinks)()) })
 	  );
 	};
 	
@@ -19725,13 +19727,172 @@
 /* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _LazyImage = __webpack_require__(162);
+	
+	var _LazyImage2 = _interopRequireDefault(_LazyImage);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = function (_ref) {
+	  var srcArray = _ref.srcArray;
+	
+	  var images = srcArray.map(function (img, index) {
+	    return _react2.default.createElement(_LazyImage2.default, { src: img, key: index });
+	  });
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'section-wrapper' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'column-wrapper' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'column-container' },
+	        images.slice(0, Math.floor(images.length / 2))
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'column-wrapper' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'column-container' },
+	        images.slice(Math.floor(images.length / 2), images.length)
+	      )
+	    )
+	  );
+	};
+
+/***/ },
+/* 160 */,
+/* 161 */,
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(158);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LazyImage = function (_Component) {
+	  _inherits(LazyImage, _Component);
+	
+	  function LazyImage() {
+	    _classCallCheck(this, LazyImage);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LazyImage).call(this));
+	
+	    _this.state = { loaded: false };
+	    _this.onImageLoad = _this.onImageLoad.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(LazyImage, [{
+	    key: 'onImageLoad',
+	    value: function onImageLoad() {
+	      this.setState({ loaded: true });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var imgTag = (0, _reactDom.findDOMNode)(this.refs.img);
+	      var imgSrc = imgTag.getAttribute('src');
+	
+	      var img = new window.Image();
+	      img.onload = this.onImageLoad;
+	      img.src = imgSrc;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var className = this.props.className ? this.props.className : 'image';
+	      var classes = function classes() {
+	        if (_this2.state.loaded) return className + ' image-loaded';
+	        return className + 'image-loading';
+	      };
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'image-wrapper' },
+	        _react2.default.createElement('img', { ref: 'img', src: this.props.src, className: classes() })
+	      );
+	    }
+	  }]);
+	
+	  return LazyImage;
+	}(_react.Component);
+	// style={{ maxHeight: window.innerHeight -100}}
+
+	exports.default = LazyImage;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var imageLinks = exports.imageLinks = function imageLinks() {
+	  var buildArray = function buildArray(num, ext, root) {
+	    var iter = function iter(acc, arr) {
+	      if (acc === num + 1) return arr;else return iter(acc + 1, [].concat(arr, [root + acc + '.' + ext]));
+	    };
+	    return iter(1, []);
+	  };
+	  return {
+	    fashion: buildArray(18, 'jpg', 'img/fashion/large/'),
+	    portrait: buildArray(17, 'jpg', 'img/portrait/large/'),
+	    travel: buildArray(23, 'jpg', 'img/travel/large/')
+	  };
+	};
+	
+	var values = exports.values = function values(obj) {
+	  return Object.keys(obj).reduce(function (x, y) {
+	    return [].concat(x, obj[y]);
+	  }, []);
+	};
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(160);
+	var content = __webpack_require__(165);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(162)(content, {});
+	var update = __webpack_require__(167)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -19748,21 +19909,21 @@
 	}
 
 /***/ },
-/* 160 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(161)();
+	exports = module.exports = __webpack_require__(166)();
 	// imports
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic,900,900italic);", ""]);
 	
 	// module
-	exports.push([module.id, ".header-wrapper {\n  height: 10rem; }\n  .header-wrapper h1 {\n    letter-spacing: 3px; }\n\nbody {\n  font-family: 'Playfair Display'; }\n\nimg {\n  vertical-align: top; }\n", ""]);
+	exports.push([module.id, ".header-wrapper {\n  height: 10rem; }\n  .header-wrapper h1 {\n    letter-spacing: 3px; }\n\n.gallery-wrapper {\n  max-width: 70rem;\n  width: 100%;\n  margin: 0 auto; }\n  .gallery-wrapper .section-wrapper {\n    width: 100%;\n    display: flex;\n    flex-flow: row nowrap;\n    justify-content: space-around; }\n    .gallery-wrapper .section-wrapper .column-wrapper .column-container {\n      width: 100%;\n      display: inline-flex;\n      flex-flow: column nowrap;\n      justify-content: left;\n      align-content: space-between; }\n      .gallery-wrapper .section-wrapper .column-wrapper .column-container .image-wrapper {\n        width: 95%;\n        margin: 2.5% 0;\n        background: grey; }\n        .gallery-wrapper .section-wrapper .column-wrapper .column-container .image-wrapper img {\n          width: 100%;\n          background: grey; }\n\nbody {\n  font-family: 'Playfair Display'; }\n\nimg {\n  vertical-align: top; }\n", ""]);
 	
 	// exports
 
 
 /***/ },
-/* 161 */
+/* 166 */
 /***/ function(module, exports) {
 
 	/*
@@ -19818,7 +19979,7 @@
 
 
 /***/ },
-/* 162 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -20070,299 +20231,6 @@
 			URL.revokeObjectURL(oldSrc);
 	}
 
-
-/***/ },
-/* 163 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var PropTypes = _react2['default'].PropTypes;
-	var span = _react2['default'].DOM.span;
-	
-	var Status = {
-	  PENDING: 'pending',
-	  LOADING: 'loading',
-	  LOADED: 'loaded',
-	  FAILED: 'failed'
-	};
-	
-	var ImageLoader = (function (_React$Component) {
-	  function ImageLoader(props) {
-	    _classCallCheck(this, ImageLoader);
-	
-	    _get(Object.getPrototypeOf(ImageLoader.prototype), 'constructor', this).call(this, props);
-	    this.state = { status: props.src ? Status.LOADING : Status.PENDING };
-	  }
-	
-	  _inherits(ImageLoader, _React$Component);
-	
-	  _createClass(ImageLoader, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      if (this.state.status === Status.LOADING) {
-	        this.createLoader();
-	      }
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      if (this.props.src !== nextProps.src) {
-	        this.setState({
-	          status: nextProps.src ? Status.LOADING : Status.PENDING
-	        });
-	      }
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate() {
-	      if (this.state.status === Status.LOADING && !this.img) {
-	        this.createLoader();
-	      }
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      this.destroyLoader();
-	    }
-	  }, {
-	    key: 'getClassName',
-	    value: function getClassName() {
-	      var className = 'imageloader ' + this.state.status;
-	      if (this.props.className) className = '' + className + ' ' + this.props.className;
-	      return className;
-	    }
-	  }, {
-	    key: 'createLoader',
-	    value: function createLoader() {
-	      this.destroyLoader(); // We can only have one loader at a time.
-	
-	      this.img = new Image();
-	      this.img.onload = this.handleLoad.bind(this);
-	      this.img.onerror = this.handleError.bind(this);
-	      this.img.src = this.props.src;
-	    }
-	  }, {
-	    key: 'destroyLoader',
-	    value: function destroyLoader() {
-	      if (this.img) {
-	        this.img.onload = null;
-	        this.img.onerror = null;
-	        this.img = null;
-	      }
-	    }
-	  }, {
-	    key: 'handleLoad',
-	    value: function handleLoad(event) {
-	      this.destroyLoader();
-	      this.setState({ status: Status.LOADED });
-	
-	      if (this.props.onLoad) this.props.onLoad(event);
-	    }
-	  }, {
-	    key: 'handleError',
-	    value: function handleError(error) {
-	      this.destroyLoader();
-	      this.setState({ status: Status.FAILED });
-	
-	      if (this.props.onError) this.props.onError(error);
-	    }
-	  }, {
-	    key: 'renderImg',
-	    value: function renderImg() {
-	      var _props2 = this.props;
-	      var src = _props2.src;
-	      var imgProps = _props2.imgProps;
-	
-	      var props = { src: src };
-	
-	      for (var k in imgProps) {
-	        if (imgProps.hasOwnProperty(k)) {
-	          props[k] = imgProps[k];
-	        }
-	      }
-	
-	      return _react2['default'].createElement('img', props);
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _props;
-	
-	      var wrapperProps = {
-	        className: this.getClassName()
-	      };
-	
-	      if (this.props.style) {
-	        wrapperProps.style = this.props.style;
-	      }
-	
-	      var wrapperArgs = [wrapperProps];
-	
-	      switch (this.state.status) {
-	        case Status.LOADED:
-	          wrapperArgs.push(this.renderImg());
-	          break;
-	
-	        case Status.FAILED:
-	          if (this.props.children) wrapperArgs.push(this.props.children);
-	          break;
-	
-	        default:
-	          if (this.props.preloader) wrapperArgs.push(this.props.preloader());
-	          break;
-	      }
-	
-	      return (_props = this.props).wrapper.apply(_props, wrapperArgs);
-	    }
-	  }], [{
-	    key: 'propTypes',
-	    value: {
-	      wrapper: PropTypes.func,
-	      className: PropTypes.string,
-	      style: PropTypes.object,
-	      preloader: PropTypes.func,
-	      src: PropTypes.string,
-	      onLoad: PropTypes.func,
-	      onError: PropTypes.func,
-	      imgProps: PropTypes.object
-	    },
-	    enumerable: true
-	  }, {
-	    key: 'defaultProps',
-	    value: {
-	      wrapper: span
-	    },
-	    enumerable: true
-	  }]);
-	
-	  return ImageLoader;
-	})(_react2['default'].Component);
-	
-	exports['default'] = ImageLoader;
-	module.exports = exports['default'];
-
-/***/ },
-/* 164 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	var imageLinks = exports.imageLinks = function imageLinks() {
-	  var buildArray = function buildArray(num, ext, root) {
-	    var iter = function iter(acc, arr) {
-	      if (acc === num + 1) return arr;else return iter(acc + 1, [].concat(arr, [root + acc + '.' + ext]));
-	    };
-	    return iter(1, []);
-	  };
-	  return {
-	    fashion: buildArray(18, 'jpg', 'img/fashion/large/'),
-	    portrait: buildArray(17, 'jpg', 'img/portrait/large/'),
-	    travel: buildArray(23, 'jpg', 'img/travel/large/')
-	  };
-	};
-
-/***/ },
-/* 165 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.TravelImages = exports.PortraitImages = exports.FashionImages = undefined;
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _Picture = __webpack_require__(167);
-	
-	var _Picture2 = _interopRequireDefault(_Picture);
-	
-	var _utils = __webpack_require__(164);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var FashionImages = exports.FashionImages = function FashionImages() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'images-wrapper fashion-images' },
-	    (0, _utils.imageLinks)().fashion.map(function (img, index) {
-	      return _react2.default.createElement(_Picture2.default, { src: img, key: index });
-	    })
-	  );
-	};
-	var PortraitImages = exports.PortraitImages = function PortraitImages() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'images-wrapper portrait-images' },
-	    (0, _utils.imageLinks)().portrait.map(function (img, index) {
-	      return _react2.default.createElement(_Picture2.default, { src: img, key: index });
-	    })
-	  );
-	};
-	var TravelImages = exports.TravelImages = function TravelImages() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'images-wrapper travel-images' },
-	    (0, _utils.imageLinks)().fashion.map(function (img, index) {
-	      return _react2.default.createElement(_Picture2.default, { src: img, key: index });
-	    })
-	  );
-	};
-
-/***/ },
-/* 166 */,
-/* 167 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactImageloader = __webpack_require__(163);
-	
-	var _reactImageloader2 = _interopRequireDefault(_reactImageloader);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = function (_ref) {
-	  var src = _ref.src;
-	  return _react2.default.createElement(
-	    _reactImageloader2.default,
-	    { src: src },
-	    _react2.default.createElement('div', { className: 'placeholder' })
-	  );
-	};
 
 /***/ }
 /******/ ]);
