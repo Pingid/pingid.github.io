@@ -19843,7 +19843,7 @@
 	
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LazyImage).call(this));
 	
-	    _this.state = { type: 'default', src: 'http://placehold.it/350x200', width: null, height: null };
+	    _this.state = { type: 'default', src: '', width: null, height: null };
 	    _this.imageLoad = _this.imageLoad.bind(_this);
 	    _this.imageSize = _this.imageSize.bind(_this);
 	    return _this;
@@ -19895,8 +19895,8 @@
 	      }
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'image-wrapper' },
-	        _react2.default.createElement('img', { ref: 'img', src: this.state.src, style: { width: width ? width : 'auto', height: height ? height : 'auto' } })
+	        { className: 'image-wrapper', style: { width: width ? width : 'auto', height: height ? height : 'auto' } },
+	        _react2.default.createElement('img', { ref: 'img', src: this.state.src })
 	      );
 	    }
 	  }]);
@@ -19943,7 +19943,7 @@
 	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic,900,900italic);", ""]);
 	
 	// module
-	exports.push([module.id, ".header-wrapper {\n  height: 10rem; }\n  .header-wrapper h1 {\n    letter-spacing: 3px; }\n\n.gallery-wrapper .section-wrapper {\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-around;\n  align-items: center; }\n  .gallery-wrapper .section-wrapper .image-wrapper {\n    margin-bottom: 5rem; }\n\nbody {\n  font-family: 'Playfair Display'; }\n\nimg {\n  vertical-align: top; }\n", ""]);
+	exports.push([module.id, ".header-wrapper {\n  height: 10rem; }\n  .header-wrapper h1 {\n    letter-spacing: 3px; }\n\n.gallery-wrapper .section-wrapper {\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-around;\n  align-items: center; }\n  .gallery-wrapper .section-wrapper .image-wrapper {\n    margin-bottom: 5rem;\n    background: blue; }\n    .gallery-wrapper .section-wrapper .image-wrapper img {\n      background: 'blue'; }\n\nbody {\n  font-family: 'Playfair Display'; }\n\nimg {\n  vertical-align: top;\n  width: 100%;\n  height: 100%; }\n", ""]);
 	
 	// exports
 
