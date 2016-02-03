@@ -20277,9 +20277,9 @@
 	    return iter(1, []);
 	  };
 	  return {
-	    fashion: buildArray(18, 'jpg', 'img/fashion/large'),
-	    portrait: buildArray(17, 'jpg', 'img/portrait/large'),
-	    travel: buildArray(23, 'jpg', 'img/travel/large')
+	    fashion: buildArray(18, 'jpg', 'img/fashion/large/'),
+	    portrait: buildArray(17, 'jpg', 'img/portrait/large/'),
+	    travel: buildArray(23, 'jpg', 'img/travel/large/')
 	  };
 	};
 
