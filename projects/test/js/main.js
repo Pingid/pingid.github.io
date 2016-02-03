@@ -19849,7 +19849,7 @@
 	      var img = new Image();
 	      img.onload = function () {
 	        var ratio = this.height / this.width;
-	        if (ratio > 1) {
+	        if (ratio > 1 && window.innerHeight - 100 / ratio < window.innerWidth) {
 	          var height = window.innerHeight - 100;
 	          that.setState({ type: type, src: src, height: height, width: height / ratio });
 	        } else {
