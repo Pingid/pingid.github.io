@@ -121,6 +121,12 @@
 	};
 	
 	(0, _reactDom.render)(_react2.default.createElement(Page, null), document.getElementById('main'));
+	
+	window.onresize = resize;
+	function resize() {
+	  // console.log('d');
+	  // render( <Page />, document.getElementById('main'));
+	}
 
 /***/ },
 /* 1 */
@@ -19839,30 +19845,43 @@
 	
 	    _this.state = { type: 'default', src: 'http://placehold.it/350x200', width: null, height: null };
 	    _this.imageLoad = _this.imageLoad.bind(_this);
+	    _this.imageSize = _this.imageSize.bind(_this);
 	    return _this;
 	  }
 	
 	  _createClass(LazyImage, [{
+	    key: 'imageSize',
+	    value: function imageSize(width, height, type, src) {
+	      var pWidth = window.innerWidth - 50;
+	      var pHeight = window.innerHeight - 100;
+	      var ratio = height / width;
+	      if (pWidth < 600) {
+	        if (ratio > 1 && pHeight / ratio < pWidth) {
+	          this.setState({ type: type, src: src, height: pHeight, width: pHeight / ratio });
+	        } else {
+	          this.setState({ type: type, src: src, width: pWidth, height: pWidth * ratio });
+	        }
+	      } else {
+	        if (ratio > 1 && pHeight / ratio < pWidth) {
+	          this.setState({ type: type, src: src, height: pHeight, width: pHeight / ratio });
+	        } else {
+	          this.setState({ type: type, src: src, width: (pWidth - 100) / 2, height: (pWidth - 100) / 2 * ratio });
+	        }
+	      }
+	    }
+	  }, {
 	    key: 'imageLoad',
 	    value: function imageLoad(src, type) {
 	      var that = this;
 	      var img = new Image();
 	      img.onload = function () {
-	        var ratio = this.height / this.width;
-	        if (ratio > 1 && window.innerHeight - 100 / ratio < window.innerWidth) {
-	          var height = window.innerHeight - 100;
-	          that.setState({ type: type, src: src, height: height, width: height / ratio });
-	        } else {
-	          var width = window.innerWidth / 2;
-	          that.setState({ type: type, src: src, width: width, height: ratio * width });
-	        }
+	        that.imageSize(this.width, this.height, type, src);
 	      };
 	      img.src = src;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log(window.innerHeight);
 	      var _state = this.state;
 	      var type = _state.type;
 	      var src = _state.src;
