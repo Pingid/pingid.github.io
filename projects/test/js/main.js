@@ -56,29 +56,33 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactDom = __webpack_require__(169);
+	var _reactDom = __webpack_require__(158);
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _redux = __webpack_require__(158);
+	var _redux = __webpack_require__(159);
 	
-	var _Images = __webpack_require__(171);
+	var _reduxLogger = __webpack_require__(169);
+	
+	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
+	
+	var _Images = __webpack_require__(170);
 	
 	var _Images2 = _interopRequireDefault(_Images);
 	
-	var _Slider = __webpack_require__(173);
+	var _Slider = __webpack_require__(190);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
-	var _reducer = __webpack_require__(168);
+	var _reducer = __webpack_require__(187);
 	
 	var _reducer2 = _interopRequireDefault(_reducer);
 	
-	var _schematizr = __webpack_require__(192);
+	var _schematizr = __webpack_require__(188);
 	
-	var _utils = __webpack_require__(170);
+	var _utils = __webpack_require__(186);
 	
-	__webpack_require__(188);
+	__webpack_require__(191);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -92,7 +96,7 @@
 	
 	// Logic
 	
-	var store = (0, _redux.createStore)(_reducer2.default);
+	var store = (0, _redux.createStore)(_reducer2.default, (0, _redux.applyMiddleware)((0, _reduxLogger2.default)()));
 	(0, _utils.aSynceImageLoad)((0, _schematizr.assemble)((0, _utils.imageLinks)()), store);
 	
 	// Styles
@@ -111,6 +115,11 @@
 	  _createClass(Page, [{
 	    key: 'render',
 	    value: function render() {
+	      var _props$store = this.props.store;
+	      var images = _props$store.images;
+	      var sliderView = _props$store.sliderView;
+	      var selected = _props$store.selected;
+	
 	      return _react2.default.createElement(
 	        'div',
 	        null,
@@ -123,11 +132,21 @@
 	            'Cali Lew'
 	          )
 	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'gallery-wrapper' },
-	          _react2.default.createElement(_Images2.default, { images: this.props.store.images })
-	        )
+	        _react2.default.createElement(_Images2.default, {
+	          images: images,
+	          handleSelect: function handleSelect(id) {
+	            store.dispatch({ type: _reducer.ITEM_SELECT, data: id });
+	            store.dispatch({ type: _reducer.TOGGLE_VIEW });
+	          } }),
+	        sliderView ? _react2.default.createElement(_Slider2.default, {
+	          image: images[selected - 1],
+	          selected: selected,
+	          handleSelect: function handleSelect(id) {
+	            return store.dispatch({ type: _reducer.ITEM_SELECT, data: id });
+	          },
+	          toggleView: function toggleView() {
+	            return store.dispatch({ type: _reducer.TOGGLE_VIEW });
+	          } }) : ''
 	      );
 	    }
 	  }]);
@@ -19739,32 +19758,41 @@
 /* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+	
+	module.exports = __webpack_require__(3);
+
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
 	
 	exports.__esModule = true;
 	exports.compose = exports.applyMiddleware = exports.bindActionCreators = exports.combineReducers = exports.createStore = undefined;
 	
-	var _createStore = __webpack_require__(159);
+	var _createStore = __webpack_require__(160);
 	
 	var _createStore2 = _interopRequireDefault(_createStore);
 	
-	var _combineReducers = __webpack_require__(163);
+	var _combineReducers = __webpack_require__(164);
 	
 	var _combineReducers2 = _interopRequireDefault(_combineReducers);
 	
-	var _bindActionCreators = __webpack_require__(165);
+	var _bindActionCreators = __webpack_require__(166);
 	
 	var _bindActionCreators2 = _interopRequireDefault(_bindActionCreators);
 	
-	var _applyMiddleware = __webpack_require__(166);
+	var _applyMiddleware = __webpack_require__(167);
 	
 	var _applyMiddleware2 = _interopRequireDefault(_applyMiddleware);
 	
-	var _compose = __webpack_require__(167);
+	var _compose = __webpack_require__(168);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
-	var _warning = __webpack_require__(164);
+	var _warning = __webpack_require__(165);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -19788,7 +19816,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -19797,7 +19825,7 @@
 	exports.ActionTypes = undefined;
 	exports["default"] = createStore;
 	
-	var _isPlainObject = __webpack_require__(160);
+	var _isPlainObject = __webpack_require__(161);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
@@ -20009,11 +20037,11 @@
 	}
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isHostObject = __webpack_require__(161),
-	    isObjectLike = __webpack_require__(162);
+	var isHostObject = __webpack_require__(162),
+	    isObjectLike = __webpack_require__(163);
 	
 	/** `Object#toString` result references. */
 	var objectTag = '[object Object]';
@@ -20083,7 +20111,7 @@
 
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports) {
 
 	/**
@@ -20109,7 +20137,7 @@
 
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports) {
 
 	/**
@@ -20143,7 +20171,7 @@
 
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -20151,13 +20179,13 @@
 	exports.__esModule = true;
 	exports["default"] = combineReducers;
 	
-	var _createStore = __webpack_require__(159);
+	var _createStore = __webpack_require__(160);
 	
-	var _isPlainObject = __webpack_require__(160);
+	var _isPlainObject = __webpack_require__(161);
 	
 	var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
 	
-	var _warning = __webpack_require__(164);
+	var _warning = __webpack_require__(165);
 	
 	var _warning2 = _interopRequireDefault(_warning);
 	
@@ -20276,7 +20304,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20305,7 +20333,7 @@
 	}
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -20361,7 +20389,7 @@
 	}
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20371,7 +20399,7 @@
 	exports.__esModule = true;
 	exports["default"] = applyMiddleware;
 	
-	var _compose = __webpack_require__(167);
+	var _compose = __webpack_require__(168);
 	
 	var _compose2 = _interopRequireDefault(_compose);
 	
@@ -20423,7 +20451,7 @@
 	}
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20457,62 +20485,201 @@
 	}
 
 /***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
+/* 169 */
+/***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.ADD_IMAGE = undefined;
-	
-	var _schematizr = __webpack_require__(192);
-	
-	var ADD_IMAGE = exports.ADD_IMAGE = 'ADD_IMAGE';
-	
-	var initState = {
-	  images: [],
-	  selected: 0,
-	  currentSize: 'none'
+	var repeat = function repeat(str, times) {
+	  return new Array(times + 1).join(str);
+	};
+	var pad = function pad(num, maxLength) {
+	  return repeat("0", maxLength - num.toString().length) + num;
+	};
+	var formatTime = function formatTime(time) {
+	  return " @ " + pad(time.getHours(), 2) + ":" + pad(time.getMinutes(), 2) + ":" + pad(time.getSeconds(), 2) + "." + pad(time.getMilliseconds(), 3);
 	};
 	
-	exports.default = function () {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initState : arguments[0];
-	  var action = arguments[1];
+	// Use the new performance api to get better precision if available
+	var timer = typeof performance !== "undefined" && typeof performance.now === "function" ? performance : Date;
 	
-	  switch (action.type) {
-	    case ADD_IMAGE:
-	      var exists = state.images.filter(function (x) {
-	        return x._id === action.data._id;
-	      });
-	      if (exists[0]) {
-	        console.log('Going Large');
-	        return Object.assign({}, state, {
-	          images: (0, _schematizr.findById)(function (img) {
-	            return action.data;
-	          }, state.images, action.data._id)
-	        });
-	      } else {
-	        console.log('Initial Load');
-	        return Object.assign({}, state, {
-	          images: [].concat(state.images, action.data)
-	        });
+	/**
+	 * Creates logger with followed options
+	 *
+	 * @namespace
+	 * @property {object} options - options for logger
+	 * @property {string} options.level - console[level]
+	 * @property {boolean} options.duration - print duration of each action?
+	 * @property {boolean} options.timestamp - print timestamp with each action?
+	 * @property {object} options.colors - custom colors
+	 * @property {object} options.logger - implementation of the `console` API
+	 * @property {boolean} options.logErrors - should errors in action execution be caught, logged, and re-thrown?
+	 * @property {boolean} options.collapsed - is group collapsed?
+	 * @property {boolean} options.predicate - condition which resolves logger behavior
+	 * @property {function} options.stateTransformer - transform state before print
+	 * @property {function} options.actionTransformer - transform action before print
+	 * @property {function} options.errorTransformer - transform error before print
+	 */
+	
+	function createLogger() {
+	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var _options$level = options.level;
+	  var level = _options$level === undefined ? "log" : _options$level;
+	  var _options$logger = options.logger;
+	  var logger = _options$logger === undefined ? console : _options$logger;
+	  var _options$logErrors = options.logErrors;
+	  var logErrors = _options$logErrors === undefined ? true : _options$logErrors;
+	  var collapsed = options.collapsed;
+	  var predicate = options.predicate;
+	  var _options$duration = options.duration;
+	  var duration = _options$duration === undefined ? false : _options$duration;
+	  var _options$timestamp = options.timestamp;
+	  var timestamp = _options$timestamp === undefined ? true : _options$timestamp;
+	  var transformer = options.transformer;
+	  var _options$stateTransfo = options.stateTransformer;
+	  var // deprecated
+	  stateTransformer = _options$stateTransfo === undefined ? function (state) {
+	    return state;
+	  } : _options$stateTransfo;
+	  var _options$actionTransf = options.actionTransformer;
+	  var actionTransformer = _options$actionTransf === undefined ? function (actn) {
+	    return actn;
+	  } : _options$actionTransf;
+	  var _options$errorTransfo = options.errorTransformer;
+	  var errorTransformer = _options$errorTransfo === undefined ? function (error) {
+	    return error;
+	  } : _options$errorTransfo;
+	  var _options$colors = options.colors;
+	  var colors = _options$colors === undefined ? {
+	    title: function title() {
+	      return "#000000";
+	    },
+	    prevState: function prevState() {
+	      return "#9E9E9E";
+	    },
+	    action: function action() {
+	      return "#03A9F4";
+	    },
+	    nextState: function nextState() {
+	      return "#4CAF50";
+	    },
+	    error: function error() {
+	      return "#F20404";
+	    }
+	  } : _options$colors;
+	
+	  // exit if console undefined
+	
+	  if (typeof logger === "undefined") {
+	    return function () {
+	      return function (next) {
+	        return function (action) {
+	          return next(action);
+	        };
+	      };
+	    };
+	  }
+	
+	  if (transformer) {
+	    console.error("Option 'transformer' is deprecated, use stateTransformer instead");
+	  }
+	
+	  var logBuffer = [];
+	  function printBuffer() {
+	    logBuffer.forEach(function (logEntry, key) {
+	      var started = logEntry.started;
+	      var action = logEntry.action;
+	      var prevState = logEntry.prevState;
+	      var error = logEntry.error;
+	      var took = logEntry.took;
+	      var nextState = logEntry.nextState;
+	
+	      var nextEntry = logBuffer[key + 1];
+	      if (nextEntry) {
+	        nextState = nextEntry.prevState;
+	        took = nextEntry.started - started;
+	      }
+	      // message
+	      var formattedAction = actionTransformer(action);
+	      var time = new Date(started);
+	      var isCollapsed = typeof collapsed === "function" ? collapsed(function () {
+	        return nextState;
+	      }, action) : collapsed;
+	
+	      var formattedTime = formatTime(time);
+	      var titleCSS = colors.title ? "color: " + colors.title(formattedAction) + ";" : null;
+	      var title = "action " + formattedAction.type + (timestamp ? formattedTime : "") + (duration ? " in " + took.toFixed(2) + " ms" : "");
+	
+	      // render
+	      try {
+	        if (isCollapsed) {
+	          if (colors.title) logger.groupCollapsed("%c " + title, titleCSS);else logger.groupCollapsed(title);
+	        } else {
+	          if (colors.title) logger.group("%c " + title, titleCSS);else logger.group(title);
+	        }
+	      } catch (e) {
+	        logger.log(title);
 	      }
 	
-	    default:
-	      return state;
-	  }
-	};
-
-/***/ },
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
+	      if (colors.prevState) logger[level]("%c prev state", "color: " + colors.prevState(prevState) + "; font-weight: bold", prevState);else logger[level]("prev state", prevState);
 	
-	module.exports = __webpack_require__(3);
-
+	      if (colors.action) logger[level]("%c action", "color: " + colors.action(formattedAction) + "; font-weight: bold", formattedAction);else logger[level]("action", formattedAction);
+	
+	      if (error) {
+	        if (colors.error) logger[level]("%c error", "color: " + colors.error(error, prevState) + "; font-weight: bold", error);else logger[level]("error", error);
+	      }
+	
+	      if (colors.nextState) logger[level]("%c next state", "color: " + colors.nextState(nextState) + "; font-weight: bold", nextState);else logger[level]("next state", nextState);
+	
+	      try {
+	        logger.groupEnd();
+	      } catch (e) {
+	        logger.log("—— log end ——");
+	      }
+	    });
+	    logBuffer.length = 0;
+	  }
+	
+	  return function (_ref) {
+	    var getState = _ref.getState;
+	    return function (next) {
+	      return function (action) {
+	        // exit early if predicate function returns false
+	        if (typeof predicate === "function" && !predicate(getState, action)) {
+	          return next(action);
+	        }
+	
+	        var logEntry = {};
+	        logBuffer.push(logEntry);
+	
+	        logEntry.started = timer.now();
+	        logEntry.prevState = stateTransformer(getState());
+	        logEntry.action = action;
+	
+	        var returnedValue = undefined;
+	        if (logErrors) {
+	          try {
+	            returnedValue = next(action);
+	          } catch (e) {
+	            logEntry.error = errorTransformer(e);
+	          }
+	        } else {
+	          returnedValue = next(action);
+	        }
+	
+	        logEntry.took = timer.now() - logEntry.started;
+	        logEntry.nextState = stateTransformer(getState());
+	
+	        printBuffer();
+	
+	        if (logEntry.error) throw logEntry.error;
+	        return returnedValue;
+	      };
+	    };
+	  };
+	}
+	
+	module.exports = createLogger;
 
 /***/ },
 /* 170 */
@@ -20523,86 +20690,62 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.aSynceImageLoad = exports.imageSize = exports.imageLinks = undefined;
 	
-	var _reducer = __webpack_require__(168);
+	var _react = __webpack_require__(1);
 	
-	var _reducer2 = _interopRequireDefault(_reducer);
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(158);
+	
+	var _reactMotion = __webpack_require__(171);
+	
+	var _LazyImage = __webpack_require__(185);
+	
+	var _LazyImage2 = _interopRequireDefault(_LazyImage);
+	
+	var _utils = __webpack_require__(186);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var imageLinks = exports.imageLinks = function imageLinks() {
-	  var buildArray = function buildArray(num, catagory) {
-	    var iter = function iter(acc, arr) {
-	      if (acc === num + 1) return arr;
-	      return iter(acc + 1, [].concat(arr, [{
-	        small: 'img/' + catagory + '/' + acc + '.jpg',
-	        large: 'img/' + catagory + '/' + 'large/' + acc + '.jpg'
-	      }]));
-	    };
-	    return iter(1, []);
-	  };
-	  return [].concat(buildArray(18, 'fashion'), buildArray(17, 'portrait'), buildArray(23, 'travel'));
-	};
-	// return [].concat(buildArray(18, 'fashion'), buildArray(17, 'portrait'), buildArray(23, 'travel'))
+	exports.default = function (_ref) {
+	  var images = _ref.images;
+	  var handleSelect = _ref.handleSelect;
 	
-	var imageSize = exports.imageSize = function imageSize(ratio, width, height) {
-	  if (height / ratio < width) {
-	    return { width: height / ratio, height: height };
-	  }
-	  return { width: width, height: width * ratio };
-	};
-	
-	// export const aSynceImageLoad = (array, store) => {
-	//   const loadImage = (img, size, cb) => {
-	//     let newImg = new Image();
-	//     const src = img[size]
-	//     newImg.onload = function() {
-	//       store.dispatch({
-	//         type: ADD_IMAGE,
-	//         data: Object.assign({}, img, {
-	//           ratio: this.height / this.width,
-	//           src
-	//         })
-	//       })
-	//       return setTimeout(cb, 500)
-	//     }
-	//     newImg.src = src
-	//   }
-	//   const recurseLoad = (arr, size) => {
-	//     if(arr.length < 1 && size === 'small') return recurseLoad(array, 'large');
-	//     else if(arr.length < 1 && size === 'large') return
-	//     else {
-	//       return loadImage(arr[0], size, () => recurseLoad(arr.slice(1, arr.length), size))
-	//     }
-	//   }
-	//   return recurseLoad(array, 'small')
-	// }
-	
-	var aSynceImageLoad = exports.aSynceImageLoad = function aSynceImageLoad(array, store) {
-	  var loadImage = function loadImage(img, size) {
-	    var newImg = new Image();
-	    newImg.onload = function () {
-	      store.dispatch({
-	        type: _reducer.ADD_IMAGE,
-	        data: Object.assign({}, img, {
-	          ratio: this.height / this.width,
-	          src: img[size]
-	        })
-	      });
-	      if (size === 'small') {
-	        return loadImage(img, 'large');
-	      }
-	    };
-	    newImg.src = img[size];
-	  };
-	  var recurseLoad = function recurseLoad(images) {
-	    if (images.length < 1) return 'done';else {
-	      loadImage(images[0], 'small');
-	      return recurseLoad(images.slice(1, images.length));
+	  var style = function style(img) {
+	    if (window.innerWidth < 600) {
+	      return (0, _utils.imageSize)(img.ratio, window.innerWidth - 20, window.innerHeight - 20);
 	    }
+	    return (0, _utils.imageSize)(img.ratio, (window.innerWidth - 100) / 2, window.innerHeight - 100);
 	  };
-	  return recurseLoad(array);
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'gallery-wrapper' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'section-wrapper' },
+	      images.map(function (img, index) {
+	        return _react2.default.createElement(
+	          _reactMotion.Motion,
+	          { defaultStyle: { opacity: 0, marginTop: 500 }, style: { opacity: (0, _reactMotion.spring)(1, { stiffness: 90, damping: 60 }), marginTop: (0, _reactMotion.spring)(0) }, key: index },
+	          function (styles) {
+	            var newStyle = Object.assign({}, style(img), {
+	              opacity: styles.opacity,
+	              marginTop: styles.marginTop
+	            });
+	            return _react2.default.createElement(
+	              'div',
+	              {
+	                className: 'image-wrapper',
+	                style: newStyle },
+	              _react2.default.createElement('img', { src: img.src, onClick: function onClick() {
+	                  return handleSelect(img._id);
+	                } })
+	            );
+	          }
+	        );
+	      })
+	    )
+	  );
 	};
 
 /***/ },
@@ -20611,270 +20754,38 @@
 
 	'use strict';
 	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(169);
-	
-	var _reactMotion = __webpack_require__(174);
-	
-	var _LazyImage = __webpack_require__(172);
-	
-	var _LazyImage2 = _interopRequireDefault(_LazyImage);
-	
-	var _utils = __webpack_require__(170);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// export default ({ images }) => (
-	//   <div className='section-wrapper'>
-	//     { images.map((img, index) => {
-	//         return (
-	//           <LazyImage src={img} key={index} />
-	//         )
-	//       })
-	//     }
-	//   </div>
-	// )
-	
-	exports.default = function (_ref) {
-	  var images = _ref.images;
-	
-	  var style = function style(img) {
-	    if (window.innerWidth < 600) {
-	      return (0, _utils.imageSize)(img.ratio, window.innerWidth, window.innerHeight);
-	    }
-	    return (0, _utils.imageSize)(img.ratio, window.innerWidth / 2, window.innerHeight);
-	  };
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'section-wrapper' },
-	    images.map(function (img, index) {
-	      return _react2.default.createElement(
-	        _reactMotion.Motion,
-	        { defaultStyle: { opacity: 0, marginTop: 50 }, style: { opacity: (0, _reactMotion.spring)(1), marginTop: (0, _reactMotion.spring)(0) }, key: index },
-	        function (styles) {
-	          var newStyle = Object.assign({}, style(img), {
-	            opacity: styles.opacity,
-	            marginTop: styles.marginTop
-	          });
-	          return _react2.default.createElement(
-	            'div',
-	            {
-	              className: 'image-wrapper',
-	              style: newStyle },
-	            _react2.default.createElement('img', { src: img.src })
-	          );
-	        }
-	      );
-	    })
-	  );
-	};
-
-/***/ },
-/* 172 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactDom = __webpack_require__(169);
-	
-	var _utils = __webpack_require__(170);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var LazyImage = function (_Component) {
-	  _inherits(LazyImage, _Component);
-	
-	  function LazyImage() {
-	    _classCallCheck(this, LazyImage);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LazyImage).call(this));
-	
-	    _this.state = { type: 'default', src: '', width: null, height: null };
-	
-	    _this.imageLoad = _this.imageLoad.bind(_this);
-	    _this.handleImageSize = _this.handleImageSize.bind(_this);
-	    return _this;
-	  }
-	
-	  _createClass(LazyImage, [{
-	    key: 'handleImageSize',
-	    value: function handleImageSize(width, height, type, src) {
-	      var pWidth = window.innerWidth - 50;
-	      var pHeight = window.innerHeight - 100;
-	      var newSize = undefined;
-	      if (pWidth < 600) {
-	        newSize = (0, _utils.imageSize)({ w: width, h: height }, { w: pWidth, h: pHeight });
-	      } else {
-	        newSize = (0, _utils.imageSize)({ w: width, h: height }, { w: pWidth / 2, h: pHeight });
-	      }
-	      this.setState({ type: type, src: src, width: newSize.width, height: newSize.height });
-	    }
-	  }, {
-	    key: 'imageLoad',
-	    value: function imageLoad(src, type) {
-	      var that = this;
-	      var img = new Image();
-	      img.onload = function () {
-	        that.handleImageSize(this.width, this.height, type, src);
-	      };
-	      img.src = src;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _state = this.state;
-	      var type = _state.type;
-	      var src = _state.src;
-	      var width = _state.width;
-	      var height = _state.height;
-	
-	      if (type === 'default') {
-	        this.imageLoad(this.props.src.small, 'small');
-	      } else if (type === 'small') {
-	        this.imageLoad(this.props.src.large, 'large');
-	      }
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'image-wrapper', style: { width: width ? width : 'auto', height: height ? height : 'auto' } },
-	        _react2.default.createElement('img', { ref: 'img', src: this.state.src })
-	      );
-	    }
-	  }]);
-	
-	  return LazyImage;
-	}(_react.Component);
-	// style={{ maxHeight: window.innerHeight -100}}
-
-	exports.default = LazyImage;
-
-/***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _reactMotion = __webpack_require__(174);
-	
-	var _utils = __webpack_require__(170);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Slider = function (_Component) {
-	  _inherits(Slider, _Component);
-	
-	  function Slider() {
-	    _classCallCheck(this, Slider);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).call(this));
-	
-	    _this.state = { images: _this.props.images, currentImg: null };
-	    return _this;
-	  }
-	
-	  _createClass(Slider, [{
-	    key: 'render',
-	    value: function render() {
-	      var img = this.props.srcArray[this.props.selected].large;
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'slider-wrapper' },
-	        _react2.default.createElement(
-	          _reactMotion.Motion,
-	          { style: { x: (0, _reactMotion.spring)(10) } },
-	          function (style) {
-	            return _react2.default.createElement(
-	              'div',
-	              { className: 'image-slide-container' },
-	              _react2.default.createElement('img', { src: img })
-	            );
-	          }
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Slider;
-	}(_react.Component);
-
-	exports.default = Slider;
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
 	exports.__esModule = true;
 	
 	function _interopRequire(obj) { return obj && obj.__esModule ? obj['default'] : obj; }
 	
-	var _Motion = __webpack_require__(175);
+	var _Motion = __webpack_require__(172);
 	
 	exports.Motion = _interopRequire(_Motion);
 	
-	var _StaggeredMotion = __webpack_require__(182);
+	var _StaggeredMotion = __webpack_require__(179);
 	
 	exports.StaggeredMotion = _interopRequire(_StaggeredMotion);
 	
-	var _TransitionMotion = __webpack_require__(183);
+	var _TransitionMotion = __webpack_require__(180);
 	
 	exports.TransitionMotion = _interopRequire(_TransitionMotion);
 	
-	var _spring = __webpack_require__(185);
+	var _spring = __webpack_require__(182);
 	
 	exports.spring = _interopRequire(_spring);
 	
-	var _presets = __webpack_require__(186);
+	var _presets = __webpack_require__(183);
 	
 	exports.presets = _interopRequire(_presets);
 	
 	// deprecated, dummy warning function
 	
-	var _reorderKeys = __webpack_require__(187);
+	var _reorderKeys = __webpack_require__(184);
 	
 	exports.reorderKeys = _interopRequire(_reorderKeys);
 
 /***/ },
-/* 175 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -20885,27 +20796,27 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _mapToZero = __webpack_require__(176);
+	var _mapToZero = __webpack_require__(173);
 	
 	var _mapToZero2 = _interopRequireDefault(_mapToZero);
 	
-	var _stripStyle = __webpack_require__(177);
+	var _stripStyle = __webpack_require__(174);
 	
 	var _stripStyle2 = _interopRequireDefault(_stripStyle);
 	
-	var _stepper3 = __webpack_require__(178);
+	var _stepper3 = __webpack_require__(175);
 	
 	var _stepper4 = _interopRequireDefault(_stepper3);
 	
-	var _performanceNow = __webpack_require__(179);
+	var _performanceNow = __webpack_require__(176);
 	
 	var _performanceNow2 = _interopRequireDefault(_performanceNow);
 	
-	var _raf = __webpack_require__(180);
+	var _raf = __webpack_require__(177);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _shouldStopAnimation = __webpack_require__(181);
+	var _shouldStopAnimation = __webpack_require__(178);
 	
 	var _shouldStopAnimation2 = _interopRequireDefault(_shouldStopAnimation);
 	
@@ -21120,7 +21031,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 176 */
+/* 173 */
 /***/ function(module, exports) {
 
 	
@@ -21144,7 +21055,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 177 */
+/* 174 */
 /***/ function(module, exports) {
 
 	
@@ -21170,7 +21081,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 178 */
+/* 175 */
 /***/ function(module, exports) {
 
 	
@@ -21218,7 +21129,7 @@
 	// array reference around.
 
 /***/ },
-/* 179 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {// Generated by CoffeeScript 1.7.1
@@ -21257,10 +21168,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 180 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var now = __webpack_require__(179)
+	var now = __webpack_require__(176)
 	  , global = typeof window === 'undefined' ? {} : window
 	  , vendors = ['moz', 'webkit']
 	  , suffix = 'AnimationFrame'
@@ -21331,7 +21242,7 @@
 
 
 /***/ },
-/* 181 */
+/* 178 */
 /***/ function(module, exports) {
 
 	
@@ -21367,7 +21278,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 182 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21378,27 +21289,27 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _mapToZero = __webpack_require__(176);
+	var _mapToZero = __webpack_require__(173);
 	
 	var _mapToZero2 = _interopRequireDefault(_mapToZero);
 	
-	var _stripStyle = __webpack_require__(177);
+	var _stripStyle = __webpack_require__(174);
 	
 	var _stripStyle2 = _interopRequireDefault(_stripStyle);
 	
-	var _stepper3 = __webpack_require__(178);
+	var _stepper3 = __webpack_require__(175);
 	
 	var _stepper4 = _interopRequireDefault(_stepper3);
 	
-	var _performanceNow = __webpack_require__(179);
+	var _performanceNow = __webpack_require__(176);
 	
 	var _performanceNow2 = _interopRequireDefault(_performanceNow);
 	
-	var _raf = __webpack_require__(180);
+	var _raf = __webpack_require__(177);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _shouldStopAnimation = __webpack_require__(181);
+	var _shouldStopAnimation = __webpack_require__(178);
 	
 	var _shouldStopAnimation2 = _interopRequireDefault(_shouldStopAnimation);
 	
@@ -21634,7 +21545,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 183 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21645,31 +21556,31 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _mapToZero = __webpack_require__(176);
+	var _mapToZero = __webpack_require__(173);
 	
 	var _mapToZero2 = _interopRequireDefault(_mapToZero);
 	
-	var _stripStyle = __webpack_require__(177);
+	var _stripStyle = __webpack_require__(174);
 	
 	var _stripStyle2 = _interopRequireDefault(_stripStyle);
 	
-	var _stepper3 = __webpack_require__(178);
+	var _stepper3 = __webpack_require__(175);
 	
 	var _stepper4 = _interopRequireDefault(_stepper3);
 	
-	var _mergeDiff = __webpack_require__(184);
+	var _mergeDiff = __webpack_require__(181);
 	
 	var _mergeDiff2 = _interopRequireDefault(_mergeDiff);
 	
-	var _performanceNow = __webpack_require__(179);
+	var _performanceNow = __webpack_require__(176);
 	
 	var _performanceNow2 = _interopRequireDefault(_performanceNow);
 	
-	var _raf = __webpack_require__(180);
+	var _raf = __webpack_require__(177);
 	
 	var _raf2 = _interopRequireDefault(_raf);
 	
-	var _shouldStopAnimation = __webpack_require__(181);
+	var _shouldStopAnimation = __webpack_require__(178);
 	
 	var _shouldStopAnimation2 = _interopRequireDefault(_shouldStopAnimation);
 	
@@ -22127,7 +22038,7 @@
 	// that you've unmounted but that's still animating. This is where it lives
 
 /***/ },
-/* 184 */
+/* 181 */
 /***/ function(module, exports) {
 
 	
@@ -22240,7 +22151,7 @@
 	// to loop through and find a key's index each time), but I no longer care
 
 /***/ },
-/* 185 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22253,7 +22164,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _presets = __webpack_require__(186);
+	var _presets = __webpack_require__(183);
 	
 	var _presets2 = _interopRequireDefault(_presets);
 	
@@ -22268,7 +22179,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 186 */
+/* 183 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -22283,7 +22194,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 187 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -22306,357 +22217,268 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 188 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	'use strict';
 	
-	// load the styles
-	var content = __webpack_require__(189);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(191)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(158);
+	
+	var _utils = __webpack_require__(186);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var LazyImage = function (_Component) {
+	  _inherits(LazyImage, _Component);
+	
+	  function LazyImage() {
+	    _classCallCheck(this, LazyImage);
+	
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LazyImage).call(this));
+	
+	    _this.state = { type: 'default', src: '', width: null, height: null };
+	
+	    _this.imageLoad = _this.imageLoad.bind(_this);
+	    _this.handleImageSize = _this.handleImageSize.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(LazyImage, [{
+	    key: 'handleImageSize',
+	    value: function handleImageSize(width, height, type, src) {
+	      var pWidth = window.innerWidth - 50;
+	      var pHeight = window.innerHeight - 100;
+	      var newSize = undefined;
+	      if (pWidth < 600) {
+	        newSize = (0, _utils.imageSize)({ w: width, h: height }, { w: pWidth, h: pHeight });
+	      } else {
+	        newSize = (0, _utils.imageSize)({ w: width, h: height }, { w: pWidth / 2, h: pHeight });
+	      }
+	      this.setState({ type: type, src: src, width: newSize.width, height: newSize.height });
+	    }
+	  }, {
+	    key: 'imageLoad',
+	    value: function imageLoad(src, type) {
+	      var that = this;
+	      var img = new Image();
+	      img.onload = function () {
+	        that.handleImageSize(this.width, this.height, type, src);
+	      };
+	      img.src = src;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _state = this.state;
+	      var type = _state.type;
+	      var src = _state.src;
+	      var width = _state.width;
+	      var height = _state.height;
+	
+	      if (type === 'default') {
+	        this.imageLoad(this.props.src.small, 'small');
+	      } else if (type === 'small') {
+	        this.imageLoad(this.props.src.large, 'large');
+	      }
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'image-wrapper', style: { width: width ? width : 'auto', height: height ? height : 'auto' } },
+	        _react2.default.createElement('img', { ref: 'img', src: this.state.src })
+	      );
+	    }
+	  }]);
+	
+	  return LazyImage;
+	}(_react.Component);
+	// style={{ maxHeight: window.innerHeight -100}}
+
+	exports.default = LazyImage;
 
 /***/ },
-/* 189 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(190)();
-	// imports
-	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic,900,900italic);", ""]);
+	'use strict';
 	
-	// module
-	exports.push([module.id, ".header-wrapper h1 {\n  letter-spacing: 3px;\n  text-align: center;\n  font-size: 8rem;\n  margin: 10rem 0rem;\n  line-height: 9.5rem; }\n\n.gallery-wrapper .section-wrapper {\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-around;\n  align-items: center; }\n  .gallery-wrapper .section-wrapper .image-wrapper {\n    margin-bottom: 5rem;\n    background: blue; }\n    .gallery-wrapper .section-wrapper .image-wrapper img {\n      background: 'blue'; }\n\n.slider-wrapper {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%; }\n\nbody {\n  font-family: 'Playfair Display'; }\n\nimg {\n  vertical-align: top;\n  width: 100%;\n  height: 100%; }\n", ""]);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.aSynceImageLoad = exports.imageSize = exports.imageLinks = undefined;
 	
-	// exports
-
-
-/***/ },
-/* 190 */
-/***/ function(module, exports) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
+	var _reducer = __webpack_require__(187);
 	
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
+	var _reducer2 = _interopRequireDefault(_reducer);
 	
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var imageLinks = exports.imageLinks = function imageLinks() {
+	  var buildArray = function buildArray(num, catagory) {
+	    var iter = function iter(acc, arr) {
+	      if (acc === num + 1) return arr;
+	      return iter(acc + 1, [].concat(arr, [{
+	        small: 'img/' + catagory + '/' + acc + '.jpg',
+	        large: 'img/' + catagory + '/' + 'large/' + acc + '.jpg'
+	      }]));
+	    };
+	    return iter(1, []);
+	  };
+	  return [].concat(buildArray(9, 'fashion'));
+	};
+	// return [].concat(buildArray(18, 'fashion'), buildArray(17, 'portrait'), buildArray(23, 'travel'))
+	
+	var imageSize = exports.imageSize = function imageSize(ratio, width, height) {
+	  if (height / ratio < width) {
+	    return { width: height / ratio, height: height };
+	  }
+	  return { width: width, height: width * ratio };
+	};
+	
+	// export const aSynceImageLoad = (array, store) => {
+	//   const loadImage = (img, size, cb) => {
+	//     let newImg = new Image();
+	//     const src = img[size]
+	//     newImg.onload = function() {
+	//       store.dispatch({
+	//         type: ADD_IMAGE,
+	//         data: Object.assign({}, img, {
+	//           ratio: this.height / this.width,
+	//           src
+	//         })
+	//       })
+	//       return setTimeout(cb, 500)
+	//     }
+	//     newImg.src = src
+	//   }
+	//   const recurseLoad = (arr, size) => {
+	//     if(arr.length < 1 && size === 'small') return recurseLoad(array, 'large');
+	//     else if(arr.length < 1 && size === 'large') return
+	//     else {
+	//       return loadImage(arr[0], size, () => recurseLoad(arr.slice(1, arr.length), size))
+	//     }
+	//   }
+	//   return recurseLoad(array, 'small')
+	// }
+	
+	var aSynceImageLoad = exports.aSynceImageLoad = function aSynceImageLoad(array, store) {
+	  var loadImage = function loadImage(img, size) {
+	    var newImg = new Image();
+	    newImg.onload = function () {
+	      store.dispatch({
+	        type: _reducer.ADD_IMAGE,
+	        data: Object.assign({}, img, {
+	          ratio: this.height / this.width,
+	          src: img[size]
+	        })
+	      });
+	      if (size === 'small') {
+	        return setTimeout(function () {
+	          return loadImage(img, 'large');
+	        }, 500);
+	      }
+	    };
+	    newImg.src = img[size];
+	  };
+	  var recurseLoad = function recurseLoad(images) {
+	    if (images.length < 1) return 'done';else {
+	      loadImage(images[0], 'small');
+	      return setTimeout(function () {
+	        return recurseLoad(images.slice(1, images.length));
+	      }, 200);
+	    }
+	  };
+	  return recurseLoad(array);
 	};
 
-
 /***/ },
-/* 191 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	var stylesInDom = {},
-		memoize = function(fn) {
-			var memo;
-			return function () {
-				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
-				return memo;
-			};
-		},
-		isOldIE = memoize(function() {
-			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
-		}),
-		getHeadElement = memoize(function () {
-			return document.head || document.getElementsByTagName("head")[0];
-		}),
-		singletonElement = null,
-		singletonCounter = 0,
-		styleElementsInsertedAtTop = [];
+	'use strict';
 	
-	module.exports = function(list, options) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.TOGGLE_VIEW = exports.ITEM_SELECT = exports.ADD_IMAGE = undefined;
 	
-		options = options || {};
-		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-		// tags it will allow on a page
-		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	var _schematizr = __webpack_require__(188);
 	
-		// By default, add <style> tags to the bottom of <head>.
-		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	var ADD_IMAGE = exports.ADD_IMAGE = 'ADD_IMAGE';
+	var ITEM_SELECT = exports.ITEM_SELECT = 'ITEM_SELECT';
+	var TOGGLE_VIEW = exports.TOGGLE_VIEW = 'TOGGLE_VIEW';
 	
-		var styles = listToStyles(list);
-		addStylesToDom(styles, options);
+	var initState = {
+	  images: [],
+	  selected: 0,
+	  currentSize: 'none',
+	  sliderView: false
+	};
 	
-		return function update(newList) {
-			var mayRemove = [];
-			for(var i = 0; i < styles.length; i++) {
-				var item = styles[i];
-				var domStyle = stylesInDom[item.id];
-				domStyle.refs--;
-				mayRemove.push(domStyle);
-			}
-			if(newList) {
-				var newStyles = listToStyles(newList);
-				addStylesToDom(newStyles, options);
-			}
-			for(var i = 0; i < mayRemove.length; i++) {
-				var domStyle = mayRemove[i];
-				if(domStyle.refs === 0) {
-					for(var j = 0; j < domStyle.parts.length; j++)
-						domStyle.parts[j]();
-					delete stylesInDom[domStyle.id];
-				}
-			}
-		};
-	}
+	exports.default = function () {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initState : arguments[0];
+	  var action = arguments[1];
 	
-	function addStylesToDom(styles, options) {
-		for(var i = 0; i < styles.length; i++) {
-			var item = styles[i];
-			var domStyle = stylesInDom[item.id];
-			if(domStyle) {
-				domStyle.refs++;
-				for(var j = 0; j < domStyle.parts.length; j++) {
-					domStyle.parts[j](item.parts[j]);
-				}
-				for(; j < item.parts.length; j++) {
-					domStyle.parts.push(addStyle(item.parts[j], options));
-				}
-			} else {
-				var parts = [];
-				for(var j = 0; j < item.parts.length; j++) {
-					parts.push(addStyle(item.parts[j], options));
-				}
-				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
-			}
-		}
-	}
+	  switch (action.type) {
 	
-	function listToStyles(list) {
-		var styles = [];
-		var newStyles = {};
-		for(var i = 0; i < list.length; i++) {
-			var item = list[i];
-			var id = item[0];
-			var css = item[1];
-			var media = item[2];
-			var sourceMap = item[3];
-			var part = {css: css, media: media, sourceMap: sourceMap};
-			if(!newStyles[id])
-				styles.push(newStyles[id] = {id: id, parts: [part]});
-			else
-				newStyles[id].parts.push(part);
-		}
-		return styles;
-	}
+	    case ADD_IMAGE:
+	      var exists = state.images.filter(function (x) {
+	        return x._id === action.data._id;
+	      });
+	      if (exists[0]) {
+	        // console.log('Going Large');
+	        return Object.assign({}, state, {
+	          images: (0, _schematizr.findById)(function (img) {
+	            return action.data;
+	          }, state.images, action.data._id)
+	        });
+	      } else {
+	        // console.log('Initial Load');
+	        return Object.assign({}, state, {
+	          images: [].concat(state.images, action.data)
+	        });
+	      }
 	
-	function insertStyleElement(options, styleElement) {
-		var head = getHeadElement();
-		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
-		if (options.insertAt === "top") {
-			if(!lastStyleElementInsertedAtTop) {
-				head.insertBefore(styleElement, head.firstChild);
-			} else if(lastStyleElementInsertedAtTop.nextSibling) {
-				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
-			} else {
-				head.appendChild(styleElement);
-			}
-			styleElementsInsertedAtTop.push(styleElement);
-		} else if (options.insertAt === "bottom") {
-			head.appendChild(styleElement);
-		} else {
-			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
-		}
-	}
+	    case ITEM_SELECT:
+	      if (action.data > state.images.length) {
+	        return Object.assign({}, state, {
+	          selected: 1
+	        });
+	      } else if (action.data < 1) {
+	        return Object.assign({}, state, {
+	          selected: state.images.length
+	        });
+	      }
+	      return Object.assign({}, state, {
+	        selected: action.data
+	      });
 	
-	function removeStyleElement(styleElement) {
-		styleElement.parentNode.removeChild(styleElement);
-		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
-		if(idx >= 0) {
-			styleElementsInsertedAtTop.splice(idx, 1);
-		}
-	}
+	    case TOGGLE_VIEW:
+	      return Object.assign({}, state, {
+	        sliderView: !state.sliderView
+	      });
 	
-	function createStyleElement(options) {
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		insertStyleElement(options, styleElement);
-		return styleElement;
-	}
-	
-	function createLinkElement(options) {
-		var linkElement = document.createElement("link");
-		linkElement.rel = "stylesheet";
-		insertStyleElement(options, linkElement);
-		return linkElement;
-	}
-	
-	function addStyle(obj, options) {
-		var styleElement, update, remove;
-	
-		if (options.singleton) {
-			var styleIndex = singletonCounter++;
-			styleElement = singletonElement || (singletonElement = createStyleElement(options));
-			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
-			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
-		} else if(obj.sourceMap &&
-			typeof URL === "function" &&
-			typeof URL.createObjectURL === "function" &&
-			typeof URL.revokeObjectURL === "function" &&
-			typeof Blob === "function" &&
-			typeof btoa === "function") {
-			styleElement = createLinkElement(options);
-			update = updateLink.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-				if(styleElement.href)
-					URL.revokeObjectURL(styleElement.href);
-			};
-		} else {
-			styleElement = createStyleElement(options);
-			update = applyToTag.bind(null, styleElement);
-			remove = function() {
-				removeStyleElement(styleElement);
-			};
-		}
-	
-		update(obj);
-	
-		return function updateStyle(newObj) {
-			if(newObj) {
-				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
-					return;
-				update(obj = newObj);
-			} else {
-				remove();
-			}
-		};
-	}
-	
-	var replaceText = (function () {
-		var textStore = [];
-	
-		return function (index, replacement) {
-			textStore[index] = replacement;
-			return textStore.filter(Boolean).join('\n');
-		};
-	})();
-	
-	function applyToSingletonTag(styleElement, index, remove, obj) {
-		var css = remove ? "" : obj.css;
-	
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = replaceText(index, css);
-		} else {
-			var cssNode = document.createTextNode(css);
-			var childNodes = styleElement.childNodes;
-			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
-			if (childNodes.length) {
-				styleElement.insertBefore(cssNode, childNodes[index]);
-			} else {
-				styleElement.appendChild(cssNode);
-			}
-		}
-	}
-	
-	function applyToTag(styleElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-	
-		if(media) {
-			styleElement.setAttribute("media", media)
-		}
-	
-		if(styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = css;
-		} else {
-			while(styleElement.firstChild) {
-				styleElement.removeChild(styleElement.firstChild);
-			}
-			styleElement.appendChild(document.createTextNode(css));
-		}
-	}
-	
-	function updateLink(linkElement, obj) {
-		var css = obj.css;
-		var media = obj.media;
-		var sourceMap = obj.sourceMap;
-	
-		if(sourceMap) {
-			// http://stackoverflow.com/a/26603875
-			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
-		}
-	
-		var blob = new Blob([css], { type: "text/css" });
-	
-		var oldSrc = linkElement.href;
-	
-		linkElement.href = URL.createObjectURL(blob);
-	
-		if(oldSrc)
-			URL.revokeObjectURL(oldSrc);
-	}
-
+	    default:
+	      return state;
+	  }
+	};
 
 /***/ },
-/* 192 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22666,7 +22488,7 @@
 	});
 	exports.filter = exports.find = exports.findById = exports.disassemble = exports.assemble = undefined;
 	
-	var _ramda = __webpack_require__(193);
+	var _ramda = __webpack_require__(189);
 	
 	var _ramda2 = _interopRequireDefault(_ramda);
 	
@@ -22819,7 +22641,7 @@
 	};
 
 /***/ },
-/* 193 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//  Ramda v0.19.1
@@ -31268,6 +31090,456 @@
 	  }
 	
 	}.call(this));
+
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactMotion = __webpack_require__(171);
+	
+	var _utils = __webpack_require__(186);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Slider = function (_Component) {
+	  _inherits(Slider, _Component);
+	
+	  function Slider() {
+	    _classCallCheck(this, Slider);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).apply(this, arguments));
+	  }
+	
+	  _createClass(Slider, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var image = _props.image;
+	      var selected = _props.selected;
+	      var toggleView = _props.toggleView;
+	      var handleSelect = _props.handleSelect;
+	
+	      var imageStyle = (0, _utils.imageSize)(image.ratio, window.innerWidth - 200, window.innerHeight - 100);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'slider-wrapper', onClick: function onClick() {
+	            return toggleView();
+	          } },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'btn x-btn', onClick: function onClick() {
+	              return toggleView();
+	            } },
+	          _react2.default.createElement('img', { src: 'img/x-btn.png' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'btn arr larr-btn',
+	            onClick: function onClick() {
+	              return handleSelect(selected - 1);
+	            } },
+	          _react2.default.createElement('img', { src: 'img/larr-btn.png' })
+	        ),
+	        _react2.default.createElement(
+	          _reactMotion.Motion,
+	          {
+	            defaultStyle: { opacity: 0, scale: 0.9 },
+	            style: { opacity: (0, _reactMotion.spring)(1), scale: (0, _reactMotion.spring)(1) } },
+	          function (style) {
+	            return _react2.default.createElement(
+	              'div',
+	              {
+	                className: 'image-slide-container',
+	                style: Object.assign({}, imageStyle, { opacity: style.opacity }) },
+	              _react2.default.createElement('img', { src: image.src })
+	            );
+	          }
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            className: 'btn arr rarr-btn',
+	            onClick: function onClick() {
+	              return handleSelect(selected + 1);
+	            } },
+	          _react2.default.createElement('img', { src: 'img/rarr-btn.png' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Slider;
+	}(_react.Component);
+
+	exports.default = Slider;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(192);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(194)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(193)();
+	// imports
+	exports.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic,900,900italic);", ""]);
+	
+	// module
+	exports.push([module.id, ".header-wrapper h1 {\n  letter-spacing: 3px;\n  text-align: center;\n  font-size: 8rem;\n  margin: 10rem 0rem;\n  line-height: 9.5rem; }\n\n.gallery-wrapper .section-wrapper {\n  width: 100%;\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-around;\n  align-items: center; }\n  .gallery-wrapper .section-wrapper .image-wrapper {\n    margin-bottom: 5rem; }\n    .gallery-wrapper .section-wrapper .image-wrapper img {\n      background: 'blue';\n      cursor: pointer;\n      transition: 5s ease-out; }\n      .gallery-wrapper .section-wrapper .image-wrapper img:hover {\n        transform: scale(0.95, 0.95); }\n\n.slider-wrapper {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  background: rgba(255, 255, 255, 0.98);\n  display: flex;\n  flex-flow: row wrap;\n  justify-content: space-around;\n  align-items: center; }\n  .slider-wrapper .image-slide-container {\n    margin: 50px auto; }\n  .slider-wrapper .btn {\n    width: 1rem;\n    height: 1rem;\n    cursor: pointer;\n    transition: .3s ease-out; }\n    .slider-wrapper .btn:hover {\n      transform: scale(1.05, 1.05); }\n  .slider-wrapper .x-btn {\n    position: fixed;\n    top: 1.5rem;\n    right: 1.5rem; }\n  .slider-wrapper .arr {\n    margin: 0 2rem; }\n\nbody {\n  font-family: 'Playfair Display'; }\n\nimg {\n  vertical-align: top;\n  width: 100%;\n  height: 100%; }\n", ""]);
+	
+	// exports
+
+
+/***/ },
+/* 193 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0,
+		styleElementsInsertedAtTop = [];
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		// By default, add <style> tags to the bottom of <head>.
+		if (typeof options.insertAt === "undefined") options.insertAt = "bottom";
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function insertStyleElement(options, styleElement) {
+		var head = getHeadElement();
+		var lastStyleElementInsertedAtTop = styleElementsInsertedAtTop[styleElementsInsertedAtTop.length - 1];
+		if (options.insertAt === "top") {
+			if(!lastStyleElementInsertedAtTop) {
+				head.insertBefore(styleElement, head.firstChild);
+			} else if(lastStyleElementInsertedAtTop.nextSibling) {
+				head.insertBefore(styleElement, lastStyleElementInsertedAtTop.nextSibling);
+			} else {
+				head.appendChild(styleElement);
+			}
+			styleElementsInsertedAtTop.push(styleElement);
+		} else if (options.insertAt === "bottom") {
+			head.appendChild(styleElement);
+		} else {
+			throw new Error("Invalid value for parameter 'insertAt'. Must be 'top' or 'bottom'.");
+		}
+	}
+	
+	function removeStyleElement(styleElement) {
+		styleElement.parentNode.removeChild(styleElement);
+		var idx = styleElementsInsertedAtTop.indexOf(styleElement);
+		if(idx >= 0) {
+			styleElementsInsertedAtTop.splice(idx, 1);
+		}
+	}
+	
+	function createStyleElement(options) {
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		insertStyleElement(options, styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement(options) {
+		var linkElement = document.createElement("link");
+		linkElement.rel = "stylesheet";
+		insertStyleElement(options, linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement(options));
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement(options);
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement(options);
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				removeStyleElement(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
 
 
 /***/ }
