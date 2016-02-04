@@ -70,7 +70,7 @@
 	
 	var _Images2 = _interopRequireDefault(_Images);
 	
-	var _Slider = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Slider\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _Slider = __webpack_require__(190);
 	
 	var _Slider2 = _interopRequireDefault(_Slider);
 	
@@ -31093,7 +31093,104 @@
 
 
 /***/ },
-/* 190 */,
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactMotion = __webpack_require__(171);
+	
+	var _utils = __webpack_require__(186);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Slider = function (_Component) {
+	  _inherits(Slider, _Component);
+	
+	  function Slider() {
+	    _classCallCheck(this, Slider);
+	
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Slider).apply(this, arguments));
+	  }
+	
+	  _createClass(Slider, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var image = _props.image;
+	      var selected = _props.selected;
+	      var toggleView = _props.toggleView;
+	      var handleSelect = _props.handleSelect;
+	
+	      var imageStyle = (0, _utils.imageSize)(image.ratio, window.innerWidth - 200, window.innerHeight - 100);
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'slider-wrapper' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'btn x-btn', onClick: function onClick() {
+	              return toggleView();
+	            } },
+	          _react2.default.createElement('img', { src: 'img/x-btn.png' })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'btn arr larr-btn',
+	            onClick: function onClick() {
+	              return handleSelect(selected - 1);
+	            } },
+	          _react2.default.createElement('img', { src: 'img/larr-btn.png' })
+	        ),
+	        _react2.default.createElement(
+	          _reactMotion.Motion,
+	          {
+	            defaultStyle: { opacity: 0, scale: 0.9 },
+	            style: { opacity: (0, _reactMotion.spring)(1), scale: (0, _reactMotion.spring)(1) } },
+	          function (style) {
+	            return _react2.default.createElement(
+	              'div',
+	              {
+	                className: 'image-slide-container',
+	                style: Object.assign({}, imageStyle, { opacity: style.opacity }) },
+	              _react2.default.createElement('img', { src: image.src })
+	            );
+	          }
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          {
+	            className: 'btn arr rarr-btn',
+	            onClick: function onClick() {
+	              return handleSelect(selected + 1);
+	            } },
+	          _react2.default.createElement('img', { src: 'img/rarr-btn.png' })
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Slider;
+	}(_react.Component);
+
+	exports.default = Slider;
+
+/***/ },
 /* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
