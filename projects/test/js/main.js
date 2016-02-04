@@ -93,31 +93,6 @@
 	// Logic
 	
 	var store = (0, _redux.createStore)(_reducer2.default);
-	
-	var aSynceImageLoadd = function aSynceImageLoadd(array) {
-	  var loadImage = function loadImage(img, size) {
-	    var newImg = new Image();
-	    var src = img[size];
-	    newImg.onload = function () {
-	      store.dispatch({
-	        type: _reducer.ADD_IMAGE,
-	        data: Object.assign({}, img, {
-	          ratio: this.height / this.width,
-	          src: src
-	        })
-	      });
-	    };
-	    newImg.src = src;
-	  };
-	  var recurseLoad = function recurseLoad(arr, size) {
-	    if (arr.length < 1 && size === 'small') return recurseLoad(array, 'large');else if (arr.length < 1 && size === 'large') return 'done';else {
-	      setTimeout(loadImage(arr[0], size), 0);
-	      return recurseLoad(arr.slice(1, arr.length), size);
-	    }
-	  };
-	  return recurseLoad(array, 'small');
-	};
-	
 	(0, _utils.aSynceImageLoad)((0, _schematizr.assemble)((0, _utils.imageLinks)()), store);
 	
 	// Styles
@@ -20512,14 +20487,14 @@
 	        return x._id === action.data._id;
 	      });
 	      if (exists[0]) {
-	        console.log('exists');
+	        console.log('Going Large');
 	        return Object.assign({}, state, {
 	          images: (0, _schematizr.findById)(function (img) {
 	            return action.data;
 	          }, state.images, action.data._id)
 	        });
 	      } else {
-	        console.log('sweet');
+	        console.log('Initial Load');
 	        return Object.assign({}, state, {
 	          images: [].concat(state.images, action.data)
 	        });
@@ -20569,6 +20544,7 @@
 	  };
 	  return [].concat(buildArray(18, 'fashion'), buildArray(17, 'portrait'), buildArray(23, 'travel'));
 	};
+	// return [].concat(buildArray(18, 'fashion'), buildArray(17, 'portrait'), buildArray(23, 'travel'))
 	
 	var imageSize = exports.imageSize = function imageSize(ratio, width, height) {
 	  if (height / ratio < width) {
@@ -20577,30 +20553,56 @@
 	  return { width: width, height: width * ratio };
 	};
 	
+	// export const aSynceImageLoad = (array, store) => {
+	//   const loadImage = (img, size, cb) => {
+	//     let newImg = new Image();
+	//     const src = img[size]
+	//     newImg.onload = function() {
+	//       store.dispatch({
+	//         type: ADD_IMAGE,
+	//         data: Object.assign({}, img, {
+	//           ratio: this.height / this.width,
+	//           src
+	//         })
+	//       })
+	//       return setTimeout(cb, 500)
+	//     }
+	//     newImg.src = src
+	//   }
+	//   const recurseLoad = (arr, size) => {
+	//     if(arr.length < 1 && size === 'small') return recurseLoad(array, 'large');
+	//     else if(arr.length < 1 && size === 'large') return
+	//     else {
+	//       return loadImage(arr[0], size, () => recurseLoad(arr.slice(1, arr.length), size))
+	//     }
+	//   }
+	//   return recurseLoad(array, 'small')
+	// }
+	
 	var aSynceImageLoad = exports.aSynceImageLoad = function aSynceImageLoad(array, store) {
-	  var loadImage = function loadImage(img, size, cb) {
+	  var loadImage = function loadImage(img, size) {
 	    var newImg = new Image();
-	    var src = img[size];
 	    newImg.onload = function () {
 	      store.dispatch({
 	        type: _reducer.ADD_IMAGE,
 	        data: Object.assign({}, img, {
 	          ratio: this.height / this.width,
-	          src: src
+	          src: img[size]
 	        })
 	      });
-	      return cb();
+	      if (size === 'small') {
+	        return loadImage(img, 'large');
+	      }
 	    };
-	    newImg.src = src;
+	    newImg.src = img[size];
 	  };
-	  var recurseLoad = function recurseLoad(arr, size) {
-	    if (arr.length < 1 && size === 'small') return recurseLoad(array, 'large');else if (arr.length < 1 && size === 'large') return;else {
-	      return loadImage(arr[0], size, function () {
-	        return recurseLoad(arr.slice(1, arr.length), size);
-	      });
+	  var recurseLoad = function recurseLoad(images) {
+	    if (images.length < 1) return 'done';else {
+	      loadImage(images[0], 'small');
+	      return recurseLoad(images.slice(1, images.length));
 	    }
 	  };
-	  return recurseLoad(array, 'small');
+	  return recurseLoad(array);
 	};
 
 /***/ },
@@ -20617,11 +20619,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactDom = __webpack_require__(169);
+	
+	var _reactMotion = __webpack_require__(174);
+	
 	var _LazyImage = __webpack_require__(172);
 	
 	var _LazyImage2 = _interopRequireDefault(_LazyImage);
-	
-	var _reactDom = __webpack_require__(169);
 	
 	var _utils = __webpack_require__(170);
 	
@@ -20652,12 +20656,21 @@
 	    { className: 'section-wrapper' },
 	    images.map(function (img, index) {
 	      return _react2.default.createElement(
-	        'div',
-	        {
-	          key: index,
-	          className: 'image-wrapper',
-	          style: style(img) },
-	        _react2.default.createElement('img', { src: img.src })
+	        _reactMotion.Motion,
+	        { defaultStyle: { opacity: 0, marginTop: 50 }, style: { opacity: (0, _reactMotion.spring)(1), marginTop: (0, _reactMotion.spring)(0) }, key: index },
+	        function (styles) {
+	          var newStyle = Object.assign({}, style(img), {
+	            opacity: styles.opacity,
+	            marginTop: styles.marginTop
+	          });
+	          return _react2.default.createElement(
+	            'div',
+	            {
+	              className: 'image-wrapper',
+	              style: newStyle },
+	            _react2.default.createElement('img', { src: img.src })
+	          );
+	        }
 	      );
 	    })
 	  );
@@ -20807,7 +20820,7 @@
 	        _react2.default.createElement(
 	          _reactMotion.Motion,
 	          { style: { x: (0, _reactMotion.spring)(10) } },
-	          function () {
+	          function (style) {
 	            return _react2.default.createElement(
 	              'div',
 	              { className: 'image-slide-container' },
