@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title>3D-Geometry</title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <style>
+        body { overflow: hidden; }
+        ul {
+          position: fixed;
+          width: 100%;
+          color: white;
+          list-style-type: none;
+          display: flex;
+        }
+        li {
+          padding: 1rem 2rem;
+          cursor: pointer;
+          text-transform: uppercase;
+          font-family: helvetica;
+          letter-spacing: 2px;
+        }
+        h3 {
+          position: fixed;
+          bottom: 1rem;
+          left: 4rem;
+          color: white;
+          font-family: helvetica;
+          letter-spacing: 2px;
+        }
+        li:hover {
+          text-decoration: underline;
+        }
+      </style>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <h3 id="prompt">Click and drag to interact</h3>
+    <ul>
+      <li id="cube">Cube</li>
+      <li id="tetrahedron">Tetrahedron</li>
+      <li id="octahedron">Octahedron</li>
+      <li id="fractal">Cool Fractal</li>
+    </ul>
+    <canvas id="canvas" width="600" height="600" style="background: grey"></canvas>
+    <script src="./shapes/Cube.js"></script>
+    <script src="./shapes/Tetrahedron.js"></script>
+    <script src="./shapes/Octahedron.js"></script>
+    <script src="./shapes/Fractal.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

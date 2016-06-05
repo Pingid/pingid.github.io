@@ -1,0 +1,30 @@
+body, html {
+   margin: 0;
+   padding: 0;
+   width: 100%;
+   height: 100%;
+}
+section {
+  position: relative;
+}
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.heading { box-sizing: border-box; padding: 1rem; }
+.heading-text { flex: 50% }
+
+.work { max-width: 60rem; margin: 0 auto; margin-top: 2rem; }
+.project { height: 20rem; padding: 1rem; box-sizing: border-box; position: relative; }
+.lilist { flex: 35%; }
+.centres { flex: 65%; }
+.rb { flex: 65%; }
+
+.project div { width: 100%; height: 100%; }
+.centres div { background: yellow; }
+
+.footer div { width: 100%; justify-content: center; margin: 4rem 0;}
+.footer div h4 { padding: 0 2rem; }
+.legal { text-align: center; display: block; padding: 1rem;}
