@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { hashHistory, Router, Route, IndexRoute } from 'react-router'
+
 import App from './App';
+import WalkingCanvas from './components/walker/WalkingCanvas';
+import Blog from './components/blog/Blog';
+
 import './index.css';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+ReactDOM.render((
+  <Router history={hashHistory}>
+    <Route path="/" component={App} />
+    <Route path="/walking" component={WalkingCanvas} />
+    <Route path="/blog" component={Blog} />
+  </Router>
+), document.getElementById('root'));

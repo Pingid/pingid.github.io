@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
-
-import WalkingCanvas from './WalkingCanvas';
+import { Link } from 'react-router';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <WalkingCanvas />
-        <div className="container header">My Site</div>
-        <div className="container snow">Snow</div>
-        <div className="container wood">Wood</div>
+        <h1>Site is under construction</h1>
+        <Link to="blog">Blog</Link>
+        <br />
+        <Link to="walking">Walk experiment</Link>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import { dist, vect, equals, angleBetween } from '../utils/math';
+import { dist, vect, equals, angleBetween } from '../../utils/math';
 import Foot from './Foot';
 
 function Walker(settings) {

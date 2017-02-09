@@ -1,4 +1,4 @@
-import { pageOffsetY } from '../utils/dom';
+import { pageOffsetY } from '../../utils/dom';
 
 export default (canvas, loop) => {
   canvas.width = window.innerWidth;

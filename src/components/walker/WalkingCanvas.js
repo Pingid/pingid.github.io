@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Howl } from 'howler';
 
-import setupCanvas from './walker/SetupCanvas';
-import Walker from './walker/Walker';
-import Foot from './walker/Foot';
-import { pageOffsetY } from './utils/dom';
-import { vect, mapValues } from './utils/math';
+import setupCanvas from './SetupCanvas';
+import Walker from './Walker';
+import Foot from './Foot';
+import { pageOffsetY } from '../../utils/dom';
+import { vect, mapValues } from '../../utils/math';
 
 export default class WalkingCanvas extends Component {
   componentDidMount() {
@@ -90,11 +90,27 @@ export default class WalkingCanvas extends Component {
     });
   }
   render() {
+    const sectionStyles = (color) => ({
+      width: '100vw',
+      height: '80vh',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '2rem',
+      background: color,
+    });
     const style = {
       position: 'fixed',
       top: 0,
       left: 0
     };
-    return <canvas id="walking-canvas" style={style} />;
+    return (
+      <div>
+        <canvas id="walking-canvas" style={style} />
+        <div style={sectionStyles('beige')}>My Site</div>
+        <div style={sectionStyles('white')}>Snow</div>
+        <div style={sectionStyles('brow')}>Wood</div>
+      </div>
+    );
   }
 }
