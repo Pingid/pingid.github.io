@@ -1,9 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router'
+import CONTENT from '../../../content/blogPosts';
 
-const Blog = ({ blogPosts }) => {
+
+const Blog = () => {
   return (
     <div>
-      Blog
+      {
+        CONTENT.posts.map(post => <Link to={'blog/' + post.title.split(' ').join('-')}><h1>{post.title}</h1></Link>)
+      }
     </div>
   );
 };
