@@ -1,9 +1,10 @@
 module.exports = {
   "auther": "Dan Beaven",
+  "description": "As a (BA) Interaction Design student Dan Beaven, is encouraged to keep an online record of the content covered in his lectures.",
   "posts": [
     {
       "title": "Measuring the impact culture has on the economy",
-      "date": 1446940800000,
+      "date": 1480896000000,
       "sections": [
         {
           "title": "Introduction",
@@ -79,6 +80,166 @@ module.exports = {
         { "text": "Williams, R. (1953) ‘The Idea of Culture’, The Cambridge Quarterly, 3(3)." },
         { "text": "Wordsworth, W. (1995) The prelude: The Four texts (1798, 1799, 1805, 1850): Four texts (1798, 1799, 1805, 1850). Edited by Jonathan Wordsworth. New York: Penguin Group (USA)." },
       ]
-    }
+    },
+
+    {
+      "title": "Modernism and Scottish school",
+      "date": 1477872000000,
+      "sections": [
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "In this week's lecture, we covered seven of the major art movements in the 20th Century, Scottish School, Art Nouveau, Modernism, Art Deco, Surrealism, Cold War Design and Postmodernism. In the essay, I look closer at Scottish school and modernism using their most iconic chairs as icons for the periods." },
+          ]
+        },
+        {
+          "title": "Scottish school",
+          "image": { "textWrap": true, "src": "http://media.vam.ac.uk/media/thira/collection_images/2006AP/2006AP8492_jpg_l.jpg" },
+          "paragraphs": [
+            { "text": "Scottish school was fashionable between 1885 and 1915, formed in Glasgow and Edinburgh it aimed to produce work which improved contemporary cosmopolitan life (Victoria, Museum, 2013b). One of the most prominent artists of the time was Charles Rennie Mackintosh whose chair is pictured on the right." },
+            { "text": "Scottish school is famous for geometric shapes and combining straight lines with curves (Victoria, Museum, 2013b). This can be seen in the back of this chair which has a rectangular footprint but is framed by two legs which start of square but elegantly taper to circular. The back also has an interesting symmetry between the oval headrest and the oval curve of the support at the bottom." },
+          ]
+        },
+        {
+          "title": "Modernism",
+          "image": { "textWrap": true, "src": "http://www.design-museum.de/fileadmin/_migrated/pics/B3Wassily_Breuer_02.jpg" },
+          "paragraphs": [
+            { "text": "Modernism is a post second world war movement notable for the philosophical mindset that technology and design could change society. They believed in design for the masses and this is seen in the style, which is often minimal and geometric. (Victoria, Museum, 2013a)" },
+            { "text": "Built in the Bauhaus Germany the Wassily chair by Marcel Breuer seemed the obvious choice for a modernist chair. The use of industrial materials and relatively minimalism is indicative of the mindset that design was for everyone not just the bourgeoisie. (La Fonda del Sol 2012)" },
+          ]
+        },
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "Mackintosh’s chair like Breuer’s uses simple geometric shapes, the main and key difference is in the choice of materials. The aesthetics of the wassily chair seem much more appealing to me this might have something to do with it being closer to the period where my tastes were formed." }
+          ]
+        }
+      ],
+      "references": [
+        { "text": "La Fonda del Sol – exhibition tour & dinner / SPECIAL (DE) (2012) Available at: http://www.design-museum.de/en/collection/100-masterpieces/detailseiten/b3wassily-marcel-breuer.html (Accessed: 5 December 2016)." },
+        { "text": "Mackintosh Chair (no date) Available at: http://media.vam.ac.uk/media/thira/collection_images/2006AP/2006AP8492_jpg_l.jpg (Accessed: 8 December 2016)." },
+        { "text": "Victoria, Museum, A. and webmaster, D.M. (2013b) Style guide: Scottish school - Victoria and Albert Museum. Available at: http://www.vam.ac.uk/content/articles/s/style-guide-scottish-school/ (Accessed: 5 December 2016)." },
+        { "text": "Wassily Chair (no date) Available at: http://www.design-museum.de/fileadmin/_migrated/pics/B3Wassily_Breuer_02.jpg (Accessed: 8 December 2016)." },
+      ]
+    },
+
+    {
+      "title": "The infinite mix exhibition review",
+      "date": 1477958400000,
+      "sections": [
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "The infinite mix exhibition was comprised of 10 short movies by 10 leading international artists each playing closely with video and sound. In this essay, I talk about two pieces which I found especially interesting, Martin Creed’s No. 1701 and Kahlil Joseph’s m.A.A.d." },
+            { "text": "First when you walk in, is Martin Creed’s work No. 1701 from 2013. It is a short movie shot entirely on a crossing in new York. With the camera on a dolly, it tracks people one at a time as they make there way across the road. Each of the people had a unique walk often suffering from an ailment. Without the jubilant rock song playing in the background it could have been almost pitiful. Instead, I felt captivated by the struggles that some endured. It was a chance to examine the unique walks of those that politeness might not normally allow us to do. I believe it is the elated music in the background which changed the tone of the piece from that of pity to that of stoicism." },
+            { "text": "The next piece which intrigued me was m.A.A.d 2014 by Kahlil Joseph. Like many of the pieces, it crossed somewhere in between a documentary and a music video. In part, it felt like a contemporary gangster rap music video with the way it flaunted tattoos gold teeth and guns. However the feeling I felt was more of respect for the harsh unforgiving environment that those growing up in Compton Los Angeles had to deal with." },
+            { "text": "Martin Creed’s piece got me thinking about whether there are other places or things that we are not normally free to inspect. Are there other everyday activities movements which deserve more attention. I hope I can find and develop this idea further in my studio work and maybe find a different way to highlight the everyday physical struggles that so many go through." },
+          ]
+        }
+      ],
+      "references": [
+        { "text": "The Infinite Mix (2016) Available at: http://www.theinfinitemix.com/ (Accessed: 5 December 2016)." },
+      ]
+    },
+
+    {
+      "title": "Research methodologies",
+      "date": 1478736000000,
+      "sections": [
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "In today’s lecture, we were introduced to research methodologies more specifically qualitative research and quantitative research. We covered research strategies, ethics and the reasons one might want to perform a piece of research. In this essay, I try to define in detail the difference between qualitative and quantitative research." },
+            { "text": "Qualitative research is especially helpful in situations where what you are studying is too complex to isolate a single variable such as people in social situations. Researchers often immerse themselves in the setting in order to see what they are studying in context (Mason, 2002). This means a large part of the researcher's job is analysing their own input, being aware of their own role in what they are studying. This is one of the criticisms of the qualitative approach since the ‘researcher's presence has a profound effect on the subjects’ and thus experiments are not repeatable  (Hughes). Despite its shortcomings, it plays an important role in studying complex systems it is the qualitative approach which often leads to new insights and opens avenues for further quantitative research (Hughes)." },
+            { "text": "Quantitative research is used when testing a single variable’s relationship to another. Researchers will start with a clearly defined question and design all the details of the study before any data is collected. The results of the research are structured tables of values and statistics. Computers allow researchers to process large data sets making it possible to make accurate generalisations and predictions. Quantitative research only works in systems where you can totally isolate variables and when this is the case it can be effective at understanding true objective relationships. (USB Libraries, 2016)" },
+            { "text": "These are not totally separate techniques and when researching outside of science it is often effective to use both qualitative and quantitative methods (Denscombe 2010). For my studio work though I can see the qualitative method as being more useful as so much of my work involves many unknowns and tends to be exploratory." },
+          ]
+        }
+      ],
+      "references": [
+        { "text": "Denscombe, Martyn. (2010) Good Research Guide: For small-scale social research projects. 4th edn. Berkshire: Open University Press" },
+        { "text": "Hughes, Christina, An Introduction to Qualitative Research. Department of Sociology. University of Warwick. Available at http://www2.warwick.ac.uk/fac/soc/sociology/staff/hughes/researchprocess/. (Accessed 29t November 2016)." },
+        { "text": "Mason, J (2002) Qualitative Researching, 2nd edn. SAGE Publications Ltd" },
+        { "text": "Wilson, V (1997) Focus Groups: A Useful Qualitative Method for Educational Research? British Educational Research Journal, 23, 2, pp 209-224" },
+        { "text": "University of Southern California. (2016) Organizing Your Social Sciences Research Paper: Quantitative Methods. Available at http://libguides.usc.edu/writingguide/quantitative. (Accessed 8t November 2016)." },
+      ]
+    },
+
+    {
+      "title": "Why interaction design",
+      "date": 1479340800000,
+      "sections": [
+        {
+          "title": "",
+          "image": { "textWrap": true, "src": "http://thumbnails-visually.netdna-ssl.com/the-disciplines-of-user-experience-design_51029d505f014_w1500.png" },
+          "paragraphs": [
+            { "text": "With a focus on interaction design in this week’s lecture, we discussed the various forms that design takes. We touched on experience design and immersive design two disciplines whose methods closely overlap those of interaction design. We also talked more broadly about the different disciplines that come under design which is neatly illustrated in Thomas Pluralvonglas (2009) venn diagram on the right. In this essay, I explore further what interaction design means, what sort of problems it is there to solve and I touch on what it means to my own work." },
+            { "text": "Computers are only becoming more ubiquitous and they have been at an accelerated rate since the beginning of their conception (Sade 2006). Due in part to the rate at which they are developing and also the fact that they tend not to be built by designers eminently focused on the end user but by engineers trying to solve technical problems. I still see many especially in the older generations who struggle to understand and use computers. Or at least it is hard for them to see the benefits when the time and energy investment for them to learn these systems is so large. Interactions design questions usability it inspects our behaviour and analyses the choices we make (Kolko, 2009). This is why I believe it can play an important role in not only making technology more accessible but question the way we use it." },
+          ]
+        },
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "In the studio, I am very conscious of this idea of questioning the way we use and interact with objects and technology. With this in mind in response to my latest brief on visualising time, I am looking at new ways of interacting with a book. I am trying to use interactivity as a tool to teach technical and abstract ideas about physics and the universe." },
+          ]
+        }
+      ],
+      "references": [
+        { "text": "Kolko, D.J. (2009) Thoughts on interaction design. Morgan Kaufmann Publishers." },
+        { "text": "Sade, G. (2006) ‘Why interaction design? Review of Jonas Löwgren and Erik Stolterman Thoughtful interaction Design’, Design Philosophy Papers, 4(1), pp. 41–52. doi: 10.2752/144871306x13966268131352." },
+        { "text": "Pluralvonglas, T. (2009) The Disciplines of User Experience Design. [Infographic]. Available at http://bit.ly/NZ3dxo. Accessed 20th October 2016" },
+      ]
+    },
+
+    {
+      "title": "Introduction to Semiotics",
+      "date": 1484611200000,
+      "sections": [
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "Semiotics defined in the oxford english dictionary as ‘The study of signs and symbols and their use or interpretation’. I struggled to understand where it stood within the various areas of academic study and how it was possible to debate something which to me seemed totally subjective." },
+            { "text": "One of the first times a word relating to semiotics appeared was in Swiss linguist Ferdinand de Saussure’s ‘A Course in general linguistics’, “A science that studies the life of signs within society is conceivable; it would be a part of social psychology and consequently of general psychology; I shall call it semiology' (from Greek semefon 'sign') (de Saussure, 1974,  p. 16)”. He goes on to define a sign by splitting it into two components the signifier and signified. The signifier is the literal sign: sound, image, text, and the signified is the concept or idea that the sign is referring to. Daniel Chandler, in his book ‘Semiotics: the basics’, questions whether semiotics is really a science he describes the word as ‘misleading’ pointing out that ‘semiotics involves no widely agreed theoretical assumptions, models or empirical methodologies.’ (Chandler, 2006, p. 4)." },
+            { "text": "Nevertheless Saussure does give a sort of framework to work from when he defines the sign as being made from the signified and the signifier. Using this definition of a sign it is possible to break down and compare different signs and debate there connotations, denotations with a level of objective reason." },
+            { "text": "I found it helpful to see linguistics as a subset of semiotics, it being the study of perhaps the most important sign system language. I initially saw semiotics as an area of study not fundamental to human growth and understanding however I find it hard to argue with Daniel Chandler's logic when he says “To decline the study of signs is to leave to others the control of the world of meaning which we inhabit.” (2006, p. 11)." },
+          ]
+        },
+      ],
+      "references": [
+        { "text": "Chandler, D. (2006) Semiotics: The basics, Vol. 2. 2nd edn. LONDON: Taylor & Francis." },
+        { "text": "Peirce, C.S.S., Hartshorne, C. and Weiss, P. (1932) Collected papers of Charles Sanders Peirce, volumes I and II, principles of philosophy and elements of logic. 4th edn. Cambridge, MA: Belknap Press of Harvard University Press, 1935-1961." },
+        { "text": "de Saussure, F. (1974) Course in general linguistics. Edited by Charles Bally, Albert Sechehaye, and Albert Reidlinger. Translated by Wade Baskin. 2nd edn. New York: McGraw-Hill Book Company." },
+      ]
+    },
+
+    {
+      "title": "British art walkthrough at the tate Britain",
+      "date": 1486512000000,
+      "sections": [
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "The exhibition comprised of british art ranging from 1540’s right up until the 21st century. As the name suggests you are able to start at one end and walk through each room following the artwork in rough chronological order. Seeing art layed out this way, lead me to reflect on the evolution of art and the differences century to century. The starkest of these differences was between the 19th and 20th centuries where the art became much more abstract. There also seemed to be a correlation between the recentness of the year and quantity of work shown with half the exhibition taken up by 20th century art work." },
+          ]
+        },
+        {
+          "title": "",
+          "image": { "textWrap": false, "src": "http://www.tate.org.uk/art/images/work/T/T02/T02270_10.jpg" },
+          "paragraphs": [
+            { "text": "There was a whole room dedicated to Henry Moore's sculptures, situated on a plinth in the center of this room is ‘Reclining Figure’ a plaster mold for a bronze cast. It depicts what looks like a woman, judging by the prodrudance on her chest, lying propped up by both elbows. What made the piece stand out among the other sculptures was the contrast between the dark lines on the lighter plaster. They make the piece look as though it is made from separate chunks and gives it an almost space age look.  I discovered later that Moore himself singled it out as one of his most important sculptures saying that it was the ‘first sculpture in which I succeeded in making form and space sculpturally inseparable’ (Christie’s, 2016)." },
+          ]
+        },
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "Having an exhibition laid out in chronological order helped me to understand art and art styles in respect to history. There seemed to be an evolution in painting starting in two dimensions moving into perspective and three dimensions and finally to abstraction. It made me wonder whether it was artists who have gotten better at communicating messages or whether it is that contemporary consumers see more art and therefore appreciate the nuance of contemporary abstraction much more?" },
+          ]
+        },
+      ],
+      "references": [
+        { "text": "Christie’s, © (2016) ‘“My highlight of 2016” — Henry Moore’s Reclining Figure: Festival’. Review of by Robert Brown. Available at: http://www.christies.com/features/Henry-Moore-Reclining-Figure-Festival-7446-3.aspx (Accessed: 9 February 2017)." },
+        { "text": "Tate (1951) Reclining figure, Henry Moore OM, CH 1951 | Tate Available at: http://www.tate.org.uk/art/artworks/moore-reclining-figure-t02270 (Accessed: 16 February 2017)." },
+      ]
+    },
   ]
 }

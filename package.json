@@ -1,13 +1,16 @@
 {
-  "name": "portrr",
+  "name": "dan-portfolio",
   "version": "0.0.1",
   "private": true,
+  "homepage": "http://pingid.github.io",
   "devDependencies": {
     "react-scripts": "0.2.3"
   },
   "dependencies": {
     "basscss": "^8.0.3",
+    "classnames": "^2.2.5",
     "howler": "2.0.0",
+    "moment": "^2.17.1",
     "ramda": "^0.23.0",
     "react": "15.3.1",
     "react-dom": "15.3.1",

@@ -10,14 +10,41 @@ h1 {
   color: #2E2E2E;
 }
 h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', serif;
   font-size: 38px;
   font-weight: 300;
-  color: #676665;
+  color: #a5a5a5;
+}
+h3 {
+  font-family: 'Raleway', sans-serif;
+  font-size: 38px;
+  font-weight: 700;
+  color: #464646;
+}
+h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #484747;
 }
 p {
   font-family: 'Raleway', sans-serif;
   font-size: 16px;
   line-height: 28px;
   letter-spacing: .5px;
+}
+
+a { color: black }
+a:visited { color: black }
+a:active { color: black }
+
+/*.c-blog-post-title { text-align: left; }*/
+@media only screen and (min-width: 780px) {
+  .c-blog-post-title { text-align: center; }
+}
+
+.c-blog-image-wrap {
+  max-width: 50%;
+  max-height: 60vh;
 }
