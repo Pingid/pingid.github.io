@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 import R from 'ramda';
 import classNames from 'classnames';
-import CONTENT from '../../../content/blogPosts';
+import BLOG_POSTS from '../../../content/posts';
 
 const BlogPost = ({ params, router }) => {
-  const post = R.find(R.propEq('title', params.post.split('-').join(' ')), CONTENT.posts);
+  const post = R.find(R.propEq('title', params.post.split('-').join(' ')), BLOG_POSTS);
   if (!post) return router.push('/blog');
   let uniqueReactKey = 100;
   return (

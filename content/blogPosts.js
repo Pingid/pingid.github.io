@@ -241,5 +241,38 @@ module.exports = {
         { "text": "Tate (1951) Reclining figure, Henry Moore OM, CH 1951 | Tate Available at: http://www.tate.org.uk/art/artworks/moore-reclining-figure-t02270 (Accessed: 16 February 2017)." },
       ]
     },
+
+    {
+      "title": "Samson and Delilah",
+      "date": 1487875167955,
+      "sections": [
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "During a dark time for the israelites in their ongoing battle with the philistines Samson was born and god bestowed upon him supernatural strength with one caveat, he must not cut his hair. Samson become a hero to the israelites successfully defeating many philistines but one  day he fell in love with a woman called Delilah. Delilah was approached by the philistine rulers and offered silver in return for discovering how Samson could be defeated. Samson eventually tells her that ‘If my head were shaved, my strength would leave me’. (Judges 16: 17-20)" },
+          ]
+        },
+        {
+          "title": "",
+          "image": { "textWrap": false, "src": "http://media.credoreference.com/ng2009/N-6461-00.jpg" },
+          "paragraphs": [
+            { "text": "This story from the old testament is the story behind Peter Paul Rubens painting ‘Samson and Delilah’. In the painting Samson is asleep on Delilah’s lap, while an old procuress holds a candle for the barber cutting Samson’s hair. Above in the background is a sculpture of venus and cupid who are both gods of love and desire. To the right are the philistines lying in wait behind a door. The scene is well lit, in part at least by the fire on the left which lies half out of the painting." },
+            { "text": "Some notable symbols of the painting are the old face of the procuress juxtaposed with the youthful complexion of Delilah which could allude to the procuress’s past or Delilah’s future (PETER PAUL RUBENS 1577-1640). The statue of venus and cupid are a clear reference the cause of Samson's Fate (Samson and Delilah, 2009)." },
+          ]
+        },
+        {
+          "title": "",
+          "paragraphs": [
+            { "text": "The fact that this painting was commissioned by a man and Delilah is lying with her breasts exposed made me think of what John Berger said in response to a painting by Sir Peter Lely in which he states that the nakedness is not her own expression but ‘is a sign of her submission to the owner’s feelings or demands’ (Berger, 1973, p.52). Although the story does include a temptress the question still lies whether this painting might look very different if it were painted for and by a woman." },
+          ]
+        },
+      ],
+      "references": [
+        { "text": "Berger, J. (1973) Ways of seeing based on the BBC television series. London, Eng.: British Broadcasting Corporation [u.a.]." },
+        { "text": "Bible gateway passage: Judges 16 - new international version (no date) Available at: https://www.biblegateway.com/passage/?search=Judges%2016 (Accessed: 23 February 2017)." },
+        { "text": "PETER PAUL RUBENS (1577-1640) Samson and Delilah. (2016). In E. Langmuir, The National Gallery companion guide. [Online]. London: The National Gallery. Available from: http://arts.idm.oclc.org/login?qurl=http%3A%2F%2Fsearch.credoreference.com%2Fcontent%2Fentry%2Fngcg%2Fpeter_paul_rubens_1577_1640_samson_and_delilah%2F0 [Accessed 23 February 2017]." },
+        { "text": "Samson and Delilah. (2009). In National Gallery, National gallery collection. [Online]. London: The National Gallery. Available from: http://arts.idm.oclc.org/login?qurl=http%3A%2F%2Fsearch.credoreference.com%2Fcontent%2Fentry%2Fng%2Fsamson_and_delilah%2F1 [Accessed 23 February 2017]." },
+      ]
+    },
   ]
 }
