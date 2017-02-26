@@ -23,9 +23,8 @@ class Thumbnail extends Component {
   }
   render() {
     const { post } = this.props;
-    const { image } = this.state;
     return (
-      <div style={{ flex: '0 0 50%' }}>
+      <div>
         <Link className="text-decoration-none" to={'blog/' + post.title.split(' ').join('-')}>
           <h3 className="">{post.title}</h3>
           <p className="pl3" style={{ minWidth: '30%' }}>{truncate(post.sections[0].paragraphs[0].text)}</p>
