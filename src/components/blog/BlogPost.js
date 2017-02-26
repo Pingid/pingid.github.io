@@ -29,7 +29,7 @@ const BlogPost = ({ params, router, blogPosts }) => {
         }
         {
           post.references.length > 0 ? (
-            <div>
+            <div style={{ overflow: 'scroll' }}>
               <h1 className="mb3 center" style={{ marginTop: '6rem' }}>References</h1>
               {
                 post.references.map(reference => (
