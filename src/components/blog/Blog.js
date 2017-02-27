@@ -21,7 +21,7 @@ const Header = () => (
   </div>
 )
 
-const Blog = ({ blogPosts }) => {
+const Blog = ({ blogPosts, resize }) => {
   if (blogPosts.length < 1) return <div className="px3 mx-auto" style={{ maxWidth: '60rem' }}><Header /></div>;
   const group = (posts) => {
     if (window.innerWidth < 590) return groupPostsBy1(posts)
@@ -58,7 +58,7 @@ const Blog = ({ blogPosts }) => {
         </div>
         {
           grouped.rest.map((section, i1) => (
-            <div className="flex py3 border-box" key={i1} style={{ borderTop: '1px solid #a0a0a0' }}>
+            <div className="flex py3 border-box justify-center" key={i1} style={{ width: '100%', borderTop: '1px solid #a0a0a0' }}>
               {
                 section.length < 1 ? null : section.map((post, i2) => {
                   if (R.prop('coverImage', post))
@@ -71,7 +71,7 @@ const Blog = ({ blogPosts }) => {
                   return (
                     <div
                       key={i2 + 10}
-                      style={{ maxWidth: '50%'}}
+                      style={{ maxWidth: '590px'}}
                       className={classNames('px3 border-box', {
                         'c-border-x': i2 === 1 && section.length > 2,
                         'c-border-l': i2 === 1 && section.length === 2
@@ -95,4 +95,4 @@ const Blog = ({ blogPosts }) => {
   )
 }
 
-export default connect(({ blogPosts }) => ({ blogPosts }))(Radium(Blog));
+export default connect(({ resize, blogPosts }) => ({ resize, blogPosts }))(Radium(Blog));

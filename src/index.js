@@ -46,4 +46,4 @@ const render = () => ReactDOM.render((
 
 render();
 
-window.onresize = render;
+window.onresize = () => store.dispatch({ type: 'RESIZE_UPDATE' });
