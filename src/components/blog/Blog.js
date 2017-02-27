@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import R from 'ramda';
 import classNames from 'classnames';
 import { Link } from 'react-router';
+import Radium from 'radium';
 
 import BlogThumbLarge from './BlogThumbLarge';
 import BlogThumbMedium from './BlogThumbMedium';
@@ -31,7 +32,10 @@ const Blog = ({ blogPosts }) => {
   return (
     <div
       className={classNames('mx-auto', { 'px3': window.innerWidth > 590, 'px1': window.innerWidth < 590 })}
-      style={{ maxWidth: '60rem' }}>
+      style={{
+        maxWidth: '70rem',
+        // '@media (min-width: 1440px)': { maxWidth: '90rem' }
+      }}>
       <Header />
       <div className="flex flex-wrap border-box">
         <div style={{ borderTop: '1px solid #a0a0a0', flex: '0 0 100%' }}>
@@ -67,6 +71,7 @@ const Blog = ({ blogPosts }) => {
                   return (
                     <div
                       key={i2 + 10}
+                      style={{ maxWidth: '50%'}}
                       className={classNames('px3 border-box', {
                         'c-border-x': i2 === 1 && section.length > 2,
                         'c-border-l': i2 === 1 && section.length === 2
@@ -90,4 +95,4 @@ const Blog = ({ blogPosts }) => {
   )
 }
 
-export default connect(({ blogPosts }) => ({ blogPosts }))(Blog);
+export default connect(({ blogPosts }) => ({ blogPosts }))(Radium(Blog));

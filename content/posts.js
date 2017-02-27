@@ -281,22 +281,13 @@ module.exports = [
       {
         "title": "",
         "image": {
-          "src": null,
+          "src": "https://lh4.googleusercontent.com/D5BRQAgEEN7JoRSzsalU4vpSd6PEJTyPEo1j1z-X6V6p9AsRxkF2p2BccCpsSbuFs_AZFiCIpuiOe0EvE1Uyhd5HoHG-nYVyDXhdTi8pVzu_ONAFa6S7LVNBDx_hox5-eQ",
           "textWrap": true
         },
         "paragraphs": [
           {
             "text": "With a focus on interaction design in this week’s lecture we discussed the various forms that design takes. We touched on experience design and immersive design two disciplines whose methods closely overlap those of interaction design. We also talked more broadly about the different disciplines that come under design which are neatly illustrated in Thomas Pluralvonglas (2009) venn diagram on the right. In this essay I explore further what interaction design means, what sort of problems it is there to solve and touch on what it means to my own work."
-          }
-        ]
-      },
-      {
-        "title": "",
-        "image": {
-          "src": "https://lh3.googleusercontent.com/wWb8VtJnrY7Zv0ceGZNBYFhB0I5OXmRul89xrIR6cAo8E_PpOvk8hyR6nv0DCbVzqDOIUm_JHoQPupfbu5UM8GB8iHR8eVZoGVX51tPx0ZYGChzBekGyTTd9RelZU9C5myPuH9CR",
-          "textWrap": true
-        },
-        "paragraphs": [
+          },
           {
             "text": "Computers are only becoming more ubiquitous and they have been at an accelerated rate since the beginning of their conception (Sade 2006). Due in part to the rate at which they are developing and also the fact that they tend not to be built by designers eminently focused on the end user but by engineers trying to solve technical problems. I still see many especially in the older generations who struggle to understand and use computers. Or atleast it is hard for them to see the benefits when the time and energy investment for them to learn these systems is so large. Interactions design questions usability it inspects our behaviour and analyzes the choices we make (Kolko, 2009). This is why I believe it can play an important role in not only making technology more accessible but question the way we use it."
           }

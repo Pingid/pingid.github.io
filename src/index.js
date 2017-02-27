@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { hashHistory, Router, Route } from 'react-router'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { StyleRoot } from 'radium';
 
 import App from './App';
 import WalkingCanvas from './components/walker/WalkingCanvas';
@@ -32,12 +33,14 @@ posts.map((post, index) => store.dispatch(addBlogPost(Object.assign({}, docLinks
 
 const render = () => ReactDOM.render((
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path="/" component={App} />
-      <Route path="/walking" component={WalkingCanvas} />
-      <Route path="/blog" component={Blog} />
-      <Route path="/blog/:post" component={BlogPost} />
-    </Router>
+    <StyleRoot>
+      <Router history={hashHistory}>
+        <Route path="/" component={App} />
+        <Route path="/walking" component={WalkingCanvas} />
+        <Route path="/blog" component={Blog} />
+        <Route path="/blog/:post" component={BlogPost} />
+      </Router>
+    </StyleRoot>
   </Provider>
 ), document.getElementById('root'));
 

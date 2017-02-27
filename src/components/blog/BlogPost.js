@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import Radium from 'radium';
 import R from 'ramda';
 import classNames from 'classnames';
 
@@ -13,7 +14,7 @@ const BlogPost = ({ params, router, blogPosts }) => {
         className="px3"
         style={{
           maxWidth: '41rem',
-          margin: '0 auto'
+          margin: '0 auto',
         }}>
         <h1 className="c-blog-post-title" style={{ margin: '5rem 0' }}>{post.title}</h1>
         {
@@ -29,7 +30,7 @@ const BlogPost = ({ params, router, blogPosts }) => {
         }
         {
           post.references.length > 0 ? (
-            <div style={{ overflow: 'scroll' }}>
+            <div style={{ overflowX: 'scroll' }}>
               <h1 className="mb3 center" style={{ marginTop: '6rem' }}>References</h1>
               {
                 post.references.map(reference => (
@@ -64,4 +65,4 @@ BlogPost.propTypes = {
   })
 };
 
-export default connect(({ blogPosts }) => ({ blogPosts }))(BlogPost);
+export default connect(({ blogPosts }) => ({ blogPosts }))(Radium(BlogPost));
