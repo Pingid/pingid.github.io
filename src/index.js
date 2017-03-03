@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { hashHistory, Router, Route } from 'react-router'
+import { applyRouterMiddleware, hashHistory, Router, Route } from 'react-router';
+import { useScroll } from 'react-router-scroll';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { StyleRoot } from 'radium';
@@ -12,8 +13,8 @@ import BlogPost from './components/blog/BlogPost';
 
 import reducer, { addBlogPost } from './reducer';
 import docLinks from '../content/docLinks';
-import getUrl from './utils/getUrl';
-import parseGDoc from './utils/parseGDoc';
+// import getUrl from './utils/getUrl';
+// import parseGDoc from './utils/parseGDoc';
 
 import './index.css';
 
@@ -34,7 +35,7 @@ posts.map((post, index) => store.dispatch(addBlogPost(Object.assign({}, docLinks
 const render = () => ReactDOM.render((
   <Provider store={store}>
     <StyleRoot>
-      <Router history={hashHistory}>
+      <Router history={hashHistory} render={applyRouterMiddleware(useScroll())}>
         <Route path="/" component={App} />
         <Route path="/walking" component={WalkingCanvas} />
         <Route path="/blog" component={Blog} />

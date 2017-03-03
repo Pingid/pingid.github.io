@@ -8,6 +8,7 @@ import Radium from 'radium';
 import BlogThumbLarge from './BlogThumbLarge';
 import BlogThumbMedium from './BlogThumbMedium';
 
+import groupPostsBy from '../../utils/groupPostsBy';
 import groupPostsBy3 from '../../utils/groupPostsBy3';
 import groupPostsBy2 from '../../utils/groupPostsBy2';
 import groupPostsBy1 from '../../utils/groupPostsBy1';
@@ -29,6 +30,7 @@ const Blog = ({ blogPosts, resize }) => {
     return groupPostsBy3(posts);
   }
   const grouped = group(blogPosts);
+  // console.log(groupPostsBy(blogPosts.map(x => R.merge(x, { size: x.coverImage ? 2 : 1 })), 3));
   return (
     <div
       className={classNames('mx-auto', { 'px3': window.innerWidth > 590, 'px1': window.innerWidth < 590 })}
