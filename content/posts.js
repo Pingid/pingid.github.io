@@ -1,5 +1,43 @@
 module.exports = [
   {
+    "title": "Sustainable Design",
+    "date": 1488483716237,
+    "sections": [
+      {
+        "title": "",
+        "image": {
+          "src": null,
+          "textWrap": true
+        },
+        "paragraphs": [
+          {
+            "text": "At the turn of the 20th century New York had over 200,000 horses 1 for every 17 residents. Each horse produced over 10 kg of manure a day meaning 2000 tons of manure was being dumped on the streets every day. Heaps of manure lined the streets leaching into basements breeding flies and spreading disease. ‘The world had seemingly reached the point where its largest cities could not survive without the horse but couldn’t survive with it, either’ (Levitt and Dubner, 2009, p.39). But by 1920 you could walk down the streets without your fingers in your nose, the problem almost vanished with the cleaner, more efficient, cheaper automobile. (Levitt and Dubner, 2009)"
+          },
+          {
+            "text": "Sustainable development generally refers to three areas: ‘environmental stewardship, social equity and justice, and economic issues’ (Walker, 2006, p.16). What's interesting about the above story is that the car in this instance was certainly a more sustainable development. Today though, we have again reached a point where are cities are so congested and polluted, we are causing serious damage to our healths and the environment. Are we like before going to be saved by technology, is nuclear fusion just around the corner, or are we all going to have to show some restraint, reduce our power usage give up our cars change our way of living for something less favourable."
+          },
+          {
+            "text": "Since the beginnings of the sustainable development movement in the early 1960’s already we have made massive steps in both into technology and social awareness. Just a couple of months ago a study was published in the journal nature communication that found photovoltaic solar will pay back, some time this year, all the energy that it consumed over the last 40 years of development (Louwen et al., 2016). "
+          }
+        ]
+      }
+    ],
+    "references": [
+      {
+        "text": "Charlotte, K. (no date) Origins of Sustainability. Available at: http://www.its.leeds.ac.uk/projects/sustainability/resources/Origins%20of%20Sustainability.doc (Accessed: 2 March 2017)."
+      },
+      {
+        "text": "Levitt, S.D. and Dubner, S.J. (2009) Superfreakonomics: Global cooling, patriotic prostitutes and why suicide bombers should buy life insurance. London: Penguin Books."
+      },
+      {
+        "text": "Louwen, A., van Sark, W.G.J.H.M., Faaij, A.P.C. and Schropp, R.E.I. (2016) ‘Re-assessment of net energy production and greenhouse gas emissions avoidance after 40 years of photovoltaics development’, Nature Communications, 7, p. 13728. doi: 10.1038/ncomms13728."
+      },
+      {
+        "text": " "
+      }
+    ]
+  },
+  {
     "title": "Samson and Delilah",
     "date": 1487875167955,
     "sections": [
@@ -23,7 +61,7 @@ module.exports = [
         },
         "paragraphs": [
           {
-            "text": "This story from the old testament is the story behind Peter Paul Rubens painting ‘Samson and Delilah’. In the painting Samson is asleep on Delilah’s lap, while an old procuress holds a candle for the barber cutting Samson’s hair. Above in the background is a sculpture of venus and cupid who are both gods of love and desire. To the right are the philistines lying in wait behind a door. The scene is well lit, in part at least by the fire on the left which lies half out of the painting."
+            "text": "This story from the old testament is the story behind Peter Paul Rubens painting ‘Samson and Delilah’. In the painting Samson is asleep on Delilah’s lap, while an old procuress holds a candle for the barber cutting Samson’s hair. Above in the background is a sculpture of venus and cupid who are both are gods of love and desire. To the right are the philistines lying in wait behind a door. The scene is well lit, in part at least by the fire on the left which lies half out of the painting."
           },
           {
             "text": "Some notable symbols of the painting are the old face of the procuress juxtaposed with the youthful complexion of Delilah which could allude to the procuress’s past or Delilah’s future (PETER PAUL RUBENS 1577-1640). The statue of venus and cupid are a clear reference the cause of Samson's Fate (Samson and Delilah, 2009)."
@@ -33,12 +71,12 @@ module.exports = [
       {
         "title": "",
         "image": {
-          "src": null,
+          "src": "https://lh3.googleusercontent.com/hwH64RC3FsG8H7aodD3AGWHsvYjFbcmoSx8tP0aQ4J4F8rtsdo_NZ5vJXtAI_p9GBnP-R3l3L0iXvJdvSORIK9l8UOlWUlXsEfuOcuK2lmpJ2b7tPW7hKBXqTAI15cF8rg",
           "textWrap": true
         },
         "paragraphs": [
           {
-            "text": "The fact that this painting was commissioned by a man and Delilah is lying with her breasts exposed made me think of what John Berger said in response to a painting by Sir Peter Lely in which he states that the nakedness is not her own expression but ‘is a sign of her submission to the owner’s feelings or demands’ (Berger, 1973, p.52). Although the story does include a temptress the question still lies whether this painting might look very different if it were painted for and by a woman."
+            "text": "Part of the goal of the exhibition visit was to look at these paintings through John Berger's eyes focusing on the representation of woman. The nakedness and position of Delila in Rubens painting reminded me of a painting by Sir Peter Lely in which John Berger describes the nakedness as not her own expression but ‘is a sign of her submission to the owner’s feelings or demands’ (Berger, 1973, p.52). Here Berger refers to both the painter and the client who is paying for the painting who in both Lely’s and Ruben’s pieces are male. Although the story does include a temptress the question still lies whether this painting might look very different if it were painted for and by a woman."
           }
         ]
       }
@@ -70,7 +108,7 @@ module.exports = [
         },
         "paragraphs": [
           {
-            "text": "The exhibition comprised of british art ranging from 1540’s right up until the 21st century. As the name suggests you are able to start at one end and walk through each room following the artwork in rough chronological order. Seeing art layed out this way, lead me to reflect on the evolution of art and the differences century to century. The starkest of these differences was between the 19th and 20th centuries where the art became much more abstract. There also seemed to be a correlation between the recentness of the year and quantity of work shown with half the exhibition taken up by 20th century art work."
+            "text": "The British art walk through exhibition comprised of british art ranging from 1540’s right up until the 21st century. As the name suggests you are able to start at one end and walk through each room following the artwork in rough chronological order. Seeing art layed out this way, lead me to reflect on the evolution of art and the differences century to century. The starkest of these differences was between the 19th and 20th centuries where the art became much more abstract. There also seemed to be a correlation between date and quantity with half the exhibition taken up by 20th century art work."
           }
         ]
       },
@@ -82,17 +120,8 @@ module.exports = [
         },
         "paragraphs": [
           {
-            "text": "There was a whole room dedicated to Henry Moore's sculptures, situated on a plinth in the center of this room is ‘Reclining Figure’ a plaster mold for a bronze cast. It depicts what looks like a woman, judging by the prodrudance on her chest, lying propped up by both elbows. What made the piece stand out among the other sculptures was the contrast between the dark lines on the lighter plaster. They make the piece look as though it is made from separate chunks and gives it an almost space age look.  I discovered later that Moore himself singled it out as one of his most important sculptures saying that it was the ‘first sculpture in which I succeeded in making form and space sculpturally inseparable’ (Christie’s, 2016)."
-          }
-        ]
-      },
-      {
-        "title": "",
-        "image": {
-          "src": null,
-          "textWrap": true
-        },
-        "paragraphs": [
+            "text": "There was a whole room dedicated to Henry Moore's sculptures and situated on a plinth in the center of this room is ‘Reclining Figure’. It depicts what looks like a woman, judging by the prodrudance on her chest, lying propped up by both elbows. What made the piece stand out among the other sculptures was the contrast between the dark lines on the lighter plaster. They make the piece look as though it is made from separate chunks and gives it an almost space age look.  I discovered later that Moore himself singled it out as one of his most important sculptures saying that it was the ‘first sculpture in which I succeeded in making form and space sculpturally inseparable’ (Christie’s, 2016)."
+          },
           {
             "text": "Having an exhibition laid out in chronological order helped me to understand art and art styles in respect to history. There seemed to be an evolution in painting starting in two dimensions moving into perspective and three dimensions and finally to abstraction. It made me wonder whether it was artists who have gotten better at communicating messages or whether it is that contemporary consumers see more art and therefore appreciate the nuance of contemporary abstraction much more?"
           }
@@ -120,22 +149,13 @@ module.exports = [
         },
         "paragraphs": [
           {
-            "text": "One of the first times a word relating to semiotics appeared was in Swiss linguist Ferdinand de Saussure’s ‘A Course in general linguistics’, “A science that studies the life of signs within society is conceivable; it would be a part of social psychology and consequently of general psychology; I shall call it semiology' (from Greek semefon 'sign') (de Saussure, 1974,  p. 16)”. He goes on to define a sign by splitting it into two components the signifier and signified. The signifier is the literal sign: sound, image, text, and the signified is the concept or idea that the sign is referring to. Daniel Chandler, in his book ‘Semiotics: the basics’, questions whether semiotics is really a science he describes the word as ‘misleading’ pointing out that ‘semiotics involves no widely agreed theoretical assumptions, models or empirical methodologies.’ (Chandler, 2006, p. 4)."
+            "text": "One of the first times a word relating to semiotics appeared was in Swiss linguist Ferdinand de Saussure’s ‘A Course in general linguistics’, ‘A science that studies the life of signs within society is conceivable; it would be a part of social psychology and consequently of general psychology; I shall call it semiology' (from Greek semefon 'sign') (de Saussure, 1974,  p. 16)”. He goes on to define a sign by splitting it into two components the signifier and signified. The signifier is the literal sign: sound, image, text, and the signified is the concept or idea that the sign is referring to. Depending on your definition It may be misleading to call semiotics a science Daniel Chandler, in his book ‘Semiotics: the basics’ explains that is has ‘no widely agreed theoretical assumptions, models or empirical methodologies’ (Chandler, 2006, p. 4)."
           },
           {
-            "text": "Nevertheless Saussure does give a sort of framework to work from when he defines the sign as being made from the signified and the signifier. Using this definition of a sign it is possible to break down and compare different signs and debate there connotations, denotations with a level of objective reason."
-          }
-        ]
-      },
-      {
-        "title": "",
-        "image": {
-          "src": null,
-          "textWrap": true
-        },
-        "paragraphs": [
+            "text": "Saussure does give a sort of framework to work from when he defines the sign as being made from the signified and the signifier. Using this definition of a sign it is possible to break down and compare different signs and debate there connotations, denotations with some level of logical progression."
+          },
           {
-            "text": "I found it helpful to see linguistics as a subset of semiotics, it being the study of perhaps the most important sign system language. I initially saw semiotics as an area of study not fundamental to human growth and understanding however I find it hard to argue with Daniel Chandler's logic when he says “To decline the study of signs is to leave to others the control of the world of meaning which we inhabit.” (2006, p. 11)."
+            "text": "I found it helpful to see linguistics as a subset of semiotics, it being the study of perhaps our most valued sign system language. Its interesting to step back and look at language like this compare it to our other sign systems mathematical notation, music, or body language. I see now what Chandler means when he says “To decline the study of signs is to leave to others the control of the world of meaning which we inhabit.” (2006, p. 11)."
           }
         ]
       }

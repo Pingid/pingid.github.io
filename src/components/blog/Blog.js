@@ -71,7 +71,7 @@ const Blog = ({ blogPosts, resize }) => {
                   return (
                     <div
                       key={i2 + 10}
-                      style={{ maxWidth: '590px'}}
+                      style={{ maxWidth: '590px', minWidth: '33%' }}
                       className={classNames('px3 border-box', {
                         'c-border-x': i2 === 1 && section.length > 2,
                         'c-border-l': i2 === 1 && section.length === 2

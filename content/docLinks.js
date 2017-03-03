@@ -1,5 +1,13 @@
 module.exports = [
   {
+    "title": "Sustainable Design",
+    "date": 1488483716237,
+    "src": "https://docs.google.com/document/d/1c9abTrhTaD1CZQ1G3Nv748QQiGO5EpY8r1K8Barm43s/pub",
+    "textWrap": true,
+    "coverImage": "https://images.unsplash.com/12/car.jpg?dpr=1&auto=format&fit=crop&w=767&h=463&q=80&cs=tinysrgb&crop=",
+    "description": "Heaps of manure lined the streets leaching into basements breeding flies and spreading disease."
+  },
+  {
     "title": "Samson and Delilah",
     "date": 1487875167955,
     "src": "https://docs.google.com/document/d/1-lIYJaAC_dUfzgOXSiE2WsSL87NxLdtp3XzkNNROrTY/pub",
@@ -12,7 +20,7 @@ module.exports = [
     "date": 1486512000000,
     "src": "https://docs.google.com/document/d/1cvgI9FAYQAVY4kLm-LvuBy3GcG6neE5o6yK9fkKPgPg/pub",
     "textWrap": false,
-    "coverImage": "https://lh6.googleusercontent.com/FhXv0dlA0WtUQb3V-kWbYPMrQ741A5oOJgGxXJOGcMZj2_oG821gyLi_qVqkTXCh39k_hcT387UIaTZ_eqKcV4_88MHYa5kFmg8bz4JWQjV-tphwzhftd8Lzn74_gfAGvQ",
+    // "coverImage": "https://lh6.googleusercontent.com/FhXv0dlA0WtUQb3V-kWbYPMrQ741A5oOJgGxXJOGcMZj2_oG821gyLi_qVqkTXCh39k_hcT387UIaTZ_eqKcV4_88MHYa5kFmg8bz4JWQjV-tphwzhftd8Lzn74_gfAGvQ",
     "description": "Having an exhibition laid out in chronological order helped me to understand art and art styles in respect to history"
   },
   {
