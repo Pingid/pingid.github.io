@@ -11,13 +11,13 @@ module.exports = [
         },
         "paragraphs": [
           {
-            "text": "At the turn of the 20th century New York had over 200,000 horses 1 for every 17 residents resulting in 2000 tons of manure being dumped on the streets every day. Heaps of manure lined the streets leaching into basements breeding flies and spreading disease. ‘The world had seemingly reached the point where its largest cities could not survive without the horse but couldn’t survive with it, either’ (Levitt and Dubner, 2009, p.39). Could the citizens rise up and ultuistically sacrifice some personal wealth for their collective healths, well without the need for any of this by the 1920’s the horse had almost completely disappeard, replaced by the far cleaner, more efficient, cheaper automobile. (Levitt and Dubner, 2009)"
+            "text": "At the turn of the 20th century New York had over 200,000 horses, 1 for every 17 residents resulting in 2000 tons of manure being dumped on the streets every day. Heaps of manure lined the streets leaching into basements breeding flies and spreading disease. ‘The world had seemingly reached the point where its largest cities could not survive without the horse but couldn’t survive with it, either’ (Levitt and Dubner, 2009, p.39). Could the citizens rise up and altruistically sacrifice some personal wealth for their collective health's, well without the need for any of this by the 1920’s the horse had almost completely disappeared, replaced by the far cleaner, more efficient, cheaper automobile. (Levitt and Dubner, 2009)"
           },
           {
             "text": "Sustainable development generally refers to three areas: ‘environmental stewardship, social equity and justice, and economic issues’ (Walker, 2006, p.16). What's interesting about the above story is that the car in this instance was certainly a more sustainable development. Today though, we have again reached a point where are cities are so congested and polluted, we are causing serious damage to our healths and the environment. Are we like before going to be saved by technology, is nuclear fusion just around the corner, or are we all going to have to show some restraint, reduce our power usage give up our cars change our way of living for something less favourable."
           },
           {
-            "text": "Personally I am optimistic we have already come a long way since the start of the sustainable development movement in the early 1960’s. Just a couple of months ago a study was published in the journal nature communication that found photovoltaic solar will pay back, some time this year, all the energy that it consumed over the last 40 years of development (Louwen et al., 2016). A small but signifant win in the are of techonology but not enough to give up pushing for social change maybe, if enough artists and designers effectivly educate people on the problems and consiquences, we can tackle this crises from both sides."
+            "text": "Just a couple of months ago a study was published in the journal nature communication that found photovoltaic solar will pay back, some time this year, all the energy that it consumed over the last 40 years of development (Louwen et al., 2016). This doesn’t mean much for us now, but does mean cheaper energy for the future. Most designers aren’t also engineers and so aren’t at the forefront scientific discovery but they can push for social change and maybe, if enough artists and designers effectively educate people on the problems and consequences, we can tackle this crisis from both sides."
           }
         ]
       }
@@ -123,7 +123,7 @@ module.exports = [
             "text": "There was a whole room dedicated to Henry Moore's sculptures and situated on a plinth in the center of this room is ‘Reclining Figure’. It depicts what looks like a woman, judging by the prodrudance on her chest, lying propped up by both elbows. What made the piece stand out among the other sculptures was the contrast between the dark lines on the lighter plaster. They make the piece look as though it is made from separate chunks and gives it an almost space age look.  I discovered later that Moore himself singled it out as one of his most important sculptures saying that it was the ‘first sculpture in which I succeeded in making form and space sculpturally inseparable’ (Christie’s, 2016)."
           },
           {
-            "text": "Having an exhibition laid out in chronological order helped me to understand art and art styles in respect to history. There seemed to be an evolution in painting starting in two dimensions moving into perspective and three dimensions and finally to abstraction. It made me wonder whether it was artists who have gotten better at communicating messages or whether it is that contemporary consumers see more art and therefore appreciate the nuance of contemporary abstraction much more?"
+            "text": "Having an exhibition laid out in chronological order helped me to understand art and art styles in respect to history. There seemed to be an evolution in painting starting in two dimensions moving into perspective and three dimensions and finally to abstraction. It made me wonder whether it was artists who have gotten better at communicating messages or whether it is that contemporary consumers see more art and therefore appreciate the nuance of contemporary abstraction more?"
           }
         ]
       }
@@ -149,13 +149,16 @@ module.exports = [
         },
         "paragraphs": [
           {
+            "text": "Semiotics defined in the oxford english dictionary as ‘The study of signs and symbols and their use or interpretation’. This is the first time I have come across semiotics so I use this essay to explore where it came from and what other subjects it is related to."
+          },
+          {
             "text": "One of the first times a word relating to semiotics appeared was in Swiss linguist Ferdinand de Saussure’s ‘A Course in general linguistics’, ‘A science that studies the life of signs within society is conceivable; it would be a part of social psychology and consequently of general psychology; I shall call it semiology' (from Greek semefon 'sign') (de Saussure, 1974,  p. 16)”. He goes on to define a sign by splitting it into two components the signifier and signified. The signifier is the literal sign: sound, image, text, and the signified is the concept or idea that the sign is referring to. Depending on your definition It may be misleading to call semiotics a science Daniel Chandler, in his book ‘Semiotics: the basics’ explains that is has ‘no widely agreed theoretical assumptions, models or empirical methodologies’ (Chandler, 2006, p. 4)."
           },
           {
             "text": "Saussure does give a sort of framework to work from when he defines the sign as being made from the signified and the signifier. Using this definition of a sign it is possible to break down and compare different signs and debate there connotations, denotations with some level of logical progression."
           },
           {
-            "text": "I found it helpful to see linguistics as a subset of semiotics, it being the study of perhaps our most valued sign system language. Its interesting to step back and look at language like this compare it to our other sign systems mathematical notation, music, or body language. I see now what Chandler means when he says “To decline the study of signs is to leave to others the control of the world of meaning which we inhabit.” (2006, p. 11)."
+            "text": "I found it helpful to see linguistics as a subset of semiotics, it being the study of perhaps our most valued sign system language. Its interesting to step back and look at language like this, compare it to our other sign systems such as mathematical notation, music, or body language. Looking from this perspective as helped me to understand what Chandler means when he says “To decline the study of signs is to leave to others the control of the world of meaning which we inhabit.” (2006, p. 11)."
           }
         ]
       }

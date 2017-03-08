@@ -9,9 +9,6 @@ import BlogThumbLarge from './BlogThumbLarge';
 import BlogThumbMedium from './BlogThumbMedium';
 
 import groupPostsBy from '../../utils/groupPostsBy';
-import groupPostsBy3 from '../../utils/groupPostsBy3';
-import groupPostsBy2 from '../../utils/groupPostsBy2';
-import groupPostsBy1 from '../../utils/groupPostsBy1';
 
 const Header = () => (
   <div className={classNames({ 'pb3 pt2 pl3': window.innerWidth > 590, 'pb2 pt1 pl1': window.innerWidth < 590, })}>
@@ -24,13 +21,19 @@ const Header = () => (
 
 const Blog = ({ blogPosts, resize }) => {
   if (blogPosts.length < 1) return <div className="px3 mx-auto" style={{ maxWidth: '60rem' }}><Header /></div>;
-  const group = (posts) => {
-    if (window.innerWidth < 590) return groupPostsBy1(posts)
-    if (window.innerWidth < 878) return groupPostsBy2(posts)
-    return groupPostsBy3(posts);
+  const getTileSize = post => {
+    if (post.coverImage && post.coverImage.landscape) return 3;
+    if (post.coverImage) return 2;
+    return 1;
   }
-  const grouped = group(blogPosts);
-  // console.log(groupPostsBy(blogPosts.map(x => R.merge(x, { size: x.coverImage ? 2 : 1 })), 3));
+  const setTileSizes = R.map(x => R.merge(x, { size: getTileSize(x) }))
+  const top = R.find(R.propEq('coverImage'), blogPosts);
+  const rest = setTileSizes(blogPosts.filter(x => x.title !== top.title))
+  const group = (posts) => groupPostsBy(posts, R.min(Math.round(window.innerWidth * 0.002277904328), 3))
+  const grouped = {
+    top,
+    rest: group(rest)
+  };
   return (
     <div
       className={classNames('mx-auto', { 'px3': window.innerWidth > 590, 'px1': window.innerWidth < 590 })}
@@ -47,14 +50,14 @@ const Blog = ({ blogPosts, resize }) => {
                 <BlogThumbMedium
                   title={grouped.top.title}
                   description={grouped.top.description}
-                  image={{ src: grouped.top.coverImage }}
+                  image={{ src: grouped.top.coverImage.src }}
                   borderLeft={false} />
               </div>
             ) : (
               <BlogThumbLarge
                 title={grouped.top.title}
                 description={grouped.top.description}
-                image={{ src: grouped.top.coverImage }} />
+                image={{ src: grouped.top.coverImage.src }} />
             )
           }
         </div>
@@ -68,7 +71,7 @@ const Blog = ({ blogPosts, resize }) => {
                               key={i2 + 10}
                               title={post.title}
                               description={post.description}
-                              image={{ src: post.coverImage}}
+                              image={{ src: post.coverImage.src }}
                               borderLeft={i2 === 1} />
                   return (
                     <div

@@ -4,7 +4,7 @@ module.exports = [
     "date": 1488483716237,
     "src": "https://docs.google.com/document/d/1c9abTrhTaD1CZQ1G3Nv748QQiGO5EpY8r1K8Barm43s/pub",
     "textWrap": true,
-    "coverImage": "https://images.unsplash.com/12/car.jpg?dpr=1&auto=format&fit=crop&w=767&h=463&q=80&cs=tinysrgb&crop=",
+    "coverImage": { "landscape": true, "src": "https://images.unsplash.com/12/car.jpg?dpr=1&auto=format&fit=crop&w=767&h=463&q=80&cs=tinysrgb&crop=" },
     "description": "Heaps of manure lined the streets leaching into basements breeding flies and spreading disease."
   },
   {
@@ -12,7 +12,7 @@ module.exports = [
     "date": 1487875167955,
     "src": "https://docs.google.com/document/d/1-lIYJaAC_dUfzgOXSiE2WsSL87NxLdtp3XzkNNROrTY/pub",
     "textWrap": true,
-    "coverImage": "https://lh5.googleusercontent.com/bZbaliSIxuV_rbb6FEFj0dYcQZZvb5l0kjpzxjn05D6VxC1pSswin_1FHqo8NvllxDQIiXj_9aeE48zZpMzXYz5kGkhdIcH2LuxIz9YUO8N7ccwXkxewTr101vjJfE3FUQ",
+    "coverImage": { "src": "https://lh5.googleusercontent.com/bZbaliSIxuV_rbb6FEFj0dYcQZZvb5l0kjpzxjn05D6VxC1pSswin_1FHqo8NvllxDQIiXj_9aeE48zZpMzXYz5kGkhdIcH2LuxIz9YUO8N7ccwXkxewTr101vjJfE3FUQ" },
     "description": "During a dark time for the israelites in their ongoing battle with the philistines Samson was born and god bestowed upon him supernatural strength with one caveat, he must not cut his hair."
   },
   {
@@ -20,7 +20,7 @@ module.exports = [
     "date": 1486512000000,
     "src": "https://docs.google.com/document/d/1cvgI9FAYQAVY4kLm-LvuBy3GcG6neE5o6yK9fkKPgPg/pub",
     "textWrap": false,
-    // "coverImage": "https://lh6.googleusercontent.com/FhXv0dlA0WtUQb3V-kWbYPMrQ741A5oOJgGxXJOGcMZj2_oG821gyLi_qVqkTXCh39k_hcT387UIaTZ_eqKcV4_88MHYa5kFmg8bz4JWQjV-tphwzhftd8Lzn74_gfAGvQ",
+    "coverImage": { "landscape": true, "src": "https://lh6.googleusercontent.com/FhXv0dlA0WtUQb3V-kWbYPMrQ741A5oOJgGxXJOGcMZj2_oG821gyLi_qVqkTXCh39k_hcT387UIaTZ_eqKcV4_88MHYa5kFmg8bz4JWQjV-tphwzhftd8Lzn74_gfAGvQ" },
     "description": "Having an exhibition laid out in chronological order helped me to understand art and art styles in respect to history"
   },
   {
@@ -64,7 +64,7 @@ module.exports = [
     "src": "https://docs.google.com/document/d/14xymn8-lAO-1CaXE4kcfG3SzQwN162nsF83vYMNRbis/pub",
     "textWrap": true,
     "description": "Mackintosh’s chair like Breuer’s uses simple geometric shapes, the main and key difference is in the choice of materials.",
-    "coverImage": "https://lh3.googleusercontent.com/BpBIniGrmeYEDEiM61br_fgdeUGsGHCkkDR-58Y_lZQ5ZUqpEkCfeRrzlGla8Pfg83MeW7w6SdjA7yJXF3763rliw3UHzjzfo6zaiYTytyRewb2u30M4Vf66h0CMekekig"
+    "coverImage": { "src": "https://lh3.googleusercontent.com/BpBIniGrmeYEDEiM61br_fgdeUGsGHCkkDR-58Y_lZQ5ZUqpEkCfeRrzlGla8Pfg83MeW7w6SdjA7yJXF3763rliw3UHzjzfo6zaiYTytyRewb2u30M4Vf66h0CMekekig" }
   },
   {
     "title": "What is culture",

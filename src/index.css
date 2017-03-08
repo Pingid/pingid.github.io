@@ -42,6 +42,8 @@ p {
   line-height: 28px;
   letter-spacing: .5px;
 }
+@media screen and (max-width: 550px) { p { line-height: 27px } }
+/*@media screen and (max-width: 400px) { p { line-height: 26px } }*/
 
 a { color: black; text-decoration: none; }
 a:visited { color: black }

@@ -22,7 +22,7 @@ const BlogPost = ({ params, router, blogPosts }) => {
             <div key={uniqueReactKey++}>
               { section.title.length > 0 ? <h4 className="my3">{section.title}</h4> : null }
               <div className="">
-                { (section.image && section.image.src) ? <img role="presentation" className={classNames({ 'c-blog-image-wrap right pl2 pb2 mt1': post.textWrap, 'fit mt2 mb1': !post.textWrap })} src={section.image.src} /> : null }
+                { (section.image && section.image.src) ? <img role="presentation" className={classNames({ 'c-blog-image-wrap right pl2 pb2 mt1': (post.textWrap && window.innerWidth > 500), 'fit mt2 mb1': (!post.textWrap || window.innerWidth < 500) })} src={section.image.src} /> : null }
                 { section.paragraphs.map(paragraph => <p key={uniqueReactKey++}>{paragraph.text}</p>) }
               </div>
             </div>
@@ -30,12 +30,13 @@ const BlogPost = ({ params, router, blogPosts }) => {
         }
         {
           post.references.length > 0 ? (
-            <div style={{ overflowX: 'scroll' }}>
+            <div>
               <h1 className="mb3 center" style={{ marginTop: '6rem' }}>References</h1>
               {
                 post.references.map(reference => (
                   <p
-                    style={{ color: '#5a5a5a' }}
+                    className="wrap"
+                    style={{ color: '#5a5a5a', wordWrap: 'break-word' }}
                     key={uniqueReactKey++}>
                     {reference.text}
                   </p>
