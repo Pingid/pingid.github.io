@@ -6,7 +6,10 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Site is under construction</h1>
-        <Link to="blog">Blog</Link>
+        <br />
+        <a href="http://www.danbeaven.co.uk/blog">Blog</a>
+        <br />
+        <Link to="blog">Old Blog</Link>
         <br />
         <Link to="walking">Walk experiment</Link>
       </div>
