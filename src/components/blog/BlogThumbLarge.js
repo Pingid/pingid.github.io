@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const BlogThumbTop = ({ title, description, image }) => (
   <Link to={'blog/' + title.split(' ').join('-')}>

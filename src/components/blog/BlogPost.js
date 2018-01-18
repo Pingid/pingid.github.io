@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 import Radium from 'radium';
-import R from 'ramda';
 import classNames from 'classnames';
+
+const R = require('ramda');
 
 const BlogPost = ({ params, router, blogPosts }) => {
   const post = R.find(R.propEq('title', params.post.split('-').join(' ')), blogPosts);
@@ -66,4 +66,4 @@ BlogPost.propTypes = {
   })
 };
 
-export default connect(({ blogPosts }) => ({ blogPosts }))(Radium(BlogPost));
+export default Radium(BlogPost);

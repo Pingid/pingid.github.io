@@ -1,14 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import R from 'ramda';
 import classNames from 'classnames';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Radium from 'radium';
 
 import BlogThumbLarge from './BlogThumbLarge';
 import BlogThumbMedium from './BlogThumbMedium';
 
 import groupPostsBy from '../../utils/groupPostsBy';
+
+import blogPosts from ''
+const R = require('ramda');
 
 const Header = () => (
   <div className={classNames({ 'pb3 pt2 pl3': window.innerWidth > 590, 'pb2 pt1 pl1': window.innerWidth < 590, })}>
@@ -19,7 +20,7 @@ const Header = () => (
   </div>
 )
 
-const Blog = ({ blogPosts, resize }) => {
+const Blog = ({ blogPosts }) => {
   if (blogPosts.length < 1) return <div className="px3 mx-auto" style={{ maxWidth: '60rem' }}><Header /></div>;
   const getTileSize = post => {
     if (post.coverImage && post.coverImage.landscape) return 3;
@@ -100,4 +101,4 @@ const Blog = ({ blogPosts, resize }) => {
   )
 }
 
-export default connect(({ resize, blogPosts }) => ({ resize, blogPosts }))(Radium(Blog));
+export default Radium(Blog);

@@ -4,6 +4,7 @@ import { Howl } from 'howler';
 import setupCanvas from './SetupCanvas';
 import Walker from './Walker';
 import Foot from './Foot';
+import Doorway from './Doorway';
 import { pageOffsetY } from '../../utils/dom';
 import { vect, mapValues } from '../../utils/math';
 
@@ -36,7 +37,6 @@ export default class WalkingCanvas extends Component {
         six: [5000, 300]
       }
     });
-    console.log(sound);
     const playRandom = (max) => ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][Math.floor(Math.random() * max)]
 
     const { ctx, start, stop, running } = setupCanvas(
@@ -107,6 +107,7 @@ export default class WalkingCanvas extends Component {
     return (
       <div>
         <canvas id="walking-canvas" style={style} />
+        <Doorway height={150} position={{ x: 50, y: 50 }} />
         <div style={sectionStyles('beige')}>My Site</div>
         <div style={sectionStyles('white')}>Snow</div>
         <div style={sectionStyles('brow')}>Wood</div>
