@@ -1,7 +1,0 @@
-.projects { display: flex; flex-flow: row wrap; }
-.proj-tile {
-  flex: 0 0 50%;
-}
-.proj-tile img {
-  width: 90%;
-}
