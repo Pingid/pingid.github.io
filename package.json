@@ -1,0 +1,25 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://www.danbeaven.co.uk",
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "radium": "^0.21.1",
+    "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-scroll": "^0.4.4",
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

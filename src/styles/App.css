@@ -1,0 +1,25 @@
+.header-copy {
+	margin: 3rem 0rem;
+	padding: 0;
+}
+
+.proj-link {
+	margin-bottom: calc(100vw * .01);
+	/*margin-left: 8vw;*/
+}
+
+.underline {
+  /*font-size: 50px;*/
+  /*  shadows render better in certain browsers than text, first rule is for older browser support  */
+  color: #333;
+  color: transparent;
+  text-shadow: 0 0 #333, .08em 0 0 #222, 0 0, -.08em 0 0 #222;
+  /*  gradient background allows us to use css only & re-position it  */
+  background: -webkit-linear-gradient(red, red) center 1.09em no-repeat;
+  background: linear-gradient(red, red) center 1.09em no-repeat;
+  /*  can precisely control size in relation to the text  */
+  background-size: 100% 1px;
+  /*  now the underline supports transitions  */
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
