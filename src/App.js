@@ -11,7 +11,9 @@ class App extends Component {
             <a href="https://github.com/Pingid">github</a>&nbsp;&nbsp;
             <a href="https://instagram.com/danielbeaven/">instagram</a>
           </p>
-          <h1 className="header-copy">Due to construction work this temporary site with links to stuff I have made</h1>
+          <h1 className="header-copy">
+            This is a temporary site due to construction work, check out my <a href="/blog">blog</a> or the links bellow.
+          </h1>
          
           <h2 className="underline proj-link"><a href="http://calilew.github.io">Photography Portfolio</a></h2>
           <h2 className="underline proj-link"><a href="http://maketheworldgreat.cards/">Card Game</a></h2>
