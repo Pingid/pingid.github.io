@@ -15,7 +15,8 @@
     "react-scripts": "1.1.0"
   },
   "scripts": {
-    "deploy": "yarn build; node /scripts/move-html.js",
+    "move-html": "node ./scripts/move-html.js",
+    "deploy": "yarn build; yarn move-html",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
