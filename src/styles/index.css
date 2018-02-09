@@ -10,7 +10,8 @@ body {
 header {
   padding-left: 10vw;
   padding-right: 10vw;
-  padding-top: 5rem;
+  padding-top: 10vh;
+
 }
 
 h1 { font-size: 6.18vw; }
