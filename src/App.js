@@ -3,6 +3,11 @@ import { Link } from 'react-router-dom';
 import './styles/App.css';
 
 const projects = [
+ {
+    title: 'Wikiconga',
+    description: 'Oulipian inspired poetry',
+    route: 'http://www.wikicon.ga'
+  },
   {
     title: 'Cali Photography',
     description: 'Portfolio website for London based freelance photographer Cali Lew',
@@ -25,19 +30,20 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h4 className="m0">Dan Beaven</h4>
-          <p className="">
-            Building experiences, exploring the absurd, a puppeteer of narrative.
-          </p>
-          <p className="mt1 mb1">
+          <p className="mt1 mb1" style={{ fontSize: '.618rem' }}>
             <a href="mailto:dm.beaven@gmail.com?Subject=Hello" target="_top">email</a>&nbsp;&nbsp;
             <a href="/blog">blog</a>&nbsp;&nbsp;
             <a href="https://github.com/Pingid">github</a>&nbsp;&nbsp;
-            <a className="c-underline" href="https://instagram.com/danielbeaven/">instagram</a>
+            <a className="" href="https://instagram.com/danielbeaven/">instagram</a>
           </p>
-          <ul className="mt3">
+          <p className="py1">
+            I am currently studying Interaction Design Arts where much of my practive has revolved around creating interactive experiences. I am deeply interested in the way different mediums can be utilised to explore narrative whether that is in radio, theatre or film. Many of the links bellow are to my much older webdesign work.
+          </p>
+          
+          <ul className="mt1">
             { 
               projects.map((proj, index) => (
-                <li className="py1"><a href={proj.route} className="c-underline">0{index}.&nbsp;{proj.title}</a></li>
+                <li className="py1"><a href={proj.route} className="underline">0{index}.&nbsp;{proj.title}</a></li>
               ))
             }
           </ul>
