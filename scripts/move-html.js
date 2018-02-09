@@ -18,10 +18,12 @@ const read_file = promisifyFS(fs.readFile);
 const write_file = promisifyFS(fs.writeFile);
 
 const changePaths = html => html
-	.replace(/(?<=href="|src=")/gi, '/build')
+	.replace(/(?<=href="(?!https)|src=")/gi, '/build')
 
 read_file(input, 'utf8')
+	.then(i => { console.log(i); return i })
 	.then(changePaths)
+	.then(i => { console.log(i); return i })
 	.then(html => write_file(output, html))
 	.then(x => console.log("DONE"))
 
