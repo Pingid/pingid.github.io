@@ -9,11 +9,14 @@ import registerServiceWorker from './utils/registerServiceWorker';
 
 const render = () => ReactDOM.render((
   <Router>
-    <Route path="/" component={App} />
+  	<div>
+	    <Route path="/" component={App} />
+	    <Route path="/me-image" component={() => <img src={require('./content/me.jpg')} />} />
+	  </div>
   </Router>
 ), document.getElementById('root'));
 
 render();
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

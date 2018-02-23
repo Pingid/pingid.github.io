@@ -24,6 +24,7 @@ const projects = [
     route: 'http://ida-2017.netlify.com/'
   }
 ]
+
 class App extends Component {
   render() {
     return (
@@ -37,13 +38,13 @@ class App extends Component {
             <a className="" href="https://instagram.com/danielbeaven/">instagram</a>
           </p>
           <p className="py1">
-            I am currently studying Interaction Design Arts where much of my practive has revolved around creating interactive experiences. I am deeply interested in the way different mediums can be utilised to explore narrative whether that is in radio, theatre or film. Many of the links bellow are to my much older webdesign work.
+            I am currently studying Interaction Design Arts in London, my practice is medium agnostic, I think a lot about how narrative can best harnissed in radio, film and digital interaction.
           </p>
           
           <ul className="mt1">
             { 
               projects.map((proj, index) => (
-                <li className="py1"><a href={proj.route} className="underline">0{index}.&nbsp;{proj.title}</a></li>
+                <li key={index} className="py1"><a href={proj.route} className="underline">0{index}.&nbsp;{proj.title}</a></li>
               ))
             }
           </ul>
