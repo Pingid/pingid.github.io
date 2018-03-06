@@ -4,15 +4,20 @@ import { BrowserRouter as Router, Route, } from 'react-router-dom';
 
 import './styles/index.css';
 import App from './App';
+import Project from './components/Project';
+import Mouse from './components/Mouse';
+
+import content from './content'
 
 import registerServiceWorker from './utils/registerServiceWorker';
 
 const render = () => ReactDOM.render((
   <Router>
-  	<div>
-	    <Route path="/" component={App} />
+  	<Mouse>
+	    <Route path="/" exact component={App} />
+	    <Route path="/project/:name" component={Project} />
 	    <Route path="/me-image" component={() => <img src={require('./content/me.jpg')} />} />
-	  </div>
+	  </Mouse>
   </Router>
 ), document.getElementById('root'));
 

@@ -5,16 +5,23 @@
   "homepage": "http://www.danbeaven.co.uk",
   "dependencies": {
     "classnames": "^2.2.5",
+    "imagemin": "^5.3.1",
+    "imagemin-jpegtran": "^5.0.2",
+    "imagemin-pngquant": "^5.0.1",
     "radium": "^0.21.1",
     "ramda": "^0.25.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-markdown": "^3.2.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-scroll": "^0.4.4",
-    "react-scripts": "1.1.0"
+    "react-scripts": "1.1.0",
+    "recompose": "^0.26.0",
+    "sharp": "^0.19.1"
   },
   "scripts": {
+    "parse": "node ./scripts/markdown-content-parse.js",
     "move-html": "node ./scripts/move-html.js",
     "deploy": "yarn build; yarn move-html",
     "start": "react-scripts start",

@@ -1,3 +1,31 @@
-## about
+# main
 
-I am currently studying Interaction Design Arts in London, my practice is medium agnostic, I think a lot about how narrative is can best harnissed in radio, film and digital interaction.
+I am currently studing Interaction Design Arts in London where my focus has been on exploring formuliac art and the interface between digital and physical. 
+
+```json
+{
+    "external_links": [
+        {
+            "title": "Wikiconga",
+            "description": "Oulipian inspired poetry",
+            "route": "http://www.wikicon.ga"
+        },
+        {
+            "title": "Cali Photography",
+            "description": "Portfolio website for London based freelance photographer Cali Lew",
+            "route": "http://calilew.github.io"
+        },
+        {
+            "title": "MWGA Card Game",
+            "description": "Website for the card game 'Make The World Great Again'",
+            "route": "http://maketheworldgreat.cards"
+        },
+        {
+            "title": "IDA Degree Show",
+            "description": "Website for LCC Interaction Design Arts (BA) 2017 final degree show",
+            "route": "http://ida-2017.netlify.com/"
+        }
+    ]
+}
+```
+

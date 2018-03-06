@@ -1,0 +1,38 @@
+{
+  "main": {
+    "title": "main",
+    "meta": {
+      "external_links": [
+        {
+          "title": "Wikiconga",
+          "description": "Oulipian inspired poetry",
+          "route": "http://www.wikicon.ga"
+        },
+        {
+          "title": "Cali Photography",
+          "description": "Portfolio website for London based freelance photographer Cali Lew",
+          "route": "http://calilew.github.io"
+        },
+        {
+          "title": "MWGA Card Game",
+          "description": "Website for the card game 'Make The World Great Again'",
+          "route": "http://maketheworldgreat.cards"
+        },
+        {
+          "title": "IDA Degree Show",
+          "description": "Website for LCC Interaction Design Arts (BA) 2017 final degree show",
+          "route": "http://ida-2017.netlify.com/"
+        }
+      ]
+    },
+    "markdown": "\nI am currently studing Interaction Design Arts in London where my focus has been on exploring formuliac art and the interface between digital and physical. \n\n\n\n"
+  },
+  "publication": {
+    "title": "publication",
+    "markdown": "\n![IMG_0130](static/publication/IMG_0130.JPG)\n\n![IMG_0131](static/publication/IMG_0131.JPG)\n\n![IMG_0141](static/publication/IMG_0141.JPG)\n\n![IMG_0132](static/publication/IMG_0132.JPG)\n\n![IMG_0142](static/publication/IMG_0142.JPG)\n\n![IMG_0143](static/publication/IMG_0143.JPG)\n\n![IMG_0144](static/publication/IMG_0144.JPG)\n\n![IMG_0145](static/publication/IMG_0145.JPG)\n\n![IMG_0138](static/publication/IMG_0138.JPG)\n\n![IMG_0139](static/publication/IMG_0139.JPG)\n\n![IMG_0140](static/publication/IMG_0140.JPG)\n\n![IMG_0146](static/publication/IMG_0146.JPG)"
+  },
+  "skynet": {
+    "title": "skynet",
+    "markdown": "\n\n\n![_56B6011](static/skynet/_56B6011.JPG)\n\n![_56B6012](static/skynet/_56B6012.JPG)\n\n![_56B6041](static/skynet/_56B6041.JPG)\n\n![_56B6044](static/skynet/_56B6044.JPG)\n\n![_56B6046](static/skynet/_56B6046.JPG)\n\n![_56B6143](static/skynet/_56B6143.JPG)\n\n![_56B6144](static/skynet/_56B6144.JPG)\n\n![_56B6147](static/skynet/ipad.gif)\n\n![projection](static/skynet/projection.gif)\n\n"
+  }
+}
