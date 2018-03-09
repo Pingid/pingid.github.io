@@ -18,9 +18,13 @@
     "react-router-dom": "^4.2.2",
     "react-router-scroll": "^0.4.4",
     "react-scripts": "1.1.0",
+    "react-three-renderer": "^3.2.4",
     "recompose": "^0.26.0",
     "sharp": "^0.19.1",
-    "styled-components": "^3.2.1"
+    "styled-components": "^3.2.1",
+    "three": "^0.90.0",
+    "three-orbit-controls": "^82.1.0",
+    "three.interaction": "^0.0.7"
   },
   "scripts": {
     "parse": "node ./scripts/markdown-content-parse.js",
