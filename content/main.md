@@ -1,6 +1,8 @@
 # main
 
-I am currently studing Interaction Design Arts in London where my focus has been on exploring formuliac art and the interface between digital and physical. 
+Dan is a designer who specialises in the browser and an artist whos practice revolves around formuliac art and the interface between digital and physical. 
+
+
 
 ```json
 {

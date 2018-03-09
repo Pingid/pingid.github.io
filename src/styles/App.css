@@ -16,3 +16,15 @@
   -webkit-transition: .2s ease;
   transition: .2s ease;
 }
+
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: black;
+  color: white;
+}
+
+header p { padding: 0rem 3rem; padding-bottom: .5rem;  }
+header div { max-width: 40rem; padding-top: 1rem;}
