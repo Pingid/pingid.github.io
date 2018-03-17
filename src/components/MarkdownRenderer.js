@@ -5,7 +5,7 @@ import ReactMarkdown from 'react-markdown';
 export default ({ markdown }) => {
 	const renderImage = ({ src }) => {
 		const required = require('../' + src)
-		return <img src={required} />
+		return <img src={required} alt="photoo"/>
 	}
 
 	return (

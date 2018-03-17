@@ -13,7 +13,7 @@ export default class Mouse extends React.Component {
 	componentWillUnmount() { clearInterval(this.timer); }
 	render() {
 		const { children } = this.props;
-		const { position, tag, mouse, delay } = this.state;
+		const { position, tag, mouse } = this.state;
 		const mouseMessage = () => {
 			if (tag === 'A') return 'go to';
 			if (tag === 'P') return 'select';

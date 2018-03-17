@@ -1,4 +1,4 @@
-# Skynet
+# Skynet Kitchens
 
 ![_56B6011](/Users/dan/Desktop/science-museum/_56B6011.JPG)
 
@@ -13,8 +13,3 @@
 ![_56B6143](/Users/dan/Desktop/picked/_56B6143.JPG)
 
 ![_56B6144](/Users/dan/Desktop/picked/_56B6144.JPG)
-
-![_56B6147](/Users/dan/Downloads/ipad.gif)
-
-![projection](/Users/dan/Downloads/projection.gif)
-

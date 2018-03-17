@@ -1,60 +1,68 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './styles/App.css';
+import styled from 'styled-components';
+import './styles/app.css';
 
-import MarkdownRenderer from './components/MarkdownRenderer'
+import ProjectThumb from './components/ProjectThumb'
+import { Thumb as Skynet } from './components/projects/SkynetKitchens'
+import { Thumb as MWGA } from './components/projects/MWGA'
 
-import content from './content'
+const Wrapper = styled.div`
+  padding: 1rem 4rem;
+  @media (max-width: 700px) {
+    padding: 1rem 0rem;
+  }
+`
 
 class App extends Component {
+  state = { color: 'red' }
   componentDidMount() {
-    // const mouseCursor = require('./styles/cursors/mouse.cur');
-    // document.getElementsByTagName("body")[0].style.cursor = `url('${mouseCursor}')`;
-    // document.getElementsByTagName("html")[0].style.cursor = `url('${mouseCursor}')`;
+    const color = "#"+((1<<24)*Math.random()|0).toString(16);
+    document.body.style.backgroundColor = color;
+    this.setState({ color });
   }
   render() {
-    console.log(content)
+    const { color } = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <h4 className="m0">Dan Beaven</h4>
-          <p className="mt1 mb1" style={{ fontSize: '.618rem' }}>
-            <a href="/blog">blog</a>&nbsp;&nbsp;
-            <a href="https://github.com/Pingid">github</a>&nbsp;&nbsp;
-            <a className="" href="https://instagram.com/danielbeaven/">instagram</a>&nbsp;&nbsp;
-            <a href="mailto:dm.beaven@gmail.com?Subject=Hello" target="_top">email</a>
-          </p>
-          <MarkdownRenderer markdown={content.main.markdown} />
-          <h4>Work</h4>
-          <div className="flex flex-wrap mt1">
-            { 
-              Object.keys(content).filter(x => x !== 'main').map(key => (
-                <div 
-                  className="mr3 mt3 flex justify-center items-center" 
-                  style={{ 
-                    width: '25rem', 
-                    height: '17.025rem', 
-                    backgroundImage: 'url(https://s-media-cache-ak0.pinimg.com/originals/e6/f9/92/e6f9926a239d8e85861ab1eccfc602db.png)',
-                    backgroundSize: '10rem 10rem'
+      <Wrapper className="flex flex-wrap justify-center">
+        <ProjectThumb
+          folder="skynet"
+          title="Skynet Kitchens"
+          type="app/installation"
+          width="23rem">
+          <Skynet color={color} />
+        </ProjectThumb>
 
-                  }}>
-                  <Link to={`/project/${key}`} style={{ background: 'rgba(255,255,255,.8)' }}>
-                    <p className="underline m0 p3">{content[key].title}</p>
-                  </Link>
-                </div>
-              ))
-            }
-          </div>
-          <h4>Links</h4>
-          <ul className="mt1">
-            { 
-              content.main.meta.external_links.map((proj, index) => (
-                <li key={index} className="py1"><a href={proj.route} className="underline">0{index}.&nbsp;{proj.title}</a></li>
-              ))
-            }
-          </ul>
-        </header>
-      </div>
+        <div>
+          <ProjectThumb
+            folder="wikiconga"
+            title="Wikiconga"
+            type="art/poetry"
+            width="26rem">
+            <p style={{ color: 'white', fontSize: '.8rem' }}>
+              Mathematics is the study of such topics as quantity. 
+              <br /> Quantity is a property that can exist as a multitude. 
+              <br /> Counting is the action of finding the number of elements. 
+              <br /> In mathematics.
+            </p>
+          </ProjectThumb>
+
+          <ProjectThumb
+            folder="publication"
+            pic="lettering-white.svg"
+            title="Publication"
+            type="graphic/layout"
+            width="26rem" />
+        </div>
+
+        <ProjectThumb
+          folder="mwga"
+          title="MWGA"
+          type="game/graphic"
+          width="18rem">
+          <MWGA color={color} />
+        </ProjectThumb>
+
+      </Wrapper>
     );
   }
 }

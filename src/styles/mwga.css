@@ -1,0 +1,41 @@
+.mwga-stacks { flex: 1 1 80%; }
+.mwga-cards { flex: 1 1 20%; padding: .5rem; }
+
+.mwga-card-wrapper {
+  width: 100%;
+  margin-bottom: 1rem;
+  background: rgba(0, 0, 0, .03);
+}
+
+.mwga-card {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: .4s transform linear, .2s left ease-in .2s;
+  transform-origin: left center;
+  box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.75);
+}
+
+.mwga-card-pic { transition: z-index 0s ease .2s; }
+
+.mwga-card-back {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.mwga-card-front {
+  position: absolute;
+  transform: rotateY(180deg);
+  z-index: 1;
+}
+
+.mwga-card-wrapper:hover .mwga-card { 
+  left: 100%;
+  transform: rotateY(180deg); 
+}
+
+.mwga-card-wrapper:hover .mwga-card-front { z-index: 2; }
+.mwga-card-wrapper:hover .mwga-card-back { z-index: 1; }

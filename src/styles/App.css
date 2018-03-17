@@ -1,6 +1,9 @@
 --list-background-color: white;
 --list-text-color: blue;
 
+.image-gallery { width: 100%; }
+
+
 .c-underline {
   /*font-size: 50px;*/
   /*  shadows render better in certain browsers than text, first rule is for older browser support  */
@@ -16,3 +19,4 @@
   -webkit-transition: .2s ease;
   transition: .2s ease;
 }
+
