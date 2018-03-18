@@ -25,26 +25,6 @@ class App extends Component {
             <a href="mailto:dm.beaven@gmail.com?Subject=Hello" target="_top">email</a>
           </p>
           <MarkdownRenderer markdown={content.main.markdown} />
-          <h4>Work</h4>
-          <div className="flex flex-wrap mt1">
-            { 
-              Object.keys(content).filter(x => x !== 'main').map(key => (
-                <div 
-                  className="mr3 mt3 flex justify-center items-center" 
-                  style={{ 
-                    width: '25rem', 
-                    height: '17.025rem', 
-                    backgroundImage: 'url(https://s-media-cache-ak0.pinimg.com/originals/e6/f9/92/e6f9926a239d8e85861ab1eccfc602db.png)',
-                    backgroundSize: '10rem 10rem'
-
-                  }}>
-                  <Link to={`/project/${key}`} style={{ background: 'rgba(255,255,255,.8)' }}>
-                    <p className="underline m0 p3">{content[key].title}</p>
-                  </Link>
-                </div>
-              ))
-            }
-          </div>
           <h4>Links</h4>
           <ul className="mt1">
             { 
