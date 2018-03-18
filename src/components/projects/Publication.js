@@ -12,14 +12,16 @@ const GallerWrapper = styled.div`
 export class Page extends React.Component {
 	render() {
 		const names = [
-			'IMG_0130.JPG', 'IMG_0131.JPG', 'IMG_0132.JPG', 'IMG_0138.JPG', 
-			'IMG_0139.JPG', 'IMG_0140.JPG', 'IMG_0141.JPG', 'IMG_0142.JPG', 
-			'IMG_0143.JPG', 'IMG_0144.JPG', 'IMG_0145.JPG', 'IMG_0146.JPG',
+			'IMG_0130.jpg', 'IMG_0131.jpg', 'IMG_0132.jpg', 'IMG_0138.jpg', 
+			'IMG_0139.jpg', 'IMG_0140.jpg', 'IMG_0141.jpg', 'IMG_0142.jpg', 
+			'IMG_0143.jpg', 'IMG_0144.jpg', 'IMG_0145.jpg', 'IMG_0146.jpg',
 		];
 
 		const images = names
-			.map(name => require(`../../static/publication/${name}`))
-			.map(path => ({ original: path, thumbnail: path }));
+			.map(name => ({
+				original: require(`../../static/publication/large/${name}`),
+				thumbnail: require(`../../static/publication/tiny/${name}`)
+			}))
 
     return (
     	<div className="flex flex justify-center items-center">
