@@ -8,6 +8,7 @@ const Container = styled.div`
 	padding: .5rem;
 	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.75);
 	transition: .3s box-shadow;
+	background: black;
 	&:hover {
 		box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.75);
 	}

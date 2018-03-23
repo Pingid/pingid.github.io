@@ -14,8 +14,8 @@ const render = () => ReactDOM.render((
   <Router>
   	<div>
 	  	<header>
-				<Link to="/"><h5>Dan Beaven</h5></Link>
-				<Link to="/about"><h5>About Dan</h5></Link>
+				<Link to="/"><h5 className="caps">Dan Beaven</h5></Link>
+				<Link to="/about"><h5 className="caps">About Dan</h5></Link>
 			</header>
 			<div className="m-head"></div>
 

@@ -1,5 +1,9 @@
 # Publication
 
+This was a publication containing essays I wrote during my first year of university. Central to the publication was an essay on the 1936 exhibition of Chinese art in London and so the cover is one of the pieces of anciet caligraphy displayed in the exhibtion. The traditional Japanes bind was chosen purely for its aesthetic value as was the choice in typeface.
+
+
+
 ![IMG_0130](/Users/dan/Google Drive/IDA/catalogue-pictures/IMG_0130.JPG)
 
 ![IMG_0131](/Users/dan/Google Drive/IDA/catalogue-pictures/IMG_0131.JPG)

@@ -16,9 +16,9 @@ const Wrapper = styled.div`
 class App extends Component {
   state = { color: 'red' }
   componentDidMount() {
-    const color = "#"+((1<<24)*Math.random()|0).toString(16);
-    document.body.style.backgroundColor = color;
-    this.setState({ color });
+    // const color = "#"+((1<<24)*Math.random()|0).toString(16);
+    // document.body.style.backgroundColor = color;
+    // this.setState({ color });
   }
   render() {
     const { color } = this.state;
