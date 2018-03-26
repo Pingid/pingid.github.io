@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import P5 from 'react-p5-wrapper';
-import ImageGallery from '../ImageGallery';
 
-import FixedImage from '../FixedImage';
+import ProjectHeader from '../ProjectHeader';
 import ScrollGallery from '../ScrollGallery';
 import skynetSketch from '../../sketches/skynet';
 
@@ -43,64 +42,68 @@ export class Thumb extends React.Component {
 }
 
 
-const GallerWrapper = styled.div`
-	max-width: 40rem;
-	max-height: 70vh;
-	width: 100%;
-	box-sizing: border-box;
-`
-const Wrapper = styled.div`
-	box-sizing: border-box;
-	padding: 0 5vw;
-	@media (max-width: 700px) {
-		padding: 0 5vw;
+const ContentWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@media (max-width: 600px) {
+		display: inline-block;
+		margin-top: 0rem;
 	}
 `;
 
-const Columns = styled.div`
-	column-count: 2;
-	column-gap: 2rem;
+const Content = styled.div`
+	flex: 1 0 50%;
+	padding: 2rem;
+	@media (max-width: 600px) {
+		padding: 0;
+		padding-top: 3rem;
+	}
 `;
 
 export const Page = () => {
 	const names = [ 
-		'_56B6011.JPG', '_56B6012.JPG', '_56B6041.JPG', '_56B6044.JPG', 
-		'_56B6046.JPG', '_56B6143.JPG', '_56B6144.JPG'
+		'_56B6011.jpg', '_56B6012.jpg', '_56B6041.jpg', '_56B6044.jpg', 
+		'_56B6046.jpg', '_56B6143.jpg', '_56B6144.jpg'
 	];
 
 	const images = names
-		.map(name => require(`../../static/skynet-kitchens/${name}`))
-		.map(path => ({ original: path, thumbnail: path }));
+		.map(name => ({
+			srcLoaded: require(`../../static/skynet-kitchens/images/large/${name}`),
+			srcPreload: require(`../../static/skynet-kitchens/images/placeholder/${name}`)
+		}))
 
-	const ipad = require(`../../static/skynet-kitchens/ipad-outline.gif`)
-	const projection = require(`../../static/skynet-kitchens/projection.gif`)
+	const ipad = require(`../../static/skynet-kitchens/images/gifs/ipad-outline.gif`)
+	const projection = require(`../../static/skynet-kitchens/images/gifs/projection.gif`)
 
   return (
   	<div className="" style={{}}>
-  		<Wrapper>
-  			<div className="flex pt4 mb4">
-		  		<h1 className="caps mb4 mt0" style={{ width: '4rem' }}>Skynet Kitchens</h1>
-  				<Columns className="pl4 mr4 pr4">
-			  		<p className="mt4" style={{ paddingTop: '10rem' }}>Skynet was famously the name of the arteficial general intelegence which played the antagonist in the Terminator franchise. A melevolant superintelegence has been a long standing theme in much of scifi and with what some have coined as the AI revolution it has begun to felt less of a purely fantastical idea. The uses of machine learning that most of us experience are there to predict our tastes and to understand our thoughts and behavour. This project was about exploring how machine learning and AI might soon go beyond the abstract and digital into enhancing our direct and tangable experiences. I chose to reference the artificial intelegence in terminator to emphasise that the project was not simply a display of the capabilities of machine learning but a question around how far we are willing to accept a computer take over our experiences.</p>
-			  		<p className="">The installation was built for the science musium (London) in a series on food and agriculture. Utilizing Foodparing.com API I wrote an iPad app which rated recipees and suggested additional ingredients which would in combination yield better flavours. For the installation I set up a stand with 40 different ingredients which included fruits, vegetables, herbs, cheeses and sweets. Participants were able to use the ipads to build ingredient combinations and were then invited to try their combinations out using cocktail sticks to combine the ingredients on offer. They were also encouraged to save good recipees which were then projected as a visualisation behind the stand so as to allow other particapents to try the often strange and surprising combinations.</p>
-		  		</Columns>
-			  </div>
-			  <div className="flex justify-around mb4">
-			  	<div style={{ width: '50%' }}><img src={ipad} style={{ background: 'white' }}/></div>
-			  	<div style={{ width: '50%' }}><img src={projection} style={{ background: 'white' }}/></div> 
-			  </div>
+  		<ProjectHeader
+  			title="Skynet Kitchens"
+  			copy="An installation for the Science Museum (London) during a show on food and agriculture. It was an interactive piece where participents could use machine learning to buid recipee combinations then test the recipees with cocktail sticks and the 40 different ingredients on offer."
+  			image={{ load: images[0].srcLoaded, prload: images[0].srcPreload }} >
 
-			  {
-			  	<ScrollGallery images={images.map(({ original }) => ({ src: original }))} />
-			  }
-			  	<img src={projection} style={{ background: 'white', height: '70vh' }}/> 
+  			<ContentWrapper className="">
+  				<Content className="wfit border-box">
+  					<h3 className="">App</h3>
+  					<p>I wrote an iPad app which used Foodpairing's machine learning API to rate different ingredient combinations as well as suggest additional ingredients that might improve the flavour of the combination.</p>
+				  	<img alt="animated gif of ipad app" className="pt1" src={ipad} />
+					</Content>
+				  <Content className="wfit border-box">
+  					<h3 className="">Visual</h3>
+				  	<p>Behind the stand I had project a live visualisation of the ingredient combinations that people had saved when using the app.</p>
+				  	<img alt="animated gif of visualisation" src={projection} className="wfit pt1" />
+				  </Content>
+				</ContentWrapper>
+  					
+  			<Content>
+	  			<h3 className="">Rational</h3>
+					<p className="" style={{ maxWidth: '30rem' }}>Skynet was famously the name of the arteficial general intelegence which played the antagonist in the Terminator franchise. A melevolant superintelegence has been a long standing theme in much of science fiction and with what some have coined as the AI revolution it has begun to feel slightly less fictional. The uses of machine learning that most of us experience are there to predict our tastes and to understand our thoughts and behavour. This project was about exploring how machine learning and AI might soon go beyond the abstract and digital into enhancing our direct and tangable experiences. I chose to reference the artificial intelegence in terminator to emphasise that the project was not simply a display of the capabilities of machine learning but a question around how far we are willing to accept a computer take over our experiences.</p>
+  			</Content>
 
-	  	</Wrapper>
-  		{
-	  		// <GallerWrapper className="px2">
-	    // 		<ImageGallery items={images} />
-	    // 	</GallerWrapper>
-	    }
+  		</ProjectHeader>
+			<ScrollGallery images={images.slice(1, images.length)} />
+			<div className="py2" />
     </div>
   );
 }

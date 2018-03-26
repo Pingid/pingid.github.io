@@ -5,6 +5,7 @@ import './styles/app.css';
 import ProjectThumb from './components/ProjectThumb'
 import { Thumb as Skynet } from './components/projects/SkynetKitchens'
 import { Thumb as MWGA } from './components/projects/MWGA'
+import { Thumb as Wikiconga } from './components/projects/Wikiconga'
 
 const Wrapper = styled.div`
   padding: 1rem 4rem;
@@ -14,17 +15,19 @@ const Wrapper = styled.div`
 `
 
 class App extends Component {
-  state = { color: 'red' }
+  state = { color: 'black' }
   componentDidMount() {
     // const color = "#"+((1<<24)*Math.random()|0).toString(16);
     // document.body.style.backgroundColor = color;
     // this.setState({ color });
   }
   render() {
+    const { history } = this.props;
     const { color } = this.state;
     return (
-      <Wrapper className="flex flex-wrap justify-center">
+      <Wrapper className="flex flex-wrap justify-center px2 border-box">
         <ProjectThumb
+          onSelect={() => history.push('/project/skynet-kitchens')}
           folder="skynet"
           title="Skynet Kitchens"
           type="app/installation"
@@ -34,27 +37,26 @@ class App extends Component {
 
         <div>
           <ProjectThumb
+            onSelect={() => window.location.assign('http://www.wikicon.ga/')}
+            link="http://www.wkicon.ga"
             folder="wikiconga"
             title="Wikiconga"
             type="art/poetry"
             width="26rem">
-            <p style={{ color: 'white', fontSize: '.8rem' }}>
-              Mathematics is the study of such topics as quantity. 
-              <br /> Quantity is a property that can exist as a multitude. 
-              <br /> Counting is the action of finding the number of elements. 
-              <br /> In mathematics.
-            </p>
+            <Wikiconga />
           </ProjectThumb>
 
           <ProjectThumb
+            onSelect={() => history.push('/project/publication')}
             folder="publication"
-            pic="lettering-white.svg"
-            title="Publication"
+            pic="lettering-black.svg"
+            title="Magazine"
             type="graphic/layout"
             width="26rem" />
         </div>
 
         <ProjectThumb
+          onSelect={() => window.location.assign('http://www.maketheworldgreat.cards')}
           folder="mwga"
           title="MWGA"
           type="game/graphic"

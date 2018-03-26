@@ -1,22 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import ProjectHeader from '../ProjectHeader';
 import '../../styles/mwga.css';
 
+const cards = {
+	alliance: require('../../static/mwga/card-alliance.svg'),
+	warning: require('../../static/mwga/card-warning.svg'),
+	yield: require('../../static/mwga/card-yield.svg'),
+	may: require('../../static/mwga/card-may.svg'),
+	action: require('../../static/mwga/card-action.svg'),
+	player: require('../../static/mwga/card-player.svg'),
+}
+
+const poster = require('../../static/mwga/poster.png');
+
 export const Thumb = ({ color }) => {
-	const cards = {
-		alliance: require('../../static/mwga/card-alliance.svg'),
-		warning: require('../../static/mwga/card-warning.svg'),
-		yield: require('../../static/mwga/card-yield.svg'),
-		may: require('../../static/mwga/card-may.svg'),
-		action: require('../../static/mwga/card-action.svg'),
-		player: require('../../static/mwga/card-player.svg'),
-	}
 	const Image = styled.img`background-color: ${color};`
 	return (
 		<div className="flex mwga-cards">
 			<div className="mwga-stacks">
-				<img alt="logo" src={require('../../static/mwga/logo.svg')} style={{ width: '100%' }} />
+				<img alt="logo" src={require('../../static/mwga/logo-black.svg')} style={{ width: '100%' }} />
 			</div>
 			<div className="flex flex-column mwga-cards">
 				<div className="mwga-card-wrapper">
@@ -44,6 +48,17 @@ export const Thumb = ({ color }) => {
 					</div>
 				</div>
 			</div>
+		</div>
+	)
+}
+
+export const Page = () => {
+	return (
+		<div>
+			<ProjectHeader
+				title="Make the world great again"
+				image={{ load: poster, preload: poster }}
+				/>
 		</div>
 	)
 }

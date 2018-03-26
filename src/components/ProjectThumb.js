@@ -1,20 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+const Wrapper = styled.div`
+	@media (max-width: 400px) {
+		width: 100vw;
+	}
+`;
 
 const Container = styled.div`
-	max-width: ${props => props.width };
+	width: ${({ width }) => width };
 	cursor: pointer;
-	padding: .5rem;
 	box-shadow: 0px 0px 12px -5px rgba(0,0,0,0.75);
 	transition: .3s box-shadow;
-	background: black;
 	&:hover {
 		box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.75);
 	}
 	@media (max-width: 700px) {
 		max-width: 100vw;
-		max-height: 100vh;
+	}
+	@media (max-width: 800px) {
+		width: 100%;
 	}
 `
 const Line = styled.div`
@@ -26,9 +31,10 @@ const Line = styled.div`
 	background: white;
 `;
 
-const Image = styled.img`
+const Children = styled.div`
 	cursor: pointer;
-	width: ${({ width }) => width };
+	width: 100%;
+	overflow: hidden;
 `
 
 const Text = styled.div`
@@ -36,18 +42,20 @@ const Text = styled.div`
 	color: white;
 `
 
-export default ({ folder, pic, title, type, width, children }) => {
+export default ({ folder, pic, title, type, width, children, onSelect }) => {
 	return (
-		<Link to={`/project/${title.toLowerCase().replace(/\s/, '-')}`}>
-			<Container className="mx2 mt4" width={width}>
-				{ children && <div style={{ width }}>{children}</div> }
-				{ pic && <Image width={width} src={require('../static/' + folder + '/' + pic)} /> }
-				<Text className="flex mt1 flex-wrap items-center justify-between">
-					<p className="m0">{title}</p>
-					<Line />
-					<p className="m0">{type}</p>
-				</Text>
+		<Wrapper className="p2 border-box">
+			<Container className="p1 border-box" onClick={onSelect} width={width}>
+					<Children width={width}>
+						{ children && children }
+						{ pic && <img alt="project" src={require('../static/' + folder + '/' + pic)} /> }
+					</Children>
+					<Text className="flex mt1 flex-wrap items-center justify-between">
+						<p className="m0">{title}</p>
+						<Line />
+						<p className="m0">{type}</p>
+					</Text>
 			</Container>
-		</Link>
+		</Wrapper>
 	);
 }
