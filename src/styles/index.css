@@ -1,42 +1,60 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,400i,500,600,700,800,900');
 @import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700|Playfair+Display:400,400i,700,700i,900,900i');
 
+@font-face {
+  font-family: Transport;
+  src: url(../static/fonts/Transport Medium.ttf);
+}
+
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inconsolata', courier, monospace, sans-serif; 
+  font-family: 'Inconsolata', courier, monospace, sans-serif;
+  /*background-color: red;*/
 }
 
 header {
-  padding-left: 10vw;
-  padding-right: 10vw;
-  padding-top: 10vh;
-
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5vw;
+  box-sizing: border-box;
+  opacity: .8;
+  position: fixed;
+  top: 0;
+  height: 6rem;
+  z-index: 999;
 }
 
-h1 { font-size: 6.18vw; }
-h2 { font-size: 3.81924vw; font-weight: normal; }
+.hidden { opacity: 1 }
+.hide { opacity: 0 }
+
+.m-head { width: 100%; height: 4rem; }
+.white { color: white; }
+.wfit { width: 100%; }
+.hfit { height: 100%; }
+
+h1, h2, h3, h4, h5, p, a, a:active { color: black; }
+h1 { font-size: 4.23rem; }
+h2 { font-size: 2.618rem; font-weight: normal; }
 h4 { font-size: 1.618rem; }
-p { line-height: 21px; }
-a { color: red; text-decoration: none; }
+h5 { font-size: 1rem; }
+p { font-size: 1rem; line-height: 21px; }
+
+@media only screen and (max-width: 750px) {
+  h1 { font-size: 2.618rem; }
+}
+
+
+a { text-decoration: none; }
 ul { list-style-type: none; padding: 0; }
 img { 
 	max-width: 100%;
 	max-height: 100%;
 }
 
-.underline {
-  /*font-size: 50px;*/
-  /*  shadows render better in certain browsers than text, first rule is for older browser support  */
-  color: #333;
-  color: transparent;
-  text-shadow: 0 0 red, .08em 0 0 white, 0 0, -.08em 0 0 white;
-  /*  gradient background allows us to use css only & re-position it  */
-  background: -webkit-linear-gradient(red, red) center 1.09em no-repeat;
-  background: linear-gradient(red, red) center 1.09em no-repeat;
-  /*  can precisely control size in relation to the text  */
-  background-size: 100% 1px;
-  /*  now the underline supports transitions  */
-  -webkit-transition: .2s ease;
-  transition: .2s ease;
+.hide-bar::-webkit-scrollbar { 
+  display: none;
 }

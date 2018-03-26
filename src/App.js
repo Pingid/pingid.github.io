@@ -1,34 +1,72 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import './styles/App.css';
+import styled from 'styled-components';
+import './styles/app.css';
 
-import MarkdownRenderer from './components/MarkdownRenderer'
+import ProjectThumb from './components/ProjectThumb'
+import { Thumb as Skynet } from './components/projects/SkynetKitchens'
+import { Thumb as MWGA } from './components/projects/MWGA'
+import { Thumb as Wikiconga } from './components/projects/Wikiconga'
 
-import content from './content'
+const Wrapper = styled.div`
+  padding: 1rem 4rem;
+  @media (max-width: 700px) {
+    padding: 1rem 0rem;
+  }
+`
 
-const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h4 className="m0">Dan Beaven</h4>
-        <p className="mt1 mb1" style={{ fontSize: '.618rem' }}>
-          <a href="/blog">blog</a>&nbsp;&nbsp;
-          <a href="https://github.com/Pingid">github</a>&nbsp;&nbsp;
-          <a className="" href="https://instagram.com/danielbeaven/">instagram</a>&nbsp;&nbsp;
-          <a href="mailto:dm.beaven@gmail.com?Subject=Hello" target="_top">email</a>
-        </p>
-        <MarkdownRenderer markdown={content.main.markdown} />
-        <h4>Links</h4>
-        <ul className="mt1">
-          { 
-            content.main.meta.external_links.map((proj, index) => (
-              <li key={index} className="py1"><a href={proj.route} className="underline">0{index}.&nbsp;{proj.title}</a></li>
-            ))
-          }
-        </ul>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = { color: 'black' }
+  componentDidMount() {
+    // const color = "#"+((1<<24)*Math.random()|0).toString(16);
+    // document.body.style.backgroundColor = color;
+    // this.setState({ color });
+  }
+  render() {
+    const { history } = this.props;
+    const { color } = this.state;
+    return (
+      <Wrapper className="flex flex-wrap justify-center px2 border-box">
+        <ProjectThumb
+          onSelect={() => history.push('/project/skynet-kitchens')}
+          folder="skynet"
+          title="Skynet Kitchens"
+          type="app/installation"
+          width="23rem">
+          <Skynet color={color} />
+        </ProjectThumb>
+
+        <div>
+          <ProjectThumb
+            onSelect={() => window.location.assign('http://www.wikicon.ga/')}
+            link="http://www.wkicon.ga"
+            folder="wikiconga"
+            title="Wikiconga"
+            type="art/poetry"
+            width="26rem">
+            <Wikiconga />
+          </ProjectThumb>
+
+          <ProjectThumb
+            onSelect={() => history.push('/project/publication')}
+            folder="publication"
+            pic="lettering-black.svg"
+            title="Magazine"
+            type="graphic/layout"
+            width="26rem" />
+        </div>
+
+        <ProjectThumb
+          onSelect={() => window.location.assign('http://www.maketheworldgreat.cards')}
+          folder="mwga"
+          title="MWGA"
+          type="game/graphic"
+          width="18rem">
+          <MWGA color={color} />
+        </ProjectThumb>
+
+      </Wrapper>
+    );
+  }
 }
 
 export default App;

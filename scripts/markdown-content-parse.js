@@ -23,7 +23,7 @@ const mk_dir = promisifyFS(fs.mkdir);
 const exists = dir => new Promise((res, rej) => fs.exists(dir, itDoes => itDoes ? res(itDoes) : rej(itDoes))) 
 
 // Extract title of article
-const addTitle = (text, obj) => R.assoc('title', text.match(/(?<=#\s)(.*?)\n/)[0].trim().toLowerCase(), obj);
+const addTitle = (text, obj) => R.assoc('title', text.match(/(?<=#\s)(.*?)\n/)[0].trim().toLowerCase().replace(/\s/gi, '-'), obj);
 // Extract data from json code block in markdown
 const addMeta = (text, obj) =>  {
 	const jsonBlock = /(?<=```json)([\s\S]*?)(?=```)/gi.exec(text);
