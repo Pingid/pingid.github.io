@@ -13,7 +13,7 @@ const cards = {
 	player: require('../../static/mwga/card-player.svg'),
 }
 
-const poster = require('../../static/mwga/poster.png');
+const poster = require('../../static/mwga/poster.jpg');
 
 export const Thumb = ({ color }) => {
 	const Image = styled.img`background-color: ${color};`
