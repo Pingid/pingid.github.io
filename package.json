@@ -17,7 +17,7 @@
   },
   "scripts": {
     "delete-old": "rm -R ./static asset-manifest.json favicon.ico manifest.json service-worker.js; ",
-    "move-html": "yarn delete-old; mv ./build/*  ./",
+    "move-html": "yarn delete-old; mv ./build/*  ./; rm -R ./build",
     "deploy": "yarn build; yarn move-html",
     "start": "react-scripts start",
     "build": "react-scripts build",
