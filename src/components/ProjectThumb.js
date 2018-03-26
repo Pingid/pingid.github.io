@@ -28,7 +28,7 @@ const Line = styled.div`
 	margin: 0 10px;
 	min-width: 1rem;
 	height: 1px;
-	background: white;
+	background: black;
 `;
 
 const Children = styled.div`
@@ -39,7 +39,6 @@ const Children = styled.div`
 
 const Text = styled.div`
 	cursor: pointer;
-	color: white;
 `
 
 export default ({ folder, pic, title, type, width, children, onSelect }) => {

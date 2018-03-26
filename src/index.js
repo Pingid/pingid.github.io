@@ -17,7 +17,7 @@ const render = () => ReactDOM.render((
   	<div>
 	  	<header>
 				<Link to="/"><h5 className="caps">Dan Beaven</h5></Link>
-				<Link to="/about"><h5 className="caps">About Dan</h5></Link>
+				<Link to="/about"><h5 className="caps">About</h5></Link>
 			</header>
 			<div className="m-head"></div>
 

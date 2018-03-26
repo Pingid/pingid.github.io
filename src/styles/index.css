@@ -36,7 +36,8 @@ header {
 .wfit { width: 100%; }
 .hfit { height: 100%; }
 
-h1, h2, h3, h4, h5, p, a, a:active { color: black; }
+a, a:active { color: blue; }
+h1, h2, h3, h4, h5 { text-transform: uppercase; }
 h1 { font-size: 4.23rem; }
 h2 { font-size: 2.618rem; font-weight: normal; }
 h4 { font-size: 1.618rem; }
