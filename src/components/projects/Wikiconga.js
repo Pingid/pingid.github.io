@@ -23,7 +23,7 @@ export const Thumb = makeTick(({ tick }) => {
 			<div style={{ fontSize: '.8rem', userSelect: 'none', opacity: 0, height: 0, }}>Counting is the action of finding the number of elements.</div>
 			<p style={{ fontSize: '.8rem' }}>
 				{
-					getUpUntil().map(line => <span>{line}<br /></span>)
+					getUpUntil().map((line, i) => <span key={i}>{line}<br /></span>)
 				}
 			</p>
 	  </div>

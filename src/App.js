@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import './styles/app.css';
 
 import ProjectThumb from './components/ProjectThumb'
+import { Thumb as IDA2017 } from './components/projects/IDA2017'
 import { Thumb as Skynet } from './components/projects/SkynetKitchens'
 import { Thumb as MWGA } from './components/projects/MWGA'
 import { Thumb as Wikiconga } from './components/projects/Wikiconga'
@@ -56,13 +57,23 @@ class App extends Component {
         </div>
 
         <ProjectThumb
-          onSelect={() => window.location.assign('http://www.maketheworldgreat.cards')}
+          onSelect={() => history.push('/project/MWGA')}
           folder="mwga"
           title="MWGA"
           type="game/graphic"
           width="18rem">
           <MWGA color={color} />
         </ProjectThumb>
+        {
+          // <ProjectThumb
+          //   onSelect={() => history.push('/project/skynet-kitchens')}
+          //   folder="skynet"
+          //   title="Skynet Kitchens"
+          //   type="app/installation"
+          //   width="23rem">
+          //   <IDA2017 color={color} />
+          // </ProjectThumb>
+        }
 
       </Wrapper>
     );

@@ -20,7 +20,7 @@ export class Thumb extends React.Component {
 		return (
 			<div 
 				className="border-box"
-				style={{ width: '100%', minHeight: '4rem' }} >
+				style={{ width: '100%', minHeight: '4rem', height: width * Math.sqrt(2) || 'auto' }} >
 				<div ref={this._handleSize.bind(this)}>
 				{ 
 					width > 0 && <P5 sketch={p => skynetSketch({ width, height, p, color })} /> 
@@ -80,25 +80,25 @@ export const Page = () => {
   	<div className="" style={{}}>
   		<ProjectHeader
   			title="Skynet Kitchens"
-  			copy="An installation for the Science Museum (London) during a show on food and agriculture. It was an interactive piece where participents could use machine learning to buid recipee combinations then test the recipees with cocktail sticks and the 40 different ingredients on offer."
+  			copy="This was an installation for the Science Museum (London) during a show on food and agriculture. It was an interactive piece where participants could use machine learning to build ingredient combinations and then test their combinations with the 40 different ingredients on offer."
   			image={{ load: images[0].srcLoaded, prload: images[0].srcPreload }} >
 
   			<ContentWrapper className="">
   				<Content className="wfit border-box">
   					<h3 className="">App</h3>
-  					<p>I wrote an iPad app which used Foodpairing's machine learning API to rate different ingredient combinations as well as suggest additional ingredients that might improve the flavour of the combination.</p>
+  					<p>The bulk of the project was developing an iPad app which used Foodpairing's machine learning API to rate different ingredient combinations as well as suggest additional ingredients that might improve flavour.</p>
 				  	<img alt="animated gif of ipad app" className="pt1" src={ipad} />
 					</Content>
 				  <Content className="wfit border-box">
   					<h3 className="">Visual</h3>
-				  	<p>Behind the stand I had project a live visualisation of the ingredient combinations that people had saved when using the app.</p>
+				  	<p>Behind the stand, I had projected a live visualisation of the ingredient combinations that people had saved as there was a limited number of iPads.</p>
 				  	<img alt="animated gif of visualisation" src={projection} className="wfit pt1" />
 				  </Content>
 				</ContentWrapper>
   					
   			<Content>
 	  			<h3 className="">Rational</h3>
-					<p className="" style={{ maxWidth: '30rem' }}>Skynet was famously the name of the arteficial general intelegence which played the antagonist in the Terminator franchise. A melevolant superintelegence has been a long standing theme in much of science fiction and with what some have coined as the AI revolution it has begun to feel slightly less fictional. The uses of machine learning that most of us experience are there to predict our tastes and to understand our thoughts and behavour. This project was about exploring how machine learning and AI might soon go beyond the abstract and digital into enhancing our direct and tangable experiences. I chose to reference the artificial intelegence in terminator to emphasise that the project was not simply a display of the capabilities of machine learning but a question around how far we are willing to accept a computer take over our experiences.</p>
+					<p className="" style={{ maxWidth: '30rem' }}>Skynet was famously the name of the artificial general intelligence which played the antagonist in the Terminator franchise. A malevolent superintelligence has been a long-standing theme in much of science fiction and with what some have coined as the AI revolution it has begun to feel slightly less fictional. The uses of machine learning that most of us experience are there to find patterns in our personalities and taste in order to sell us products. This project was about exploring how machine learning and AI might soon go beyond the abstract and digital into enhancing our direct and tangible experiences. I chose to reference the artificial intelligence in terminator to raise the question of how far are we willing to accept intelligent machines into our lives.</p>
   			</Content>
 
   		</ProjectHeader>

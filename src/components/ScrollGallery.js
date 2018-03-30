@@ -2,21 +2,22 @@ import React from 'react';
 import classNames from 'classnames';
 
 class ScrollGallery extends React.Component {
-	state = { active: false, scroll: 0, height: null }
-	componentDidMount() {
-		window.addEventListener('scroll', this._handleVertScroll.bind(this))
-		window.addEventListener('mousewheel', this._handleVertScroll.bind(this))
+	constructor() {
+		super();
+		this.state = { active: false, scroll: 0, height: null };
+
+		this._handleScroll = this._handleScroll.bind(this);
 	}
+	componentDidMount() { window.addEventListener('scroll', this._handleScroll) }
+	componentWillUnmount() { window.removeEventListener('scroll', this._handleScroll) }
 	render() {
 		const { images } = this.props;
 		const { active, after, height } = this.state;
-
 		return (
 			<div 
 				className="border-box"
 				id="node1"
-				style={{ 
-					background: 'transparent', 
+				style={{
 					height: height || window.innerWidth,
 					paddingTop: after ? (window.innerWidth * images.length) - window.innerWidth : 0
 				}} 
@@ -38,7 +39,7 @@ class ScrollGallery extends React.Component {
 			</div>
 		)
 	}
-	_handleVertScroll(e) {
+	_handleScroll(e) {
 		const { images } = this.props; 
 		const { active, after, scroll:prevScroll } = this.state;
 		
@@ -49,21 +50,31 @@ class ScrollGallery extends React.Component {
 			return elemRect.top - bodyRect.top;
 		}
 
+		// Total height of gallery
 		const height = (window.innerWidth * images.length) - window.innerWidth;
 		let scroll = Math.max(0, window.pageYOffset - getOffsetTop(this.parentNode));
 
+		// Check if scroll is passed gallery
 		if (scroll > height && !after) { this.setState({ after: true }); }
 		if (scroll < height && after) { this.setState({ after: false }); }
 
+		// Is scroll within bounds of gallery
 		if (scroll > 0 && scroll < height && this.scrollElem) {
 
-			const sideScrollDiff = prevScroll - this.scrollElem.scrollLeft;
+			// Has horizontal scroll of gallery changed
 			const sideScroll = Math.floor(prevScroll) !== Math.floor(this.scrollElem.scrollLeft);
 			
+			// How much horizontal scroll of gallery has changed
+			const sideScrollDiff = prevScroll - this.scrollElem.scrollLeft;
+			
+			// if horizontal scroll has changed update vertical scroll to match
 			if (sideScroll) { window.scrollTo(0, window.pageYOffset - sideScrollDiff) } 
+
+			// Update horizontal scroll of gallery
 			this.scrollElem.scrollLeft = scroll;
 
-			if (!active) this.setState({ active: true, height: this.scrollElem.scrollWidth - window.innerWidth / 2 });
+			// Confirm that state reflects current situation
+			if (!active) this.setState({ active: true, height: this.scrollElem.scrollWidth - window.innerHeight });
 		} 
 		else if (active) { this.setState({ active: false }) }
 

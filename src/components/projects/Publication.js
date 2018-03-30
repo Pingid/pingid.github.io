@@ -26,7 +26,7 @@ export class Page extends React.Component {
     	<div className="">
 	      <ProjectHeader
 	      	title="Magazine"
-	      	copy="This was a publication containing essays I wrote during my first year of university. Central to the publication was an essay on the 1936 exhibition of Chinese art in London and so the cover is one of the pieces of anciet caligraphy displayed in the exhibtion. The traditional Japanes bind was chosen purely for its aesthetic value as was the choice in typeface."
+	      	copy="This was a publication containing essays I wrote on cultural theory during my time at university. Central to the publication was an essay on the 1936 exhibition of Chinese art in London, the cover was one of the ancient pieces of caligraphy exhibited. The layout and typography were intended to reflect that era and the traditional Japanese bind was chosen purely for its aesthetic value."
 	      	image={{ load: front.load, reload: front.preload }} />
 	      <div className="py3 wfit" />
       	<ScrollGallery images={images.slice(1, images.length)} />

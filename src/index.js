@@ -8,6 +8,7 @@ import './styles/index.css';
 import App from './App';
 import About from './components/About';
 import { Page as Publication } from './components/projects/Publication'
+import { Page as MWGA } from './components/projects/MWGA'
 import { Page as SkynetKitchens } from './components/projects/SkynetKitchens'
 
 import registerServiceWorker from './utils/registerServiceWorker';
@@ -24,6 +25,7 @@ const render = () => ReactDOM.render((
 	    <Route path="/" exact component={App} />
 	    <Route path="/about" exact component={About} />
 	    <Route path="/project/skynet-kitchens" component={SkynetKitchens} />
+	    <Route path="/project/MWGA" component={MWGA} />
 	    <Route path="/project/publication" component={Publication} />
 	  </div>
   </Router>
