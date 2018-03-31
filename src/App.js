@@ -61,7 +61,7 @@ class App extends Component {
           folder="mwga"
           title="MWGA"
           type="game/graphic"
-          width="18rem">
+          width="23rem">
           <MWGA color={color} />
         </ProjectThumb>
         {

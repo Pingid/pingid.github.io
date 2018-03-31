@@ -15,12 +15,10 @@ const Container = styled.div`
 	&:hover {
 		box-shadow: 0px 0px 16px -5px rgba(0,0,0,0.75);
 	}
-	@media (max-width: 700px) {
+	@media (max-width: 600px) {
 		max-width: 100vw;
 	}
-	@media (max-width: 800px) {
-		width: 100%;
-	}
+
 `
 const Line = styled.div`
 	cursor: pointer;
